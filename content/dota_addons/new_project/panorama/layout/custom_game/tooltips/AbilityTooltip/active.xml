@@ -1,0 +1,101 @@
+<root>
+    <styles>
+		<include src="s2r://panorama/styles/dotastyles.vcss_c" />
+        <include src="file://{resources}/layout/custom_game/tooltips/AbilityTooltip/tooltip.css" />
+    </styles>
+    <scripts>
+        <include src="file://{resources}/layout/custom_game/tooltips/AbilityTooltip/tooltip.js" />
+    </scripts>
+    <Panel class="root" hittest="false" hittestchildren="false">
+        <Panel id="AbilityActivePanel" class="">
+            <Label id="AbilityActiveLabel" class="" text="Активное" />
+            <Panel id="AbilityActiveDescPanel" class="">
+                <Label id="AbilityActiveDescLabel" class="" text="Description d4 3" />
+                <Panel id="AbilityParams" class="">
+                    <Panel id="" class="AbilityParamsActive">
+                        <Label id="" class="" text="УРОН: " />
+                        <Label id="" class="" text="10" />
+                        <Label id="" class="" text="/" />
+                        <Label id="" class="Active" text="20" />
+                        <Label id="" class="" text="/" />
+                        <Label id="" class="" text="30" />
+                        <Label id="" class="" text="/" />
+                        <Label id="" class="" text="20" />
+                        <Label id="" class="" text="/" />
+                        <Label id="" class="" text="30" />
+                        <Label id="" class="" text="/" />
+                        <Label id="" class="" text="20" />
+                        <Label id="" class="" text="/" />
+                        <Label id="" class="" text="30" />
+                        <Label id="" class="" text="/" />
+                        <Label id="" class="" text="20" />
+                        <Label id="" class="" text="/" />
+                        <Label id="" class="" text="30" />
+                    </Panel>
+                    <Panel id="" class="AbilityParamsActive">
+                        <Label id="" class="" text="УРОН: " />
+                        <Label id="" class="" text="10" />
+                        <Label id="" class="" text="/" />
+                        <Label id="" class="Active" text="20" />
+                        <Label id="" class="" text="/" />
+                        <Label id="" class="" text="30" />
+                        <Label id="" class="" text="/" />
+                        <Label id="" class="" text="20" />
+                        <Label id="" class="" text="/" />
+                        <Label id="" class="" text="30" />
+                        <Label id="" class="" text="/" />
+                        <Label id="" class="" text="20" />
+                        <Label id="" class="" text="/" />
+                        <Label id="" class="" text="30" />
+                        <Label id="" class="" text="/" />
+                        <Label id="" class="" text="20" />
+                        <Label id="" class="" text="/" />
+                        <Label id="" class="" text="30" />
+                    </Panel>
+                    <Panel id="" class="AbilityParamsActive">
+                        <Label id="" class="" text="УРОН: " />
+                        <Label id="" class="" text="10" />
+                        <Label id="" class="" text="/" />
+                        <Label id="" class="Active" text="20" />
+                        <Label id="" class="" text="/" />
+                        <Label id="" class="" text="30" />
+                        <Label id="" class="" text="/" />
+                        <Label id="" class="" text="20" />
+                        <Label id="" class="" text="/" />
+                        <Label id="" class="" text="30" />
+                        <Label id="" class="" text="/" />
+                        <Label id="" class="" text="20" />
+                        <Label id="" class="" text="/" />
+                        <Label id="" class="" text="30" />
+                        <Label id="" class="" text="/" />
+                        <Label id="" class="" text="20" />
+                        <Label id="" class="" text="/" />
+                        <Label id="" class="" text="30" />
+                    </Panel>
+                </Panel>
+                <Panel id="Casts" class="">
+                    <Panel id="CooldownPanel" class="AbilityParamsActive">
+                        <Panel id="CooldownImg" class=""></Panel>
+                        <Panel id="CooldownValues" class="">
+                            <Label id="" class="" text="30" />
+                            <Label id="" class="" text="/" />
+                            <Label id="" class="" text="40" />
+                            <Label id="" class="" text="/" />
+                            <Label id="" class="" text="50" />
+                        </Panel>
+                    </Panel>
+                    <Panel id="ManaPanel" class="AbilityParamsActive">
+                        <Panel id="ManaImg" class=""></Panel>
+                        <Panel id="ManaValues" class="">
+                            <Label id="" class="" text="30" />
+                            <Label id="" class="" text="/" />
+                            <Label id="" class="" text="40" />
+                            <Label id="" class="" text="/" />
+                            <Label id="" class="" text="50" />
+                        </Panel>
+                    </Panel>
+                </Panel>
+            </Panel>
+        </Panel>
+    </Panel>
+</root>

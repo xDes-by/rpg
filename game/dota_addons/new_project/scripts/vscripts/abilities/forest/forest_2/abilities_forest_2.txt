@@ -1,0 +1,221 @@
+"DOTAAbilities"
+{
+
+"ability_npc_forest_fontain"
+	{
+		"BaseClass"           			"ability_lua"
+		"ScriptFile"					"abilities/forest/forest_2/ability_npc_forest_fontain"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"MaxLevel"						"7"
+		"AbilityCastRange"				"400"
+     	"AbilityValues"
+		{
+			"damage" 	"1.0 1.2 1.4 1.6 1.8 2.0 2.2"
+		}
+	}
+
+"ability_npc_forest_2_stinky"
+	{
+		"BaseClass"           			"ability_lua"
+		"ScriptFile"					"abilities/forest/forest_2/ability_npc_forest_2_stinky"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	}
+
+
+
+
+
+
+
+
+
+
+
+    "ability_npc_forest1_wave2_bone"
+	{
+		"BaseClass"           			"ability_lua"
+		"ScriptFile"					"abilities/forest1/ability_npc_forest1_wave2_bone"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityTextureName"     		""
+        "AbilityCastRange"				"500"
+        
+		//"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"MaxLevel"						"6"
+		"AbilityCooldown"				"10"
+     	"AbilityValues"
+		{
+			"stundur" "0.5 0.7 0.9 1.1 1.3 1.5"
+		}  
+	}
+    "ability_npc_forest1_wave2_status_resist"
+	{
+		"BaseClass"           			"ability_lua"
+		"ScriptFile"					"abilities/forest1/ability_npc_forest1_wave2_status_resist"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"     		""
+        
+		"MaxLevel"						"6"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+     	"AbilityValues"
+		{
+			"resistreducrion" "5 10 15 20 25"
+		}  
+	}
+    "ability_npc_forest1_wave3_trol_root"
+	{
+		"BaseClass"           			"ability_lua"
+		"ScriptFile"					"abilities/forest1/ability_npc_forest1_wave3_trol_root"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"     		""
+        
+		"MaxLevel"						"6"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+     	"AbilityValues"
+		{
+			"chance" "10 10 10 10 10 10"
+		}  
+	}
+    "ability_npc_forest1_wave3_wolf"
+	{
+		"BaseClass"           			"ability_lua"
+		"ScriptFile"					"abilities/forest1/ability_npc_forest1_wave3_wolf"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"     		""
+        
+		"MaxLevel"						"6"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+     	"AbilityValues"
+		{
+			"ms" "10 10 10 10 10 10"
+			"as" "10 10 10 10 10 10"
+		}  
+	}
+	"polar_furbolg_ursa_warrior_thunder_clap"
+	{
+		"ID"							"5302"
+		"MaxLevel"						"1"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
+		
+		"AbilityCastPoint"				"0.4"
+		"AbilityCooldown"				"12.0"
+		"AbilityDamage"					"150"
+		"AbilityManaCost"				"50"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"300"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"movespeed_slow"		"-25"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"attackspeed_slow"		"-25"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration"				"3.0"
+			}
+		}
+		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_1"
+	}
+    "ability_npc_forest1_wave3_ursa"
+	{
+		"BaseClass"           			"ability_lua"
+		"ScriptFile"					"abilities/forest1/ability_npc_forest1_wave3_ursa"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"     		""
+        
+		"MaxLevel"						"6"
+     	"AbilityValues"
+		{
+			"mgres" "5 10 15 20 25"
+		}  
+	}
+    "ability_npc_forest1_wave3_pine_cone"
+	{
+		"BaseClass"           			"ability_lua"
+		"ScriptFile"					"abilities/forest1/ability_npc_forest1_wave3_pine_cone"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"     		""
+        
+		"MaxLevel"						"6"
+     	"AbilityValues"
+		{
+			"ms" "10 10 10 10 10 10"
+			"as" "10 10 10 10 10 10"
+		}   
+	} 
+    "ability_npc_forest1_wave3_pine_cone_seed"
+	{
+		"BaseClass"           			"ability_lua"
+		"ScriptFile"					"abilities/forest1/ability_npc_forest1_wave3_pine_cone_seed"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityTextureName"     		""
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+        
+		"MaxLevel"						"6"
+     	"AbilityValues"
+		{
+			"HealRange" "400"
+            "HealTick" "5 10 15 20 25 30"
+            "damage" "10"
+            "Slow" "10"
+		}   
+	} 
+    "ability_npc_forest1_wave4_treant_hp_aura"
+	{
+		"BaseClass"           			"ability_lua"
+		"ScriptFile"					"abilities/forest1/ability_npc_forest1_wave4_treant_hp_aura"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"     		""
+        
+		"MaxLevel"						"6"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+     	"AbilityValues"
+		{
+			"resistreducrion" "5 10 15 20 25"
+		}  
+	}
+    "ability_npc_forest1_wave4_treant_armor_aura"
+	{
+		"BaseClass"           			"ability_lua"
+		"ScriptFile"					"abilities/forest1/ability_npc_forest1_wave4_treant_armor_aura"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"     		""
+        
+		"MaxLevel"						"6"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+     	"AbilityValues"
+		{
+			"resistreducrion" "5 10 15 20 25"
+		}  
+	}
+    "ability_npc_forest1_wave5_skelets_spawn"
+	{
+		"BaseClass"           			"ability_lua"
+		"ScriptFile"					"abilities/forest1/ability_npc_forest1_wave5_skelets_spawn"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"     		""
+        
+		"MaxLevel"						"6"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+     	"AbilityValues"
+		{
+			"resistreducrion" "5 10 15 20 25"
+		}  
+	}
+}

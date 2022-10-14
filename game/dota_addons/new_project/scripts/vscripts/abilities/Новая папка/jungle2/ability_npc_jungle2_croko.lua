@@ -1,0 +1,1 @@
+ability_npc_jungle2_croko = class({})

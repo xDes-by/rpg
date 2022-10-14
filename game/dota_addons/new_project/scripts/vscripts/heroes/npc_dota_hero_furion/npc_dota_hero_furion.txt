@@ -1,0 +1,67 @@
+"DOTAAbilities"
+{
+    "npc_dota_hero_furion_spell1"
+	{
+		"BaseClass"           			"ability_lua"
+		"ScriptFile"					"heroes/npc_dota_hero_furion/npc_dota_hero_furion_spell1"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			""
+		"FightRecapLevel"				"1"
+		"MaxLevel"						"4"
+		"AbilityCooldown"				"5"
+     	"AbilityValues"
+		{
+            "damage_multiplier" "80"
+		}  
+	}
+    "npc_dota_hero_furion_spell2"
+	{
+		"BaseClass"           			"ability_lua"
+		"ScriptFile"					"heroes/npc_dota_hero_furion/npc_dota_hero_furion_spell2"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityTextureName"			""
+		"FightRecapLevel"				"1"
+		"MaxLevel"						"4"
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_1"
+     	"AbilityValues"
+		{
+            "duration" "10"
+            "radius" "350"
+            "armor_rduce" "10"
+		}  
+	}
+    "npc_dota_hero_furion_spell3"
+	{
+		"BaseClass"           			"ability_lua"
+		"ScriptFile"					"heroes/npc_dota_hero_furion/npc_dota_hero_furion_spell3"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			""
+		"FightRecapLevel"				"1"
+		"MaxLevel"						"4"
+     	"AbilityValues"
+		{
+            "chance" "10"
+            "root_duration" "1"
+		}  
+	}
+    "npc_dota_hero_furion_spell6"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"heroes/npc_dota_hero_furion/npc_dota_hero_furion_spell6"
+		"AbilityTextureName"			""
+		"FightRecapLevel"				"1"
+		"MaxLevel"						"4"
+
+		"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+
+		"AbilityCooldown"				"250"
+		"AbilityManaCost"				"110 120 130 140"
+
+		"AbilityValues"
+		{
+			"rind_radius" "1000"
+			"duration" "45"
+		}
+	}
+}

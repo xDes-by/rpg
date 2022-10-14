@@ -1,0 +1,75 @@
+"DOTAAbilities"
+{
+	"npc_dota_hero_necrolyte_spell1"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"heroes/npc_dota_hero_necrolyte/npc_dota_hero_necrolyte_spell1"
+		"AbilityTextureName"			""
+		"FightRecapLevel"				"1"
+		"MaxLevel"						"4"
+		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"AbilityCastPoint"				"0.4"
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_5"
+		"AbilityCooldown"				"7.0"
+		"AbilityManaCost"				"110 120 130 140"
+		"AbilityValues"
+		{
+			"radius" "400"
+			"heal" "100 200 300"
+			"damage" "100 200 300"
+			"min_castrange" "300"
+			"max_castrange" "800"
+		}
+	}
+    "npc_dota_hero_necrolyte_spell2"
+	{
+		"BaseClass"           			"ability_lua"
+		"ScriptFile"					"heroes/npc_dota_hero_necrolyte/npc_dota_hero_necrolyte_spell2"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"FightRecapLevel"				"1"
+		"MaxLevel"						"4"
+		"AbilityCastPoint"				"0.4"
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_2"
+     	"AbilityValues"
+		{
+			"duration" "2 3 4 5"
+			"damage_bonus" "10 20 30 40"
+		}  
+	}
+    "npc_dota_hero_necrolyte_spell3"
+	{
+		"BaseClass"           			"ability_lua"
+		"ScriptFile"					"heroes/npc_dota_hero_necrolyte/npc_dota_hero_necrolyte_spell3"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"FightRecapLevel"				"1"
+		"MaxLevel"						"4"
+
+     	"AbilityValues"
+		{
+			"chance" "15"
+		}  
+	}
+	"npc_dota_hero_necrolyte_spell6"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"heroes/npc_dota_hero_necrolyte/npc_dota_hero_necrolyte_spell6"
+		"AbilityTextureName"			""
+		"FightRecapLevel"				"1"
+		"MaxLevel"						"4"
+		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"AbilityCastPoint"				"0.4"
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_5"
+		"AbilityCooldown"				"7.0"
+		"AbilityManaCost"				"110 120 130 140"
+		"AbilityValues"
+		{
+			"distance" "400"
+			"start" "100"
+			"end" "300"
+		}
+	}
+}

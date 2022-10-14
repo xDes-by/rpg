@@ -1,0 +1,495 @@
+"DOTAUnits"
+{
+
+"npc_dust_creep_egg"
+	{										
+		"Model"						"models/creeps/spiders/spidersack.vmdl"
+		"BaseClass"					"npc_dota_creature"
+		"ModelScale"				"1.0"
+
+		"Ability1"					"spider_egg_sack"			
+		
+		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
+		"AttackDamageMin"			"0"			
+		"AttackDamageMax"			"0"				
+		"AttackRate"				"1.0"		
+		"AttackAnimationPoint"		"0.0"		
+		"AttackAcquisitionRange"	"0"			
+		"AttackRange"				"0"	   
+
+		"BoundsHullName"			"DOTA_HULL_SIZE_SMALL"
+
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
+		"MovementSpeed"				"0"			
+
+		"StatusHealth"				"1"
+
+		"TeamName"					"DOTA_TEAM_NEUTRALS"							
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+	}
+
+"npc_dust_creep_mini_1"
+	{
+		"Model"						"models/items/broodmother/spiderling/broodmother_nightmare_spiderling/broodmother_nightmare_spiderling.vmdl"											
+		"BaseClass"					"npc_dota_creature"
+		"SoundSet"					"n_creep_Melee"
+		"Level"						"1"
+		"ModelScale" 				"0.5"
+		"CanRespawn"				"1"
+		
+		"Ability1"					""					
+
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		
+		"ArmorPhysical"				"1"			
+		"MagicalResistance"			"5"			
+		
+		"AttackDamageMin"			"24"		
+		"AttackDamageMax"			"24"		
+		"AttackRate"				"1.1"		
+		"AttackAnimationPoint"		"0.2"		
+		"AttackAcquisitionRange"	"600"		
+		"AttackRange"				"200"		
+		
+		"StatusHealth" 				"300" 
+
+		"RingRadius"				"60"
+		"HealthBarOffset"			"190"	
+
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"300"		
+
+		"VisionDaytimeRange"		"800"		
+		"VisionNighttimeRange"		"800"		
+
+		"TeamName"					"DOTA_TEAM_NEUTRALS"						
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+	}	
+	
+"npc_dust_2_boss"
+	{
+		"vscripts"					"ai/npc_forest_1_boss"
+		"BaseClass"					"npc_dota_creature"
+		"Model"						"models/items/furion/treant/shroomling_treant/shroomling_treant.vmdl"
+		"SoundSet"					"Hero_Treant"
+		"ModelScale"				"2.5"
+
+		"Ability1"					""
+		"Ability2"					""
+		"Ability3"					""
+		"Ability4"					""
+		"Ability5"					""
+		"Ability6"					""
+
+		"ArmorPhysical"				"0"
+		"MagicalResistance"			"0"
+
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"			"1"
+		"AttackDamageMax"			"1"
+		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
+		"AttackRate"				"1.2"
+		"AttackAnimationPoint"		"0.467"
+		"AttackAcquisitionRange"	"800"
+		"AttackRange"				"100"
+
+		"BoundsHullName"			"DOTA_HULL_SIZE_REGULAR"
+		"HealthBarOffset"			"170"
+
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"300"
+		"MovementTurnRate"			"0.5"
+
+		"StatusHealth"				"15000"
+		"StatusHealthRegen"			"2.5"
+		"StatusMana"				"0"
+		"StatusManaRegen"			"0"
+
+		"VisionDaytimeRange"		"800"
+		"VisionNighttimeRange"		"800"
+		"Creature"
+		{	
+			"AttachWearables"
+			{
+			"Wearable4" {"ItemDef" "8899"}
+			}
+		}
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    "npc_desert2_boss"
+	{
+		// General
+		//
+		"BaseClass"					"npc_dota_creature"	// Class of entity of link to.
+		"Model"						"models/items/beastmaster/boar/ti9_cache_beastmaster_king_of_beasts_boar/ti9_cache_beastmaster_king_of_beasts_boar.vmdl"	// Model.
+		"SoundSet"					"Beastmaster_Boar"
+		"ModelScale"				"1"
+		"vscripts"					""
+				
+		// Abilities
+		//----------------------------------------------------------------
+		
+		"Ability1"					"ablility_npc_desert2_boss_spell1"			// Ability 1.
+		"Ability2"					"ablility_npc_desert2_boss_spell2"			// Ability 2.
+		"Ability3"					"ablility_npc_desert2_boss_spell3"			// Ability 3.
+		"Ability4"					"ablility_npc_desert2_boss_spell4"			// Ability 4.
+		"Ability5"					"ablility_npc_desert2_boss_spell5"			// Ability 5.
+		"Ability6"					"ablility_npc_desert2_boss_spell6"			// Ability 6 - Extra.
+		"Ability7"					""			// Ability 7 - Extra.
+		"Ability8"					""			// Ability 8 - Extra.
+
+		// Armor
+		//----------------------------------------------------------------
+		"ArmorPhysical"				"0"			// Physical protection.
+		"MagicalResistance"				"0"		// Magical protection.
+
+		// Attack
+		//----------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"			"15"		// Damage range min.
+		"AttackDamageMax"			"18"		// Damage range max.
+		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
+		"AttackRate"				"1.6"		// Speed of attack.
+		"AttackAnimationPoint"		"0.467"		// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"500"		// Range within a target can be acquired.
+		"AttackRange"				"150"		// Range within a target can be attacked.
+		"ProjectileModel"			""			// Particle system model for projectile.
+		"ProjectileSpeed"			""			// Speed of projectile.
+
+		// Bounty
+		//----------------------------------------------------------------
+		"BountyXP"					""		// Experience earn.
+		"BountyGoldMin"				""		// Gold earned min.
+		"BountyGoldMax"				""		// Gold earned max.
+
+		// Bounds
+		//----------------------------------------------------------------
+		"BoundsHullName"			"DOTA_HULL_SIZE_REGULAR"			// Hull type used for navigation/locomotion.
+		"HealthBarOffset"			"170"
+
+		// Movement
+		//----------------------------------------------------------------
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"			// Type of locomotion - ground, air
+		"MovementSpeed"				"300"		// Speed
+		"MovementTurnRate"			"0.5"		// Turning rate.
+
+		// Status
+		//----------------------------------------------------------------
+		"StatusHealth"				"550"		// Base health.
+		"StatusHealthRegen"			"2.5"		// Health regeneration rate.
+		"StatusMana"				"0"			// Base mana.
+		"StatusManaRegen"			"0"			// Mana regeneration rate.
+
+		// Vision
+		//----------------------------------------------------------------
+		"VisionDaytimeRange"		"500"		// Range of vision during day light.
+		"VisionNighttimeRange"		"500"		// Range of vision at night time.
+	}
+	"npc_desert2_boss_summon"
+	{
+		"BaseClass"					"npc_dota_creature"
+		"Model"						"models/props_structures/radiant_statue002.vmdl"
+		"ModelScale"				"1"
+		"Ability1"					"ability_npc_desert2_boss_summon"
+		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"	
+	}
+    "npc_desert2_spider"
+	{
+		// General
+		//
+		"BaseClass"					"npc_dota_creature"	// Class of entity of link to.
+		"Model"						"models/items/broodmother/spiderling/ti9_cache_brood_mother_of_thousands_spiderling/ti9_cache_brood_mother_of_thousands_spiderling.vmdl"	// Model.
+		"SoundSet"					""
+		"ModelScale"				"1"
+		"vscripts"					""
+				
+		// Abilities
+		//----------------------------------------------------------------
+		
+		"Ability1"					"ability_npc_desert2_spider_spell1"			// Ability 1.
+		"Ability2"					"ability_npc_desert2_spider_spell2"			// Ability 2.
+		"Ability3"					""			// Ability 3.
+		"Ability4"					""			// Ability 4.
+		"Ability5"					""			// Ability 5.
+		"Ability6"					""			// Ability 6 - Extra.
+		"Ability7"					""			// Ability 7 - Extra.
+		"Ability8"					""			// Ability 8 - Extra.
+
+		// Armor
+		//----------------------------------------------------------------
+		"ArmorPhysical"				"0"			// Physical protection.
+		"MagicalResistance"				"0"		// Magical protection.
+
+		// Attack
+		//----------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"			"15"		// Damage range min.
+		"AttackDamageMax"			"18"		// Damage range max.
+		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
+		"AttackRate"				"1.6"		// Speed of attack.
+		"AttackAnimationPoint"		"0.467"		// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"500"		// Range within a target can be acquired.
+		"AttackRange"				"150"		// Range within a target can be attacked.
+		"ProjectileModel"			""			// Particle system model for projectile.
+		"ProjectileSpeed"			""			// Speed of projectile.
+
+		// Bounty
+		//----------------------------------------------------------------
+		"BountyXP"					""		// Experience earn.
+		"BountyGoldMin"				""		// Gold earned min.
+		"BountyGoldMax"				""		// Gold earned max.
+
+		// Bounds
+		//----------------------------------------------------------------
+		"BoundsHullName"			"DOTA_HULL_SIZE_REGULAR"			// Hull type used for navigation/locomotion.
+		"HealthBarOffset"			"170"
+
+		// Movement
+		//----------------------------------------------------------------
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"			// Type of locomotion - ground, air
+		"MovementSpeed"				"300"		// Speed
+		"MovementTurnRate"			"0.5"		// Turning rate.
+
+		// Status
+		//----------------------------------------------------------------
+		"StatusHealth"				"550"		// Base health.
+		"StatusHealthRegen"			"2.5"		// Health regeneration rate.
+		"StatusMana"				"0"			// Base mana.
+		"StatusManaRegen"			"0"			// Mana regeneration rate.
+
+		// Vision
+		//----------------------------------------------------------------
+		"VisionDaytimeRange"		"500"		// Range of vision during day light.
+		"VisionNighttimeRange"		"500"		// Range of vision at night time.
+	}
+    "npc_desert2_siege"
+	{
+		// General
+		//
+		"BaseClass"					"npc_dota_creature"	// Class of entity of link to.
+		"Model"						"models/creeps/lane_creeps/creep_2021_dire/creep_2021_dire_siege.vmdl"	// Model.
+		"SoundSet"					"Creep_Good_Engine"
+		"ModelScale"				"1"
+		"vscripts"					""
+				
+		// Abilities
+		//----------------------------------------------------------------
+		
+		"Ability1"					"ability_npc_desert2_siege_spell1"			// Ability 1.
+		"Ability2"					""			// Ability 2.
+		"Ability3"					""			// Ability 3.
+		"Ability4"					""			// Ability 4.
+		"Ability5"					""			// Ability 5.
+		"Ability6"					""			// Ability 6 - Extra.
+		"Ability7"					""			// Ability 7 - Extra.
+		"Ability8"					""			// Ability 8 - Extra.
+
+		// Armor
+		//----------------------------------------------------------------
+		"ArmorPhysical"				"0"			// Physical protection.
+		"MagicalResistance"				"0"		// Magical protection.
+
+		// Attack
+		//----------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageMin"			"15"		// Damage range min.
+		"AttackDamageMax"			"18"		// Damage range max.
+		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
+		"AttackRate"				"1.6"		// Speed of attack.
+		"AttackAnimationPoint"		"0.467"		// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"500"		// Range within a target can be acquired.
+		"AttackRange"				"690"		// Range within a target can be attacked.
+		"ProjectileModel"			"particles/econ/creeps/creep_2021_dire/creep_2021_dire_siege_attack.vpcf"			// Particle system model for projectile.
+		"ProjectileSpeed"			"1100"			// Speed of projectile.
+
+		// Bounty
+		//----------------------------------------------------------------
+		"BountyXP"					""		// Experience earn.
+		"BountyGoldMin"				""		// Gold earned min.
+		"BountyGoldMax"				""		// Gold earned max.
+
+		// Bounds
+		//----------------------------------------------------------------
+		"BoundsHullName"			"DOTA_HULL_SIZE_SIEGE"			// Hull type used for navigation/locomotion.
+		"HealthBarOffset"			"170"
+
+		// Movement
+		//----------------------------------------------------------------
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"			// Type of locomotion - ground, air
+		"MovementSpeed"				"300"		// Speed
+		"MovementTurnRate"			"0.5"		// Turning rate.
+
+		// Status
+		//----------------------------------------------------------------
+		"StatusHealth"				"550"		// Base health.
+		"StatusHealthRegen"			"2.5"		// Health regeneration rate.
+		"StatusMana"				"0"			// Base mana.
+		"StatusManaRegen"			"0"			// Mana regeneration rate.
+
+		// Vision
+		//----------------------------------------------------------------
+		"VisionDaytimeRange"		"500"		// Range of vision during day light.
+		"VisionNighttimeRange"		"500"		// Range of vision at night time.
+	}
+    "npc_desert2_lizard"
+	{
+		// General
+		//
+		"BaseClass"					"npc_dota_creature"	// Class of entity of link to.
+		"Model"						"models/creeps/neutral_creeps/n_creep_thunder_lizard/n_creep_thunder_lizard_big.vmdl"	// Model.
+		"SoundSet"					"n_creep_Ranged"
+		"ModelScale"				"1"
+		"vscripts"					"ai/npc_desert2_lizard"
+				
+		// Abilities
+		//----------------------------------------------------------------
+		
+		"Ability1"					"ability_npc_desert2_lizard_spell1"			// Ability 1.
+		"Ability2"					"ability_npc_desert2_lizard_spell2"			// Ability 2.
+		"Ability3"					""			// Ability 3.
+		"Ability4"					""			// Ability 4.
+		"Ability5"					""			// Ability 5.
+		"Ability6"					""			// Ability 6 - Extra.
+		"Ability7"					""			// Ability 7 - Extra.
+		"Ability8"					""			// Ability 8 - Extra.
+
+		// Armor
+		//----------------------------------------------------------------
+		"ArmorPhysical"				"0"			// Physical protection.
+		"MagicalResistance"				"0"		// Magical protection.
+
+		// Attack
+		//----------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageMin"			"15"		// Damage range min.
+		"AttackDamageMax"			"18"		// Damage range max.
+		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
+		"AttackRate"				"1.6"		// Speed of attack.
+		"AttackAnimationPoint"		"0.467"		// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"500"		// Range within a target can be acquired.
+		"AttackRange"				"150"		// Range within a target can be attacked.
+		"ProjectileModel"			"particles/neutral_fx/thunderlizard_base_attack.vpcf"			// Particle system model for projectile.
+		"ProjectileSpeed"			"1500"			// Speed of projectile.
+
+		// Bounty
+		//----------------------------------------------------------------
+		"BountyXP"					""		// Experience earn.
+		"BountyGoldMin"				""		// Gold earned min.
+		"BountyGoldMax"				""		// Gold earned max.
+
+		// Bounds
+		//----------------------------------------------------------------
+		"BoundsHullName"			"DOTA_HULL_SIZE_SIEGE"			// Hull type used for navigation/locomotion.
+		"HealthBarOffset"			"170"
+
+		// Movement
+		//----------------------------------------------------------------
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"			// Type of locomotion - ground, air
+		"MovementSpeed"				"300"		// Speed
+		"MovementTurnRate"			"0.5"		// Turning rate.
+
+		// Status
+		//----------------------------------------------------------------
+		"StatusHealth"				"550"		// Base health.
+		"StatusHealthRegen"			"2.5"		// Health regeneration rate.
+		"StatusMana"				"0"			// Base mana.
+		"StatusManaRegen"			"0"			// Mana regeneration rate.
+
+		// Vision
+		//----------------------------------------------------------------
+		"VisionDaytimeRange"		"500"		// Range of vision during day light.
+		"VisionNighttimeRange"		"500"		// Range of vision at night time.
+	}
+    "npc_desert2_king"
+	{
+		// General
+		//
+		"BaseClass"					"npc_dota_creature"	// Class of entity of link to.
+		"Model"						"models/creeps/sandking_boss/sand_king_boss.vmdl"	// Model.
+		"SoundSet"					"Hero_SandKing"
+		"ModelScale"				"1"
+		"vscripts"					"ai/npc_desert2_king"
+				
+		// Abilities
+		//----------------------------------------------------------------
+		
+		"Ability1"					"ability_npc_desert2_king_spell1"			// Ability 1.
+		"Ability2"					"ability_npc_desert2_king_spell2"			// Ability 2.
+		"Ability3"					""			// Ability 3.
+		"Ability4"					""			// Ability 4.
+		"Ability5"					""			// Ability 5.
+		"Ability6"					""			// Ability 6 - Extra.
+		"Ability7"					""			// Ability 7 - Extra.
+		"Ability8"					""			// Ability 8 - Extra.
+
+		// Armor
+		//----------------------------------------------------------------
+		"ArmorPhysical"				"0"			// Physical protection.
+		"MagicalResistance"				"0"		// Magical protection.
+
+		// Attack
+		//----------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"			"15"		// Damage range min.
+		"AttackDamageMax"			"18"		// Damage range max.
+		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
+		"AttackRate"				"1.6"		// Speed of attack.
+		"AttackAnimationPoint"		"0.467"		// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"500"		// Range within a target can be acquired.
+		"AttackRange"				"150"		// Range within a target can be attacked.
+		"ProjectileModel"			""			// Particle system model for projectile.
+		"ProjectileSpeed"			""			// Speed of projectile.
+
+		// Bounty
+		//----------------------------------------------------------------
+		"BountyXP"					""		// Experience earn.
+		"BountyGoldMin"				""		// Gold earned min.
+		"BountyGoldMax"				""		// Gold earned max.
+
+		// Bounds
+		//----------------------------------------------------------------
+		"BoundsHullName"			"DOTA_HULL_SIZE_REGULAR"			// Hull type used for navigation/locomotion.
+		"HealthBarOffset"			"170"
+
+		// Movement
+		//----------------------------------------------------------------
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"			// Type of locomotion - ground, air
+		"MovementSpeed"				"300"		// Speed
+		"MovementTurnRate"			"0.5"		// Turning rate.
+
+		// Status
+		//----------------------------------------------------------------
+		"StatusHealth"				"550"		// Base health.
+		"StatusHealthRegen"			"2.5"		// Health regeneration rate.
+		"StatusMana"				"0"			// Base mana.
+		"StatusManaRegen"			"0"			// Mana regeneration rate.
+
+		// Vision
+		//----------------------------------------------------------------
+		"VisionDaytimeRange"		"500"		// Range of vision during day light.
+		"VisionNighttimeRange"		"500"		// Range of vision at night time.
+	}
+}

@@ -1,0 +1,96 @@
+"DOTAAbilities"
+{
+	"npc_dota_hero_undying_spell1"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"heroes/npc_dota_hero_undying/npc_dota_hero_undying_spell1"
+		"AbilityTextureName"			""
+		"FightRecapLevel"				"1"
+		"MaxLevel"						"4"
+
+		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+
+		"AbilityCastPoint"				"0.4"
+		"AbilityCastAnimation"			"ACT_DOTA_UNDYING_SOUL_RIP"
+
+		"AbilityCooldown"				"7.0"
+		"AbilityManaCost"				"110 120 130 140"
+
+		"AbilityValues"
+		{
+			"knockback" "300"
+			"damage" "40"
+			"slow" "40"
+			"radius" "300"
+            "slow_duration" "3"
+
+            "agro_duration" "2"
+		}
+	}
+	"npc_dota_hero_undying_spell2"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"heroes/npc_dota_hero_undying/npc_dota_hero_undying_spell2"
+		"AbilityTextureName"			""
+		"FightRecapLevel"				"1"
+		"MaxLevel"						"4"
+
+		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+
+		"AbilityCastPoint"				"0.4"
+		"AbilityCastAnimation"			"ACT_DOTA_UNDYING_SOUL_RIP"
+
+		"AbilityCooldown"				"7.0"
+		"AbilityManaCost"				"110 120 130 140"
+
+		"AbilityValues"
+		{
+			"str_persent_bonus" "10"
+			"duration" "30"
+		}
+	}
+	"npc_dota_hero_undying_spell3"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"heroes/npc_dota_hero_undying/npc_dota_hero_undying_spell3"
+		"AbilityTextureName"			""
+		"FightRecapLevel"				"1"
+		"MaxLevel"						"4"
+
+		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityValues"
+		{
+			"income_damage" "200"
+			"armor" "1"
+			"damage" "3"
+			"max_stacks" "3"
+			"duration" "5"
+		}
+	}
+	"npc_dota_hero_undying_spell6"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"heroes/npc_dota_hero_undying/npc_dota_hero_undying_spell6"
+		"AbilityTextureName"			""
+		"FightRecapLevel"				"1"
+		"MaxLevel"						"4"
+
+		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+
+		"AbilityCooldown"				"7.0"
+		"AbilityManaCost"				"110 120 130 140"
+		"AbilityValues"
+		{
+			"damage" "30"
+			"damage_range" "200"
+			"duration" "5"
+			"move_range" "300"
+		}
+	}
+}

@@ -1,0 +1,77 @@
+"DOTAAbilities"
+{
+    "ability_npc_boss_hell3_spell1"
+	{
+		"BaseClass"           			"ability_lua"
+		"ScriptFile"					"abilities/hell3/ability_npc_boss_hell3_spell1"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"MaxLevel"						"6"
+     	"AbilityValues"
+		{
+			"damage" "30 50 70 90 110 130"
+		}  
+	}
+    "ability_npc_boss_hell3_spell2"
+	{
+		"BaseClass"           			"ability_lua"
+		"ScriptFile"					"abilities/hell3/ability_npc_boss_hell3_spell2"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+		"MaxLevel"						"6"
+     	"AbilityValues"
+		{
+			"thinker_duration" "10 12 14 16 18 20"
+			"duration" "2 2.5 3 3.5 4 4.5 5"
+            "radius" "500 550 600 650 700 750"
+		}  
+	}
+    "ability_npc_boss_hell3_spell3"
+	{
+		"BaseClass"           			"ability_lua"
+		"ScriptFile"					"abilities/hell3/ability_npc_boss_hell3_spell3"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"MaxLevel"						"6"
+     	"AbilityValues"
+		{
+			"duration" "3 4 5 6 7 8"
+		}  
+	}
+    "ability_npc_boss_hell3_spell4"
+	{
+		"BaseClass"           			"ability_lua"
+		"ScriptFile"					"abilities/hell3/ability_npc_boss_hell3_spell4"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"MaxLevel"						"6"
+     	"AbilityValues"
+		{
+			"reduce" "15 20 25 30 35 40"
+		}  
+	}
+    "ability_npc_boss_hell3_spell5"
+	{
+		"BaseClass"           			"ability_lua"
+		"ScriptFile"					"abilities/hell3/ability_npc_boss_hell3_spell5"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+		"MaxLevel"						"6"
+     	"AbilityValues"
+		{
+			"thinker_duration" "10 12 14 16 18 20"
+			"damage" "100 200 300 400 500 600"
+            "radius" "500 550 600 650 700 750"
+		}  
+	}
+    "ability_npc_boss_hell3_spell6"
+	{
+		"BaseClass"           			"ability_lua"
+		"ScriptFile"					"abilities/hell3/ability_npc_boss_hell3_spell6"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"MaxLevel"						"6"
+     	"AbilityValues"
+		{
+			"duration" "12"
+			"damage" "100 150 200 250 300 350"
+			"radius" "400 400 450 450 500 500"
+		}  
+	}
+}

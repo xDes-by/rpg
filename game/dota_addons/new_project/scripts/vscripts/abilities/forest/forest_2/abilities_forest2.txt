@@ -1,0 +1,52 @@
+"DOTAAbilities"
+{
+    "ability_npc_forest2_boss_tiny_growup"
+	{
+		"BaseClass"           			"ability_lua"
+		"ScriptFile"					"abilities/forest2/ability_npc_forest2_boss_tiny_growup"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"     		""
+        
+		"MaxLevel"						"6"
+     	"AbilityValues"
+		{
+
+		}  
+	}
+    "ability_npc_forest2_boss_tiny_stan_toss"
+	{
+		"BaseClass"           			"ability_lua"
+		"ScriptFile"					"abilities/forest2/ability_npc_forest2_boss_tiny_stan_toss"
+        "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityCastAnimation"			"ACT_DOTA_TAUNT"
+		"AbilityTextureName"     		""
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+        
+		"MaxLevel"						"6"
+     	"AbilityValues"
+		{
+            
+		}   
+	}
+    "ability_npc_forest2_boss_tiny_treethrow"
+	{
+		"BaseClass"           			"ability_lua"
+		"ScriptFile"					"abilities/forest2/ability_npc_forest2_boss_tiny_treethrow"
+        "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityTextureName"     		""
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+        
+		"MaxLevel"						"6"
+     	"AbilityValues"
+		{
+			"HealRange" "400"
+            "HealTick" "5 10 15 20 25 30"
+            "damage" "10"
+            "Slow" "10"
+		}   
+	} 
+}

@@ -1,0 +1,186 @@
+#SubscriptionLabel{
+    text-transform: uppercase;
+    color:rgb(212, 168, 101);
+}
+#SubscriptionActivePanel{
+    flow-children: right;
+}
+.SubscriptionActiveLabel{
+    color: white;
+    text-transform: uppercase;
+}
+#SubscriptionPanel{
+    flow-children: right;
+    horizontal-align: right;
+    margin-right: 100px;
+    vertical-align: center;
+    width: 260px;
+}
+#SubscriptionActive{
+    color:greenyellow;
+}
+#SubscriptionAvatar{
+    height: 50px;
+    width: 50px;
+    margin: 0 10px;
+}
+#SubscriptionPanel2{
+    vertical-align: center;
+    flow-children: down;
+}
+#PromoCodePanel{
+    width: 120px;
+    vertical-align: center;
+    horizontal-align: right;
+    margin-right: 360px;
+}
+#TopMenuBarPanel Label{
+    color:white;
+    text-transform: uppercase;
+    text-shadow: 0px 0px 4px 2.0 black;
+    horizontal-align: center;
+}
+#TopMenuBarPanel{
+    z-index: 10;
+    margin-top: 10px;
+    margin-left: 0px;
+    flow-children: right;
+}
+.DropDownMenu{
+    flow-children: down;
+    overflow: clip;
+    horizontal-align: center;
+}
+.DropDownMenu Label{
+    margin-top: 5px;
+}
+#DropDownHeroMenu{
+    margin-top: 20px;
+}
+.TopMenuBarTabPanel{
+    border:1px solid black;
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( rgb(12, 87, 173) ), to( #11367a ) );
+    margin-right: 4px;
+    img-shadow: 2px 2px 8px 3.0 #333333b0;
+    width: 112px;
+}
+.TopMenuBarTabPanel:hover{
+    /* background-color: gradient( linear, 0% 0%, 0% 100%, from( rgb(18, 37, 145) ), to( #10064b ) ); */
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( rgb(12, 87, 173) ), to( #11367a ) );
+    border:1px solid black;
+}
+.DropDownMenu{
+    height: 0px;
+    width: 100%;
+    position: 0 18px 0;
+}
+.TopMenuBarTabPanel:hover .DropDownMenu{
+    height: fit-children;
+}
+.TopMenuBarMainLabelPanel{
+    horizontal-align: center;
+}
+.DropDownMenuOption{
+    padding: 10px;
+    width: 100%;
+}
+.DropDownMenuOption:hover{
+    background-color: #11367a;
+}
+#PageArrowsPanel{
+    flow-children: right;
+    margin-top: 10px;
+}
+#PageArrowLeft{
+    background-image: url("s2r://panorama/images/control_icons/arrow_solid_left_png.vtex");
+    height: 25px;
+    width: 25px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: 80% 50%;
+    wash-color: rgb(12, 87, 173);
+    img-shadow: 2px 2px 8px 3.0 #333333b0;
+    margin-left: 6px;
+}
+#PageArrowRight{
+    background-image: url("s2r://panorama/images/control_icons/arrow_solid_right_png.vtex");
+    height: 25px;
+    width: 25px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: 20% 50%;
+    wash-color: rgb(12, 87, 173);
+    img-shadow: 2px 2px 8px 3.0 #333333b0;
+    margin-right: 6px;
+}
+#MenuTopBarGold{
+    flow-children: right;
+}
+#MenuTopBarMoneyPanel{
+    flow-children: right;
+    vertical-align: center;
+    horizontal-align: right;
+    margin-right: 480px;
+}
+#MenuTopBarGoldImg{
+    height: 30px;
+    width: 30px;
+    background-image: url("file://{images}/custom_game/shop/gold.png");
+    background-size: contain;
+    margin-right: 3px;
+}
+#MenuTopBarGemsImg{
+    height: 24px;
+    width: 30px;
+    background-image: url("file://{images}/custom_game/shop/gem.png");
+    background-size: contain;
+    margin-right: 3px;
+}
+#MenuTopBarGold, #MenuTopBarGems{
+    flow-children: right;
+    margin: 2px;
+    vertical-align: center;
+}
+#MenuTopBarGoldLabel, #MenuTopBarGemsLabel{
+    color:white;
+    text-shadow: 0px 0px 4px 2.0 black;
+    vertical-align: center;
+}
+#VerticalMenuBar{
+    background-color: #11367a;
+    width: 60px;
+    height: 100%;
+    z-index: 9;
+    margin-top: 60px;
+    overflow: clip;
+    flow-children: down;
+}
+.VerticalMenuBarOprion{
+    border:1px solid black;
+    horizontal-align: center;
+    flow-children: down;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: gradient( linear, 0% 0%, 100% 100%, from( rgb(14, 25, 187) ), to( #220d6bc0 ) );
+}
+.VerticalMenuBarOprion Label{
+    color:white;
+    font-size: 21;
+    text-transform: uppercase;
+    text-shadow: 0px 0px 4px 2.0 black;
+}
+#ClosePanel{
+    flow-children: right;
+    horizontal-align: right;
+    margin: 4px;
+}
+#ClosePanel Label{
+    color: white;
+    text-transform: uppercase;
+}
+#ClosePanelImg{
+    background-image: url("file://{images}/custom_game/close.png");
+    height: 20px;
+    width: 20px;
+    background-size: 100%;
+}

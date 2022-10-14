@@ -1,0 +1,98 @@
+"DOTAAbilities"
+{
+    "npc_dota_hero_visage_spell1"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"heroes/npc_dota_hero_visage/npc_dota_hero_visage_spell1"
+		"AbilityTextureName"			""
+		"FightRecapLevel"				"1"
+		"MaxLevel"						"4"
+
+		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+
+		"AbilityCooldown"				"16"
+		"AbilityManaCost"				"110"
+
+		"AbilityValues"
+		{
+			"regen_persent"		"3"
+			"duration"	"2.5"	
+		}
+	}
+    "npc_dota_hero_visage_spell2"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"heroes/npc_dota_hero_visage/npc_dota_hero_visage_spell2"
+		"AbilityTextureName"			""
+		"FightRecapLevel"				"1"
+		"MaxLevel"						"4"
+
+		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+
+		"AbilityCastRange"				"450 500 550 600"
+		"AbilityCooldown"				"16"
+		"AbilityManaCost"				"110"
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_3"
+
+		"AbilityValues"
+		{
+			"max_damage"		"1500"
+			"duration"	"2"	
+		}
+	}
+    "npc_dota_hero_visage_spell3"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"heroes/npc_dota_hero_visage/npc_dota_hero_visage_spell3"
+		"AbilityTextureName"			""
+		"FightRecapLevel"				"1"
+		"MaxLevel"						"4"
+
+		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC"
+
+		"AbilityCooldown"				"16"
+		"AbilityManaCost"				"110"
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_3"
+
+		"AbilityValues"
+		{
+			"radius"	"500"
+			"duration"	"2"	
+			"bonus_damage"	"20"	
+		}
+	}
+    "npc_dota_hero_visage_spell6"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"heroes/npc_dota_hero_visage/npc_dota_hero_visage_spell6"
+		"AbilityTextureName"			""
+		"FightRecapLevel"				"1"
+		"MaxLevel"						"4"
+
+		"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+
+		"AbilityCooldown"				"16"
+		"AbilityManaCost"				"110"
+
+		"AbilityValues"
+		{
+			"radius"	"500"
+			"duration"	"10"	
+			"bonus_damage"	"20"	
+			"damage_tick"	"100"	
+		}
+	}
+}

@@ -1,0 +1,10 @@
+<root>
+    <script>
+        function FindDotaHudElement(panel) {
+            return $.GetContextPanel().GetParent().GetParent().GetParent().FindChildTraverse(panel);
+        }
+        quest = $.CreatePanelWithProperties("Panel", FindDotaHudElement("HUDElements"), "", {style : "height:100%;width:100%;z-index:-1;"})
+        quest.BLoadLayout("file://{resources}/layout/custom_game/QuestSystem/quest.xml", false, false)
+    </script>
+    <Panel id="" class=""></Panel>
+</root>

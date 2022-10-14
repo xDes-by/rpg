@@ -1,0 +1,87 @@
+"DOTAAbilities"
+{
+    "npc_dota_hero_treant_spell1"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"heroes/npc_dota_hero_treant/npc_dota_hero_treant_spell1"
+		"AbilityTextureName"			""
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"FightRecapLevel"				"1"
+		"MaxLevel"						"4"
+		
+		"AbilityCooldown"				"38"
+		"AbilityManaCost"				"50"
+
+		"AbilityValues"
+		{
+			"radius" "400"
+			"duration" "7" 
+			"heal" "50"
+			"speed"	"700"
+			"damage" "100"
+		}
+	}
+    "npc_dota_hero_treant_spell2"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"heroes/npc_dota_hero_treant/npc_dota_hero_treant_spell2"
+		"AbilityTextureName"			""
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+		"FightRecapLevel"				"1"
+		"MaxLevel"						"4"
+
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityCastPoint"				"0.4"
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_2"
+
+		"AbilityCooldown"				"38"
+		"AbilityManaCost"				"50"
+
+		"AbilityValues"
+		{
+			"armor_bonus" "3"
+			"regen_per_sec" "30"
+            "duration" "5"
+            "radius" "400"
+		}
+	}
+    "npc_dota_hero_treant_spell3"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"heroes/npc_dota_hero_treant/npc_dota_hero_treant_spell3"
+		"AbilityTextureName"			""
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"FightRecapLevel"				"1"
+		"MaxLevel"						"4"
+		"AbilityValues"
+		{
+			"regen_persent" "1 2 3"
+            "radius" "200"
+		}
+	}
+	"npc_dota_hero_treant_spell6"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"heroes/npc_dota_hero_treant/npc_dota_hero_treant_spell6"
+		"AbilityTextureName"			""
+		"FightRecapLevel"				"1"
+		"MaxLevel"						"4"
+
+		"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+
+		"AbilityCastPoint"				"3"
+		"AbilityCastAnimation"			"ACT_DOTA_TELEPORT"
+
+		"AbilityCooldown"				"7.0"
+		"AbilityManaCost"				"110 120 130 140"
+
+		"AbilityValues"
+		{
+			"bonus_uron" "5"
+			"duration" "5"
+			"evation" "10 20 30 40"
+		}
+	}
+}

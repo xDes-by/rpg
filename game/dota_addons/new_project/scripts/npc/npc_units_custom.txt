@@ -1,0 +1,253 @@
+// Units File
+"DOTAUnits"
+{
+
+ "npc_dummy_unit"
+	{
+		"BaseClass" "npc_dota_base_additive"
+		"Model" "models/development/invisiblebox.vmdl"
+		"SoundSet" "Creep_Good_Range" 
+		"Level" "0"
+		"UnitLabel" "healing_ward"
+
+		"ArmorPhysical" "0" 
+		"MagicalResistance" "0" 
+
+		"AttackCapabilities" "DOTA_UNIT_CAP_NO_ATTACK" // Type of attack - melee, ranged, etc.
+		"AttackDamageMin" "0" 
+		"AttackDamageMax" "0" 
+		"AttackDamageType" "DAMAGE_TYPE_ArmorPhysical"
+		"AttackRate" "1" 
+		"AttackAnimationPoint" "0.5" 
+		"AttackAcquisitionRange" "800" 
+		"AttackRange" "500" // Range within a target can be attacked.
+		"ProjectileModel" "" 
+		"ProjectileSpeed" "900" // Speed of projectile.
+
+		"BoundsHullName" "DOTA_HULL_SIZE_SMALL" // Hull type used for navigation/locomotion.
+
+		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" // Type of locomotion - ground, air
+		"MovementSpeed" "450" // Speed
+		"MovementTurnRate" "10" 
+		"FollowRange" "250" // Distance to keep when following
+
+		"StatusHealth" "5000" 
+
+		"TeamName" "DOTA_TEAM_GOODGUYS" 
+		"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_PIERCE"
+		"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_BASIC"
+		"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_WARD"
+
+		"VisionDaytimeRange" "0" 
+		"VisionNighttimeRange" "0" 
+		"AttackDesire" "1.5"
+	}
+	
+"npc_dota_crate"
+	{
+		"Model"						"models/gameplay/breakingcrate_dest.vmdl"
+		"BaseClass"					"npc_dota_creature"
+		"SoundSet"					"n_creep_Melee"
+		"Level"						"1"
+		"IsAncient"					"1"
+		"ModelScale" 				"1.5"
+
+		"Ability1"					"push"
+
+		"ArmorPhysical"				"2000"
+		"MagicalResistance"			"2000"
+		
+		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
+		"AttackDamageMin"			"0"
+		"AttackDamageMax"			"0"
+		"AttackRate"				"1.1"
+		"AttackAnimationPoint"		"0.1"
+		"AttackAcquisitionRange"	"550"
+		"AttackRange"				"100"
+
+		"RingRadius"				"50"
+		"HealthBarOffset"			"140"
+
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"330"
+
+		"StatusHealth"				"500000"
+		"StatusHealthRegen"			"1000"
+		"StatusMana"				"100"
+		"StatusManaRegen"			"1.0"
+
+		"VisionDaytimeRange"		"800"
+		"VisionNighttimeRange"		"800"
+
+		"TeamName"					"DOTA_TEAM_NEUTRALS"
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_HERO"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+	}	
+
+"npc_select_zone_unit"
+	{
+		"BaseClass"					"npc_dota_creature"
+		"Model"						"models/heroes/abyssal_underlord/abyssal_underlord_portal_model.vmdl"
+		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
+		"MovementSpeed"				"0"
+		"StatusHealth"				"5000"
+		"TeamName"					"DOTA_TEAM_NEUTRALS"
+	}	
+	
+"npc_unit_pig"
+	{
+		"vscripts"					"ai/ai_village.lua"
+		"Model"						"models/props_gameplay/pig.vmdl"							
+		"BaseClass"					"npc_dota_creature"
+		"SoundSet"					"n_creep_Melee"
+		"Level"						"1"
+		"ModelScale" 				"0.7"
+		"CanRespawn"				"1"
+
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"		
+		
+		"AttackDamageMin"			"9"		
+		"AttackDamageMax"			"11"		
+		"AttackRate"				"1.0"		
+		"AttackAnimationPoint"		"0.2"		
+		"AttackAcquisitionRange"	"600"		
+		"AttackRange"				"100"		
+		
+		"StatusHealth" 				"99" 
+
+		"RingRadius"				"60"
+		"HealthBarOffset"			"190"
+
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"300"		
+
+		"VisionDaytimeRange"		"0"		
+		"VisionNighttimeRange"		"0"		
+
+		"TeamName"					"DOTA_TEAM_NEUTRALS"						
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+	}
+		
+"npc_unit_chicken"
+	{
+		"vscripts"					"ai/ai_village.lua"
+		"Model"						"models/props_gameplay/chicken.vmdl"										
+		"BaseClass"					"npc_dota_creature"
+		"SoundSet"					"n_creep_Melee"
+		"Level"						"1"
+		"ModelScale" 				"0.7"
+		"CanRespawn"				"1"
+
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"			"9"		
+		"AttackDamageMax"			"11"		
+		"AttackRate"				"1.0"		
+		"AttackAnimationPoint"		"0.2"		
+		"AttackAcquisitionRange"	"600"		
+		"AttackRange"				"100"		
+		
+		"StatusHealth" 				"99" 
+
+		"RingRadius"				"60"
+		"HealthBarOffset"			"190"
+
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"300"		
+
+		"VisionDaytimeRange"		"0"		
+		"VisionNighttimeRange"		"0"		
+
+		"TeamName"					"DOTA_TEAM_NEUTRALS"						
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+	}		
+	
+//==========================================================================================================================================
+	
+	"npc_npc_dota_hero_techies_spell1_mine"
+	{
+		"BaseClass"					"npc_dota_creature"
+		"Model"						"models/heroes/techies/fx_techies_remote_cart_rubick.vmdl"
+		"ModelScale"				"1"
+		"Ability1"					"ability_dummy_lua"
+		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
+	}	
+	"npc_npc_dota_hero_techies_spell6_mine"
+	{
+		"BaseClass"					"npc_dota_creature"
+		"Model"						"models/heroes/techies/fx_techies_remotebomb.vmdl"
+		"ModelScale"				"1"
+		"Ability1"					"ability_dummy_lua"
+		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
+	}
+	"npc_dota_hero_keeper_of_the_light_spell1_wisp"
+	{
+        "BaseClass"             "npc_dota_creature"
+        "Model"                 "models/items/lich/lich_ti8_immortal_arms/lich_ti8_immortal_ability.vmdl"
+    }
+	
+//==========================================================================================================================================	
+	
+	"traps"
+	{
+		"BaseClass"					"npc_dota_creature"	
+		"Model"						"models/development/invisiblebox.vmdl"
+		"Ability1"					"auto_shot"
+		"Ability2"					"arrow_shot"
+		"Ability3"					"trap_unselectable"
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
+		"MovementSpeed"				"0"
+		"MovementTurnRate"			"0.25"			
+		"TeamName"					"DOTA_TEAM_NEUTRALS"							
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+	}	
+	
+	"npc_dota_spike_trap_ward"
+	{
+		"BaseClass"					"npc_dota_creature"	
+		"Model"						"models/props/traps/spiketrap/spiketrap.vmdl"// Model.
+		"VisbibleInPortraitOnly"	"1"
+		"Ability1"					"spike_trap"
+		"Ability2"					"trap_unselectable"
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_WARD"
+	}		
+	
+	"npc_dota_pendulum_trap_ward"
+	{
+		"BaseClass"					"npc_dota_creature"	
+		"Model"						"models/props/traps/pendulum/pendulum.vmdl"// Model.
+		"Level"						"1"
+		"VisbibleInPortraitOnly"	"1"
+		"Ability1"					"pendulum_trap"
+		"Ability2"					"trap_unselectable"			// Ability 2
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_WARD"
+	}
+	"npc_boss_gaveyard2_spell4_ghost"
+	{
+		"BaseClass"					"npc_dota_creature"
+		"Model"						"models/heroes/death_prophet/death_prophet_ghost.vmdl"
+		"ModelScale"				"1"
+		"Ability1"					"ability_dummy_lua"
+		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"	
+	}
+}
+
+#base "../npc/zone_units/forest1.txt"
+#base "../npc/zone_units/forest2.txt"
+
+#base "../npc/zone_units/dust2.txt"

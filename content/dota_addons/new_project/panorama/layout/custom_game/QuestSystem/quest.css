@@ -1,0 +1,34 @@
+#QuestPanel{
+    flow-children: right;
+    height: 100px;
+    width: 300px;
+    margin-top: 150px;
+    background-color: gradient( linear, 0% 0%, 100% 0%, from( rgba(0, 0, 0, 0) ), to( rgb(0, 0, 0) ) );
+    tooltip-position: bottom;
+}
+#QuetsImg{
+    background-image: url("file://{images}/custom_game/voskl.png");
+    height: 50px;
+    width: 50px;
+    background-size: contain;
+    wash-color: rgb(255, 187, 0);
+    img-shadow: 2px 2px 8px 2.0 #000000;
+    vertical-align: center;
+}
+#QuestTaskDescription{
+    vertical-align: center;
+}
+.DescWithoutCounter{
+    width: 240px;
+}
+.DescWithCounter{
+    width: 200px;
+}
+#QuestTaskCounter{
+    width: 100px;
+    vertical-align: center;
+}
+.QuestFont{
+    color:white;
+    text-shadow: 0 2px 4px 2.0 black;
+}

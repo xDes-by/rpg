@@ -1,0 +1,93 @@
+"DOTAAbilities"
+{
+"npc_dota_hero_juggernaut_skill1"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"heroes/npc_dota_hero_juggernaut/npc_dota_hero_juggernaut_skill1"
+		"AbilityTextureName"			"npc_dota_hero_juggernaut_blade_dance"
+		"FightRecapLevel"				"1"
+		"MaxLevel"						"4"
+
+		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityCastRange"				"150"
+		"AbilityCooldown"				"16 13 10 7"
+		"AbilityManaCost"				"60"
+		"AbilityValues"
+		{
+			"count"						"1 2 3 4"
+			"damage"					"20 40 60 80" 
+		}
+	}
+	
+"npc_dota_hero_juggernaut_skill2"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"heroes/npc_dota_hero_juggernaut/npc_dota_hero_juggernaut_skill2"
+		"AbilityTextureName"			"npc_dota_hero_juggernaut_blade_fury"
+		"FightRecapLevel"				"1"
+		"MaxLevel"						"4"
+
+		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityCastRange"				"375"
+		"AbilityCooldown"				"20 18 16 14"
+		"AbilityManaCost"				"60"
+		"AbilityValues"
+		{
+			"radius"					"350"
+			"damage_bonus"				"15 30 45 60"
+			"count"						"3"
+		}
+	}
+	
+"npc_dota_hero_juggernaut_skill3"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"heroes/npc_dota_hero_juggernaut/npc_dota_hero_juggernaut_skill3"
+		"AbilityTextureName"			"npc_dota_hero_juggernaut_blade_fury"
+		"FightRecapLevel"				"1"
+		"MaxLevel"						"4"
+
+		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityCastRange"				"250"
+		"AbilityCooldown"				"20 18 16 14"
+		"AbilityManaCost"				"90"
+		"AbilityValues"
+		{
+			"blade_fury_radius"			"250"
+			"blade_fury_damage"			"60 90 120 150"
+			"duration"					"3"
+		}
+	}
+	
+"npc_dota_hero_juggernaut_skill6"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"heroes/npc_dota_hero_juggernaut/npc_dota_hero_juggernaut_skill6"
+		"AbilityTextureName"			""
+		"FightRecapLevel"				"1"
+		"MaxLevel"						"3"
+		"AbilityType"							"DOTA_ABILITY_TYPE_ULTIMATE"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetFlags"				"DOTA_UNIT_TARGET_FLAG_NOT_MAGIC_IMMUNE_ALLIES"
+		"AbilityCooldown"						"2"
+		
+		"AbilityValues"
+		{
+			"chance"								"5 10 15"
+			"duration"								"0.4 0.8 1.2"
+		}
+	}
+}

@@ -1,0 +1,199 @@
+<root>
+	
+	<styles>
+		<include src="file://{resources}/layout/custom_game/HeroSelection/HeroSelection.css" />
+        <include src="s2r://panorama/styles/dotastyles.vcss_c" />
+	</styles>
+	<scripts>
+		<include src="file://{resources}/layout/custom_game/HeroSelection/HeroSelection.js" />
+	</scripts>
+
+    <snippets>
+        <snippet name="rasaCategory">
+            <Panel>
+                <Panel id="" class="HeroCategory">
+                    <Panel id="CategoryImage" class=""></Panel>
+                    <Panel id="" class="HeroCategoryControls">
+                        <Panel id="CategoryDragTarget" class="">
+                            <Panel id="CategoryIcon" class=""></Panel>
+                            <Label id="HeroCategoryName" class="" text="ЛОВКОСТЬ" />
+                            <Panel id="InfoIcon" class="">
+                                
+                            </Panel>
+                        </Panel>
+                    </Panel>
+                    <Panel id="HeroListContainer" class="">
+                        <Panel id="HeroList" class="">
+                            
+                        </Panel>
+                    </Panel>
+                </Panel>
+            </Panel>
+        </snippet>
+        <snippet name="HeroPickSample">
+            <Panel>
+                <Panel id="" class="HeroCard">
+                    <DOTAHeroImage id="HeroImage" class="" heroname="npc_dota_hero_pudge" heroimagestyle="portrait" />
+                    <Panel id="HeroCardContents" class="">
+                        <Panel id="HeroBadgeStatus" class="">
+                            <Label id="HeroBadgeLevel" class="" text="5" />
+                            <Panel id="HeroBadgeIcon" class="BronzeTier">
+                                
+                            </Panel>
+                        </Panel>
+                    </Panel>
+                    <Panel id="HeroCardOverlays" class="">
+                        <Panel id="BannedOverlay" class=""></Panel>
+                        <Panel id="DragOverlay" class=""></Panel>
+                        <Panel id="AddHeroOverlay" class=""></Panel>
+                        <Panel id="DragDeleteOverlay" class=""></Panel>
+                    </Panel>
+                </Panel>
+            </Panel>
+        </snippet>
+    </snippets>
+
+    <Panel class="root" hittest="false" style="height:100%;width:100%;padding:0; margin:0;">
+        <Panel id="HeroSelection">
+            <Panel id="HeroSelectionBG"></Panel>
+            <Panel id="TeamBar" class="">
+                <Panel id="" class="PlayerTopBar">
+                    <Panel id="HeroImageBorder" class=""></Panel>
+                    <Panel id="PlayerTopBarImageCon" class="">
+                        <DOTAHeroImage id="PlayerTopBarImage" class="HeroPickTentative" heroname="npc_dota_hero_pudge" heroimagestyle="landscape" />
+                        <Panel id="PlayerHeroRankCon" class="BronzeTier HeroPickTentative">
+                            <Label id="PlayerHeroRankLabel" class="FontSet1" text="33" />
+                        </Panel>
+                    </Panel>
+                    <Label id="PlayerNameTopBar" class="FontSet1" text="Lufigan" />
+                </Panel>
+                <Panel id="" class="PlayerTopBar">
+                    <Panel id="PlayerTopBarImageCon" class="">
+                        <DOTAHeroImage id="PlayerTopBarImage" class="" heroname="npc_dota_hero_pudge" heroimagestyle="landscape" />
+                        <Panel id="PlayerHeroRankCon" class="BronzeTier">
+                            <Label id="PlayerHeroRankLabel" class="FontSet1" text="33" />
+                        </Panel>
+                    </Panel>
+                    <Label id="PlayerNameTopBar" class="FontSet1" text="Lufigan" />
+                </Panel>
+                <Panel id="" class="PlayerTopBar">
+                    <Panel id="PlayerTopBarImageCon" class="">
+                        <DOTAHeroImage id="PlayerTopBarImage" class="" heroname="npc_dota_hero_pudge" heroimagestyle="landscape" />
+                        <Panel id="PlayerHeroRankCon" class="BronzeTier">
+                            <Label id="PlayerHeroRankLabel" class="FontSet1" text="33" />
+                        </Panel>
+                    </Panel>
+                    <Label id="PlayerNameTopBar" class="FontSet1" text="Lufigan" />
+                </Panel>
+                <Panel id="" class="PlayerTopBar">
+                    <Panel id="PlayerTopBarImageCon" class="">
+                        <DOTAHeroImage id="PlayerTopBarImage" class="" heroname="npc_dota_hero_pudge" heroimagestyle="landscape" />
+                        <Panel id="PlayerHeroRankCon" class="BronzeTier">
+                            <Label id="PlayerHeroRankLabel" class="FontSet1" text="33" />
+                        </Panel>
+                    </Panel>
+                    <Label id="PlayerNameTopBar" class="FontSet1" text="Lufigan" />
+                </Panel>
+            </Panel>
+            <Panel id="PickTimerCon" class="">
+                <Label id="PickTimerCounter" class="" text="0:30" />
+                <!-- <Label id="PickTimerDescription" class="" text="время" /> -->
+            </Panel>
+            <Panel id="TeamEffectsCon" class="">
+                <Label id="" class="TeamEffectLabel FontSet1" text="Бонус исходящий урон 10%" />
+                <Label id="" class="TeamEffectLabel FontSet1" text="Бонус исходящий урон 10%" />
+            </Panel>
+            <Panel id="MainHeroPickScreenContents" class="">
+                <Panel id="HeroPickLeftColumn" class="">
+                    
+                </Panel>
+                <Panel id="HeroPickRightColumn" class="">
+                    <Panel id="HeroInspect" class="">
+                        <Label id="PickDescriptiop" class="" text="ВЫБЕРИТЕ ГЕРОЯ" />
+                        <Panel id="HeroInspectHeader" class="">
+                            <Panel id="HeroInspectPrimaryAttributeIcon" class=""></Panel>
+                            <Label id="HeroInspectHeroName" class="" text="necrophos" />
+                        </Panel>
+                        <Panel id="HeroInspectInfo" class="">
+                            <Panel id="HeroPortrait" class="">
+                                <DOTAHeroMovie id="HeroMovie" class="" heroname=""/>
+                            </Panel>
+                            <Panel id="HeroStats" class="">
+                                <Panel id="SectionAttributes" class="">
+                                    <Panel id="HeroStatsSection" class="">
+                                        <Panel id="" class="HeroStatsRow">
+                                            <Panel id="" class="AttributeContainer">
+                                                
+                                            </Panel>
+                                        </Panel>
+                                    </Panel>
+                                </Panel>
+                                <Panel id="SectionDerivedStats" class="">
+                                    
+                                </Panel>
+                            </Panel>
+                        </Panel>
+                        <Panel id="HeroAbilies" class="">
+                            <DOTAAbilityImage id="myability" abilityname="xxxxabilityNamexxx" />
+                            <DOTAAbilityImage id="myability" abilityname="xxxxabilityNamexxx" />
+                            <DOTAAbilityImage id="myability" abilityname="xxxxabilityNamexxx" />
+                            <DOTAAbilityImage id="myability" abilityname="xxxxabilityNamexxx" />
+                        </Panel>
+                    </Panel>
+                    <Panel id="HeroPickControls" class="">
+                        <Panel id="LockInButton" class="PickButton inactivePickButton">
+                            <Label id="" class="PickButtonTitle" text="#pick_button_hero_select" />
+                            <Label id="PickButtonHeroName" class="PickButtonHeroName" text="" />
+                        </Panel>
+                        <Panel id="RandomButton" class="PickButton">
+                            <Panel id="" class="RandomIcon"></Panel>
+                            <Label id="" class="" text="#random_button" />
+                        </Panel>
+                    </Panel>
+                </Panel>
+            </Panel>
+            <Panel id="HeroPreferredPanel" class="">
+                <Panel id="" class="HeroPreferredPlayerPanel">
+                    <DOTAScenePanel id="HeroPreferredScenePanel" particleonly="false" allowrotation="true" rendershadows="true" unit=""/>
+                    <Label id="HeroPreferredPlayerName" class="" text="Lufigan" />
+                    <Label id="HeroPreferredHeroRace" class="" text=" " />
+                    <Panel id="HeroPreferredIconsPanel" class="">
+                        <Panel id="HeroPreferredRaceIcon" class=""></Panel>
+                        <Panel id="HeroPreferredBadgeStatus" class="BronzeTier">
+                            <Label id="HeroPreferredBadgeLevel" class="" text="5" />
+                        </Panel>
+                    </Panel>
+                </Panel>
+                <Panel id="" class="HeroPreferredPlayerPanel">
+                    <DOTAScenePanel id="HeroPreferredScenePanel" particleonly="false" allowrotation="true" rendershadows="true" unit=""/>
+                    <Label id="HeroPreferredPlayerName" class="" text="Lufigan" />
+                    <Label id="HeroPreferredHeroRace" class="" text=" " />
+                </Panel>
+                <Panel id="" class="HeroPreferredPlayerPanel">
+                    <DOTAScenePanel id="HeroPreferredScenePanel" particleonly="false" allowrotation="true" rendershadows="true" unit=""/>
+                    <Label id="HeroPreferredPlayerName" class="" text="Lufigan" />
+                    <Label id="HeroPreferredHeroRace" class="" text=" " />
+                </Panel>
+                <Panel id="" class="HeroPreferredPlayerPanel">
+                    <DOTAScenePanel id="HeroPreferredScenePanel" particleonly="false" allowrotation="true" rendershadows="true" unit=""/>
+                    <Label id="HeroPreferredPlayerName" class="" text="Lufigan" />
+                    <Label id="HeroPreferredHeroRace" class="" text=" " />
+                </Panel>
+            </Panel>
+            <Panel id="ChatMainPanel" class="">
+                <Panel id="ChatLinesContainer" class="">
+                    <Panel id="ChatLinesWrapper" class="">
+                        
+                    </Panel>
+                </Panel>
+                <Panel id="ChatControls" class="">
+                    <TextEntry id="ChatTextEntry" class="" maxchars="256" placeholder="СООБЩЕНИЕ СОЮЗНИКАМ" oninputsubmit="HeroSelection.OnChat()" />
+                </Panel>
+            </Panel>
+        </Panel>
+        <Panel id="ToolBar" class="">
+            <Panel id="ReturneToGameButton" class=""></Panel>
+            <Panel id="SettingsButton" class=""></Panel>
+        </Panel>
+	</Panel>
+</root>

@@ -1,0 +1,160 @@
+"DOTAAbilities"
+{
+   "ability_npc_desert2_spider_spell1"
+	{
+		"BaseClass"           			"ability_lua"
+		"ScriptFile"					"abilities/desert2/ability_npc_desert2_spider_spell1"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"      
+		"MaxLevel"						"6"
+     	"AbilityValues"
+		{
+            "mana_per_hit" "5 10 15 20 25 30"
+            "damage_per_burn" "1 1.2 1.4 1.6 1.8 2"
+		}  
+	}
+   "ability_npc_desert2_spider_spell2"
+	{
+		"BaseClass"           			"ability_lua"
+		"ScriptFile"					"abilities/desert2/ability_npc_desert2_spider_spell2"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"      
+		"MaxLevel"						"6"
+     	"AbilityValues"
+		{
+            "mana_void_damage_per_mana" "0.3 0.35 0.4 0.45 0.5 0.6"
+            "mana_void_ministun" "0.5 0.7 0.9 1.1 1.3 1.5"
+            "mana_void_aoe_radius" "150 170 190 210 230 250"
+		}  
+	}
+   "ability_npc_desert2_siege_spell1"
+	{
+		"BaseClass"           			"ability_lua"
+		"ScriptFile"					"abilities/desert2/ability_npc_desert2_siege_spell1"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"      
+		"MaxLevel"						"6"
+     	"AbilityValues"
+		{
+            "stun_dur" "0.3 0.4 0.45 0.5 0.55 0.6"
+		}  
+	}
+   "ability_npc_desert2_lizard_spell1"
+	{
+		"BaseClass"           			"ability_lua"
+		"ScriptFile"					"abilities/desert2/ability_npc_desert2_lizard_spell1"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"      
+		"MaxLevel"						"6"
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_3"
+		"AbilityCastPoint"				"0.4"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"AbilityCooldown"				"18 17 16 15 14 13"
+     	"AbilityValues"
+		{
+            "as_bonus" "50 60 70 80 90 100"
+            "duration" "2 2.5 3 3.5 4 4.5"
+		}  
+	}
+   "ability_npc_desert2_lizard_spell2"
+	{
+		"BaseClass"           			"ability_lua"
+		"ScriptFile"					"abilities/desert2/ability_npc_desert2_lizard_spell2"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"      
+		"MaxLevel"						"6"
+		"AbilityCooldown"				"18 17 16 15 14 13"
+     	"AbilityValues"
+		{
+            "ms" "10 15 20 25 30 35"
+            "ats" "10 20 30 40 50 60"
+		}  
+	}
+   "ability_npc_desert2_king_spell1"
+	{
+		"BaseClass"           			"ability_lua"
+		"ScriptFile"					"abilities/desert2/ability_npc_desert2_king_spell1"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"      
+		"MaxLevel"						"6"
+		"AbilityCooldown"				"18 17 16 15 14 13"
+		"AbilityDamage"					"50 90 130 170 210 250"
+     	"AbilityValues"
+		{
+            "burrow_duration" "1 1.3 1.6 1.9 2.2 2.5"
+		}  
+	}
+   "ability_npc_desert2_king_spell2"
+	{
+		"BaseClass"           			"ability_lua"
+		"ScriptFile"					"abilities/desert2/ability_npc_desert2_king_spell2"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"      
+		"MaxLevel"						"6"
+		"AbilityCooldown"				"18 17 16 15 14 13"
+     	"AbilityValues"
+		{
+            "damage" "10 20 30 40 50 60"
+		}  
+	}
+    "ability_npc_desert2_boss_summon" 
+	{
+		"BaseClass"           			"ability_lua"
+		"ScriptFile"					"abilities/desert2/ability_npc_desert2_boss_summon"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+        "IsOnCastBar"                   "0"	
+		"MaxLevel"						"6"
+	}
+   "ablility_npc_desert2_boss_spell1"
+	{
+		"BaseClass"           			"ability_lua"
+		"ScriptFile"					"abilities/desert2/ablility_npc_desert2_boss_spell1"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"      
+		"MaxLevel"						"6"
+     	"AbilityValues"
+		{
+            "damage" "50 100 150 200 250 300"
+		}  
+	}
+   "ablility_npc_desert2_boss_spell2"
+	{
+		"BaseClass"           			"ability_lua"
+		"ScriptFile"					"abilities/desert2/ablility_npc_desert2_boss_spell2"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_1"
+		"AbilityCastPoint"				"0.4"      
+		"MaxLevel"						"6"
+     	"AbilityValues"
+		{
+            "regen" "1 2 2 3 3 4"
+		}  
+	}
+   "ablility_npc_desert2_boss_spell3"
+	{
+		"BaseClass"           			"ability_lua"
+		"ScriptFile"					"abilities/desert2/ablility_npc_desert2_boss_spell3"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"   
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_1"
+		"AbilityCastPoint"				"0.4"   
+		"MaxLevel"						"6"
+     	"AbilityValues"
+		{
+            "damage"				"100 200 300 400 500 600"
+            "hero_stacks"			"5 7 9 11 13 15"
+            "duration"				"10.0"
+            "radius"				"500"
+            "jump_duration"			"0.4"
+            "jump_duration_gyroshell"	"0.75"
+            "jump_height"			"250"
+            "jump_height_gyroshell"	"350"
+            "jump_horizontal_distance"	"225"
+		}  
+	}
+   "ablility_npc_desert2_boss_spell4"
+	{
+		"BaseClass"           			"ability_lua"
+		"ScriptFile"					"abilities/desert2/ablility_npc_desert2_boss_spell4"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"    
+		"MaxLevel"						"6"
+     	"AbilityValues"
+		{
+            "regen" "1 2 2 3 3 4"
+		}  
+	}
+}

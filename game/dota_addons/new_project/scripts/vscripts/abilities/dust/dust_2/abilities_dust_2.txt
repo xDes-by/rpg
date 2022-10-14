@@ -1,0 +1,18 @@
+"DOTAAbilities"
+{
+"spider_egg_sack"
+    {
+        "BaseClass"                     "ability_lua"
+        "ScriptFile"                    "abilities/dust/dust_2/spider_egg_sack"
+        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+        "SpellDispellableType"          "SPELL_DISPELLABLE_NO"
+		"MaxLevel"						"7"
+
+        "AbilityValues"
+        {
+			"radius"                "275"
+			"damage"                "100 200 300 400 500 600 700"
+			"spiders"           	"4"
+        }
+    }
+}

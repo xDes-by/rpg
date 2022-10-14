@@ -1,0 +1,340 @@
+#GameRatingPanel{
+    width: 100%;
+    height: 751px;
+    background-image: url("file://{images}/custom_game/base/main_bg.png");
+    vertical-align: bottom;
+}
+#RatingRowPanels{
+    vertical-align: bottom;
+    horizontal-align: center;
+    flow-children: right;
+    margin-bottom: 30px;
+}
+.RatingColumn{
+    width: 418px;
+    height: 681px;
+    margin: 0 2px;
+    background-image: url("file://{images}/custom_game/rating/column_bg.png");
+    background-size: 100%;
+}
+#ColumnTopLabelPanel{
+    width: 100%;
+    height: 100px;
+}
+#ColumnNameTeam{
+    horizontal-align: center;
+    vertical-align: center;
+}
+.RatingRow{
+    width: 100%;
+    height: 100%;
+    margin-top: 100px;
+    flow-children: down;
+    overflow: clip scroll;
+}
+.TeamRowBox{
+    width: 100%;
+    height: 100px;
+    background-color: rgba(0, 0, 0, 0.801);
+    margin: 2px 5px;
+}
+.TopMonthRowBox{
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.801);
+    margin: 2px 5px;
+}
+#ColumnNameTop{
+    horizontal-align: center;
+    margin-top: 20px;
+}
+#TopMonthLabel{
+    horizontal-align: center;
+    margin-top: 50px;
+}
+#ColumnNameTime{
+    horizontal-align: center;
+    margin-top: 20px;
+}
+.ColumNameFont{
+    font-size: 24px;
+    color:white;
+    text-shadow: 0px 2px 4px 2.0 black;
+}
+#RatingTimeModeSelection{
+    width: 180px;
+    horizontal-align: center;
+    margin-top: 55px;
+}
+#RatingTeamPlayerImage{
+    height: 70px;
+    width: 70px;
+    vertical-align: center;
+    margin-left: 10px;
+    img-shadow: 2px 2px 8px 3.0 black;
+}
+#TeamPlayerNamePanel{
+    flow-children: right;
+}
+#TeamPlayerName{
+    vertical-align: center;
+}
+#TeamPlayerNamePanel{
+    margin-left: 100px;
+    margin-top: 10px;
+}
+#TeamPlayerGamesPanel{
+    margin-left: 80px;
+}
+.RatingStatsPanel{
+    flow-children: right;
+}
+#games_icon{
+    height: 30px;
+    width: 30px;
+    background-image: url("file://{images}/custom_game/rating/icons/game.png");
+    background-size: 100%;
+    img-shadow: 2px 2px 8px 3.0 #000000b0;
+}
+.RatingStatsFont{
+    color:white;
+    text-shadow: 0 2px 4px 2.0 black;
+    font-size: 21px;
+    vertical-align: center;
+}
+#points_icon{
+    height: 30px;
+    width: 30px;
+    background-image: url("file://{images}/custom_game/rating/icons/rating.png");
+    background-size: 100%;
+    img-shadow: 2px 2px 8px 3.0 #000000b0;
+}
+#TeamPlayerStatsPanel{
+    margin-left: 100px;
+    margin-top: 50px;
+}
+#rep_icon{
+    height: 30px;
+    width: 30px;
+    background-image: url("file://{images}/custom_game/rating/icons/rep.png");
+    background-size: 100%;
+    img-shadow: 2px 2px 8px 3.0 #000000b0;
+}
+#TeamPlayerRepPanel{
+    margin-left: 160px;
+}
+#RatingTopPlaceLabel{
+    font-size: 24;
+    color:white;
+    text-shadow: 0 2px 4px 2.0 black;
+    width: 35px;
+    text-align: center;
+    vertical-align: center;
+}
+#RatingTopPlayerImage{
+    height: 70px;
+    width: 70px;
+    img-shadow: 2px 2px 8px 3.0 black;
+    vertical-align: center;
+    margin-left: 35px;
+}
+#TopPlayerNamePanel{
+    margin-left: 120px;
+    margin-top: 10px;
+    width: 100%;
+}
+#TopLastGameHeroesPanel{
+    flow-children: right;
+    horizontal-align: right;
+    margin-right: 4px;
+}
+#TopPlayerName{
+    vertical-align: center;
+}
+#TopPlayerStatsPanel{
+    margin-top: 50px;
+    margin-left: 120px;
+}
+#TopTopRow{
+    margin-bottom: 20px;
+}
+#TopLocalPlayer{
+    vertical-align: bottom;
+    margin-bottom: 15px;
+}
+#TeamLocalPlayerPlanel{
+    vertical-align: bottom;
+    background-color: rgba(0, 0, 0, 0.801);
+    width: 100%;
+    height: 246px;
+    margin: 0 4px;
+    margin-bottom: 20px;
+}
+#RatingTeamLocalPlayerImage{
+    height: 70px;
+    width: 70px;
+    margin: 10px;
+}
+#LocalPlayerGameStreakPanel{
+    width: 100%;
+    margin-top: 170px;
+}
+#LocalPlayerGamesRow{
+    width: 100%;
+    flow-children: right;
+    margin-left: 100px;
+}
+#ResultArrowWin{
+    background-image: url("s2r://panorama/images/control_icons/arrow_solid_up_png.vtex");
+    width: 20px;
+    height: 7px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    horizontal-align: center;
+    wash-color: #6a9a70;
+}
+.LocalPlayerGameResult{
+    width: 100%;
+    flow-children: down;
+    margin-top: 2px;
+}
+.LocalPlayerGameResult Label{
+    horizontal-align: center;
+}
+.StreakGamePanel{
+    flow-children: down;
+    margin: 0 2px;
+}
+#LocalPlayerGameResultLabel{
+    font-size: 16px;
+}
+.LocalPlayerGameResultWinLabel{
+    color:#8f8;
+}
+.LocalPlayerGameResultLoseLabel{
+    color:#f43;
+}
+#ResultArrowLose{
+    background-image: url("s2r://panorama/images/control_icons/arrow_solid_up_png.vtex");
+    width: 20px;
+    height: 7px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    horizontal-align: center;
+    transform: scale3d( 1, -1, 1 ) translateY(-2px);
+    wash-color: #99554a;
+}
+#WRPanel{
+    flow-children: down;
+    vertical-align: bottom;
+    margin-bottom: 4px;
+    width: 70px;
+    height: 65px;
+    margin-left: 10px;
+}
+.WRFont{
+    color:white;
+    text-shadow: 0 2px 4px 2.0 black;
+    horizontal-align: center;
+}
+#WRLabel{
+    margin-top: 15px;
+}
+#LocalPlayerInfoLine{
+    width: 100%;
+    margin-top: 100px;
+}
+#LocalPlayerTop{
+    flow-children: down;
+    width: 70px;
+    margin-left: 10px;
+}
+#LocalPlayerTop Label{
+    color:white;
+    font-size: 21;
+    text-shadow: 0 2px 4px 2.0 black;
+    horizontal-align: center;
+}
+#repPlusPanel{
+    background-image: url("s2r://panorama/images/control_icons/arrow_solid_up_png.vtex");
+    width: 60px;
+    height: 30px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    horizontal-align: center;
+    wash-color: #6a9a70;
+    img-shadow: 2px 2px 8px 3.0 #000000b0;
+    margin: 2px;
+}
+#repMinusPanel{
+    background-image: url("s2r://panorama/images/control_icons/arrow_solid_up_png.vtex");
+    width: 60px;
+    height: 30px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    horizontal-align: center;
+    transform: scale3d( 1, -1, 1 ) translateY(-2px);
+    wash-color: #99554a;
+    margin: 2px;
+    img-shadow: 2px 2px 8px 3.0 #000000b0;
+}
+#RepButtonsPanel{
+    flow-children: down;
+    horizontal-align: right;
+    vertical-align: center;
+    margin-right: 15px;
+}
+.TopMonthFont{
+    font-size: 22px;
+    font-weight: bold;
+    color:white;
+    text-shadow: 0 2px 4px 2.0 black;
+}
+#TopMonthPlaceLabel{
+    margin: 5px 15px;
+}
+#TopMonthTimeLabel{
+    horizontal-align: right;
+    margin: 5px 15px;
+}
+#TopMonthPlayersRowPanel{
+    margin-top: 40px;
+    width: 100%;
+    flow-children: down;
+}
+.BestTimeRowPlayerBox{
+    height: 100px;
+    width: 100%;
+}
+#BestTimeHeroImage{
+    vertical-align: center;
+    margin: 5px;
+}
+#BestTimePlayerImage{
+    height: 70px;
+    width: 70px;
+    vertical-align: center;
+    margin-left: 10px;
+}
+#BestTimePlayerNamePanel{
+    flow-children: right;
+    margin-top: 5px;
+    margin-left: 80px;
+}
+#BestTimePlayerName{
+    vertical-align: center;
+}
+#BestTimeRowItems{
+    flow-children: right-wrap;
+    /* width: 12px; */
+    margin-left: 90px;
+    margin-top: 45px;
+}
+.BestTimeItem{
+    height: 35px;
+    width: 45px;
+    margin: 0 1px;
+    border:1px solid black;
+}
+.last_heroes_panel{
+    tooltip-position: top;
+}

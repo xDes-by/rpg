@@ -1,0 +1,14 @@
+
+
+<root>
+  <scripts></scripts>
+  <Panel>
+    
+    <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/main.xml" />
+    <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/tutorial/tutorial.xml" />
+    <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/bosshp/boss.xml" />
+    <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/QuestSystem/init.xml" />
+	<!-- <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/QuestSystem/quest.xml" /> -->
+    <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/HeroSelection/HeroSelection.xml" />
+  </Panel>
+</root>

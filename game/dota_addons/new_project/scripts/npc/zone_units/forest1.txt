@@ -1,0 +1,298 @@
+"DOTAUnits"
+{
+
+"npc_forest_creep_mini_1"
+	{
+		"Model"						"models/heroes/lone_druid/spirit_bear.vmdl"											
+		"BaseClass"					"npc_dota_creature"
+		"SoundSet"					"n_creep_Melee"
+		"Level"						"1"
+		"ModelScale" 				"0.70"
+		"CanRespawn"				"1"
+		
+		"Ability1"					""					
+
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		
+		"ArmorPhysical"				"1"			
+		"MagicalResistance"			"5"			
+		
+		"AttackDamageMin"			"24"		
+		"AttackDamageMax"			"24"		
+		"AttackRate"				"1.1"		
+		"AttackAnimationPoint"		"0.2"		
+		"AttackAcquisitionRange"	"600"		
+		"AttackRange"				"200"		
+		
+		"StatusHealth" 				"300" 
+
+		"RingRadius"				"60"
+		"HealthBarOffset"			"190"	
+
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"300"		
+
+		"VisionDaytimeRange"		"800"		
+		"VisionNighttimeRange"		"800"		
+
+		"TeamName"					"DOTA_TEAM_NEUTRALS"						
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+	}	
+	
+"npc_forest_creep_big_1"
+	{
+		"Model"						"models/items/lone_druid/bear/spirit_of_the_atniw/spirit_of_the_atniw.vmdl"
+		"BaseClass"					"npc_dota_creature"
+		"SoundSet"					"n_creep_Melee"
+		"Level"						"1"
+		"ModelScale" 				"1.20"
+		"CanRespawn"				"1"
+		
+		"Ability1"					"lone_druid_spirit_bear_entangle"				
+
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		
+		"ArmorPhysical"				"3"			
+		"MagicalResistance"			"5"			
+		
+		"AttackDamageMin"			"55"		
+		"AttackDamageMax"			"60"		
+		"AttackRate"				"1.2"		
+		"AttackAnimationPoint"		"0.2"		
+		"AttackAcquisitionRange"	"600"		
+		"AttackRange"				"200"		
+		
+		"StatusHealth" 				"1050" 
+
+		"RingRadius"				"60"
+		"HealthBarOffset"			"190"
+
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"300"		
+
+		"VisionDaytimeRange"		"800"		
+		"VisionNighttimeRange"		"800"		
+
+		"TeamName"					"DOTA_TEAM_NEUTRALS"						
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+	}
+		
+"npc_forest_creep_mini_2"
+	{
+		"Model"						"models/items/lycan/wolves/frostivus2018_lycan_winter_snow_wolf_wolves/frostivus2018_lycan_winter_snow_wolf_wolves.vmdl"
+		"BaseClass"					"npc_dota_creature"
+		"SoundSet"					"n_creep_Melee"
+		"Level"						"1"
+		"ModelScale" 				"0.7"
+		"CanRespawn"				"1"
+			
+		"Ability1"					""					
+
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		
+		"ArmorPhysical"				"1"			
+		"MagicalResistance"			"5"			
+		
+		"AttackDamageMin"			"21"		
+		"AttackDamageMax"			"24"		
+		"AttackRate"				"1.1"		
+		"AttackAnimationPoint"		"0.2"		
+		"AttackAcquisitionRange"	"600"		
+		"AttackRange"				"200"		
+		
+		"StatusHealth" 				"300" 
+
+		"RingRadius"				"60"
+		"HealthBarOffset"			"190"	
+
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"300"		
+
+		"VisionDaytimeRange"		"800"		
+		"VisionNighttimeRange"		"800"		
+
+		"TeamName"					"DOTA_TEAM_NEUTRALS"						
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+	}
+		
+"npc_forest_creep_big_2"
+	{
+		"Model"						"models/items/beastmaster/boar/fotw_wolf/fotw_wolf.vmdl"
+		"BaseClass"					"npc_dota_creature"
+		"SoundSet"					"n_creep_Melee"
+		"Level"						"1"
+		"ModelScale" 				"1.10"
+		"CanRespawn"				"1"
+		
+		"Ability1"					"alpha_wolf_critical_strike"					
+
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		
+		"ArmorPhysical"				"2"			
+		"MagicalResistance"			"5"			
+		
+		"AttackDamageMin"			"55"		
+		"AttackDamageMax"			"60"		
+		"AttackRate"				"1"		
+		"AttackAnimationPoint"		"0.2"		
+		"AttackAcquisitionRange"	"600"		
+		"AttackRange"				"200"		
+		
+		"StatusHealth" 				"1050" 
+
+		"RingRadius"				"60"
+		"HealthBarOffset"			"190"	
+
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"300"		
+
+		"VisionDaytimeRange"		"800"		
+		"VisionNighttimeRange"		"800"		
+
+		"TeamName"					"DOTA_TEAM_NEUTRALS"						
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+	}	
+
+"npc_forest_1_treant_small"
+	{
+		"BaseClass"					"npc_dota_creature"
+		"Model"						"models/heroes/furion/treant.vmdl"
+		"SoundSet"					"Furion_Treant"
+		"ModelScale"				"0.80"
+
+		"Ability1"					"ability_infinite_root"
+
+		"ArmorPhysical"				"0"
+		"MagicalResistance"			"0"
+
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"			"25"
+		"AttackDamageMax"			"35"
+		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
+		"AttackRate"				"1.1"
+		"AttackAnimationPoint"		"0.467"
+		"AttackAcquisitionRange"	"800"
+		"AttackRange"				"150"
+
+		"BoundsHullName"			"DOTA_HULL_SIZE_REGULAR"
+		"HealthBarOffset"			"170"
+
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"230"
+		"MovementTurnRate"			"2.5"
+
+		"StatusHealth"				"600"
+		"StatusHealthRegen"			"0"
+		
+		"VisionDaytimeRange"		"800"
+		"VisionNighttimeRange"		"800"
+	}
+	
+"npc_forest_1_treant_big"
+	{
+		"BaseClass"					"npc_dota_creature"
+		"Model"						"models/heroes/treant_protector/treant_protector.vmdl"
+		"SoundSet"					"Furion_Treant"
+		"ModelScale"				"0.80"
+
+		"Ability1"					"ability_forest_seed"
+
+		"ArmorPhysical"				"3"
+		"MagicalResistance"			"10"
+
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"			"80"
+		"AttackDamageMax"			"100"
+		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
+		"AttackRate"				"4" of attack.
+		"AttackAnimationPoint"		"0.467"
+		"AttackAcquisitionRange"	"800"
+		"AttackRange"				"150"
+		
+		"BoundsHullName"			"DOTA_HULL_SIZE_REGULAR"
+		"HealthBarOffset"			"170"
+		
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"200"
+		"MovementTurnRate"			"2.5"
+
+		"StatusHealth"				"1800"
+		"StatusHealthRegen"			"0"
+		"StatusMana"				"0"
+		"StatusManaRegen"			"0"
+
+		"VisionDaytimeRange"		"800"
+		"VisionNighttimeRange"		"800"
+		"Creature"
+		{	
+			"AttachWearables"
+			{
+				"Wearable1" {"ItemDef" "8425"}
+				"Wearable1" {"ItemDef" "9704"}
+				"Wearable2" {"ItemDef" "9705"}
+				"Wearable3" {"ItemDef" "9706"}
+				"Wearable4" {"ItemDef" "12181"}
+			}			
+		}
+	}
+	
+"npc_forest_1_boss"
+	{
+		"vscripts"					"ai/npc_forest_1_boss"
+		"BaseClass"					"npc_dota_creature"
+		"Model"						"models/items/furion/treant/shroomling_treant/shroomling_treant.vmdl"
+		"SoundSet"					"Hero_Treant"
+		"ModelScale"				"2.5"
+
+		"Ability1"					"ability_npc_boss_forest_1_spell_1"
+		"Ability2"					"ability_npc_boss_forest_1_spell_2"
+		"Ability3"					"ability_npc_boss_forest_1_spell_3"
+		"Ability4"					"ability_npc_boss_forest_1_spell_4"
+		"Ability5"					""
+		"Ability6"					""
+
+		"ArmorPhysical"				"0"
+		"MagicalResistance"			"0"
+
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"			"1"
+		"AttackDamageMax"			"1"
+		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
+		"AttackRate"				"1.2"
+		"AttackAnimationPoint"		"0.467"
+		"AttackAcquisitionRange"	"800"
+		"AttackRange"				"100"
+
+		"BoundsHullName"			"DOTA_HULL_SIZE_REGULAR"
+		"HealthBarOffset"			"170"
+
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"300"
+		"MovementTurnRate"			"0.5"
+
+		"StatusHealth"				"15000"
+		"StatusHealthRegen"			"2.5"
+		"StatusMana"				"0"
+		"StatusManaRegen"			"0"
+
+		"VisionDaytimeRange"		"800"
+		"VisionNighttimeRange"		"800"
+		"Creature"
+		{	
+			"AttachWearables"
+			{
+			//"Wearable1" {"ItemDef" "8902"}
+			//"Wearable2" {"ItemDef" "8901"}
+			"Wearable4" {"ItemDef" "8899"}
+			}
+		}
+	}
+}

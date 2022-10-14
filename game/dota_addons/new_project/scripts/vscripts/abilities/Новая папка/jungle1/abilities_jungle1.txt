@@ -1,0 +1,146 @@
+"DOTAAbilities"
+{
+    "ability_npc_jungle1_treant1_seed"
+	{
+		"BaseClass"           			"ability_lua"
+		"ScriptFile"					"abilities/jungle1/ability_npc_jungle1_treant1_seed"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+        
+		"MaxLevel"						"6"
+     	"AbilityValues"
+		{
+            "HealRange" "1"
+            "Slow" "1"
+            "HealTick" "1"
+		}  
+	}
+    "ability_npc_jungle1_treant2_slow"
+	{
+		"BaseClass"           			"ability_lua"
+		"ScriptFile"					"abilities/jungle1/ability_npc_jungle1_treant2_slow"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+        
+		"MaxLevel"						"6"
+     	"AbilityValues"
+		{
+
+		}  
+	}
+    "ability_npc_jungle1_treant2_bulwark"
+	{
+		"BaseClass"           			"ability_lua"
+		"ScriptFile"					"abilities/jungle1/ability_npc_jungle1_treant2_bulwark"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+        
+		"MaxLevel"						"6"
+     	"AbilityValues"
+		{
+
+		}  
+	}
+	"ability_npc_jungle1_treant3_barack_heal" 
+	{
+		"BaseClass"           			"ability_lua"
+		"ScriptFile"					"abilities/jungle1/ability_npc_jungle1_treant3_barack_heal"
+		"AbilityTextureName"     		""
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityCastAnimation"			"ACT_DOTA_GENERIC_CHANNEL_1"
+        "IsOnCastBar"                   "1"
+		"MaxLevel"						"6"
+        "AbilityValues"
+		{
+
+		}  
+	}
+    "ability_npc_jungle1_treant4_crit"
+	{
+		"BaseClass"           			"ability_lua"
+		"ScriptFile"					"abilities/jungle1/ability_npc_jungle1_treant4_crit"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+        
+		"MaxLevel"						"6"
+     	"AbilityValues"
+		{
+
+		}  
+	}
+    "ability_npc_boss_jungle1_spell1"
+	{
+		"BaseClass"           			"ability_lua"
+		"ScriptFile"					"abilities/jungle1/ability_npc_boss_jungle1_spell1"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityCooldown"				"20"     
+        
+		"MaxLevel"						"6"
+     	"AbilityValues"
+		{
+			"damage" "100 200 300 400 500 600"
+		}  
+	}
+    "ability_npc_boss_jungle1_spell2"
+	{
+		"BaseClass"           			"ability_lua"
+		"ScriptFile"					"abilities/jungle1/ability_npc_boss_jungle1_spell2"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityCooldown"				"20"     
+        "AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_6"     
+		"AbilityCastPoint"				"1"  
+		"MaxLevel"						"6"
+     	"AbilityValues"
+		{
+			"waves" "3 4 5 6 7 8"
+		}  
+	}
+    "ability_npc_boss_jungle1_spell3"
+	{
+		"BaseClass"           			"ability_lua"
+		"ScriptFile"					"abilities/jungle1/ability_npc_boss_jungle1_spell3"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"MaxLevel"						"6"
+     	"AbilityValues"
+		{
+			"chance" "5 7 9 11 13 15"
+		}  
+	}
+    "ability_npc_boss_jungle1_spell4"
+	{
+		"BaseClass"           			"ability_lua"
+		"ScriptFile"					"abilities/jungle1/ability_npc_boss_jungle1_spell4"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+		"MaxLevel"						"6"
+        "AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_3"     
+		"AbilityCastPoint"				"0.5" 
+     	"AbilityValues"
+		{
+			"armor" "5 6 7 8 9 10"
+			"damage" "50 70 90 110 130 150"
+		}  
+	}
+    "ability_npc_boss_jungle1_spell5"
+	{
+		"BaseClass"           			"ability_lua"
+		"ScriptFile"					"abilities/jungle1/ability_npc_boss_jungle1_spell5"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"MaxLevel"						"6"
+     	"AbilityValues"
+		{
+			"armor" "10 20 30 40 50 60"
+		}  
+	}
+    "ability_npc_boss_jungle1_spell6"
+	{
+		"BaseClass"           			"ability_lua"
+		"ScriptFile"					"abilities/jungle1/ability_npc_boss_jungle1_spell6"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityCooldown"				"30"     
+        "AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_6"     
+		"AbilityCastPoint"				"1"  
+		"MaxLevel"						"6"
+     	"AbilityValues"
+		{
+			"mult" "150 180 210 240 270 300"
+		}  
+	}
+}

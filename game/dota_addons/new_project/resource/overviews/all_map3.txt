@@ -1,0 +1,8 @@
+all_map3
+{
+	material materials/overviews/all_map3.vmat
+	pos_x -16399
+	pos_y 16349
+	scale 32.000
+}
+

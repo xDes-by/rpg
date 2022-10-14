@@ -1,0 +1,177 @@
+// Dota Heroes File
+"DOTAAbilities"
+{
+	"ability_capture_lua"
+	{
+		"BaseClass"           			"ability_lua"
+		"ScriptFile"					"abilities/ability_capture"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityCastAnimation"			"ACT_DOTA_GENERIC_CHANNEL_1"
+		"AbilityTextureName" 			"ability_capture_lua"	
+        "IsOnCastBar"                   "0"
+		"MaxLevel"						"1"
+		"AbilityCastRange"				"500"
+	}
+	
+"push"
+    {
+		"BaseClass"           			"ability_lua"
+		"ScriptFile"					"abilities/push"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    }	
+
+//==========================================================================================================================	
+	
+"auto_shot"
+	{
+		"BaseClass"           			"ability_lua"
+		"ScriptFile"					"traps/auto_shot"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"				   
+		"AbilityValues"
+		{
+			"start_radius"			"50"
+			"end_radius"			"50"
+			"range"					"1000"
+			"speed"					"1000"
+		}
+	}
+	
+"arrow_shot"
+	{
+		"BaseClass"           			"ability_lua"
+		"ScriptFile"					"traps/arrow_shot"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"				   
+		"AbilityValues"
+		{
+			"start_radius"			"50"
+			"end_radius"			"50"
+			"range"					"1000"
+			"speed"					"1000"
+		}
+	}	
+	
+"spike_trap"
+	{
+		"BaseClass"           			"ability_lua"
+		"ScriptFile"					"traps/spike_trap"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"				   
+		"AbilityCastRange"				"600"
+		"AbilityCastPoint"				"0.4"
+		"AbilityCooldown"				"1"
+		"AbilityValues"
+		{
+			"light_strike_array_aoe"	"192"
+			"light_strike_array_delay_time"	"0.5"
+			"light_strike_array_stun_duration"	"1.4"
+			"cast_animation"			"12"
+			"light_strike_array_damage"			"4000"
+		}
+	}		
+	
+"pendulum_trap"
+	{
+		"BaseClass"           			"ability_lua"
+		"ScriptFile"					"traps/pendulum_trap"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"	
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"			   
+		"AbilityCastRange"				"60000"	
+		"AbilityModifierSupportValue"	"0.0"
+
+		"AbilityValues"
+		{
+			"damage"					"10000"
+			"cast_range_scepter"		"60000"
+			"damage_delay"				"10000"
+		}
+	}	
+		
+	
+"trap_unselectable"
+  	{
+	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"    
+	    "BaseClass"             "ability_datadriven"   
+	    "Modifiers"
+	    {
+			"modifier_unselectable"
+			{
+				"Passive" "1"
+				"States"
+				{
+					"MODIFIER_STATE_UNSELECTABLE"			"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NO_UNIT_COLLISION"		"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NOT_ON_MINIMAP"			"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_ROOTED"					"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_DISARMED"				"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_INVULNERABLE"			"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_LOW_ATTACK_PRIORITY"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_FLYING"					"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_BLOCK_DISABLED"			"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NO_HEALTH_BAR"			"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_OUT_OF_GAME"			"MODIFIER_STATE_VALUE_ENABLED"
+		        }
+	      	}
+	    }
+	}		
+
+}
+//*крипы
+#base "../vscripts/abilities/forest/forest_1/abilities_forest_1.txt"
+#base "../vscripts/abilities/forest/forest_2/abilities_forest_2.txt"
+
+#base "../vscripts/abilities/dust/dust_2/abilities_dust_2.txt"
+
+
+
+
+
+//*герои
+#base "../vscripts/heroes/npc_dota_hero_juggernaut/npc_dota_hero_juggernaut.txt"
+#base "../vscripts/heroes/npc_dota_hero_queenofpain/npc_dota_hero_queenofpain.txt"
+#base "../vscripts/heroes/npc_dota_hero_nevermore/npc_dota_hero_nevermore.txt"
+#base "../vscripts/heroes/npc_dota_hero_abyssal_underlord/npc_dota_hero_abyssal_underlord.txt"
+#base "../vscripts/heroes/npc_dota_hero_furion/npc_dota_hero_furion.txt"
+#base "../vscripts/heroes/npc_dota_hero_visage/npc_dota_hero_visage.txt"
+#base "../vscripts/heroes/npc_dota_hero_techies/npc_dota_hero_techies.txt"
+#base "../vscripts/heroes/npc_dota_hero_gyrocopter/npc_dota_hero_gyrocopter.txt"
+#base "../vscripts/heroes/npc_dota_hero_shredder/npc_dota_hero_shredder.txt"
+#base "../vscripts/heroes/npc_dota_hero_tinker/npc_dota_hero_tinker.txt"
+#base "../vscripts/heroes/npc_dota_hero_leshrac/npc_dota_hero_leshrac.txt"
+#base "../vscripts/heroes/npc_dota_hero_treant/npc_dota_hero_treant.txt"
+#base "../vscripts/heroes/npc_dota_hero_undying/npc_dota_hero_undying.txt"
+#base "../vscripts/heroes/npc_dota_hero_keeper_of_the_light/npc_dota_hero_keeper_of_the_light.txt"
+#base "../vscripts/heroes/npc_dota_hero_lone_druid/npc_dota_hero_lone_druid.txt"
+#base "../vscripts/heroes/npc_dota_hero_death_prophet/npc_dota_hero_death_prophet.txt"
+#base "../vscripts/heroes/npc_dota_hero_skeleton_king/npc_dota_hero_skeleton_king.txt"
+#base "../vscripts/heroes/npc_dota_hero_necrolyte/npc_dota_hero_necrolyte.txt"
+#base "../vscripts/heroes/npc_dota_hero_axe/npc_dota_hero_axe.txt"
+#base "../vscripts/heroes/npc_dota_hero_dazzle/npc_dota_hero_dazzle.txt"
+#base "../vscripts/heroes/npc_dota_hero_disruptor/npc_dota_hero_disruptor.txt"
+#base "../vscripts/heroes/npc_dota_hero_hoodwink/npc_dota_hero_hoodwink.txt"
+#base "../vscripts/heroes/npc_dota_hero_tusk/npc_dota_hero_tusk.txt"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

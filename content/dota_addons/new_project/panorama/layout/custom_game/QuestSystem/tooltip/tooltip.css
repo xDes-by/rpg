@@ -1,0 +1,15 @@
+.QuestDescription{
+    width: 600px;
+    flow-children: down;
+}
+#Description{
+    color:white;
+    padding-bottom: 6px;
+}
+#Lore{
+    padding: 8px;
+    color:purple;
+    border:1px solid black;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.575);
+}

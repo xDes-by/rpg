@@ -1,0 +1,12 @@
+"AddonInfo"
+{
+	"maps" 						"all_map3"
+	"IsPlayable" 				"1"
+	"PenaltiesEnabled"			"0"
+	"EnablePickRules"			"0"
+	
+	"all_map3"
+ 	{
+ 		"MaxPlayers" "4"
+ 	}
+}

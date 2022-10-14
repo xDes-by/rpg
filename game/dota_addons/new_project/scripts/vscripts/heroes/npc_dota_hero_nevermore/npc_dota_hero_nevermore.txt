@@ -1,0 +1,83 @@
+"DOTAAbilities"
+{
+    "npc_dota_hero_nevermore_spell1"
+	{
+		"BaseClass"           			"ability_lua"
+		"ScriptFile"					"heroes/npc_dota_hero_nevermore/npc_dota_hero_nevermore_spell1"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
+		"FightRecapLevel"				"1"
+		"MaxLevel"						"4"
+
+     	"AbilityValues"
+		{
+            "damage_persentage" "3"
+            "chance" "2"
+		}  
+	}
+    "npc_dota_hero_nevermore_spell2"
+	{
+		"BaseClass"           			"ability_lua"
+		"ScriptFile"					"heroes/npc_dota_hero_nevermore/npc_dota_hero_nevermore_spell2"
+		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_DIRECTIONAL"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
+		"FightRecapLevel"				"1"
+		"MaxLevel"						"4"
+        "AbilityCastPoint"				"0.5"
+        "AbilityCastAnimation"			"ACT_DOTA_RAZE_2"
+        "AbilitySound"					"Hero_Nevermore.ROS.Arcana"
+     	"AbilityValues"
+		{
+            "soul_distanse" "800"
+            "soul_speed" "300"
+            "damage_multiplier" "130"
+            "with" "150"
+		}  
+	}
+    "npc_dota_hero_nevermore_spell3"
+	{
+		"BaseClass"           			"ability_lua"
+		"ScriptFile"					"heroes/npc_dota_hero_nevermore/npc_dota_hero_nevermore_spell3"
+		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"FightRecapLevel"				"1"
+		"MaxLevel"						"4"
+		"AbilityCooldown"				"20"
+     	"AbilityValues"
+		{
+            "duration" "10"
+            "incoming" "250"
+		}  
+	}
+    "npc_dota_hero_nevermore_spell4"
+	{
+		"BaseClass"           			"ability_lua"
+		"ScriptFile"					"heroes/npc_dota_hero_nevermore/npc_dota_hero_nevermore_spell4"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"nevermore_necromastery"
+		"FightRecapLevel"				"1"
+		"MaxLevel"						"1"
+     	"AbilityValues"
+		{
+            "max_souls" "20"
+            "chance" "10"
+		}  
+	}
+    "npc_dota_hero_nevermore_spell6"
+	{
+		"BaseClass"           			"ability_lua"
+		"ScriptFile"					"heroes/npc_dota_hero_nevermore/npc_dota_hero_nevermore_spell6"
+		"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+        "AbilityCharges"				"3"
+     	"AbilityValues"
+		{
+			"radius_find" "800"
+			"damage_multip" "200"
+			"radius_damage" "250"
+		}  
+	}
+}

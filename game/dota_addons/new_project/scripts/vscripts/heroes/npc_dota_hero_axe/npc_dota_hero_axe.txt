@@ -1,0 +1,92 @@
+"DOTAAbilities"
+{
+	"npc_dota_hero_axe_spell1"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"heroes/npc_dota_hero_axe/npc_dota_hero_axe_spell1"
+		"AbilityTextureName"			""
+		"FightRecapLevel"				"1"
+		"MaxLevel"						"4"
+
+		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+		"AbilityValues"
+		{
+			"damage"					"600 550 500 450"
+			"duration"					"3"
+			"radius"					"450"
+		}
+	}
+	"npc_dota_hero_axe_spell2"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"heroes/npc_dota_hero_axe/npc_dota_hero_axe_spell2"
+		"AbilityTextureName"			""
+		"FightRecapLevel"				"1"
+		"MaxLevel"						"4"
+
+		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+
+		"AbilityCastRange"				"250"
+
+		"AbilityCooldown"				"38 30 22 16"
+		"AbilityManaCost"				"120 110 100 90"
+
+		"AbilityValues"
+		{
+			"duration"				"1.0 1.2 1.4 1.6"
+			"radius"				"450"
+		}
+	}
+	"npc_dota_hero_axe_spell3"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"heroes/npc_dota_hero_axe/npc_dota_hero_axe_spell3"
+		"AbilityTextureName"			""
+		"FightRecapLevel"				"1"
+		"MaxLevel"						"4"
+
+		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
+
+		"AbilityCastRange"				"275"
+
+		"AbilityCooldown"				"1.0 0.8 0.6 0.4"
+
+		"AbilityValues"
+		{
+			"radius"					"275"
+			"chance"					"10"
+			"damage"					"50 70 90 110"
+			"duration"					"2"
+			"max"						"10"
+		}
+	}
+	"npc_dota_hero_axe_spell6"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"heroes/npc_dota_hero_axe/npc_dota_hero_axe_spell6"
+		"AbilityTextureName"			""
+		"FightRecapLevel"				"1"
+		"MaxLevel"						"3"
+
+		"AbilityType"							"DOTA_ABILITY_TYPE_ULTIMATE"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetFlags"				"DOTA_UNIT_TARGET_FLAG_NOT_MAGIC_IMMUNE_ALLIES"
+		
+		"AbilityValues"
+		{
+			"armor"						"10 15 20"
+			"str"						"20 30 40"
+		}
+	}
+}
