@@ -4,7 +4,7 @@
 	{
 		"BaseClass"						"ability_lua"
 		"ScriptFile"					"heroes/npc_dota_hero_juggernaut/npc_dota_hero_juggernaut_skill1"
-		"AbilityTextureName"			"npc_dota_hero_juggernaut_blade_dance"
+		"AbilityTextureName"			"jugg1"
 		"FightRecapLevel"				"1"
 		"MaxLevel"						"4"
 
@@ -26,7 +26,7 @@
 	{
 		"BaseClass"						"ability_lua"
 		"ScriptFile"					"heroes/npc_dota_hero_juggernaut/npc_dota_hero_juggernaut_skill2"
-		"AbilityTextureName"			"npc_dota_hero_juggernaut_blade_fury"
+		"AbilityTextureName"			"jugg2"
 		"FightRecapLevel"				"1"
 		"MaxLevel"						"4"
 
@@ -50,7 +50,7 @@
 	{
 		"BaseClass"						"ability_lua"
 		"ScriptFile"					"heroes/npc_dota_hero_juggernaut/npc_dota_hero_juggernaut_skill3"
-		"AbilityTextureName"			"npc_dota_hero_juggernaut_blade_fury"
+		"AbilityTextureName"			"jugg3"
 		"FightRecapLevel"				"1"
 		"MaxLevel"						"4"
 
@@ -74,7 +74,7 @@
 	{
 		"BaseClass"						"ability_lua"
 		"ScriptFile"					"heroes/npc_dota_hero_juggernaut/npc_dota_hero_juggernaut_skill6"
-		"AbilityTextureName"			""
+		"AbilityTextureName"			"jugg4"
 		"FightRecapLevel"				"1"
 		"MaxLevel"						"3"
 		"AbilityType"							"DOTA_ABILITY_TYPE_ULTIMATE"

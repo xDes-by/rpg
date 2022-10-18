@@ -74,9 +74,9 @@
 	{
 		"vscripts"					"ai/npc_forest_1_boss"
 		"BaseClass"					"npc_dota_creature"
-		"Model"						"models/items/furion/treant/shroomling_treant/shroomling_treant.vmdl"
-		"SoundSet"					"Hero_Treant"
-		"ModelScale"				"2.5"
+		"Model"						"models/heroes/broodmother/broodmother.vmdl"
+		"SoundSet"					"Hero_Broodmother"
+		"ModelScale"				"1.5"
 
 		"Ability1"					""
 		"Ability2"					""

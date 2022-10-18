@@ -1,0 +1,32 @@
+"lang"
+{
+    "Language" "None"
+    "Tokens"
+    {
+        "language" "russian"
+        "addon_game_name" "123"
+
+		"dota_tooltip_ability_npc_dota_hero_juggernaut_skill1" "Удар самурая"
+        "dota_tooltip_ability_npc_dota_hero_juggernaut_skill1_description" "Прыгает и делает сокрушительный удар сверху нанося 200% своего урона, если враг умрет от этого удара, герой получит бонус к урону на следующие несколько атак."
+        "dota_tooltip_ability_npc_dota_hero_juggernaut_skill1_count" "КОЛ-ВО АТАК:"
+        "dota_tooltip_ability_npc_dota_hero_juggernaut_skill1_damage" "УРОН:"
+
+
+        "dota_tooltip_ability_npc_dota_hero_juggernaut_skill2" "Тройная Вспышка"
+        "dota_tooltip_ability_npc_dota_hero_juggernaut_skill2_description" "Совершает 3 быстрых удара нанося урон всем врагам перед собой."
+        "dota_tooltip_ability_npc_dota_hero_juggernaut_skill2_radius" "РАДИУС:"
+        "dota_tooltip_ability_npc_dota_hero_juggernaut_skill2_damage_bonus" "БОНУС УРОНА:"
+        "dota_tooltip_ability_npc_dota_hero_juggernaut_skill2_count" "КОЛ-ВО:"
+
+        "dota_tooltip_ability_npc_dota_hero_juggernaut_skill3" "Blade Fury MAX"
+        "dota_tooltip_ability_npc_dota_hero_juggernaut_skill3_description" "Blade Fury, владелец способности каждую секунду атакует случайного врага неподалеку, во время действия можно использовать способности."
+        "dota_tooltip_ability_npc_dota_hero_juggernaut_skill3_blade_fury_radius" "РАДИУС:"
+        "dota_tooltip_ability_npc_dota_hero_juggernaut_skill3_blade_fury_damage" "УРОН:"
+        "dota_tooltip_ability_npc_dota_hero_juggernaut_skill3_duration" "ПРОДОЛЖИТЕЛЬНОСТЬ:"
+
+        "dota_tooltip_ability_npc_dota_hero_juggernaut_skill6" "Прыг скок"
+        "dota_tooltip_ability_npc_dota_hero_juggernaut_skill6_description" "Пассивный Omnislash, но герой вернется в ту же точку откуда начал прыгать, во время действия можно использовать способности."
+        "dota_tooltip_ability_npc_dota_hero_juggernaut_skill6_chance" "ШАНС:"
+        "dota_tooltip_ability_npc_dota_hero_juggernaut_skill6_duration" "УРОН:"
+    }
+}

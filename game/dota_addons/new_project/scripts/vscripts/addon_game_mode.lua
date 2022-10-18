@@ -9,10 +9,10 @@ require( "rules" )
 require( "www/loader" )
 require( "global_data" )
 require( "libraries/animations" )
+require( "libraries/timers" )
+require( "libraries/table" )
 
 
-require("libraries/timers")
-require("libraries/timers")
 require("libraries/UtilFunctions")
 
 

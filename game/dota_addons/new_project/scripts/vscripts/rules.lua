@@ -38,10 +38,9 @@ function bot(nPlayerID)
 end
 
 function Rules:Dummy()
-	local hDummy = CreateUnitByName( "npc_dota_hero_target_dummy", Vector(-5167, 14842, 256), true, nil, nil, DOTA_TEAM_BADGUYS)
-	
+	local hDummy = CreateUnitByName( "npc_dota_hero_target_dummy", Vector(-5700, 13721, 279), true, nil, nil, DOTA_TEAM_BADGUYS)
 	local angle = hDummy:GetAngles()
-	local new_angle = RotateOrientation(angle, QAngle(0,30,0))
+	local new_angle = RotateOrientation(angle, QAngle(0,60,0))
 	hDummy:SetAngles(new_angle[1], new_angle[2], new_angle[3])
 	
 	hDummy:SetAbilityPoints( 0 )

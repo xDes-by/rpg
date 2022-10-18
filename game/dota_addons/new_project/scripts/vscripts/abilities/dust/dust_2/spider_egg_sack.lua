@@ -47,7 +47,7 @@ end
 function modifier_spider_egg_sack:Burst()
 	if IsServer() then
 		for i = 0, self.spiders do
-			local unit = CreateUnitByName( "npc_dust_creep_mini_1", self:GetParent():GetOrigin() + RandomVector( RandomInt( 50, 350 )), true, nil, nil, DOTA_TEAM_BADGUYS )
+			unit = CreateUnitByName( "npc_dust_creep_mini_1", self:GetParent():GetOrigin() + RandomVector( RandomInt( 50, 350 )), true, nil, nil, DOTA_TEAM_BADGUYS )
 			Rules:unit_settings(unit, "creep", "mini", 1, 220, 100)
 		end
 

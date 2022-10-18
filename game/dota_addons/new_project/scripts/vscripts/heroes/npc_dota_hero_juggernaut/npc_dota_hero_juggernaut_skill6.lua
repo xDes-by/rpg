@@ -222,16 +222,6 @@ function modifier_imba_omni_slash_caster:BounceAndSlaughter(first_slash)
 				self.parent:PerformAttack(enemy, true, true, true, true, true, false, false)
 			end
 
-			-- If the target is not Roshan or a hero, instantly kill it
-			if enemy:IsConsideredHero() or enemy:GetUnitName() == "npc_dota_mutation_golem" then
-				if not enemy:IsAlive() and self:GetAbility().omnislash_kill_count then
-					self:GetAbility().omnislash_kill_count = self:GetAbility().omnislash_kill_count + 1
-				end
-	--			else
-	--			enemy:Kill(self:GetAbility(), self.original_caster)
-			end
-
-			-- Play hit sound
 			enemy:EmitSound("Hero_Juggernaut.OmniSlash.Damage")
 
 			-- Play hit particle on the current target

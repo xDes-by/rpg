@@ -359,10 +359,10 @@ function shot_9()
 			DoEntFire( model, "SetAnimation", "bark_attack", .4, self, self )
 			npc:CastAbilityOnPosition(target:GetOrigin(), venomTrap, -1 )
 		end
-		return 0.5
+		return 0.8
 	else
 	trap_9_shots = 2
-		return 1.0
+		return 1.2
 	end	
 end
 
@@ -391,7 +391,7 @@ function shot_10()
 			DoEntFire( model, "SetAnimation", "bark_attack", .4, self, self )
 			npc:CastAbilityOnPosition(target:GetOrigin(), venomTrap, -1 )
 		end
-		return 0.6
+		return 0.9
 	else
 	trap_10_shots = 3
 		return 1.8
@@ -617,10 +617,10 @@ function shot_17()
 			DoEntFire( model, "SetAnimation", "bark_attack", .4, self, self )
 			npc:CastAbilityOnPosition(target:GetOrigin(), venomTrap, -1 )
 		end
-		return RandomFloat(0.4, 1.0)
+		return RandomFloat(0.8, 1.2)
 	else
 	trap_17_shots = 2
-		return 1.0
+		return 1.2
 	end	
 end
 
