@@ -10,7 +10,7 @@ function Events:Init()
 	self.round_process = false
 end
 
-zones = {"dark"}--,"forest", "dust"}-- "mines", "dark", "jungle", "hell", "snow"}
+zones = {"forest", "dust", "dark"}-- "mines", "dark", "jungle", "hell", "snow"}
 
 function Events:GameEventsFilter(data) -- фильтр для выбора карты
     local target = EntIndexToHScript(data.entindex_target)

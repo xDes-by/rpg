@@ -32,7 +32,7 @@ function modifier_generic_ring_lua:OnCreated( kv )
 
 	if not IsServer() then return end
 
-	-- references
+	self.point = _G.target_point_dis_1_skill or self:GetParent():GetAbsOrigin()
 	self.start_radius = kv.start_radius or 0
 	self.end_radius = kv.end_radius or 0
 	self.width = kv.width or 100
@@ -88,7 +88,7 @@ function modifier_generic_ring_lua:OnIntervalThink()
 	-- Find targets in ring
 	local targets = FindUnitsInRadius(
 		self:GetParent():GetTeamNumber(),	-- int, your team number
-		self:GetParent():GetAbsOrigin(),	-- point, center point
+		self.point,	-- point, center point
 		nil,	-- handle, cacheUnit. (not known)
 		radius,	-- float, radius. or use FIND_UNITS_EVERYWHERE
 		self.target_team,	-- int, team filter

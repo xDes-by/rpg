@@ -28,5 +28,34 @@
         "dota_tooltip_ability_npc_dota_hero_juggernaut_skill6_description" "Пассивный Omnislash, но герой вернется в ту же точку откуда начал прыгать, во время действия можно использовать способности."
         "dota_tooltip_ability_npc_dota_hero_juggernaut_skill6_chance" "ШАНС:"
         "dota_tooltip_ability_npc_dota_hero_juggernaut_skill6_duration" "УРОН:"
+		
+		
+		"dota_tooltip_ability_npc_dota_hero_disruptor_spell1" "Гром и молния"
+        "dota_tooltip_ability_npc_dota_hero_disruptor_spell1_description" "Вызывает молнию в выбранной точке, после удара молния наносит урон и вызывает кольцо которое замедляет и наносит урон."
+        "dota_tooltip_ability_npc_dota_hero_disruptor_spell1_damage" "УРОН МОЛНИИ:"
+        "dota_tooltip_ability_npc_dota_hero_disruptor_spell1_damage_ring" "УРОН КОЛЬЦА:"
+        "dota_tooltip_ability_npc_dota_hero_disruptor_spell1_radius" "РАДИУС:"
+        "dota_tooltip_ability_npc_dota_hero_disruptor_spell1_duration" "ДЛИТЕЛЬНОСТЬ:"
+        "dota_tooltip_ability_npc_dota_hero_disruptor_spell1_slow" "%ЗАМЕДЛЕНИЕ:"
+
+        "dota_tooltip_ability_npc_dota_hero_disruptor_spell2" "Цепная молния"
+        "dota_tooltip_ability_npc_dota_hero_disruptor_spell2_description" "Выпускает молнию, которая скачет от цели к цели и наносит урон. Достигнув последней цели, молния вернётся к владельцу и восстановит ему ману за каждую задетую цель.  ."
+        "dota_tooltip_ability_npc_dota_hero_disruptor_spell2_arc_damage" "УРОН:"
+        "dota_tooltip_ability_npc_dota_hero_disruptor_spell2_mana_back" "МАНЫ ЗА ЦЕЛЬ:"
+        "dota_tooltip_ability_npc_dota_hero_disruptor_spell2_count" "КОЛ-ВО ЦЕЛЕЙ:"
+        "dota_tooltip_ability_npc_dota_hero_disruptor_spell2_radius" "РАДИУС:"
+		
+		"dota_tooltip_ability_npc_dota_hero_disruptor_spell3" "Молот грома"
+        "dota_tooltip_ability_npc_dota_hero_disruptor_spell3_description" "Замирает концентрируя энергию в молоте. В случае успешного использования способности, дарует союзнику, или себе дополнительный урон от заклинаний. Если прервать чтение заклинания герой получит урон и обратный эффект от баффа"
+        "dota_tooltip_ability_npc_dota_hero_disruptor_spell3_bonus_damage" "%БОНУС УСИЛЕНИЯ ЗАКЛИНАНИЙ:"
+        "dota_tooltip_ability_npc_dota_hero_disruptor_spell3_fail_damage" "УРОН ПО СЕБЕ:"
+        "dota_tooltip_ability_npc_dota_hero_disruptor_spell3_duration" "ПРОДОЛЖИТЕЛЬНОСТЬ:"
+
+        "dota_tooltip_ability_npc_dota_hero_disruptor_spell6" "Громогласно"
+        "dota_tooltip_ability_npc_dota_hero_disruptor_spell6_description" "Создает на каждом союзнике щит молний который блокирует урон, по окончанию длительности щита, или по максимальному урону нанесенному в щит, запускает молнию по врагам которая нанесет урон."
+        "dota_tooltip_ability_npc_dota_hero_disruptor_spell6_block_damage" "БЛОКИРУЕТ УРОНА:"
+        "dota_tooltip_ability_npc_dota_hero_disruptor_spell6_duration" "ПРОДОЛЖИТЕЛЬНОСТЬ:"
+        "dota_tooltip_ability_npc_dota_hero_disruptor_spell6_deal_damage" "НАНОСИТ УРОН:"
+        "dota_tooltip_ability_npc_dota_hero_disruptor_spell6_radius" "РАДИУС:"
     }
 }

@@ -283,6 +283,7 @@ function AddonGamemode:LinkGameModifiers()
 	LinkLuaModifier( "modifier_hero_class_damage", "modifiers/modifier_hero_class_damage", LUA_MODIFIER_MOTION_BOTH )
 	LinkLuaModifier( "modifier_hero_class_mage", "modifiers/modifier_hero_class_mage", LUA_MODIFIER_MOTION_BOTH )
 	LinkLuaModifier( "modifier_hero_class_healer", "modifiers/modifier_hero_class_healer", LUA_MODIFIER_MOTION_BOTH )
+	LinkLuaModifier( "modifier_blind", "modifiers/modifier_blind", LUA_MODIFIER_MOTION_BOTH )
 
 	--for _,TalentName in ipairs(self.AllTalentsName) do
 	--	LinkLuaModifier( TalentName, "modifiers/talents/" .. TalentName, LUA_MODIFIER_MOTION_NONE )

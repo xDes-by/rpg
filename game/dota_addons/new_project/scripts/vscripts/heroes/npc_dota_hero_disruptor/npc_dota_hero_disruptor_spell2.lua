@@ -149,8 +149,11 @@ function modifier_disruptor_skill_2:OnIntervalThink()
 end
 
 function modifier_disruptor_skill_2:return_mana(count, caster, target)
-	print(count + 1)
+	rest = (count + 1) * self:GetAbility():GetSpecialValueFor("mana_back")
 	
+	self:GetCaster():GiveMana(rest)
+	EmitSoundOn( "Hero_Medusa.MysticSnake.Return", self:GetCaster() )
+	SendOverheadEventMessage( nil, OVERHEAD_ALERT_MANA_ADD, self:GetCaster(), rest, self:GetCaster():GetPlayerOwner())
 	
 	self.lightning_particle = ParticleManager:CreateParticle("particles/units/heroes/hero_zuus/zuus_arc_lightning_.vpcf", PATTACH_ABSORIGIN_FOLLOW, target)
 	ParticleManager:SetParticleControlEnt(self.lightning_particle, 0, target, PATTACH_POINT_FOLLOW, "attach_hitloc", target:GetAbsOrigin(), true)

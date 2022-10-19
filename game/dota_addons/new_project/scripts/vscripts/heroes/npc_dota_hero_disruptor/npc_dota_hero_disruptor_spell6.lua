@@ -1,4 +1,4 @@
-LinkLuaModifier( "modifier_npc_dota_hero_disruptor_spell3", "heroes/npc_dota_hero_disruptor/npc_dota_hero_disruptor_spell6", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier( "modifier_npc_dota_hero_disruptor_spell6", "heroes/npc_dota_hero_disruptor/npc_dota_hero_disruptor_spell6", LUA_MODIFIER_MOTION_NONE )
 
 npc_dota_hero_disruptor_spell6 = class({})
 
@@ -10,7 +10,7 @@ if not IsServer() then return end
 	local allies = FindUnitsInRadius(self:GetCaster():GetTeamNumber(), self:GetCaster():GetAbsOrigin(), nil, FIND_UNITS_EVERYWHERE, DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_NONE, FIND_ANY_ORDER, false)
 	for _, ally in pairs(allies) do
 		if ally:IsRealHero() and ally:IsAlive() then
-			ally:AddNewModifier( self:GetCaster(), self, "modifier_npc_dota_hero_disruptor_spell3", {duration = self.duration}):SetStackCount(self:GetSpecialValueFor("block_damage"))
+			ally:AddNewModifier( self:GetCaster(), self, "modifier_npc_dota_hero_disruptor_spell6", {duration = self.duration}):SetStackCount(self:GetSpecialValueFor("block_damage"))
 		end
 	end
 end
@@ -18,25 +18,25 @@ end
 
 ---------------------------------------------------------------------------------------------------------------
 
-modifier_npc_dota_hero_disruptor_spell3 = class({})
+modifier_npc_dota_hero_disruptor_spell6 = class({})
 
-function modifier_npc_dota_hero_disruptor_spell3:IsHidden()
+function modifier_npc_dota_hero_disruptor_spell6:IsHidden()
 	return false
 end
 
-function modifier_npc_dota_hero_disruptor_spell3:IsDebuff()
+function modifier_npc_dota_hero_disruptor_spell6:IsDebuff()
 	return false
 end
 
-function modifier_npc_dota_hero_disruptor_spell3:IsPurgable()
+function modifier_npc_dota_hero_disruptor_spell6:IsPurgable()
 	return false
 end
 
-function modifier_npc_dota_hero_disruptor_spell3:RemoveOnDeath()
+function modifier_npc_dota_hero_disruptor_spell6:RemoveOnDeath()
 	return false
 end
 
-function modifier_npc_dota_hero_disruptor_spell3:OnCreated( kv )
+function modifier_npc_dota_hero_disruptor_spell6:OnCreated( kv )
 	if IsServer() then
 		self.shield_particle = ParticleManager:CreateParticle("particles/items2_fx/mjollnir_shield.vpcf", PATTACH_ABSORIGIN_FOLLOW, self:GetParent())
 		self:AddParticle(self.shield_particle, false, false, -1, false, false)
@@ -44,11 +44,11 @@ function modifier_npc_dota_hero_disruptor_spell3:OnCreated( kv )
 	end
 end
 
-function modifier_npc_dota_hero_disruptor_spell3:OnDestroy()
+function modifier_npc_dota_hero_disruptor_spell6:OnDestroy()
 if not IsServer() then return end
 	self:GetParent():StopSound("DOTA_Item.Mjollnir.Loop")
 	
-	local enemies = FindUnitsInRadius(self:GetParent():GetTeamNumber(), self:GetParent():GetAbsOrigin(), nil, 400, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_FLAG_FOW_VISIBLE + DOTA_UNIT_TARGET_FLAG_NO_INVIS, FIND_CLOSEST, false)
+	local enemies = FindUnitsInRadius(self:GetParent():GetTeamNumber(), self:GetParent():GetAbsOrigin(), nil, self:GetAbility():GetSpecialValueFor("radius"), DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_FOW_VISIBLE + DOTA_UNIT_TARGET_FLAG_NO_INVIS, FIND_CLOSEST, false)
 	for _, enemy in pairs(enemies) do
 		enemy:EmitSound("Hero_Zuus.ArcLightning.Target")
 		
@@ -68,18 +68,18 @@ if not IsServer() then return end
 	end	
 end
 
-function modifier_npc_dota_hero_disruptor_spell3:GetStatusEffectName()
+function modifier_npc_dota_hero_disruptor_spell6:GetStatusEffectName()
 	return "particles/status_fx/status_effect_mjollnir_shield.vpcf"
 end
 
-function modifier_npc_dota_hero_disruptor_spell3:DeclareFunctions()
+function modifier_npc_dota_hero_disruptor_spell6:DeclareFunctions()
 	local funcs = {
 		MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE
 	}
 	return funcs
 end
 
-function modifier_npc_dota_hero_disruptor_spell3:GetModifierIncomingDamage_Percentage(params)
+function modifier_npc_dota_hero_disruptor_spell6:GetModifierIncomingDamage_Percentage(params)
 	if params.target == self:GetParent() then
 		self:SetStackCount(self:GetStackCount() - params.damage)
 		if self:GetStackCount() > 0 then

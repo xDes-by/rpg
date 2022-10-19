@@ -52,15 +52,27 @@ function modifier_movespeed_slow:GetModifierMoveSpeedBonus_Percentage()
 end
 
 function modifier_movespeed_slow:OnCreated( kv )
+if not IsServer() then return end
 	self.damageTable = {
 		victim = self:GetParent(),
 		attacker = self:GetCaster(),
 		damage = self:GetAbility():GetSpecialValueFor( "damage" ),
 		damage_type = DAMAGE_TYPE_MAGICAL,
 	}
+	SendOverheadEventMessage( nil, OVERHEAD_ALERT_BONUS_POISON_DAMAGE, self:GetParent(), self.damageTable.damage, self:GetCaster():GetPlayerOwner())
 	self:StartIntervalThink( 1 )
 end
 
 function modifier_movespeed_slow:OnIntervalThink()
+if not IsServer() then return end
 	ApplyDamage( self.damageTable )
+	SendOverheadEventMessage( nil, OVERHEAD_ALERT_BONUS_POISON_DAMAGE, self:GetParent(), self.damageTable.damage, self:GetCaster():GetPlayerOwner())
+end
+
+function modifier_movespeed_slow:GetEffectName()
+	return "particles/units/heroes/hero_viper/viper_corrosive_debuff.vpcf"
+end
+
+function modifier_movespeed_slow:GetEffectAttachType()
+	return PATTACH_ABSORIGIN_FOLLOW
 end

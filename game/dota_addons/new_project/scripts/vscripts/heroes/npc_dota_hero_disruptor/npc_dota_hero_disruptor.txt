@@ -1,10 +1,11 @@
 "DOTAAbilities"
 {
-	"npc_dota_hero_disruptor_spell1"
+
+"npc_dota_hero_disruptor_spell1"
 	{
 		"BaseClass"						"ability_lua"
 		"ScriptFile"					"heroes/npc_dota_hero_disruptor/npc_dota_hero_disruptor_spell1"
-		"AbilityTextureName"			"disruptor_blade_dance"
+		"AbilityTextureName"			"disruptor_1"
 		"FightRecapLevel"				"1"
 		"MaxLevel"						"4"
 
@@ -14,27 +15,27 @@
 		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
-		
 		"AbilityManaCost"				"80 100 120 140"
-		"AbilityCooldown"				"20 18 16 14"
+		"AbilityCooldown"				"16 14 12 10"
 		"AbilityCastRange"				"500"
 
 		"AbilityValues"
 		{
 			"damage"					"80 120 160 200"
+			"damage_ring"				"40 60 80 100"
 			"radius"					"400"
 			"duration"					"1 2 3 4"
 			"slow"						"15 20 25 30"
 		}
 	}
-    "npc_dota_hero_disruptor_spell2"
+	
+"npc_dota_hero_disruptor_spell2"
 	{
 		"BaseClass"						"ability_lua"
 		"ScriptFile"					"heroes/npc_dota_hero_disruptor/npc_dota_hero_disruptor_spell2"
-		"AbilityTextureName"			"disruptor_blade_fury"
+		"AbilityTextureName"			"disruptor_2"
 		"FightRecapLevel"				"1"
 		"MaxLevel"						"4"
-
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -44,23 +45,24 @@
 
 		"AbilityCastRange"				"500"
 
-		"AbilityCooldown"				"38 30 22 16"
-		"AbilityManaCost"				"120 110 100 90"
+		"AbilityCooldown"				"10 8 6 4"
+		"AbilityManaCost"				"60 80 100 120"
 
 		"AbilityValues"
 		{
 			"speed"						"400"
 			"arc_damage"				"40 80 120 160"
-			"mana"						"6 8 10 12" 
+			"mana_back"					"6 8 10 12" 
 			"count"						"3 4 5 6"
 			"radius"					"400"
 		}
 	}
-    "npc_dota_hero_disruptor_spell3"
+  
+"npc_dota_hero_disruptor_spell3"
 	{
 		"BaseClass"						"ability_lua"
 		"ScriptFile"					"heroes/npc_dota_hero_disruptor/npc_dota_hero_disruptor_spell3"
-		"AbilityTextureName"			"disruptor_blade_fury"
+		"AbilityTextureName"			"disruptor_3"
 		"FightRecapLevel"				"1"
 		"MaxLevel"						"4"
 
@@ -71,22 +73,24 @@
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
 
 		"AbilityCastRange"				"500"
-		"AbilityChannelTime"            "5.0"
+		"AbilityChannelTime"            "5"
 
-		"AbilityCooldown"				"38 30 22 16"
-		"AbilityManaCost"				"120 110 100 90"
+		"AbilityCooldown"				"10"
+		"AbilityManaCost"				"80 100 120 140"
 
 		"AbilityValues"
 		{
 			"bonus_damage"				"5 10 15 20"
 			"fail_damage"				"150 250 350 450"
+			"duration"					"30"
 		}
 	}
+	
     "npc_dota_hero_disruptor_spell6"
 	{
 		"BaseClass"						"ability_lua"
 		"ScriptFile"					"heroes/npc_dota_hero_disruptor/npc_dota_hero_disruptor_spell6"
-		"AbilityTextureName"			"npc_dota_hero_disruptor_permanent_ability"
+		"AbilityTextureName"			"disruptor_4"
 		"FightRecapLevel"				"1"
 		"MaxLevel"						"3"
 
@@ -95,15 +99,17 @@
 		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetFlags"				"DOTA_UNIT_TARGET_FLAG_NOT_MAGIC_IMMUNE_ALLIES"
+		"AbilityUnitDamageType"					"DAMAGE_TYPE_MAGICAL"
 		
-		"AbilityCooldown"						"100 80 60"
-		"AbilityManaCost"						"200 300 400"
+		"AbilityCooldown"						"80 70 60"
+		"AbilityManaCost"						"100 200 300"
 		
 		"AbilityValues"
 		{
 			"block_damage"							"300 400 500"
 			"duration"								"3 5 7"
 			"deal_damage"							"50 150 250"
+			"radius"								"400"
 		}
 	}
 }

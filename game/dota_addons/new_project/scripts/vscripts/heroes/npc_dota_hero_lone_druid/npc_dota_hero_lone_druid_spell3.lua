@@ -28,16 +28,14 @@ end
 
 function modifier_npc_dota_hero_lone_druid_spell3:OnAttackLanded( data )
     if self:GetParent() == data.target then
-        if not data.attacker:IsRangedAttacker() and RollPseudoRandom(self.chance,self:GetParent()) then
+        if not data.attacker:IsRangedAttacker() and RandomInt(1,100) <= self.chance and self:GetAbility():IsCooldownReady() then
             self:GetCaster():PerformAttack(data.attacker, false, false, true, false, false, false, true)
-
-            self:GetAbility():UseResources( false, false, true )
-
             local effect_cast = ParticleManager:CreateParticle( "particles/units/heroes/hero_legion_commander/legion_commander_courage_tgt_flash.vpcf", PATTACH_ABSORIGIN_FOLLOW, self:GetParent() )
             ParticleManager:ReleaseParticleIndex( effect_cast )
             local effect_cast2 = ParticleManager:CreateParticle( "particles/units/heroes/hero_legion_commander/legion_commander_courage_hit.vpcf", PATTACH_ABSORIGIN_FOLLOW, self:GetParent() )
             ParticleManager:ReleaseParticleIndex( effect_cast2 )
             EmitSoundOn( "Hero_LegionCommander.Courage", self:GetParent() )
+			self:GetAbility():UseResources(false, false, true)
         end
     end
 end

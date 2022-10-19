@@ -100,7 +100,7 @@ function shot_1()
 		if npc ~= nil then
 			local venomTrap = npc:FindAbilityByName("auto_shot")
 			local model = "1_venom_trap_model"
-			DoEntFire( model, "SetAnimation", "bark_attack", .4, self, self )
+			DoEntFire( model, "SetAnimation", "bark_attack", .2, self, self )
 			npc:CastAbilityOnPosition(target:GetOrigin(), venomTrap, -1 )
 		end
 		return 0.4
@@ -132,7 +132,7 @@ function shot_2()
 		if npc ~= nil then
 			local venomTrap = npc:FindAbilityByName("auto_shot")
 			local model = "2_venom_trap_model"
-			DoEntFire( model, "SetAnimation", "bark_attack", .4, self, self )
+			DoEntFire( model, "SetAnimation", "bark_attack", .2, self, self )
 			npc:CastAbilityOnPosition(target:GetOrigin(), venomTrap, -1 )
 		end
 		return 0.6
@@ -164,7 +164,7 @@ function shot_3()
 		if npc ~= nil then
 			local venomTrap = npc:FindAbilityByName("auto_shot")
 			local model = "3_venom_trap_model"
-			DoEntFire( model, "SetAnimation", "bark_attack", .4, self, self )
+			DoEntFire( model, "SetAnimation", "bark_attack", .2, self, self )
 			npc:CastAbilityOnPosition(target:GetOrigin(), venomTrap, -1 )
 		end
 		return 0.8
@@ -196,7 +196,7 @@ function shot_4()
 		if npc ~= nil then
 			local venomTrap = npc:FindAbilityByName("auto_shot")
 			local model = "4_venom_trap_model"
-			DoEntFire( model, "SetAnimation", "bark_attack", .4, self, self )
+			DoEntFire( model, "SetAnimation", "bark_attack", .2, self, self )
 			npc:CastAbilityOnPosition(target:GetOrigin(), venomTrap, -1 )
 		end
 		return 0.6
@@ -228,7 +228,7 @@ function shot_5()
 		if npc ~= nil then
 			local venomTrap = npc:FindAbilityByName("auto_shot")
 			local model = "5_venom_trap_model"
-			DoEntFire( model, "SetAnimation", "bark_attack", .4, self, self )
+			DoEntFire( model, "SetAnimation", "bark_attack", .2, self, self )
 			npc:CastAbilityOnPosition(target:GetOrigin(), venomTrap, -1 )
 		end
 		return 0.8
@@ -260,7 +260,7 @@ function shot_6()
 		if npc ~= nil then
 			local venomTrap = npc:FindAbilityByName("auto_shot")
 			local model = "6_venom_trap_model"
-			DoEntFire( model, "SetAnimation", "bark_attack", .4, self, self )
+			DoEntFire( model, "SetAnimation", "bark_attack", .2, self, self )
 			npc:CastAbilityOnPosition(target:GetOrigin(), venomTrap, -1 )
 		end
 		return 0.4
@@ -292,7 +292,7 @@ function shot_7()
 		if npc ~= nil then
 			local venomTrap = npc:FindAbilityByName("arrow_shot")
 			local model = "7_venom_trap_model"
-			DoEntFire( model, "SetAnimation", "fang_attack", .4, self, self )
+			DoEntFire( model, "SetAnimation", "fang_attack", .2, self, self )
 			npc:CastAbilityOnPosition(target:GetOrigin(), venomTrap, -1 )
 		end
 		return 1
@@ -324,7 +324,7 @@ function shot_8()
 		if npc ~= nil then
 			local venomTrap = npc:FindAbilityByName("auto_shot")
 			local model = "8_venom_trap_model"
-			DoEntFire( model, "SetAnimation", "bark_attack", .4, self, self )
+			DoEntFire( model, "SetAnimation", "bark_attack", .2, self, self )
 			npc:CastAbilityOnPosition(target:GetOrigin(), venomTrap, -1 )
 		end
 		return RandomFloat(0.4, 1.0)
@@ -356,7 +356,7 @@ function shot_9()
 		if npc ~= nil then
 			local venomTrap = npc:FindAbilityByName("auto_shot")
 			local model = "9_venom_trap_model"
-			DoEntFire( model, "SetAnimation", "bark_attack", .4, self, self )
+			DoEntFire( model, "SetAnimation", "bark_attack", .2, self, self )
 			npc:CastAbilityOnPosition(target:GetOrigin(), venomTrap, -1 )
 		end
 		return 0.8
@@ -388,7 +388,7 @@ function shot_10()
 		if npc ~= nil then
 			local venomTrap = npc:FindAbilityByName("auto_shot")
 			local model = "10_venom_trap_model"
-			DoEntFire( model, "SetAnimation", "bark_attack", .4, self, self )
+			DoEntFire( model, "SetAnimation", "bark_attack", .2, self, self )
 			npc:CastAbilityOnPosition(target:GetOrigin(), venomTrap, -1 )
 		end
 		return 0.9
@@ -420,7 +420,7 @@ function shot_11()
 		if npc ~= nil then
 			local venomTrap = npc:FindAbilityByName("auto_shot")
 			local model = "11_venom_trap_model"
-			DoEntFire( model, "SetAnimation", "bark_attack", .4, self, self )
+			DoEntFire( model, "SetAnimation", "bark_attack", .2, self, self )
 			npc:CastAbilityOnPosition(target:GetOrigin(), venomTrap, -1 )
 		end
 		return 1
@@ -452,7 +452,7 @@ function shot_12()
 		if npc ~= nil then
 			local venomTrap = npc:FindAbilityByName("auto_shot")
 			local model = "12_venom_trap_model"
-			DoEntFire( model, "SetAnimation", "bark_attack", .4, self, self )
+			DoEntFire( model, "SetAnimation", "bark_attack", .2, self, self )
 			npc:CastAbilityOnPosition(target:GetOrigin(), venomTrap, -1 )
 		end
 		return 1
@@ -485,7 +485,7 @@ function shot_13()
 		if npc ~= nil then
 			local venomTrap = npc:FindAbilityByName("auto_shot")
 			local model = "13_venom_trap_model"
-			DoEntFire( model, "SetAnimation", "bark_attack", .4, self, self )
+			DoEntFire( model, "SetAnimation", "bark_attack", .2, self, self )
 			npc:CastAbilityOnPosition(target:GetOrigin(), venomTrap, -1 )
 		end
 		return 1
@@ -517,7 +517,7 @@ function shot_14()
 		if npc ~= nil then
 			local venomTrap = npc:FindAbilityByName("arrow_shot")
 			local model = "14_venom_trap_model"
-			DoEntFire( model, "SetAnimation", "fang_attack", .4, self, self )
+			DoEntFire( model, "SetAnimation", "fang_attack", .2, self, self )
 			npc:CastAbilityOnPosition(target:GetOrigin(), venomTrap, -1 )
 		end
 		return 1.2
@@ -550,7 +550,7 @@ function shot_15()
 		if npc ~= nil then
 			local venomTrap = npc:FindAbilityByName("arrow_shot")
 			local model = "15_venom_trap_model"
-			DoEntFire( model, "SetAnimation", "fang_attack", .4, self, self )
+			DoEntFire( model, "SetAnimation", "fang_attack", .2, self, self )
 			npc:CastAbilityOnPosition(target:GetOrigin(), venomTrap, -1 )
 		end
 		return 1
@@ -582,7 +582,7 @@ function shot_16()
 		if npc ~= nil then
 			local venomTrap = npc:FindAbilityByName("auto_shot")
 			local model = "16_venom_trap_model"
-			DoEntFire( model, "SetAnimation", "bark_attack", .4, self, self )
+			DoEntFire( model, "SetAnimation", "bark_attack", .2, self, self )
 			npc:CastAbilityOnPosition(target:GetOrigin(), venomTrap, -1 )
 		end
 		return RandomFloat(0.4, 1.0)
@@ -614,7 +614,7 @@ function shot_17()
 		if npc ~= nil then
 			local venomTrap = npc:FindAbilityByName("auto_shot")
 			local model = "17_venom_trap_model"
-			DoEntFire( model, "SetAnimation", "bark_attack", .4, self, self )
+			DoEntFire( model, "SetAnimation", "bark_attack", .2, self, self )
 			npc:CastAbilityOnPosition(target:GetOrigin(), venomTrap, -1 )
 		end
 		return RandomFloat(0.8, 1.2)
@@ -646,7 +646,7 @@ function shot_18()
 		if npc ~= nil then
 			local venomTrap = npc:FindAbilityByName("auto_shot")
 			local model = "18_venom_trap_model"
-			DoEntFire( model, "SetAnimation", "bark_attack", .4, self, self )
+			DoEntFire( model, "SetAnimation", "bark_attack", .2, self, self )
 			npc:CastAbilityOnPosition(target:GetOrigin(), venomTrap, -1 )
 		end
 		return RandomFloat(0.8, 1.0)
@@ -678,7 +678,7 @@ function shot_19()
 		if npc ~= nil then
 			local venomTrap = npc:FindAbilityByName("auto_shot")
 			local model = "19_venom_trap_model"
-			DoEntFire( model, "SetAnimation", "bark_attack", .4, self, self )
+			DoEntFire( model, "SetAnimation", "bark_attack", .2, self, self )
 			npc:CastAbilityOnPosition(target:GetOrigin(), venomTrap, -1 )
 		end
 		return 0.8
@@ -710,7 +710,7 @@ function shot_20()
 		if npc ~= nil then
 			local venomTrap = npc:FindAbilityByName("auto_shot")
 			local model = "20_venom_trap_model"
-			DoEntFire( model, "SetAnimation", "bark_attack", .4, self, self )
+			DoEntFire( model, "SetAnimation", "bark_attack", .2, self, self )
 			npc:CastAbilityOnPosition(target:GetOrigin(), venomTrap, -1 )
 		end
 		return RandomFloat(0.8, 1.0)

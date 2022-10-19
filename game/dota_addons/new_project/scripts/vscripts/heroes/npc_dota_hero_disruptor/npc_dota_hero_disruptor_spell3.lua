@@ -9,15 +9,19 @@ end
 function npc_dota_hero_disruptor_spell3:OnSpellStart()
 	if not IsServer() then return end
 	self.fail_damage = self:GetSpecialValueFor("fail_damage")
+	self.duration = self:GetSpecialValueFor("duration")
 	self.target = self:GetCursorTarget()
-
-    self.startTime = GameRules:GetGameTime()
 	self:GetCaster():StartGesture(ACT_DOTA_TELEPORT)
+	self:GetCaster():EmitSound("Hero_Disruptor.KineticField.Pinfold")	
+	self.mainParticle = ParticleManager:CreateParticle("particles/units/heroes/hero_stormspirit/stormspirit_ball_lightning_sphere.vpcf", PATTACH_ABSORIGIN_FOLLOW, self:GetCaster())
 end
 
 function npc_dota_hero_disruptor_spell3:OnChannelFinish( bInterrupted )
 	if bInterrupted then
-		self:GetCaster():AddNewModifier(self:GetCaster(), self, "modifier_disruptor_skill_3_debuff", {duration = 5 - (GameRules:GetGameTime() - self.startTime)}) 
+		self:GetCaster():StopSound("Hero_Disruptor.KineticField.Pinfold")
+		
+		if self:GetCaster():HasModifier("modifier_disruptor_skill_3_buff") then self:GetCaster():RemoveModifierByName("modifier_disruptor_skill_3_buff") end
+		self:GetCaster():AddNewModifier(self:GetCaster(), self, "modifier_disruptor_skill_3_debuff", {duration = self.duration}) 
 		
 		self:GetCaster():EmitSound("Hero_Zuus.LightningBolt")
 		local particle = ParticleManager:CreateParticle("particles/units/heroes/hero_zuus/zuus_lightning_bolt.vpcf", PATTACH_WORLDORIGIN, self:GetCaster())
@@ -41,9 +45,13 @@ function npc_dota_hero_disruptor_spell3:OnChannelFinish( bInterrupted )
 		ApplyDamage(damage_table)
 		self:GetCaster():FadeGesture(ACT_DOTA_TELEPORT)	
 	else
-		self.target:AddNewModifier(self:GetCaster(), self, "modifier_disruptor_skill_3_buff", {duration = GameRules:GetGameTime() - self.startTime})
+		if self:GetCaster():HasModifier("modifier_disruptor_skill_3_debuff") then self:GetCaster():RemoveModifierByName("modifier_disruptor_skill_3_debuff") end
+		self.target:AddNewModifier(self:GetCaster(), self, "modifier_disruptor_skill_3_buff", {duration = self.duration})
 		self:GetCaster():FadeGesture(ACT_DOTA_TELEPORT)	
+		self:GetCaster():EmitSound("Hero_Disruptor.Glimpse.End")	
 	end
+	ParticleManager:DestroyParticle(self.mainParticle, false)
+	ParticleManager:ReleaseParticleIndex(self.mainParticle)	
 end
 
 ---------------------------------------------------------------------
@@ -63,10 +71,14 @@ function modifier_disruptor_skill_3_buff:IsPurgable()
 end
 
 function modifier_disruptor_skill_3_buff:OnCreated( kv )
+	self.particle = ParticleManager:CreateParticle("particles/disruptor/over1.vpcf", PATTACH_OVERHEAD_FOLLOW, self:GetCaster())
+	ParticleManager:SetParticleControlEnt( self.particle, PATTACH_OVERHEAD_FOLLOW, self:GetCaster(), PATTACH_OVERHEAD_FOLLOW, "follow_overhead", self:GetCaster():GetAbsOrigin(), true )
 	self.bonus_damage = self:GetAbility():GetSpecialValueFor( "bonus_damage" )
-	
-	local particle = ParticleManager:CreateParticle("particles/units/heroes/hero_keeper_of_the_light/keeper_mana_leak.vpcf", PATTACH_ABSORIGIN_FOLLOW, self:GetParent())
-	ParticleManager:ReleaseParticleIndex(particle)
+end
+
+function modifier_disruptor_skill_3_buff:OnDestroy()
+	ParticleManager:DestroyParticle(self.particle, false)
+	ParticleManager:ReleaseParticleIndex(self.particle)
 end
 
 function modifier_disruptor_skill_3_buff:DeclareFunctions()
@@ -97,7 +109,14 @@ function modifier_disruptor_skill_3_debuff:IsPurgable()
 end
 
 function modifier_disruptor_skill_3_debuff:OnCreated( kv )
+	self.particle = ParticleManager:CreateParticle("particles/econ/events/diretide_2020/high_five/high_five_lvl1_overhead_soap_bubbles.vpcf", PATTACH_OVERHEAD_FOLLOW, self:GetCaster())
+	ParticleManager:SetParticleControlEnt( self.particle, PATTACH_OVERHEAD_FOLLOW, self:GetCaster(), PATTACH_OVERHEAD_FOLLOW, "follow_overhead", self:GetCaster():GetAbsOrigin(), true )
 	self.bonus_damage = self:GetAbility():GetSpecialValueFor( "bonus_damage" )
+end
+
+function modifier_disruptor_skill_3_debuff:OnDestroy()
+	ParticleManager:DestroyParticle(self.particle, false)
+	ParticleManager:ReleaseParticleIndex(self.particle)
 end
 
 function modifier_disruptor_skill_3_debuff:DeclareFunctions()

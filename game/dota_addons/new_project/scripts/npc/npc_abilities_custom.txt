@@ -124,6 +124,7 @@
 #base "../vscripts/abilities/dust/dust_2/abilities_dust_2.txt"
 
 #base "../vscripts/abilities/dark/dark_1/abilities_dark_1.txt"
+#base "../vscripts/abilities/dark/dark_2/abilities_dark_2.txt"
 
 
 

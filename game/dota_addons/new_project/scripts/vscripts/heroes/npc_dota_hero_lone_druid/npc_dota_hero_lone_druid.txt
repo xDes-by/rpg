@@ -1,6 +1,6 @@
 "DOTAAbilities"
 {
-    "npc_dota_hero_lone_druid_spell1"
+"npc_dota_hero_lone_druid_spell1"
     {
         "BaseClass"                     "ability_lua"
         "ScriptFile"                    "heroes/npc_dota_hero_lone_druid/npc_dota_hero_lone_druid_spell1"
@@ -10,16 +10,19 @@
         "AbilityUnitTargetTeam"         "DOTA_UNIT_TARGET_TEAM_ENEMY"
         "AbilityUnitDamageType"         "DAMAGE_TYPE_MAGICAL"
 		"AbilityTextureName" 			"ability_capture_lua"	
-        "AbilityCooldown"               "15 13 10 8"
+        "AbilityCooldown"               "15 13 11 9"
         "MaxLevel"                      "4"
+		"AbilityManaCost"				"60"
+		"AbilityCastRange"				"250"
         "AbilityValues"
         {
-            "damage" "100"
+            "damage" "80 120 160 200"
             "duration" "2"
-            "radius" "200"
+            "radius" "250"
         } 
     }
-    "npc_dota_hero_lone_druid_spell2"
+   
+"npc_dota_hero_lone_druid_spell2"
     {
         "BaseClass"                     "ability_lua"
         "ScriptFile"                    "heroes/npc_dota_hero_lone_druid/npc_dota_hero_lone_druid_spell2"
@@ -43,26 +46,24 @@
             "radius" "200"
         } 
     }
-	"npc_dota_hero_lone_druid_spell3"
+
+"npc_dota_hero_lone_druid_spell3"
 	{
 		"BaseClass"						"ability_lua"
 		"ScriptFile"					"heroes/npc_dota_hero_lone_druid/npc_dota_hero_lone_druid_spell3"
 		"AbilityTextureName"			""
-
 		"MaxLevel"						"4"
-		
 		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
-
-		"AbilityCooldown"				"0.6"
-
-
+		"AbilityCooldown"				"2.2 1.6 1.0 0.4"
 		"AbilityValues"
 		{
-			"trigger_chance"			"25"	
+			"trigger_chance"			"10 15 20 25"
+			
 		}
 	}
+	
 	"npc_dota_hero_lone_druid_spell6"
 	{
 		"BaseClass"                     "ability_lua"
