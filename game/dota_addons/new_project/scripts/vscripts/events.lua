@@ -10,7 +10,7 @@ function Events:Init()
 	self.round_process = false
 end
 
-zones = {"forest", "dust", "dark"}-- "mines", "dark", "jungle", "hell", "snow"}
+zones = {"jungle", "forest", "dust", "dark"}-- "mines", "dark", "jungle", "hell", "snow"}
 
 function Events:GameEventsFilter(data) -- фильтр для выбора карты
     local target = EntIndexToHScript(data.entindex_target)
@@ -89,7 +89,7 @@ function Events:spawn_boss(map_name) -- спавн босса на карте!
 end
 
 function Events:RandomUnlockZone(map_name)
-	local zone = RandomInt(1,1)	--выбор комнаны на карте!
+	local zone = RandomInt(_G.maps,_G.maps)	--выбор комнаны на карте!
 	if map_name == "forest" then
 		if zone == 1 then
 			forest_1:Init()

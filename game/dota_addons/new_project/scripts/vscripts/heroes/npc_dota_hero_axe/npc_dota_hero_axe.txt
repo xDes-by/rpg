@@ -1,13 +1,13 @@
 "DOTAAbilities"
 {
-	"npc_dota_hero_axe_spell1"
+
+"npc_dota_hero_axe_spell1"
 	{
 		"BaseClass"						"ability_lua"
 		"ScriptFile"					"heroes/npc_dota_hero_axe/npc_dota_hero_axe_spell1"
 		"AbilityTextureName"			""
 		"FightRecapLevel"				"1"
 		"MaxLevel"						"4"
-
 		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
@@ -18,7 +18,8 @@
 			"radius"					"450"
 		}
 	}
-	"npc_dota_hero_axe_spell2"
+	
+"npc_dota_hero_axe_spell2"
 	{
 		"BaseClass"						"ability_lua"
 		"ScriptFile"					"heroes/npc_dota_hero_axe/npc_dota_hero_axe_spell2"
@@ -31,19 +32,19 @@
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
 		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityCastRange"				"450"
 
-		"AbilityCastRange"				"250"
-
-		"AbilityCooldown"				"38 30 22 16"
-		"AbilityManaCost"				"120 110 100 90"
+		"AbilityCooldown"				"18 16 14 12"
+		"AbilityManaCost"				"80 100 120 140"
 
 		"AbilityValues"
 		{
-			"duration"				"1.0 1.2 1.4 1.6"
-			"radius"				"450"
+			"duration"					"1.0 1.2 1.4 1.6"
+			"radius"					"450"
 		}
 	}
-	"npc_dota_hero_axe_spell3"
+	
+"npc_dota_hero_axe_spell3"
 	{
 		"BaseClass"						"ability_lua"
 		"ScriptFile"					"heroes/npc_dota_hero_axe/npc_dota_hero_axe_spell3"
@@ -55,9 +56,7 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
-
 		"AbilityCastRange"				"275"
-
 		"AbilityCooldown"				"1.0 0.8 0.6 0.4"
 
 		"AbilityValues"
@@ -69,7 +68,8 @@
 			"max"						"10"
 		}
 	}
-	"npc_dota_hero_axe_spell6"
+	
+"npc_dota_hero_axe_spell6"
 	{
 		"BaseClass"						"ability_lua"
 		"ScriptFile"					"heroes/npc_dota_hero_axe/npc_dota_hero_axe_spell6"
@@ -85,8 +85,8 @@
 		
 		"AbilityValues"
 		{
-			"armor"						"10 15 20"
-			"str"						"20 30 40"
+			"armor"						"15 20 25"
+			"str"						"30 40 50"
 		}
 	}
 }

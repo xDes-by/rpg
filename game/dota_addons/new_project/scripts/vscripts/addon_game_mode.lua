@@ -180,7 +180,7 @@ function AddonGamemode:InitGameMode()
 	
 	--GameMode:SetHudCombatEventsDisabled(true)
 	--GameMode:SetFogOfWarDisabled(true)
-	GameRules:GetGameModeEntity():SetUnseenFogOfWarEnabled( false )  --true
+	GameRules:GetGameModeEntity():SetUnseenFogOfWarEnabled( true )  --true
     GameMode:SetCustomBackpackSwapCooldown(0)
     GameMode:SetCustomBuybackCooldownEnabled(false)
 	GameMode:SetLoseGoldOnDeath(false) 
@@ -215,18 +215,19 @@ end
 function AddonGamemode:OnChat(t)
     text = t.text
     if text == '1' then
-		for i =1, 5 do
-			local point = Entities:FindByName( nil, "fire_"..i):GetAbsOrigin()
-			local trees = GridNav:GetAllTreesAroundPoint(point, 2500, false)
-			for _,t in pairs(trees) do
-				local effect_cast = ParticleManager:CreateParticle("particles/flame.vpcf", PATTACH_WORLDORIGIN, nil)
-				cps = {0, 1, 2, 3, 4}
-				point = t:GetAbsOrigin()
-				for i = 1, #cps do
-					ParticleManager:SetParticleControl(effect_cast, cps[i], point)
-				end
-			end
-		end
+		_G.maps = 1
+		-- for i =1, 5 do
+			-- local point = Entities:FindByName( nil, "fire_"..i):GetAbsOrigin()
+			-- local trees = GridNav:GetAllTreesAroundPoint(point, 2500, false)
+			-- for _,t in pairs(trees) do
+				-- local effect_cast = ParticleManager:CreateParticle("particles/flame.vpcf", PATTACH_WORLDORIGIN, nil)
+				-- cps = {0, 1, 2, 3, 4}
+				-- point = t:GetAbsOrigin()
+				-- for i = 1, #cps do
+					-- ParticleManager:SetParticleControl(effect_cast, cps[i], point)
+				-- end
+			-- end
+		-- end
     end
 end
 
@@ -284,6 +285,7 @@ function AddonGamemode:LinkGameModifiers()
 	LinkLuaModifier( "modifier_hero_class_mage", "modifiers/modifier_hero_class_mage", LUA_MODIFIER_MOTION_BOTH )
 	LinkLuaModifier( "modifier_hero_class_healer", "modifiers/modifier_hero_class_healer", LUA_MODIFIER_MOTION_BOTH )
 	LinkLuaModifier( "modifier_blind", "modifiers/modifier_blind", LUA_MODIFIER_MOTION_BOTH )
+	LinkLuaModifier( "modifier_jungle_dragon", "modifiers/modifier_jungle_dragon", LUA_MODIFIER_MOTION_BOTH )
 
 	--for _,TalentName in ipairs(self.AllTalentsName) do
 	--	LinkLuaModifier( TalentName, "modifiers/talents/" .. TalentName, LUA_MODIFIER_MOTION_NONE )

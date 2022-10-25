@@ -254,3 +254,6 @@
 
 #base "../npc/zone_units/dark1.txt"
 #base "../npc/zone_units/dark2.txt"
+
+#base "../npc/zone_units/jungle1.txt"
+#base "../npc/zone_units/jungle2.txt"

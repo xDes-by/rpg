@@ -34,23 +34,23 @@ function modifier_npc_dota_hero_axe_spell1:OnTakeDamage(keys)
 	if keys.unit == self:GetParent() then
 		self:SetStackCount(self:GetStackCount() + keys.damage)
 		if self:GetStackCount() >= self.damage then
-		self.damageTable = {
-			attacker = self:GetParent(),
-			damage = self:GetParent():GetAverageTrueAttackDamage(self:GetParent()),
-			damage_type = DAMAGE_TYPE_PHYSICAL,
-			ability = self:GetAbility(),
-			damage_flags = DOTA_DAMAGE_FLAG_NO_SPELL_AMPLIFICATION,
-		}
+			self.damageTable = {
+				attacker = self:GetParent(),
+				damage = self:GetParent():GetAverageTrueAttackDamage(self:GetParent()),
+				damage_type = DAMAGE_TYPE_PHYSICAL,
+				ability = self:GetAbility(),
+				damage_flags = DOTA_DAMAGE_FLAG_NO_SPELL_AMPLIFICATION,
+			}
 
-		local enemies = FindUnitsInRadius( self:GetParent():GetTeamNumber(), self:GetParent():GetOrigin(), nil, self.radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, 0, false)
-		for _,enemy in pairs(enemies) do
-			enemy:AddNewModifier(self:GetParent(), self:GetAbility(), "modifier_npc_dota_hero_axe_spell1_buff",{ duration = self.duration })
-			self.damageTable.victim = enemy
-			ApplyDamage( self.damageTable )
-		end
+			local enemies = FindUnitsInRadius( self:GetParent():GetTeamNumber(), self:GetParent():GetOrigin(), nil, self.radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, 0, false)
 			if #enemies>0 then
 				local sound_cast = "Hero_Axe.Berserkers_Call"
 				EmitSoundOn( sound_cast, self:GetCaster() )
+				for _,enemy in pairs(enemies) do
+					enemy:AddNewModifier(self:GetParent(), self:GetAbility(), "modifier_npc_dota_hero_axe_spell1_buff",{ duration = self.duration })
+					self.damageTable.victim = enemy
+					ApplyDamage( self.damageTable )
+				end
 			end
 			self:PlayEffects()
 			self:SetStackCount(0)
@@ -86,8 +86,8 @@ end
 
 function modifier_npc_dota_hero_axe_spell1_buff:OnCreated( kv )
 	if IsServer() then
-		self:GetParent():SetForceAttackTarget( self:GetCaster() ) -- for creeps
-		self:GetParent():MoveToTargetToAttack( self:GetCaster() ) -- for heroes
+		self:GetParent():SetForceAttackTarget( self:GetCaster() )
+		self:GetParent():MoveToTargetToAttack( self:GetCaster() )
 	end
 end
 
