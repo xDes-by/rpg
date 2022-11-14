@@ -1,7 +1,7 @@
 modifier_hero_class_mage = class({})
 
 function modifier_hero_class_mage:IsHidden()
-    return true
+    return false
 end
 
 function modifier_hero_class_mage:IsPurgable()

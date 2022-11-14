@@ -6,7 +6,7 @@ function dust_2:Init()
 	self.listen = ListenToGameEvent("entity_killed", Dynamic_Wrap( self, 'OnEntityKilled' ), self )
 	dust_2:spawn_cocons()
 	dust_2:start_quest()
-	self.count = 55
+--	self.count = 55
 end
 
 function dust_2:start_quest()
@@ -20,14 +20,22 @@ end
 function dust_2:OnEntityKilled(keys)
 	local KilledUnit = EntIndexToHScript( keys.entindex_killed )
 	if KilledUnit:GetTeamNumber() == DOTA_TEAM_BADGUYS then
-		if self.count > 0 then
+	--	if self.count > 0 then
 			if KilledUnit:GetUnitName() == "npc_dust_creep_egg" then
 				Quest:UpdateCounter('dust_2', 1)
 				self.count = self.count - 1
 			end
-		else
-			StopListeningToGameEvent(self.listen_kill)
+	--	else
+	
+		if KilledUnit:GetTeamNumber() == DOTA_TEAM_BADGUYS then
+			if KilledUnit:GetUnitName() == "npc_dust_2_boss" then
+				Quest:UpdateCounter('dust_2', 2)
+				StopListeningToGameEvent(self.listen_kill)
+			end
 		end
+		
+		--	StopListeningToGameEvent(self.listen_kill)
+	--	end
 	end		
 end 
 

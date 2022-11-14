@@ -35,6 +35,7 @@
 	
 "npc_dark_2_creep_mini_1"
 	{
+		"vscripts"					"ai/ai_roamer.lua"
 		"Model"						"models/items/undying/idol_of_ruination/ruin_wight_minion_torso.vmdl" //"models/items/undying/idol_of_ruination/ruin_wight_minion.vmdl"
 		"BaseClass"					"npc_dota_creature"
 		"SoundSet"					"n_creep_Melee"
@@ -75,6 +76,7 @@
 	
 "npc_dark_2_creep_mini_2"
 	{
+		"vscripts"					"ai/ai_roamer.lua"
 		"Model"						"models/items/undying/idol_of_ruination/ruin_wight_minion_torso.vmdl" //"models/items/undying/idol_of_ruination/ruin_wight_minion.vmdl"
 		"BaseClass"					"npc_dota_creature"
 		"SoundSet"					"n_creep_Melee"
@@ -115,6 +117,7 @@
 		
 "npc_dark_2_creep_big_1"
 	{
+		"vscripts"					"ai/ai_roamer.lua"
 		"Model"						"models/items/wraith_king/arcana/wk_arcana_skeleton.vmdl"
 		"BaseClass"					"npc_dota_creature"
 		"SoundSet"					"n_creep_Melee"
@@ -157,17 +160,17 @@
 	{
 		"vscripts"					"ai/npc_forest_1_boss"
 		"BaseClass"					"npc_dota_creature"
-		"Model"						"models/items/furion/treant/shroomling_treant/shroomling_treant.vmdl"
-		"SoundSet"					"Hero_Treant"
-		"ModelScale"				"2.5"
+		"Model"						"models/items/undying/flesh_golem/incurable_pestilence_golem/incurable_pestilence_golem.vmdl"
+		"SoundSet"					"Hero_Undying"
+		"ModelScale"				"1.5"
 
-		"Ability1"					"ability_npc_boss_forest_1_spell_1"
-		"Ability2"					"ability_npc_boss_forest_1_spell_2"
-		"Ability3"					"ability_npc_boss_forest_1_spell_3"
-		"Ability4"					"ability_npc_boss_forest_1_spell_4"
-		"Ability5"					""
-		"Ability6"					""
-
+		"Ability1"					"ability_npc_boss_gaveyard1_spell1"
+		"Ability2"					"ability_npc_boss_gaveyard1_spell2"
+		"Ability3"					"ability_npc_boss_gaveyard1_spell3"
+		"Ability4"					"ability_npc_boss_gaveyard1_spell4"
+		"Ability5"					"ability_npc_boss_gaveyard1_spell5"
+		"Ability6"					"ability_npc_boss_gaveyard1_spell6"
+		
 		"ArmorPhysical"				"0"
 		"MagicalResistance"			"0"
 
@@ -194,14 +197,5 @@
 
 		"VisionDaytimeRange"		"800"
 		"VisionNighttimeRange"		"800"
-		"Creature"
-		{	
-			"AttachWearables"
-			{
-			//"Wearable1" {"ItemDef" "8902"}
-			//"Wearable2" {"ItemDef" "8901"}
-			"Wearable4" {"ItemDef" "8899"}
-			}
-		}
 	}	
 }

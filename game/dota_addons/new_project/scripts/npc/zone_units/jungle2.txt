@@ -7,7 +7,7 @@
 		"BaseClass"					"npc_dota_creature"
 		"ModelScale"				"1"
 
-		"Ability1"					"totem"		--	
+		"Ability1"					"totem"	
 		
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"0"			
@@ -35,14 +35,14 @@
 	
 "npc_jungle_2_creep_mini_1"
 	{
-		"Model"						"models/items/undying/idol_of_ruination/ruin_wight_minion_torso.vmdl" //"models/items/undying/idol_of_ruination/ruin_wight_minion.vmdl"
+		"Model"						"models/items/broodmother/spiderling/ti9_cache_brood_mother_of_thousands_spiderling/ti9_cache_brood_mother_of_thousands_spiderling.vmdl"
 		"BaseClass"					"npc_dota_creature"
 		"SoundSet"					"n_creep_Melee"
 		"Level"						"1"
 		"ModelScale" 				"1"
 		"CanRespawn"				"1"
 			
-		"Ability1"					"zombie_slow"					
+		"Ability1"					""					
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
 		
@@ -72,31 +72,33 @@
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 	}
-	
-"npc_jungle_2_creep_mini_2"
-	{
-		"Model"						"models/items/undying/idol_of_ruination/ruin_wight_minion_torso.vmdl" //"models/items/undying/idol_of_ruination/ruin_wight_minion.vmdl"
-		"BaseClass"					"npc_dota_creature"
-		"SoundSet"					"n_creep_Melee"
-		"Level"						"1"
-		"ModelScale" 				"1"
-		"CanRespawn"				"1"
-			
-		"Ability1"					"zombie_slow"					
-
-		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
 		
-		"ArmorPhysical"				"1"			
+"npc_jungle_2_creep_big_1"
+	{
+		"Model"						"models/creeps/lane_creeps/creep_2021_dire/creep_2021_dire_siege.vmdl"
+		"BaseClass"					"npc_dota_creature"
+		"SoundSet"					"Creep_Good_Engine"				
+		"Level"						"1"
+		"ModelScale" 				"1.40"
+		"CanRespawn"				"1"
+		
+		"Ability1"					""					
+
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+		
+		"ArmorPhysical"				"2"			
 		"MagicalResistance"			"5"			
 		
-		"AttackDamageMin"			"21"		
-		"AttackDamageMax"			"24"		
-		"AttackRate"				"1.1"		
+		"AttackDamageMin"			"55"		
+		"AttackDamageMax"			"60"		
+		"AttackRate"				"1"		
 		"AttackAnimationPoint"		"0.2"		
 		"AttackAcquisitionRange"	"600"		
-		"AttackRange"				"200"		
+		"AttackRange"				"690"
+		"ProjectileModel"			"particles/base_attacks/ranged_siege_good.vpcf"
+		"ProjectileSpeed"			"1100"
 		
-		"StatusHealth" 				"300" 
+		"StatusHealth" 				"1050" 
 
 		"RingRadius"				"60"
 		"HealthBarOffset"			"190"	
@@ -112,17 +114,17 @@
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 	}	
-		
-"npc_jungle_2_creep_big_1"
+	
+"npc_jungle_2_creep_big_2"
 	{
-		"Model"						"models/items/wraith_king/arcana/wk_arcana_skeleton.vmdl"
+		"Model"						"models/creeps/neutral_creeps/n_creep_thunder_lizard/n_creep_thunder_lizard_big.vmdl"
 		"BaseClass"					"npc_dota_creature"
 		"SoundSet"					"n_creep_Melee"
 		"Level"						"1"
 		"ModelScale" 				"1.40"
 		"CanRespawn"				"1"
 		
-		"Ability1"					"neutral_spell_immunity"					
+		"Ability1"					""					
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
 		
@@ -151,20 +153,22 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-	}	
+	}		
 	
 "npc_jungle_2_boss"
 	{
 		"vscripts"					"ai/npc_forest_1_boss"
 		"BaseClass"					"npc_dota_creature"
-		"Model"						"models/items/furion/treant/shroomling_treant/shroomling_treant.vmdl"
-		"SoundSet"					"Hero_Treant"
+		"Model"						"models/items/beastmaster/boar/ti9_cache_beastmaster_king_of_beasts_boar/ti9_cache_beastmaster_king_of_beasts_boar.vmdl"
+		"SoundSet"					"Beastmaster_Boar"
 		"ModelScale"				"2.5"
 
-		"Ability1"					"ability_npc_boss_forest_1_spell_1"
-		"Ability2"					"ability_npc_boss_forest_1_spell_2"
-		"Ability3"					"ability_npc_boss_forest_1_spell_3"
-		"Ability4"					"ability_npc_boss_forest_1_spell_4"
+		"Ability1"					"ablility_npc_desert2_boss_spell1"			// Ability 1.
+		"Ability2"					"ablility_npc_desert2_boss_spell2"			// Ability 2.
+		"Ability3"					"ablility_npc_desert2_boss_spell3"			// Ability 3.
+		"Ability4"					"ablility_npc_desert2_boss_spell4"			// Ability 4.
+		"Ability5"					"ablility_npc_desert2_boss_spell5"			// Ability 5.
+		"Ability6"					"ablility_npc_desert2_boss_spell6"			// Ability 6 - Extra.
 		"Ability5"					""
 		"Ability6"					""
 
@@ -194,14 +198,5 @@
 
 		"VisionDaytimeRange"		"800"
 		"VisionNighttimeRange"		"800"
-		"Creature"
-		{	
-			"AttachWearables"
-			{
-			//"Wearable1" {"ItemDef" "8902"}
-			//"Wearable2" {"ItemDef" "8901"}
-			"Wearable4" {"ItemDef" "8899"}
-			}
-		}
-	}	
+	}
 }

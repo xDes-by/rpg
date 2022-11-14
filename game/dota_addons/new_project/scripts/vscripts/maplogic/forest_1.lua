@@ -70,11 +70,13 @@ function forest_1:spawn_treants(position)
 	for i = 1, 4 do
 		local unit = CreateUnitByName("npc_forest_1_treant_small", position + RandomVector( RandomInt( 100, 500 )), true, nil, nil, DOTA_TEAM_BADGUYS)
 		Rules:unit_settings(unit, "creep", "mini", 30, 104, 100)
+		Rules:SetAbilityLevel(unit)
 		GridNav:DestroyTreesAroundPoint( unit:GetOrigin(), 200, true )
 	end
 	
 	local unit = CreateUnitByName("npc_forest_1_treant_big", position + RandomVector( RandomInt( 50, 400 )), true, nil, nil, DOTA_TEAM_BADGUYS)
 	Rules:unit_settings(unit, "creep", "big", 30, 104, 100)
+	Rules:SetAbilityLevel(unit)
 	GridNav:DestroyTreesAroundPoint( unit:GetOrigin(), 200, true )
 end
 
@@ -89,9 +91,11 @@ function forest_1:spawn_creeps()
 				if i == 1 then 
 					local unit = CreateUnitByName("npc_forest_creep_big_1", point + RandomVector( RandomInt( 50, 350 )), true, nil, nil, DOTA_TEAM_BADGUYS)
 					Rules:unit_settings(unit, "creep", "big", 30, 104, 100)
+					Rules:SetAbilityLevel(unit)
 				else	
 					local unit = CreateUnitByName("npc_forest_creep_mini_1", point + RandomVector( RandomInt( 50, 350 )), true, nil, nil, DOTA_TEAM_BADGUYS)
 					Rules:unit_settings(unit, "creep", "mini", 30, 104, 100)
+					Rules:SetAbilityLevel(unit)
 				end	
 			end
 		else
@@ -99,9 +103,11 @@ function forest_1:spawn_creeps()
 				if i == 1 then 
 					local unit = CreateUnitByName("npc_forest_creep_big_2", point + RandomVector( RandomInt( 50, 350 )), true, nil, nil, DOTA_TEAM_BADGUYS)
 					Rules:unit_settings(unit, "creep", "big", 30, 104, 100)
+					Rules:SetAbilityLevel(unit)
 				else	
 					local unit = CreateUnitByName("npc_forest_creep_mini_2", point + RandomVector( RandomInt( 50, 350 )), true, nil, nil, DOTA_TEAM_BADGUYS)
 					Rules:unit_settings(unit, "creep", "mini", 30, 104, 100)
+					Rules:SetAbilityLevel(unit)
 				end	
 			end
 		end	

@@ -1,7 +1,7 @@
 modifier_hero_class_damage = class({})
 
 function modifier_hero_class_damage:IsHidden()
-    return true
+    return false
 end
 
 function modifier_hero_class_damage:IsPurgable()

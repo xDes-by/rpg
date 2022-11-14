@@ -49,6 +49,7 @@ function modifier_spider_egg_sack:Burst()
 		for i = 0, self.spiders do
 			unit = CreateUnitByName( "npc_dust_creep_mini_1", self:GetParent():GetOrigin() + RandomVector( RandomInt( 50, 350 )), true, nil, nil, DOTA_TEAM_BADGUYS )
 			Rules:unit_settings(unit, "creep", "mini", 1, 220, 100)
+			Rules:SetAbilityLevel(unit)
 		end
 
 		local nFXIndex = ParticleManager:CreateParticle( "particles/units/heroes/hero_venomancer/venomancer_poison_nova.vpcf", PATTACH_CUSTOMORIGIN, nil )

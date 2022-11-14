@@ -16,13 +16,13 @@
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
 		"AbilityManaCost"				"80 100 120 140"
-		"AbilityCooldown"				"16 14 12 10"
+		"AbilityCooldown"				"14 12 10 8"
 		"AbilityCastRange"				"500"
 
 		"AbilityValues"
 		{
 			"damage"					"80 120 160 200"
-			"damage_ring"				"40 60 80 100"
+			"damage_ring"				"40 80 120 160"
 			"radius"					"400"
 			"duration"					"1 2 3 4"
 			"slow"						"15 20 25 30"

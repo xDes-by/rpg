@@ -257,3 +257,9 @@
 
 #base "../npc/zone_units/jungle1.txt"
 #base "../npc/zone_units/jungle2.txt"
+
+#base "../npc/zone_units/snow1.txt"
+#base "../npc/zone_units/snow2.txt"
+
+#base "../npc/zone_units/mines1.txt"
+#base "../npc/zone_units/mines2.txt"

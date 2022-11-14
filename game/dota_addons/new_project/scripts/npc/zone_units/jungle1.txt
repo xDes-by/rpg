@@ -5,7 +5,7 @@
 	{
 		"Model"						"models/heroes/dragon_knight_persona/dk_persona_dragon.vmdl"											
 		"BaseClass"					"npc_dota_creature"
-		"SoundSet"					"Hero_DragonKnight"
+		"SoundSet"					"Hero_Lina"
 		"Level"						"1"
 		"ModelScale" 				"1"
 		
@@ -43,16 +43,16 @@
 
 "npc_jungle_creep_big_1"
 	{
-		"Model"						"models/heroes/lone_druid/spirit_bear.vmdl"											
+		"Model"						"models/creeps/lane_creeps/creep_radiant_ranged/radiant_ranged.vmdl"											
 		"BaseClass"					"npc_dota_creature"
 		"SoundSet"					"n_creep_Melee"
 		"Level"						"1"
 		"ModelScale" 				"0.70"
 		"CanRespawn"				"1"
 		
-		"Ability1"					""					
+		"Ability1"					"zombie_slow"					
 
-		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
 		
 		"ArmorPhysical"				"1"			
 		"MagicalResistance"			"5"			
@@ -62,9 +62,54 @@
 		"AttackRate"				"1.1"		
 		"AttackAnimationPoint"		"0.2"		
 		"AttackAcquisitionRange"	"600"		
-		"AttackRange"				"200"		
+		"AttackRange"				"500"
+		"ProjectileModel"			"particles/base_attacks/ranged_goodguy.vpcf"
+		"ProjectileSpeed"			"900"
 		
 		"StatusHealth" 				"300" 
+
+		"RingRadius"				"60"
+		"HealthBarOffset"			"190"	
+
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"300"		
+
+		"VisionDaytimeRange"		"800"		
+		"VisionNighttimeRange"		"800"		
+
+		"TeamName"					"DOTA_TEAM_NEUTRALS"						
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+	}
+
+"npc_jungle_creep_big_2"
+	{
+		"vscripts"					"ai/ai_all_creeps"
+		"Model"						"models/creeps/lane_creeps/creep_2021_dire/creep_2021_dire_siege.vmdl"
+		"BaseClass"					"npc_dota_creature"
+		"SoundSet"					"Creep_Good_Engine"				
+		"Level"						"1"
+		"ModelScale" 				"1.40"
+		"CanRespawn"				"1"
+		
+		"Ability1"					"catapult"					
+
+		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
+		
+		"ArmorPhysical"				"2"			
+		"MagicalResistance"			"5"			
+		
+		"AttackDamageMin"			"55"		
+		"AttackDamageMax"			"60"		
+		"AttackRate"				"1"		
+		"AttackAnimationPoint"		"0.2"		
+		"AttackAcquisitionRange"	"800"		
+		"AttackRange"				"800"
+		"ProjectileModel"			"particles/base_attacks/ranged_siege_good.vpcf"
+		"ProjectileSpeed"			"1100"
+		
+		"StatusHealth" 				"1050" 
 
 		"RingRadius"				"60"
 		"HealthBarOffset"			"190"	
@@ -83,14 +128,14 @@
 	
 "npc_jungle_creep_mini_1"
 	{
-		"Model"						"models/items/lone_druid/bear/spirit_of_the_atniw/spirit_of_the_atniw.vmdl"
+		"Model"						"models/creeps/lane_creeps/creep_radiant_melee/radiant_melee.vmdl"
 		"BaseClass"					"npc_dota_creature"
 		"SoundSet"					"n_creep_Melee"
 		"Level"						"1"
 		"ModelScale" 				"1.20"
 		"CanRespawn"				"1"
 		
-		"Ability1"					"lone_druid_spirit_bear_entangle"				
+		"Ability1"					"bulwark"				
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
 		
@@ -125,16 +170,16 @@
 	{
 		"vscripts"					"ai/npc_jungle1_1_boss"
 		"BaseClass"					"npc_dota_creature"
-		"Model"						"models/items/furion/treant/shroomling_treant/shroomling_treant.vmdl"
-		"SoundSet"					"Hero_Treant"
-		"ModelScale"				"2.5"
+		"Model"						"models/heroes/tidehunter/tidehunter.vmdl"
+		"SoundSet"					"Hero_Tidehunter"
+		"ModelScale"				"1.2"
 
 		"Ability1"					"ability_npc_boss_jungle1_1_spell_1"
 		"Ability2"					"ability_npc_boss_jungle1_1_spell_2"
 		"Ability3"					"ability_npc_boss_jungle1_1_spell_3"
 		"Ability4"					"ability_npc_boss_jungle1_1_spell_4"
-		"Ability5"					""
-		"Ability6"					""
+		"Ability5"					"ability_npc_boss_jungle1_1_spell_5"
+		"Ability6"					"ability_npc_boss_jungle1_1_spell_6"
 
 		"ArmorPhysical"				"0"
 		"MagicalResistance"			"0"
@@ -162,14 +207,47 @@
 
 		"VisionDaytimeRange"		"800"
 		"VisionNighttimeRange"		"800"
-		"Creature"
-		{	
-			"AttachWearables"
-			{
-			//"Wearable1" {"ItemDef" "8902"}
-			//"Wearable2" {"ItemDef" "8901"}
-			"Wearable4" {"ItemDef" "8899"}
-			}
-		}
 	}
+	
+"npc_jungle_1_baracks"
+	{
+		"BaseClass"					"npc_dota_building"
+		"Model"						"models/props_structures/radiant_ranged_barracks001.vmdl"
+		"SoundSet"					"Creep_Good_Melee"
+		"MinimapIcon"				"minimap_racks90"
+		"HealthBarOffset"			"250"
+		
+		"Ability1"					"baracks_hp"
+
+		"ArmorPhysical"				"600"
+		"MagicalResistance"			"0"
+
+		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
+		"AttackDamageMin"			"0"	
+		"AttackDamageMax"			"0"	
+		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
+		"AttackRate"				"0"	
+		"AttackAnimationPoint"		"0"		
+		"AttackAcquisitionRange"	"0"			
+		"AttackRange"				"0"			
+
+		"BoundsHullName"			"DOTA_HULL_SIZE_BARRACKS"
+		"RingRadius"				"220"
+
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
+		"MovementSpeed"				"0"
+		"MovementTurnRate"			"0"
+
+		"StatusHealth"				"5"		
+
+		"TeamName"					"DOTA_TEAM_BADGUYS"
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_SIEGE"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BARRACKS"
+		
+		"VisionDaytimeRange"		"900"
+		"VisionNighttimeRange"		"600"
+	}	
+	
+	
 }

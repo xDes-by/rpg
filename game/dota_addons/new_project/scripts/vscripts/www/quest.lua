@@ -61,6 +61,7 @@ function Quest:NextTask(map_name)
     CustomNetTables:SetTableValue( "info", "quest", Quest.net)
 	
 	Events:MoveToZone("center_village")
+	Events.round_process = false
 end
 
 function Quest:UpdateCounter(map_name, number)

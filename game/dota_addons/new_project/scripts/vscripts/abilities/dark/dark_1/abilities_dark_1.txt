@@ -14,12 +14,92 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"						"ability_lua"
 		"ScriptFile"					"abilities/dark/dark_1/zombie_slow"
-		"MaxLevel"						"7"
+		"MaxLevel"						"8"
 
         "AbilityValues"
         {
-			"damage"                "10 20 30 40 50 60 70"
+			"damage"                "10 20 30 40 50 60 70 80"
 			"duration"           	"2"
         }
-	}		
+	}	
+
+//==============================================================================================
+
+"ability_npc_boss_dark_1_spell1"
+	{
+		"BaseClass"           			"ability_lua"
+		"ScriptFile"					"abilities/dark/dark_1/ability_npc_boss_dark_1_spell1"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"MaxLevel"						"8"
+		"AbilityCastAnimation"			"ACT_DOTA_UNDYING_DECAY"
+		"AbilityCastRange"				"500"
+		"AbilityCastPoint"				"0.4"
+		"AbilityCooldown"				"15 14 13 12 11 10 9 8"
+     	"AbilityValues"
+		{
+			"duration" "30"
+			"persentage" "10"
+		}  
+	}
+
+"ability_npc_boss_dark_1_spell2"
+	{
+		"BaseClass"           			"ability_lua"
+		"ScriptFile"					"abilities/dark/dark_1/ability_npc_boss_dark_1_spell2"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"MaxLevel"						"8"
+		"AbilityCastAnimation"			"ACT_DOTA_UNDYING_TOMBSTONE"
+		"AbilityCooldown"				"20"
+     	"AbilityValues"
+		{
+			"duration" "10 11 12 13 14 15 16 17"
+		}  
+	}
+
+"ability_npc_boss_dark_1_spell3"
+	{
+		"BaseClass"           			"ability_lua"
+		"ScriptFile"					"abilities/dark/dark_1/ability_npc_boss_dark_1_spell3"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"MaxLevel"						"8"
+     	"AbilityValues"
+		{
+			"persent" "0.01 0.02 0.03 0.04 0.05 0.06 0.07 0.08"
+			"duration" "2"
+		}  
+	}
+
+"ability_npc_boss_dark_1_spell4"
+	{
+		"BaseClass"           			"ability_lua"
+		"ScriptFile"					"abilities/dark/dark_1/ability_npc_boss_dark_1_spell4"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+		"MaxLevel"						"8"
+		"AbilityCastRange"				"500"
+		"AbilityCastAnimation"			"ACT_DOTA_UNDYING_SOUL_RIP"
+		"AbilityCastPoint"				"0.7"
+		"AbilityCooldown"				"15 14 13 12 11 10 9 8"
+     	"AbilityValues"
+		{
+			"damage"	"2 3 4 5 6 7 8 9"
+		}  
+	}
+
+"ability_npc_boss_dark_1_spell5"
+	{
+		"BaseClass"           			"ability_lua"
+		"ScriptFile"					"abilities/dark/dark_1/ability_npc_boss_dark_1_spell5"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"MaxLevel"						"6"
+		"AbilityCastRange"				"500"
+		"AbilityCastAnimation"			"ACT_DOTA_UNDYING_SOUL_RIP"
+		"AbilityCastPoint"				"0.7"
+		"AbilityCooldown"				"15"
+     	"AbilityValues"
+		{
+			
+		}  
+	}
 }

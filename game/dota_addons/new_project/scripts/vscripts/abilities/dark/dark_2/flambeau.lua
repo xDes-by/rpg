@@ -45,9 +45,8 @@ function modifier_flambeau:OnIntervalThink()
 			self:GetParent():SetNightTimeVisionRange(1500)
 			local particleLeader = ParticleManager:CreateParticle( "particles/dire_fx/fire_barracks.vpcf", PATTACH_OVERHEAD_FOLLOW, self:GetParent() ) 
 			ParticleManager:SetParticleControlEnt( particleLeader, PATTACH_OVERHEAD_FOLLOW, self:GetParent(), PATTACH_OVERHEAD_FOLLOW, "follow_overhead", self:GetParent():GetAbsOrigin(), true )
-			--self:GetParent():Attribute_SetIntValue( "particleID", particleLeader)
 			if _G.dark_2.count == 5 then
-				unit:RemoveModifierByName("modifier_blind")
+				dark_2:remove_blind()
 			end
 		end
 	end

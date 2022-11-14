@@ -24,7 +24,7 @@ function jungle_1:OnEntityKilled(keys)
 	
 	if KilledUnit:GetTeamNumber() == DOTA_TEAM_BADGUYS then
 		if KilledUnit:GetUnitName() == "npc_jungle_1_boss" then
-			Quest:UpdateCounter('jungle', 2)
+			Quest:UpdateCounter('jungle_1', 2)
 			StopListeningToGameEvent(self.listen_kill)
 		end
 	end	
@@ -54,13 +54,19 @@ function jungle_1:spawn_creeps()
 	if count < 39 then
 		count = count + 1
 		local point = Entities:FindByName( nil, "jungle_1_creep_spawn_"..count):GetAbsOrigin()
-			for i = 1, 4 do
+			for i = 1, 5 do
 				if i == 1 then 
 					local unit = CreateUnitByName("npc_jungle_creep_big_1", point + RandomVector( RandomInt( 50, 350 )), true, nil, nil, DOTA_TEAM_BADGUYS)
-					Rules:unit_settings(unit, "creep", "big", 39, 117, 100)
-				else	
+					Rules:unit_settings(unit, "creep", "big", 78, 117, 100)
+					Rules:SetAbilityLevel(unit)
+				elseif i == 2 then
+					local unit = CreateUnitByName("npc_jungle_creep_big_2", point + RandomVector( RandomInt( 50, 350 )), true, nil, nil, DOTA_TEAM_BADGUYS)
+					Rules:unit_settings(unit, "creep", "big", 78, 117, 100)
+					Rules:SetAbilityLevel(unit)
+				else
 					local unit = CreateUnitByName("npc_jungle_creep_mini_1", point + RandomVector( RandomInt( 50, 350 )), true, nil, nil, DOTA_TEAM_BADGUYS)
-					Rules:unit_settings(unit, "creep", "mini", 39, 117, 100)
+					Rules:unit_settings(unit, "creep", "mini", 78, 117, 100)
+					Rules:SetAbilityLevel(unit)
 				end	
 			end
 		return 0.1
@@ -71,7 +77,7 @@ function jungle_1:spawn_creeps()
 	end)
 end
 
-function trigger_activate(keys)
+function quest_complite(keys)
 	Quest:UpdateCounter('jungle_1', 1)
 	keys.activator:RemoveModifierByName("modifier_jungle_dragon")
 end

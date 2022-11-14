@@ -10,12 +10,12 @@ function Events:Init()
 	self.round_process = false
 end
 
-zones = {"jungle", "forest", "dust", "dark"}-- "mines", "dark", "jungle", "hell", "snow"}
+zones = {"mines", "jungle", "forest", "dark", "dust", "snow"} --"hell", "magnetic"}
 
 function Events:GameEventsFilter(data) -- фильтр для выбора карты
     local target = EntIndexToHScript(data.entindex_target)
 	local hero = EntIndexToHScript(data.units["0"])
-    if target == Rules.dummy and self.round_process == false then
+    if target == Rules.dummy and self.round_process == false and not hero:HasModifier("modifier_ready") then
         if data.order_type == DOTA_UNIT_ORDER_MOVE_TO_TARGET or data.order_type == DOTA_UNIT_ORDER_ATTACK_TARGET then
 			ExecuteOrderFromTable({
 				UnitIndex = hero:entindex(),
@@ -59,7 +59,7 @@ function Events:MoveToZone(map_name) -- телепорт между картам
 			end
 			unit:AddNewModifier(unit, nil, "modifier_selector", {})
 			unit:EmitSound("Portal.Loop_Appear")
-			teleport_particle = ParticleManager:CreateParticle( "particles/econ/items/tinker/boots_of_travel/teleport_start_bots.vpcf", PATTACH_ABSORIGIN_FOLLOW, unit)
+			unit.teleport_particle = ParticleManager:CreateParticle( "particles/econ/items/tinker/boots_of_travel/teleport_start_bots.vpcf", PATTACH_ABSORIGIN_FOLLOW, unit)
 			Timers:CreateTimer(3, function()
 			unit:RemoveModifierByName("modifier_ready")
 				local point = Entities:FindByName( nil, map_name.."_point"):GetAbsOrigin()
@@ -67,7 +67,7 @@ function Events:MoveToZone(map_name) -- телепорт между картам
 				unit:Stop()
 				unit:StopSound("Portal.Loop_Appear")
 				unit:RemoveModifierByName("modifier_selector")
-				ParticleManager:DestroyParticle( teleport_particle, false)
+				ParticleManager:DestroyParticle(unit.teleport_particle, false)
 				PlayerResource:SetCameraTarget(unit:GetPlayerOwnerID(), unit)
 				Timers:CreateTimer(0.1, function()
 					PlayerResource:SetCameraTarget(unit:GetPlayerOwnerID(), nil)
@@ -89,26 +89,27 @@ function Events:spawn_boss(map_name) -- спавн босса на карте!
 end
 
 function Events:RandomUnlockZone(map_name)
+print(_G.maps)
 	local zone = RandomInt(_G.maps,_G.maps)	--выбор комнаны на карте!
 	if map_name == "forest" then
 		if zone == 1 then
 			forest_1:Init()
 		else
-			forest_:Init()
+			forest_2:Init()
 		end	
 	end	
 	if map_name == "dust" then
 		if zone == 1 then
-			dust_1:Init()
-		else
 			dust_2:Init()
+		else
+			dust_1:Init()
 		end	
 	end	
 	if map_name == "mines" then
 		if zone == 1 then
-			mines_1:Init()
-		else
 			mines_2:Init()
+		else
+			mines_1:Init()
 		end	
 	end	
 	if map_name == "dark" then

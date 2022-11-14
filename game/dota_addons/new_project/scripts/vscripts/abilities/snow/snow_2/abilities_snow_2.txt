@@ -1,0 +1,33 @@
+"DOTAAbilities"
+{
+"crystal_freezing_field_lua"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"abilities/snow/snow_2/crystal_freezing_field_lua"
+		"AbilityTextureName"			"crystal_maiden_freezing_field"
+		"FightRecapLevel"				"1"
+		"MaxLevel"						"1"
+
+		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+
+		"AbilityCastPoint"				"0.3"
+		"AbilityChannelTime"			"5"
+		"AbilityDuration"				"5"
+
+		"AbilityCooldown"				"100"
+
+		"AbilityValues"
+		{
+			"radius"				"835"
+			"explosion_radius"		"300"
+			"explosion_interval"	"0.1"
+			"movespeed_slow"		"-50"
+			"attack_slow"			"-50"
+			"slow_duration"			"3.0"
+			"explosion_min_dist"	"195"
+			"explosion_max_dist"	"785"
+			"damage"				"0"
+		}
+	}
+}

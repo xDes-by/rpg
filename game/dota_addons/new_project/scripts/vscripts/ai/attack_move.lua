@@ -1,3 +1,5 @@
+creep_ability = {"ability_npc_forest_2_earthbind","ability_npc_forest_2_clap"}
+
 function Spawn( entityKeyValues )
     if not IsServer() then
         return

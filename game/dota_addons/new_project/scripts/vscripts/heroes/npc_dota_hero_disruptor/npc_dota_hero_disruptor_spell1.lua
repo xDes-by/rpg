@@ -8,7 +8,6 @@ function npc_dota_hero_disruptor_spell1:OnSpellStart()
 	self:GetCaster():EmitSound("Hero_Zuus.LightningBolt")
 	self.target = self:GetCursorTarget()
 	
-	
 	local caster = self:GetCaster()
 	
 	local particle = ParticleManager:CreateParticle("particles/units/heroes/hero_zuus/zuus_lightning_bolt.vpcf", PATTACH_WORLDORIGIN, self.target)
@@ -16,6 +15,8 @@ function npc_dota_hero_disruptor_spell1:OnSpellStart()
 	ParticleManager:SetParticleControl(particle, 0, target_point_dis_1_skill)
 	ParticleManager:SetParticleControl(particle, 1, target_point_dis_1_skill + Vector(0,0,2000))
 	ParticleManager:SetParticleControl(particle, 2, target_point_dis_1_skill)
+	
+	AddFOWViewer(caster:GetTeamNumber(), _G.target_point_dis_1_skill, 400, 2, false)
 	
 	local damage = self:GetSpecialValueFor("damage")
 	local radius = self:GetSpecialValueFor("radius")
@@ -80,7 +81,6 @@ function npc_dota_hero_disruptor_spell1:OnHit( enemy )
 	}
 	ApplyDamage(damageTable)
 
-
 	EmitSoundOn( "Ability.PlasmaFieldImpact", enemy )
 end
 
@@ -91,9 +91,7 @@ function npc_dota_hero_disruptor_spell1:PlayEffects( radius, speed, target )
 	EmitSoundOn( "Ability.PlasmaField", target )
 	return effect_cast
 end
----------------------------------------------------------
----------------------------------------------------------
----------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 modifier_disruptor_skill_1 = class({})
 

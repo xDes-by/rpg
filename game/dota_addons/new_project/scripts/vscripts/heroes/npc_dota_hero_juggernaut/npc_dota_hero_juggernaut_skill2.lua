@@ -15,10 +15,6 @@ function modifier_npc_dota_hero_juggernaut_skill2:IsHidden()
    return false
 end
 
-function modifier_npc_dota_hero_juggernaut_skill2:IsDebuff()
-   return false
-end
-
 function modifier_npc_dota_hero_juggernaut_skill2:IsPurgable()
    return false
 end
@@ -27,8 +23,8 @@ function modifier_npc_dota_hero_juggernaut_skill2:RemoveOnDeath()
    return true
 end
 
-function modifier_npc_dota_hero_juggernaut_skill2:DestroyOnExpire()
-	return true
+function modifier_npc_dota_hero_juggernaut_skill2:GetAttributes()
+	return MODIFIER_ATTRIBUTE_MULTIPLE
 end
 
 function modifier_npc_dota_hero_juggernaut_skill2:OnCreated( kv )
@@ -102,9 +98,7 @@ function FindUnitsInCone( nTeamNumber, vCenterPos, vStartPos, vEndPos, fStartRad
 end
 
 function modifier_npc_dota_hero_juggernaut_skill2:DeclareFunctions()
-	return {
-		MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE
-	}
+	return {MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE}
 end
 
 function modifier_npc_dota_hero_juggernaut_skill2:GetModifierBaseAttack_BonusDamage()

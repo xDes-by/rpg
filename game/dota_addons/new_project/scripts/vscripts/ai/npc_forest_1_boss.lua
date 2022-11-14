@@ -1,4 +1,4 @@
-boss_8_ability = {"ability_npc_boss_forest_1_spell_1","ability_npc_boss_forest_1_spell_2","ability_npc_boss_forest_1_spell_3","ability_npc_boss_forest_1_spell_4", "ability_npc_boss_forest_1_spell_5", "ability_npc_boss_forest_1_spell_6"}
+forest_1_boss_ability = {"ability_npc_boss_forest_1_spell_1","ability_npc_boss_forest_1_spell_2","ability_npc_boss_forest_1_spell_3","ability_npc_boss_forest_1_spell_4", "ability_npc_boss_forest_1_spell_5", "ability_npc_boss_forest_1_spell_6"}
 
 function Spawn( entityKeyValues )
     if not IsServer() then
@@ -29,7 +29,7 @@ function NeutralThink()
     end
 	
 	if not thisEntity.bInitialized then
-	thisEntity.vInitialSpawnPos  = thisEntity:GetOrigin()
+	thisEntity.vInitialSpawnPos  = Vector(416,15080, 640)
         thisEntity.fMaxDist = thisEntity:GetAcquisitionRange()
         thisEntity.bInitialized = true
     end
@@ -45,7 +45,7 @@ function NeutralThink()
 	
 	if #enemies > 0 then
 	enemy = enemies[1]
-		for _, T in ipairs(boss_8_ability) do
+		for _, T in ipairs(forest_1_boss_ability) do
 			local Spell = thisEntity:FindAbilityByName(T)
 			if Spell then
 				local Behavior = Spell:GetBehaviorInt()

@@ -94,7 +94,7 @@
 		"SoundSet"					"Creep_Good_Melee"
 		"ModelScale"				"0.6"
 
-		"Ability1"					""
+		"Ability1"					"ability_npc_forest_2_earthbind"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
 		"AttackDamageMin"			"6"
@@ -167,7 +167,7 @@
 		"SoundSet"					"Creep_Good_Melee"
 		"ModelScale"				"0.6"
 
-		"Ability1"					""
+		"Ability1"					"ability_npc_forest_2_clap"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
 		"AttackDamageMin"			"6"

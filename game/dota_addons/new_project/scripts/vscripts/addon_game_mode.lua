@@ -20,9 +20,21 @@ require("libraries/UtilFunctions")
 
 
 function Precache( context )
+	PrecacheResource( "soundfile", "soundevents/voscripts/game_sounds_vo_broodmother.vsndevts", context )
 	PrecacheResource( "soundfile", "soundevents/music/game_sounds_music_tutorial.vsndevts", context )
 	PrecacheResource( "soundfile", "soundevents/soundevents_conquest.vsndevts", context )
 	PrecacheResource( "soundfile", "soundevents/game_sounds_dungeon.vsndevts", context )
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	PrecacheResource( "soundfile", "soundevents/game_sounds_heroes/game_sounds_crystalmaiden.vsndevts", context )
 	PrecacheResource( "soundfile", "soundevents/game_sounds_heroes/game_sounds_bristleback.vsndevts", context )
@@ -214,21 +226,20 @@ end
 
 function AddonGamemode:OnChat(t)
     text = t.text
+	local pid = t.playerid
+	local hero = PlayerResource:GetSelectedHeroEntity( pid )
     if text == '1' then
 		_G.maps = 1
-		-- for i =1, 5 do
-			-- local point = Entities:FindByName( nil, "fire_"..i):GetAbsOrigin()
-			-- local trees = GridNav:GetAllTreesAroundPoint(point, 2500, false)
-			-- for _,t in pairs(trees) do
-				-- local effect_cast = ParticleManager:CreateParticle("particles/flame.vpcf", PATTACH_WORLDORIGIN, nil)
-				-- cps = {0, 1, 2, 3, 4}
-				-- point = t:GetAbsOrigin()
-				-- for i = 1, #cps do
-					-- ParticleManager:SetParticleControl(effect_cast, cps[i], point)
-				-- end
-			-- end
-		-- end
     end
+	if text == '2' then
+		_G.maps = 2
+    end
+	if text == "i" then
+		mines_1:Init()
+	end
+	if text == 'god' then
+		hero:AddNewModifier(hero, nil, "modifier_god", {})
+	end
 end
 
 
@@ -286,6 +297,8 @@ function AddonGamemode:LinkGameModifiers()
 	LinkLuaModifier( "modifier_hero_class_healer", "modifiers/modifier_hero_class_healer", LUA_MODIFIER_MOTION_BOTH )
 	LinkLuaModifier( "modifier_blind", "modifiers/modifier_blind", LUA_MODIFIER_MOTION_BOTH )
 	LinkLuaModifier( "modifier_jungle_dragon", "modifiers/modifier_jungle_dragon", LUA_MODIFIER_MOTION_BOTH )
+	LinkLuaModifier( "modifier_camp", "modifiers/modifier_campfire", LUA_MODIFIER_MOTION_BOTH )
+	LinkLuaModifier( "modifier_mines_hex", "modifiers/modifier_mines_hex", LUA_MODIFIER_MOTION_BOTH )
 
 	--for _,TalentName in ipairs(self.AllTalentsName) do
 	--	LinkLuaModifier( TalentName, "modifiers/talents/" .. TalentName, LUA_MODIFIER_MOTION_NONE )

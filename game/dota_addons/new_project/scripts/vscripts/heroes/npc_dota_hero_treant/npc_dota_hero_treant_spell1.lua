@@ -1,7 +1,6 @@
-npc_dota_hero_treant_spell1 = class({})
-
 LinkLuaModifier( "modifier_npc_dota_hero_treant_spell1", "heroes/npc_dota_hero_treant/npc_dota_hero_treant_spell1", LUA_MODIFIER_MOTION_NONE )
 
+npc_dota_hero_treant_spell1 = class({})
 
 function npc_dota_hero_treant_spell1:OnSpellStart()
     local thinker = CreateModifierThinker(self:GetCaster(), self, "modifier_npc_dota_hero_treant_spell1", {duration = self:GetSpecialValueFor( "duration" )}, self:GetCursorPosition(), DOTA_TEAM_GOODGUYS, false)
@@ -9,7 +8,7 @@ function npc_dota_hero_treant_spell1:OnSpellStart()
 end
 
 modifier_npc_dota_hero_treant_spell1 = class({})
---Classifications template
+
 function modifier_npc_dota_hero_treant_spell1:IsHidden()
     return true
 end
@@ -24,16 +23,12 @@ function modifier_npc_dota_hero_treant_spell1:OnIntervalThink()
 end
 
 function modifier_npc_dota_hero_treant_spell1:OnDestroy()
-    if IsClient() then
-        return
-    end
-    UTIL_Remove(self:GetParent())
+	if not IsServer() then return end
+	UTIL_Remove(self:GetParent())
 end
 
 function modifier_npc_dota_hero_treant_spell1:CreatePulse(thinker)
-    if IsClient() then
-        return
-    end
+	if not IsServer() then return end
     local speed = self:GetAbility():GetSpecialValueFor( "speed" )
     local heal = self:GetAbility():GetSpecialValueFor( "heal" )
     local damage = self:GetAbility():GetSpecialValueFor( "damage" )

@@ -15,9 +15,9 @@ function Rules:SpawnUnitTeleport()
 	self.dummy.pfx = ParticleManager:CreateParticle("particles/units/heroes/hero_marci/marci_unleash_stack.vpcf", PATTACH_OVERHEAD_FOLLOW, self.dummy)
 	ParticleManager:SetParticleControl( self.dummy.pfx, 1, Vector( 0, self.dummy.pfxcount, 0 ) )
 
-	local prt = ParticleManager:CreateParticle("particles/portal_select/portal_forest.vpcf", PATTACH_CUSTOMORIGIN, self.dummy)
-	ParticleManager:SetParticleControlEnt(prt, 0, self.dummy, self.dummy:ScriptLookupAttachment("attach_portal"), "attach_portal", self.dummy:GetAbsOrigin(), true)
-	ParticleManager:ReleaseParticleIndex(prt)
+	local effect_cast = ParticleManager:CreateParticle(  "particles/units/heroes/heroes_underlord/abbysal_underlord_darkrift_ambient.vpcf", PATTACH_OVERHEAD_FOLLOW, self.dummy )
+	ParticleManager:SetParticleControl( effect_cast, 1, Vector( 200, 0, 0 ) )
+	ParticleManager:SetParticleControlEnt( effect_cast, 2, self.dummy, PATTACH_ABSORIGIN_FOLLOW, "attach_hitloc", Vector(0,0,0), true )
 end
 
 function Rules:PlayersInGameCount()	-- кол-во реальных игроков!
@@ -49,8 +49,8 @@ function Rules:Dummy()
 	hDummy:SetAcquisitionRange( 0 )
 end
 
-damage = 10
-health = 250
+damage = 30
+health = 400
 armor = 1
 resist = 3
 regen = 1
@@ -98,22 +98,34 @@ function Rules:unit_settings(unit, unit_type, unit_class, count_big, count_mini,
 			unit:SetMaximumGoldBounty(gold_for_big_creep)
 			mn = 1.5
 		end
-		unit:SetBaseDamageMin(damage * mn * Events.round^1.5 * (scale_percent/100)) -- расчеты требуют настройки!
-		unit:SetBaseDamageMax(damage * mn * Events.round^1.5 * (scale_percent/100))
-		unit:SetPhysicalArmorBaseValue(armor * mn * Events.round^1.5 * (scale_percent/100))
-		unit:SetBaseMagicalResistanceValue(resist * mn * Events.round^1.5 * (scale_percent/100))
-		unit:SetMaxHealth(health * mn * Events.round^1.5 * (scale_percent/100))
-		unit:SetBaseMaxHealth(health * mn * Events.round^1.5 * (scale_percent/100))
-		unit:SetHealth(health * mn * Events.round^1.5 * (scale_percent/100))	
+		unit:SetBaseDamageMin(damage * mn * Events.round^1.4 * (scale_percent/100)) -- расчеты требуют настройки!
+		unit:SetBaseDamageMax(damage * mn * Events.round^1.4 * (scale_percent/100))
+		unit:SetPhysicalArmorBaseValue(armor * mn * Events.round^1.4 * (scale_percent/100))
+		unit:SetBaseMagicalResistanceValue(resist * mn * Events.round^1.4 * (scale_percent/100))
+		unit:SetMaxHealth(health * mn * Events.round^1.4 * (scale_percent/100))
+		unit:SetBaseMaxHealth(health * mn * Events.round^1.4 * (scale_percent/100))
+		unit:SetHealth(health * mn * Events.round^1.4 * (scale_percent/100))	
 	end
 	if unit_type == "boss" then
-		unit:SetBaseDamageMin(boss_damage * Events.round^1.5 * (scale_percent/100))
-		unit:SetBaseDamageMax(boss_damage * Events.round^1.5 * (scale_percent/100))
-		unit:SetPhysicalArmorBaseValue(boss_armor * Events.round^1.5 * (scale_percent/100))
-		unit:SetBaseMagicalResistanceValue(boss_resist * Events.round^1.5 * (scale_percent/100))
-		unit:SetMaxHealth(boss_health * Events.round^1.5 * (scale_percent/100))
-		unit:SetBaseMaxHealth(boss_health * Events.round^1.5 * (scale_percent/100))
-		unit:SetHealth(boss_health * Events.round^1.5 * (scale_percent/100))	
+		unit:SetBaseDamageMin(boss_damage * Events.round^1.4 * (scale_percent/100))
+		unit:SetBaseDamageMax(boss_damage * Events.round^1.4 * (scale_percent/100))
+		unit:SetPhysicalArmorBaseValue(boss_armor * Events.round^1.4 * (scale_percent/100))
+		unit:SetBaseMagicalResistanceValue(boss_resist * Events.round^1.4 * (scale_percent/100))
+		unit:SetMaxHealth(boss_health * Events.round^1.4 * (scale_percent/100))
+		unit:SetBaseMaxHealth(boss_health * Events.round^1.4 * (scale_percent/100))
+		unit:SetHealth(boss_health * Events.round^1.4 * (scale_percent/100))	
+	end
+	if unit_type == "mini_boss" then
+		unit:SetBaseDamageMin(boss_damage * Events.round^1.4 * (scale_percent/100))
+		unit:SetBaseDamageMax(boss_damage * Events.round^1.4 * (scale_percent/100))
+		unit:SetPhysicalArmorBaseValue(boss_armor * Events.round^1.4 * (scale_percent/100))
+		unit:SetBaseMagicalResistanceValue(boss_resist * Events.round^1.4 * (scale_percent/100))
+		unit:SetMaxHealth(boss_health * Events.round^1.4 * (scale_percent/100))
+		unit:SetBaseMaxHealth(boss_health * Events.round^1.4 * (scale_percent/100))
+		unit:SetHealth(boss_health * Events.round^1.4 * (scale_percent/100))
+		unit:SetDeathXP(AddonGamemode.CreepExpZones[Events.round] / 8)
+		unit:SetMinimumGoldBounty(AddonGamemode.CreepGoldZones[Events.round] / 8)
+		unit:SetMaximumGoldBounty(AddonGamemode.CreepGoldZones[Events.round] / 8)
 	end
 end
 

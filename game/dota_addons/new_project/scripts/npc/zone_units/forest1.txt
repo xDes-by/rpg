@@ -198,6 +198,7 @@
 	
 "npc_forest_1_treant_big"
 	{
+		"vscripts"					"ai/ai_all_creeps"
 		"BaseClass"					"npc_dota_creature"
 		"Model"						"models/heroes/treant_protector/treant_protector.vmdl"
 		"SoundSet"					"Furion_Treant"
