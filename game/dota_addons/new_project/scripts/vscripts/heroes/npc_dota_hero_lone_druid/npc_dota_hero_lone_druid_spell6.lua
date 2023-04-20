@@ -21,6 +21,11 @@ function modifier_npc_dota_hero_lone_druid_spell6:OnCreated()
     self.str = self:GetAbility():GetSpecialValueFor("str")
 end
 
+function modifier_npc_dota_hero_lone_druid_spell6:OnRefresh()
+    self.armor = self:GetAbility():GetSpecialValueFor("armor")
+    self.str = self:GetAbility():GetSpecialValueFor("str")
+end
+
 function modifier_npc_dota_hero_lone_druid_spell6:DeclareFunctions()
     return {
 		MODIFIER_PROPERTY_STATS_STRENGTH_BONUS,

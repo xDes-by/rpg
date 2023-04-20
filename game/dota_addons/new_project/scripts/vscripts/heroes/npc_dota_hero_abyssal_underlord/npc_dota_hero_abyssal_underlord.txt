@@ -1,81 +1,103 @@
 "DOTAAbilities"
 {
-    "npc_dota_hero_abyssal_underlord_spell1"
+"npc_dota_hero_abyssal_underlord_spell1"
 	{
 		"BaseClass"						"ability_lua"
 		"ScriptFile"					"heroes/npc_dota_hero_abyssal_underlord/npc_dota_hero_abyssal_underlord_spell1"
-		"AbilityTextureName"			""
+		"AbilityTextureName"			"underlord/1"
 		"FightRecapLevel"				"1"
 		"MaxLevel"						"4"
 
-		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
-
-		"AbilityCooldown"				"16"
-		"AbilityManaCost"				"110"
-
+		"AbilityCastRange"				"600"
+		"AbilityCastPoint"				"0.3"
+		"AbilityCooldown"				"30 26 22 18"
+		"AbilityManaCost"				"60 80 100 120"
+		
 		"AbilityValues"
 		{
-			"damage"	"30"
-			"duration"	"5"	
-			"regen"	"0.5"	
-			"armor"	"3"	
+			"radius"					"450"
+			"damage_per_sec"			"15 25 35 45"
+			"damage_block"				"5 10 15 20"
+			"duration"					"6 8 10 12"
 		}
 	}
-    "npc_dota_hero_abyssal_underlord_spell2"
+
+"npc_dota_hero_abyssal_underlord_spell2"
 	{
 		"BaseClass"						"ability_lua"
 		"ScriptFile"					"heroes/npc_dota_hero_abyssal_underlord/npc_dota_hero_abyssal_underlord_spell2"
-		"AbilityTextureName"			""
+		"AbilityTextureName"			"underlord/2"
 		"FightRecapLevel"				"1"
 		"MaxLevel"						"4"
-
 		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
 		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_2"
-		"AbilityCastPoint"				"0.6"
-		"AbilityCastRange"				"450 500 550 600"
-
-		"AbilityCooldown"				"16"
-		"AbilityManaCost"				"110"
-
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
+		"AbilityCastPoint"				"0.1"
+		"AbilityCooldown"				"16 14 12 10"
+		"AbilityManaCost"				"60 70 80 90"
+		"AbilityCasrRange"				"500"
 		"AbilityValues"
 		{
-			"end_distanse"	"300"
-			"slow_duration"	"5"	
-            "slow" "60"
+			"angle"						"140"
+			"radius"					"500"
+			"knockback_duration"		"0.3"
+			"knockback_distance"		"100"
+			"duration"					"2"
+			"slow"						"40 60 80 100"
+			"damage"					"25 50 75 100"
 		}
 	}
-    "npc_dota_hero_abyssal_underlord_spell3"
+
+"npc_dota_hero_abyssal_underlord_spell3"
 	{
 		"BaseClass"						"ability_lua"
 		"ScriptFile"					"heroes/npc_dota_hero_abyssal_underlord/npc_dota_hero_abyssal_underlord_spell3"
-		"AbilityTextureName"			""
+		"AbilityTextureName"			"underlord/3"
 		"FightRecapLevel"				"1"
 		"MaxLevel"						"4"
 
 		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DIRECTIONAL"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
 		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_4"
 		"AbilityCastPoint"				"0.3"
-
-		"AbilityCooldown"				"16"
-		"AbilityManaCost"				"110"
+		"AbilityCasrRange"				"600"
+		"AbilityCooldown"				"18 16 14 12"
+		"AbilityManaCost"				"70 80 90 100"
 
 		"AbilityValues"
 		{
 			"distanse"	"600"
 			"with"	"200"	
-            "damage" "60"
+            "damage_per_sec" "25 45 65 85"
+			"duration"	"3 4 5 6"
 		}
 	}
+	
+"npc_dota_hero_abyssal_underlord_spell6"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"heroes/npc_dota_hero_abyssal_underlord/npc_dota_hero_abyssal_underlord_spell6"
+		"AbilityTextureName"			"underlord/4"
+		"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_4"
+		"AbilityCastPoint"				"0.3"
+		"AbilityCastRange"				"200"
+		"AbilityCooldown"				"120 90 60"
+		"AbilityManaCost"				"100 200 300"
+
+		"AbilityValues"
+		{
+			"duration"	"20 30 40"
+		}
+	}	
 }

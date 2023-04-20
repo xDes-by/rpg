@@ -60,3 +60,7 @@ function modifier_simply_motion_controll:OnHorizontalMotionInterrupted()
 		self:Destroy()
 	end
 end
+
+function modifier_simply_motion_controll:GetOverrideAnimation()
+	return ACT_DOTA_FLAIL
+end

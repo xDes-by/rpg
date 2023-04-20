@@ -1,20 +1,23 @@
-npc_dota_hero_treant_spell2 = class({})
-
 LinkLuaModifier( "modifier_npc_dota_hero_treant_spell2", "heroes/npc_dota_hero_treant/npc_dota_hero_treant_spell2", LUA_MODIFIER_MOTION_NONE )
+
+npc_dota_hero_treant_spell2 = class({})
 
 function npc_dota_hero_treant_spell2:GetAOERadius()
     return self:GetSpecialValueFor("radius")
 end
 
 function npc_dota_hero_treant_spell2:OnSpellStart()
-	local enemies = FindUnitsInRadius(DOTA_TEAM_GOODGUYS, self:GetCursorPosition(), nil, self:GetSpecialValueFor("radius"), DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, 0, 0,false)
+	EmitSoundOn( "Hero_Treant.LivingArmor.Target", self:GetCaster() )
+	local enemies = FindUnitsInRadius(self:GetCaster():GetTeamNumber(), self:GetCursorPosition(), nil, self:GetSpecialValueFor("radius"), DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, 0, 0,false)
     for _,unit in pairs(enemies) do
         unit:AddNewModifier(self:GetCaster(), self, "modifier_npc_dota_hero_treant_spell2", {duration = self:GetSpecialValueFor("duration")})
     end
 end
 
+----------------------------------------------------------------------------
+
 modifier_npc_dota_hero_treant_spell2 = class({})
---Classifications template
+
 function modifier_npc_dota_hero_treant_spell2:IsHidden()
     return false
 end
@@ -41,9 +44,7 @@ function modifier_npc_dota_hero_treant_spell2:OnCreated()
     self:AddParticle(pfx, false, false, 15, false, false)
     self.heal = self:GetAbility():GetSpecialValueFor("regen_per_sec")
     self.armor = self:GetAbility():GetSpecialValueFor("armor_bonus")
-    if IsClient() then
-        return
-    end
+    if not IsServer() then return end
     self:StartIntervalThink(1)
 end
 

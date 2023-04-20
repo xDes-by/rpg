@@ -1,14 +1,15 @@
-npc_dota_hero_undying_spell6 = class({})
-
 LinkLuaModifier( "modifier_npc_dota_hero_undying_spell6", "heroes/npc_dota_hero_undying/npc_dota_hero_undying_spell6", LUA_MODIFIER_MOTION_NONE)
 
+npc_dota_hero_undying_spell6 = class({})
 
 function npc_dota_hero_undying_spell6:OnSpellStart()
     self:GetCaster():AddNewModifier(self:GetCaster(), self, "modifier_npc_dota_hero_undying_spell6", {duration = self:GetSpecialValueFor("duration")})
 end
 
+-------------------------------------------------------------------------------
+
 modifier_npc_dota_hero_undying_spell6 = class({})
---Classifications template
+
 function modifier_npc_dota_hero_undying_spell6:IsHidden()
     return false
 end
@@ -31,33 +32,26 @@ end
 
 function modifier_npc_dota_hero_undying_spell6:OnCreated()
     self.startPos = self:GetParent():GetAbsOrigin()
-    self.range = 0
     self.move_range = self:GetAbility():GetSpecialValueFor("move_range")
     self.damage_range = self:GetAbility():GetSpecialValueFor("damage_range")
+    self.damage_per_str = self:GetAbility():GetSpecialValueFor("damage_per_str")
     self.damage = self:GetAbility():GetSpecialValueFor("damage")
-    self.dt = self:GetAbility():GetAbilityDamageType()
-    if IsClient() then
-        return
-    end
     self:StartIntervalThink(0.03)
 end
 
 function modifier_npc_dota_hero_undying_spell6:OnIntervalThink()
     self.endPos = self:GetParent():GetAbsOrigin()
-    local curRange = (self.startPos - self.endPos):Length2D() + self.range
+    local curRange = (self.startPos - self.endPos):Length2D()
     if curRange > self.move_range then
         self.startPos = self.endPos
-	    local enemies = FindUnitsInRadius(DOTA_TEAM_GOODGUYS,self.endPos,nil,self.damage_range,DOTA_UNIT_TARGET_TEAM_ENEMY,DOTA_UNIT_TARGET_BASIC,DOTA_UNIT_TARGET_FLAG_NOT_ANCIENTS,FIND_CLOSEST,false)
+	    local enemies = FindUnitsInRadius(DOTA_TEAM_GOODGUYS, self.endPos, nil, self.damage_range, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_FLAG_NOT_ANCIENTS, FIND_CLOSEST, false)
         for _,enemy in pairs(enemies) do
-	        ApplyDamage({victim = enemy, attacker = self:GetParent(), damage = self.damage, damage_type = self.dt,damage_flags = DOTA_DAMAGE_FLAG_NONE})
+	        ApplyDamage({victim = enemy, attacker = self:GetParent(), damage = self.damage + self:GetParent():GetStrength() / 100 * self.damage_per_str, damage_type = self:GetAbility():GetAbilityDamageType()})
         end
-        self.range = 0
         local effect_cast = ParticleManager:CreateParticle( "particles/units/heroes/hero_primal_beast/primal_beast_trample.vpcf", PATTACH_ABSORIGIN, self:GetParent() )
         ParticleManager:SetParticleControl( effect_cast, 1, Vector( self.damage_range, 0, 0 ) )
         ParticleManager:ReleaseParticleIndex( effect_cast )
         EmitSoundOn( "Hero_PrimalBeast.Trample", self:GetParent() )
-    else
-        self.range = curRange + self.range
     end
 end
 
@@ -68,6 +62,13 @@ function modifier_npc_dota_hero_undying_spell6:DeclareFunctions()
         MODIFIER_PROPERTY_OVERRIDE_ANIMATION_RATE,
         MODIFIER_PROPERTY_TRANSLATE_ACTIVITY_MODIFIERS,
     }
+end
+
+function modifier_npc_dota_hero_undying_spell6:CheckState()
+	local state = {
+		[MODIFIER_STATE_NO_UNIT_COLLISION] = true,
+	}
+	return state
 end
 
 function modifier_npc_dota_hero_undying_spell6:GetModifierDisableTurning()

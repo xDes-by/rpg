@@ -1,84 +1,89 @@
-npc_dota_hero_keeper_of_the_light_spell6 = class({})
-
 LinkLuaModifier( "modifier_npc_dota_hero_keeper_of_the_light_spell6", "heroes/npc_dota_hero_keeper_of_the_light/npc_dota_hero_keeper_of_the_light_spell6", LUA_MODIFIER_MOTION_NONE )
 
-function npc_dota_hero_keeper_of_the_light_spell6:GetChannelTime()
-    return 3
-end
+npc_dota_hero_keeper_of_the_light_spell6 = class({})
 
 function npc_dota_hero_keeper_of_the_light_spell6:OnSpellStart()
-    self.mod = self:GetCaster():AddNewModifier(self:GetCaster(), self, "modifier_npc_dota_hero_keeper_of_the_light_spell6", {duration = 3})
+	self.mod_caster = self:GetCaster():AddNewModifier(self:GetCaster(), self, "modifier_npc_dota_hero_keeper_of_the_light_spell6", {duration = self:GetChannelTime()})
 end
 
-function npc_dota_hero_keeper_of_the_light_spell6:OnChannelFinish(bInterrupted)
-    self.mod:Destroy()
+function npc_dota_hero_keeper_of_the_light_spell6:GetCastAnimation()
+	return ACT_DOTA_CAST_ABILITY_4
 end
 
-function npc_dota_hero_keeper_of_the_light_spell6:OnProjectileHit(hTarget, vLocation)
-    if hTarget then
-        ApplyDamage({victim = hTarget,
-        damage = self:GetSpecialValueFor("damage"),
-        damage_type = self:GetAbilityDamageType(),
-        damage_flags = DOTA_DAMAGE_FLAG_NONE,
-        attacker = self:GetCaster(),
-        ability = self})
-        EmitSoundOn("Hero_KeeperOfTheLight.Illuminate.Target.Secondary", hTarget)
-    end
+function npc_dota_hero_keeper_of_the_light_spell6:GetChannelAnimation()
+	return ACT_DOTA_VICTORY
 end
 
+function npc_dota_hero_keeper_of_the_light_spell6:OnChannelFinish()
+	if IsServer() then
+		if self.mod_caster then self.mod_caster:Destroy() end
+	end
+end
+
+-----------------------------------------------------------------------------------------------------------
 modifier_npc_dota_hero_keeper_of_the_light_spell6 = class({})
---Classifications template
-function modifier_npc_dota_hero_keeper_of_the_light_spell6:IsHidden()
-    return true
+
+function modifier_npc_dota_hero_keeper_of_the_light_spell6:IsHidden()	
+	return false
 end
 
 function modifier_npc_dota_hero_keeper_of_the_light_spell6:IsPurgable()
-    return false
+	return false
 end
 
-function modifier_npc_dota_hero_keeper_of_the_light_spell6:RemoveOnDeath()
-    return true
-end
+function modifier_npc_dota_hero_keeper_of_the_light_spell6:OnCreated()	
+if not IsServer() then return end
+	local count = self:GetAbility():GetSpecialValueFor("count")
+	local radius = self:GetAbility():GetSpecialValueFor("radius")
 
-function modifier_npc_dota_hero_keeper_of_the_light_spell6:DestroyOnExpire()
-    return true
-end
-
-function modifier_npc_dota_hero_keeper_of_the_light_spell6:OnCreated()
-    self.distance = self:GetAbility():GetSpecialValueFor("distance")
-    self.point = self:GetCaster():GetAbsOrigin()
-    self.point.z = 0
-    EmitSoundOn("Hero_KeeperOfTheLight.Illuminate.Charge", self:GetCaster())
-    local rad = self:GetAbility():GetSpecialValueFor("radius")
-    if IsClient() then
-        return
-    end
-    self.StartDidection = self:GetParent():GetForwardVector()
-    self.projinfo = {
-        Source = self:GetCaster(),
-        Ability = self:GetAbility(),
-        vSpawnOrigin = self:GetCaster():GetAbsOrigin(),
-        
-        bDeleteOnHit = false,
-        
-        iUnitTargetTeam = DOTA_UNIT_TARGET_TEAM_ENEMY,
-        iUnitTargetType = DOTA_UNIT_TARGET_BASIC,
-        
-        EffectName = "particles/npc_dota_hero_keeper_of_the_light/npc_dota_hero_keeper_of_the_light_spell6.vpcf",
-        fDistance = self.distance,
-        fStartRadius = rad,
-        fEndRadius = rad,
-        vVelocity = self.StartDidection * self.distance * 2,
-        }
-    self:StartIntervalThink(0.49)
+	-- self:GetCaster():EmitSound("Hero_KeeperOfTheLight.Illuminate.Target.Secondary")
+		
+	local caster_pos = self:GetCaster():GetAbsOrigin()
+	local line_pos = caster_pos + self:GetCaster():GetForwardVector() * radius
+	local rotation_rate = 360 / count
+			
+	for i = 1, count do
+		line_pos = RotatePosition(caster_pos, QAngle(0, rotation_rate, 0), line_pos)
+		self:CreateRequiemLine(caster_pos, line_pos)
+	end	
+	
+	self:StartIntervalThink(0.9)
 end
 
 function modifier_npc_dota_hero_keeper_of_the_light_spell6:OnIntervalThink()
-    EmitSoundOn("Hero_KeeperOfTheLight.Illuminate.Discharge", self:GetCaster())
-    ProjectileManager:CreateLinearProjectile(self.projinfo)
+if not IsServer() then return end
+
+		self:GetCaster():EmitSound("Hero_KeeperOfTheLight.Illuminate.Discharge")
+	local count = self:GetAbility():GetSpecialValueFor("count")
+	local radius = self:GetAbility():GetSpecialValueFor("radius")
+	local caster_pos = self:GetCaster():GetAbsOrigin()
+	local line_pos = caster_pos + self:GetCaster():GetForwardVector() * radius
+	local rotation_rate = 360 / count
+	for i = 1, count do
+		line_pos = RotatePosition(caster_pos, QAngle(0, rotation_rate, 0), line_pos)
+		local velocity = (line_pos - caster_pos):Normalized() * radius
+		self:CreateRequiemLine(caster_pos, velocity , 2)
+	end	
 end
 
-function modifier_npc_dota_hero_keeper_of_the_light_spell6:GetStatusEffectName()
-    return "particles/status_fx/status_effect_keeper_spirit_form.vpcf"
+function modifier_npc_dota_hero_keeper_of_the_light_spell6:CreateRequiemLine(position, velocity, duration)
+	local caster = self:GetCaster()
+	self.particle = ParticleManager:CreateParticle("particles/units/heroes/hero_keeper_of_the_light/kotl_illuminate.vpcf", PATTACH_ABSORIGIN_FOLLOW, caster)
+	ParticleManager:SetParticleControl(self.particle, 1, velocity)
+	ParticleManager:SetParticleControl(self.particle, 3, caster:GetAbsOrigin())
+	self:AddParticle(self.particle, false, false, -1, false, false)
 end
 
+function npc_dota_hero_keeper_of_the_light_spell6:OnProjectileHit_ExtraData(target, location, extra)
+	if target then
+		self.damage = self:GetSpecialValueFor("damage")
+				
+		ApplyDamage({
+			ability = self,
+			attacker = self:GetCaster(),
+			damage = self.damage,
+			damage_type = self:GetAbilityDamageType(),
+			victim = target
+		})
+	end
+end

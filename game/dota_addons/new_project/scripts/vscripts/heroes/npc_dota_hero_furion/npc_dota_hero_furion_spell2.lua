@@ -1,22 +1,28 @@
-npc_dota_hero_furion_spell2 = class({})
-
 LinkLuaModifier( "modifier_npc_dota_hero_furion_spell2","heroes/npc_dota_hero_furion/npc_dota_hero_furion_spell2", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier( "modifier_npc_dota_hero_furion_spell2_effect","heroes/npc_dota_hero_furion/npc_dota_hero_furion_spell2", LUA_MODIFIER_MOTION_NONE )
+
+npc_dota_hero_furion_spell2 = class({})
 
 function npc_dota_hero_furion_spell2:OnSpellStart()
     local duration = self:GetSpecialValueFor("duration")
     CreateModifierThinker(self:GetCaster(), self, "modifier_npc_dota_hero_furion_spell2", {duration = duration}, self:GetCursorPosition(), DOTA_TEAM_GOODGUYS, false)
 end
 
+function npc_dota_hero_furion_spell2:GetAOERadius()
+	return self:GetSpecialValueFor( "radius" )
+end
+
+-----------------------------------------------------------------
+
 modifier_npc_dota_hero_furion_spell2 = class({})
---Classifications template
+
 function modifier_npc_dota_hero_furion_spell2:IsHidden()
     return true
 end
 
 function modifier_npc_dota_hero_furion_spell2:OnCreated()
     local radius = self:GetAbility():GetSpecialValueFor("radius")
-	local effect_cast = ParticleManager:CreateParticle( "particles/npc_dota_hero_furion/npc_dota_hero_furion_spell2.vpcf", PATTACH_WORLDORIGIN, self:GetParent() )
+	local effect_cast = ParticleManager:CreateParticle( "particles/fura.vpcf", PATTACH_WORLDORIGIN, self:GetParent() )
 	ParticleManager:SetParticleControl( effect_cast, 0, self:GetParent():GetAbsOrigin() )
 	ParticleManager:SetParticleControl( effect_cast, 1, Vector( radius, 1, 1 ) )
 	self:AddParticle(effect_cast,false,false,-1,false,false)
@@ -27,7 +33,6 @@ function modifier_npc_dota_hero_furion_spell2:OnDestroy()
     UTIL_Remove(self:GetParent())
 end
 
--- Aura template
 function modifier_npc_dota_hero_furion_spell2:IsAura()
     return true
 end
@@ -41,7 +46,7 @@ function modifier_npc_dota_hero_furion_spell2:GetAuraRadius()
 end
 
 function modifier_npc_dota_hero_furion_spell2:GetAuraDuration()
-    return 0.5
+    return 0.1
 end
 
 function modifier_npc_dota_hero_furion_spell2:GetAuraSearchTeam()
@@ -52,8 +57,10 @@ function modifier_npc_dota_hero_furion_spell2:GetAuraSearchType()
     return DOTA_UNIT_TARGET_BASIC
 end
 
+--------------------------------------------------------------
+
 modifier_npc_dota_hero_furion_spell2_effect = class({})
---Classifications template
+
 function modifier_npc_dota_hero_furion_spell2_effect:IsHidden()
     return false
 end
@@ -80,3 +87,10 @@ function modifier_npc_dota_hero_furion_spell2_effect:GetModifierPhysicalArmorBon
     return -self:GetAbility():GetSpecialValueFor("armor_rduce")
 end
 
+function modifier_npc_dota_hero_furion_spell2_effect:GetEffectName()
+	return "particles/units/heroes/hero_dazzle/dazzle_armor_enemy.vpcf"
+end
+
+function modifier_npc_dota_hero_furion_spell2_effect:GetEffectAttachType()
+	return PATTACH_OVERHEAD_FOLLOW
+end

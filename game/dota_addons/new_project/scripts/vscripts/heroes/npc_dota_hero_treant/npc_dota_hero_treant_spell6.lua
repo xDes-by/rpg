@@ -1,17 +1,28 @@
-npc_dota_hero_treant_spell6 = class({})
-
 LinkLuaModifier( "modifier_npc_dota_hero_treant_spell6", "heroes/npc_dota_hero_treant/npc_dota_hero_treant_spell6", LUA_MODIFIER_MOTION_NONE )
 
+npc_dota_hero_treant_spell6 = class({})
+
 function npc_dota_hero_treant_spell6:OnSpellStart()
-    local duration = self:GetSpecialValueFor("duration")
-	local enemies = FindUnitsInRadius(DOTA_TEAM_GOODGUYS, unit:GetAbsOrigin(), nil, 9999, DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_HERO, 0, 0,false)
-    for _,unit in pairs(enemies) do
-        unit:AddNewModifier(self:GetCaster(), self, "modifier_npc_dota_hero_treant_spell6", {duration = duration})
+	EmitSoundOn( "Hero_Treant.Eyes.Cast", self:GetCaster() )
+end
+
+function npc_dota_hero_treant_spell6:OnChannelFinish(bInterrupted)
+    if bInterrupted then
+		StopSoundOn( "Hero_Treant.Eyes.Cast", self:GetCaster() )
+    end
+    if not bInterrupted then
+		local duration = self:GetSpecialValueFor("duration")
+        local enemies = FindUnitsInRadius(self:GetCaster():GetTeamNumber(), self:GetCaster():GetAbsOrigin(), nil, FIND_UNITS_EVERYWHERE, DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_HERO, 0, 0,false)
+		for _,unit in pairs(enemies) do
+			unit:AddNewModifier(self:GetCaster(), self, "modifier_npc_dota_hero_treant_spell6", {duration = duration})
+		end
     end
 end
 
+------------------------------------------------------------------------------------
+
 modifier_npc_dota_hero_treant_spell6 = class({})
---Classifications template
+
 function modifier_npc_dota_hero_treant_spell6:IsHidden()
     return false
 end

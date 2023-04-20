@@ -1,17 +1,20 @@
-npc_dota_hero_death_prophet_spell3 = class({})
-
 LinkLuaModifier( "modifier_npc_dota_hero_death_prophet_spell3","heroes/npc_dota_hero_death_prophet/npc_dota_hero_death_prophet_spell3", LUA_MODIFIER_MOTION_BOTH )
 LinkLuaModifier( "modifier_npc_dota_hero_death_prophet_spell3_slow","heroes/npc_dota_hero_death_prophet/npc_dota_hero_death_prophet_spell3", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier( "modifier_dummy", "modifiers/modifier_dummy", LUA_MODIFIER_MOTION_NONE )
+
+npc_dota_hero_death_prophet_spell3 = class({})
 
 function npc_dota_hero_death_prophet_spell3:CreateGhost(unit)
+	if not IsServer() then return end
 	local ghost = CreateUnitByName("npc_boss_gaveyard2_spell4_ghost", self:GetCaster():GetAbsOrigin(), true, nil, nil, DOTA_TEAM_GOODGUYS )
+	ghost:AddNewModifier(self:GetCaster(),self,"modifier_dummy",{} )
     local direction = unit:GetAbsOrigin() - self:GetCaster():GetAbsOrigin()
     direction.z = 0
     local dis = direction:Length2D()
-    ghost.IsReturn = true
-    ghost:AddNewModifier(self:GetCaster(), self, "modifier_npc_dota_hero_death_prophet_spell3", {
-    s = dis/2, target = unit:entindex()})
+    ghost:AddNewModifier(self:GetCaster(), self, "modifier_npc_dota_hero_death_prophet_spell3", {s = dis/1.3, target = unit:entindex()})
 end
+
+--------------------------------------------------------------------------------------
 
 modifier_npc_dota_hero_death_prophet_spell3 = class({})
 
@@ -36,7 +39,6 @@ end
 
 function modifier_npc_dota_hero_death_prophet_spell3:OnRefresh( kv )
 	if IsServer() then
-		-- references
         self.target = EntIndexToHScript(kv.target)
 		self.speed = kv.s
 		if self:ApplyHorizontalMotionController() == false then 
@@ -51,9 +53,8 @@ function modifier_npc_dota_hero_death_prophet_spell3:OnDestroy( kv )
         ApplyDamage({victim = self.target,
         damage = self:GetAbility():GetSpecialValueFor("damage"),
         damage_type = self:GetAbility():GetAbilityDamageType(),
-        damage_flags = DOTA_DAMAGE_FLAG_NONE,
-        attacker = self:GetCaster(),
-        ability = self:GetAbility()})
+        attacker = self:GetCaster()})
+		
 	    SendOverheadEventMessage(nil, OVERHEAD_ALERT_BONUS_SPELL_DAMAGE, self.target, self:GetAbility():GetSpecialValueFor("damage"), nil)
         self.target:AddNewModifier(self:GetCaster(), self:GetAbility(), "modifier_npc_dota_hero_death_prophet_spell3_slow", {duration = self:GetAbility():GetSpecialValueFor("slow_dur")})
         UTIL_Remove(self:GetParent())
@@ -89,13 +90,11 @@ function modifier_npc_dota_hero_death_prophet_spell3:UpdateDirection()
     return direction
 end
 
-modifier_npc_dota_hero_death_prophet_spell3_slow = class({})
---Classifications template
-function modifier_npc_dota_hero_death_prophet_spell3_slow:IsHidden()
-    return false
-end
+----------------------------------------------------------------------
 
-function modifier_npc_dota_hero_death_prophet_spell3_slow:IsDebuff()
+modifier_npc_dota_hero_death_prophet_spell3_slow = class({})
+
+function modifier_npc_dota_hero_death_prophet_spell3_slow:IsHidden()
     return true
 end
 
@@ -107,10 +106,6 @@ function modifier_npc_dota_hero_death_prophet_spell3_slow:RemoveOnDeath()
     return true
 end
 
-function modifier_npc_dota_hero_death_prophet_spell3_slow:DestroyOnExpire()
-    return true
-end
-
 function modifier_npc_dota_hero_death_prophet_spell3_slow:DeclareFunctions()
     return {
         MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE
@@ -118,5 +113,5 @@ function modifier_npc_dota_hero_death_prophet_spell3_slow:DeclareFunctions()
 end
 
 function modifier_npc_dota_hero_death_prophet_spell3_slow:GetModifierMoveSpeedBonus_Percentage()
-    return self:GetAbility():GetSpecialValueFor("slow_pers")
+    return -self:GetAbility():GetSpecialValueFor("slow_pers")
 end

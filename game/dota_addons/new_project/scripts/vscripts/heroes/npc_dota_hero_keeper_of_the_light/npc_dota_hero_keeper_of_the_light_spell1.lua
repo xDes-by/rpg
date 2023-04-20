@@ -1,311 +1,226 @@
+LinkLuaModifier( "modifier_npc_dota_hero_keeper_of_the_light_spell1", "heroes/npc_dota_hero_keeper_of_the_light/npc_dota_hero_keeper_of_the_light_spell1", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier( "modifier_npc_dota_hero_keeper_of_the_light_spell1_effect", "heroes/npc_dota_hero_keeper_of_the_light/npc_dota_hero_keeper_of_the_light_spell1", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier( "modifier_npc_dota_hero_keeper_of_the_light_spell1_buff", "heroes/npc_dota_hero_keeper_of_the_light/npc_dota_hero_keeper_of_the_light_spell1", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier( "modifier_npc_dota_hero_keeper_of_the_light_spell1_effect_hit", "heroes/npc_dota_hero_keeper_of_the_light/npc_dota_hero_keeper_of_the_light_spell1", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier( "modifier_dummy", "modifiers/modifier_dummy", LUA_MODIFIER_MOTION_NONE )
+
 npc_dota_hero_keeper_of_the_light_spell1 = class({})
 
-LinkLuaModifier( "modifier_npc_dota_hero_keeper_of_the_light_spell1_animation", "heroes/npc_dota_hero_keeper_of_the_light/npc_dota_hero_keeper_of_the_light_spell1", LUA_MODIFIER_MOTION_NONE )
-LinkLuaModifier( "modifier_npc_dota_hero_keeper_of_the_light_spell1", "heroes/npc_dota_hero_keeper_of_the_light/npc_dota_hero_keeper_of_the_light_spell1", LUA_MODIFIER_MOTION_NONE )
-LinkLuaModifier( "modifier_npc_dota_hero_keeper_of_the_light_spell1_attack", "heroes/npc_dota_hero_keeper_of_the_light/npc_dota_hero_keeper_of_the_light_spell1", LUA_MODIFIER_MOTION_NONE )
+function npc_dota_hero_keeper_of_the_light_spell1:OnSpellStart()
+	-- self:GetCaster():EmitSound("Hero_Pangolier.Gyroshell.Loop")
+		EmitSoundOn("Hero_KeeperOfTheLight.Illuminate.Charge", self:GetCaster())
+	self.duration = self:GetSpecialValueFor("duration")
+	self:GetCaster():AddNewModifier(self:GetCaster(),self,"modifier_npc_dota_hero_keeper_of_the_light_spell1",{ duration = self.duration }	)
+	CreateModifierThinker(self:GetCaster(),self,"modifier_npc_dota_hero_keeper_of_the_light_spell1_buff",{ duration = self.duration },self:GetCaster():GetOrigin(),self:GetCaster():GetTeamNumber(),false)
+end
 
+-----------------------------------------------------------------------------------------------------------
 
-function npc_dota_hero_keeper_of_the_light_spell1:IsRefreshable() 
+modifier_npc_dota_hero_keeper_of_the_light_spell1_buff = class({})
+
+function modifier_npc_dota_hero_keeper_of_the_light_spell1_buff:IsHidden()
 	return false
 end
 
-function npc_dota_hero_keeper_of_the_light_spell1:OnSpellStart() 
-    self.roaming_radius = math.max((self:GetCaster():GetAbsOrigin() - self:GetCursorPosition()):Length2D())
-    if self.roaming_radius < 200 then
-        self.roaming_radius = 200
-    end
-    self:GetCaster():AddNewModifier(self:GetCaster(), self, "modifier_npc_dota_hero_keeper_of_the_light_spell1", {duration = self:GetSpecialValueFor("duration"), radius = self.roaming_radius})
+function modifier_npc_dota_hero_keeper_of_the_light_spell1_buff:IsPurgable()
+	return false
 end
 
-function npc_dota_hero_keeper_of_the_light_spell1:OnProjectileHit_ExtraData( target, location, ExtraData )
-	--local effect_cast = ExtraData.effect
-	--ParticleManager:DestroyParticle( effect_cast, false )
-	--ParticleManager:ReleaseParticleIndex( effect_cast )
+function modifier_npc_dota_hero_keeper_of_the_light_spell1_buff:OnCreated( kv )
+	self.radius = self:GetAbility():GetSpecialValueFor( "radius" )
+	self.thinker = kv.isProvidedByAura~=1
+	if not IsServer() then return end
+	if not self.thinker then return end
+end
 
-	if not target then return end
-	local damageTable = {
-		victim = target,
-		attacker = self:GetCaster(),
-		damage = ExtraData.damage,
-		damage_type = self:GetAbilityDamageType(),
-		ability = self, --Optional.
+function modifier_npc_dota_hero_keeper_of_the_light_spell1_buff:OnDestroy()
+	if not IsServer() then return end
+	if not self.thinker then return end
+	UTIL_Remove( self:GetParent() )
+end
+
+function modifier_npc_dota_hero_keeper_of_the_light_spell1_buff:DeclareFunctions()
+	return {
+		MODIFIER_PROPERTY_HEALTH_REGEN_PERCENTAGE,
 	}
-	ApplyDamage(damageTable)
 end
+
+function modifier_npc_dota_hero_keeper_of_the_light_spell1_buff:GetModifierHealthRegenPercentage()
+	return self:GetAbility():GetSpecialValueFor( "heal" )
+end
+
+function modifier_npc_dota_hero_keeper_of_the_light_spell1_buff:IsAura()
+	return self.thinker
+end
+
+function modifier_npc_dota_hero_keeper_of_the_light_spell1_buff:GetModifierAura()
+	return "modifier_npc_dota_hero_keeper_of_the_light_spell1_buff"
+end
+
+function modifier_npc_dota_hero_keeper_of_the_light_spell1_buff:GetAuraRadius()
+	return 450
+end
+
+function modifier_npc_dota_hero_keeper_of_the_light_spell1_buff:GetAuraDuration()
+	return 0.1
+end
+
+function modifier_npc_dota_hero_keeper_of_the_light_spell1_buff:GetAuraSearchTeam()
+	return DOTA_UNIT_TARGET_TEAM_FRIENDLY
+end
+
+function modifier_npc_dota_hero_keeper_of_the_light_spell1_buff:GetAuraSearchType()
+	return DOTA_UNIT_TARGET_HERO
+end
+
+function modifier_npc_dota_hero_keeper_of_the_light_spell1_buff:GetAuraSearchFlags()
+	return 0
+end
+
+function modifier_npc_dota_hero_keeper_of_the_light_spell1_buff:GetEffectName()
+	return "particles/units/heroes/hero_keeper_of_the_light/keeper_spirit_form_ambient_glow2.vpcf"
+end
+
+function modifier_npc_dota_hero_keeper_of_the_light_spell1_buff:GetEffectAttachType()
+	return PATTACH_ABSORIGIN_FOLLOW
+end
+
+-----------------------------------------------------------------------------------------------------------
 
 modifier_npc_dota_hero_keeper_of_the_light_spell1 = class({})
 
---------------------------------------------------------------------------------
--- Classifications
-function modifier_npc_dota_hero_keeper_of_the_light_spell1:IsHidden()
-	return false
-end
-
-function modifier_npc_dota_hero_keeper_of_the_light_spell1:IsDebuff()
-	return false
+function modifier_npc_dota_hero_keeper_of_the_light_spell1:IsHidden()	
+	return true
 end
 
 function modifier_npc_dota_hero_keeper_of_the_light_spell1:IsPurgable()
 	return false
 end
 
---------------------------------------------------------------------------------
--- Initializations
-function modifier_npc_dota_hero_keeper_of_the_light_spell1:OnCreated( kv )
-	self.parent = self:GetParent()
-	self.zero = Vector(0,0,0)
-
-	self.revolution = self:GetAbility():GetSpecialValueFor( "rotation" )
-
-	if not IsServer() then return end
-
-	self.interval = 0.03
-	self.base_facing = Vector(0,1,0)
-	self.relative_pos = Vector( -kv.radius, 0, 100 )
-	self.rotate_delta = 360/self.revolution * self.interval
-
-	self.position = self.parent:GetOrigin() + self.relative_pos
-	self.rotation = 0
-	self.facing = self.base_facing
-
-	self.wisp = CreateUnitByName(
-		"npc_dota_hero_keeper_of_the_light_spell1_wisp",
-		self.position,
-		true,
-		self.parent,
-		self.parent:GetOwner(),
-		self.parent:GetTeamNumber()
-	)
-	self.wisp:SetForwardVector( self.facing )
-	self.wisp:AddNewModifier(
-		self:GetCaster(),
-		self:GetAbility(),
-		"modifier_npc_dota_hero_keeper_of_the_light_spell1_animation",
-		{} -- kv
-	)
-	self.wisp:AddNewModifier(self:GetCaster(), self:GetAbility(), "modifier_npc_dota_hero_keeper_of_the_light_spell1_attack", { duration = kv.duration })
-	self:StartIntervalThink( self.interval )
+function modifier_npc_dota_hero_keeper_of_the_light_spell1:OnCreated()	
+	self.spirits_startTime		= GameRules:GetGameTime()
+	self.spirits_numSpirits		= 0
+	self.spirits_spiritsSpawned	= {}
+	self.spirits_radius = self:GetAbility():GetSpecialValueFor("radius")
+	self.duration = self:GetAbility():GetSpecialValueFor("duration")
+	self.spirits_movementFactor	= 0
+	self.caster_pos = self:GetCaster():GetAbsOrigin()
+	self:StartIntervalThink(0.03)
+	self.numSpiritsMax	= self:GetAbility():GetLevel()
+	
+    self.particle = ParticleManager:CreateParticle("particles/keeper_ground_ring.vpcf", PATTACH_ABSORIGIN, self:GetCaster())
+    ParticleManager:SetParticleControl(self.particle, 1, Vector(450, 1, 1))
+    ParticleManager:SetParticleControl(self.particle, 2, Vector(0, 0, 0))
+    self:AddParticle(self.particle, false, false, -1, false, false)
 end
 
-function modifier_npc_dota_hero_keeper_of_the_light_spell1:OnRefresh( kv )
-	-- refresh references
-	self.revolution = self:GetAbility():GetSpecialValueFor( "roaming_seconds_per_rotation" )
-
-	if not IsServer() then return end
-
-	self.relative_pos = Vector( -kv.radius, 0, 100 )
-	self.rotate_delta = 360/self.revolution * self.interval
-
-	-- refresh attack modifier
-	self.wisp:AddNewModifier(
-		self:GetCaster(), -- player source
-		self:GetAbility(), -- ability source
-		"modifier_npc_dota_hero_keeper_of_the_light_spell1_attack", -- modifier name
-		{ duration = kv.duration } -- kv
-	)
-end
-
-function modifier_npc_dota_hero_keeper_of_the_light_spell1:OnRemoved()
-end
-
-function modifier_npc_dota_hero_keeper_of_the_light_spell1:OnDestroy()
-	if not IsServer() then return end
-
-	-- kill the wisp
-	UTIL_Remove( self.wisp )
-	-- self.wisp:ForceKill( false )
-
-end
-
---------------------------------------------------------------------------------
--- Interval Effects
 function modifier_npc_dota_hero_keeper_of_the_light_spell1:OnIntervalThink()
-	-- update position
-	self.rotation = self.rotation + self.rotate_delta
-	local origin = self.parent:GetOrigin()
-	self.position = RotatePosition( origin, QAngle( 0, -self.rotation, 0 ), origin + self.relative_pos )
-	self.facing = RotatePosition( self.zero, QAngle( 0, -self.rotation, 0 ), self.base_facing )
-
-	-- update wisp
-	self.wisp:SetOrigin( self.position )
-	self.wisp:SetForwardVector( self.facing )
-end
-
-modifier_npc_dota_hero_keeper_of_the_light_spell1_attack = class({})
-
---------------------------------------------------------------------------------
--- Classifications
-function modifier_npc_dota_hero_keeper_of_the_light_spell1_attack:IsHidden()
-	return false
-end
-
-function modifier_npc_dota_hero_keeper_of_the_light_spell1_attack:IsDebuff()
-	return false
-end
-
-function modifier_npc_dota_hero_keeper_of_the_light_spell1_attack:IsStunDebuff()
-	return false
-end
-
-function modifier_npc_dota_hero_keeper_of_the_light_spell1_attack:IsPurgable()
-	return false
-end
-
---------------------------------------------------------------------------------
--- Initializations
-function modifier_npc_dota_hero_keeper_of_the_light_spell1_attack:OnCreated( kv )
-	-- references
-	local damage = self:GetAbility():GetSpecialValueFor( "attack_damage" )
-	self.interval = self:GetAbility():GetSpecialValueFor( "attack_interval" )
-	self.radius = self:GetAbility():GetSpecialValueFor( "attack_radius" )
-
 	if not IsServer() then return end
-	-- precache projectile
-	 local projectile_name = "particles/units/heroes/hero_dark_willow/dark_willow_willowisp_base_attack.vpcf"
-	local projectile_speed = 1400
 
-	self.info = {
-		-- Target = target,
-		Source = self:GetParent(),
-		Ability = self:GetAbility(),	
-		
-		EffectName = projectile_name,
-		iMoveSpeed = projectile_speed,
-		bDodgeable = true,                           -- Optional
-		-- bIsAttack = false,                                -- Optional
+	local elapsedTime	= GameRules:GetGameTime() - self.spirits_startTime
 
-		ExtraData = {
-			damage = damage,
-		}
-	}
-	self:StartIntervalThink( self.interval )
-	--local effect_cast = ParticleManager:CreateParticle( "particles/units/heroes/hero_dark_willow/dark_willow_wisp_aoe.vpcf", PATTACH_ABSORIGIN_FOLLOW, self:GetParent() )
-	--ParticleManager:SetParticleControl( effect_cast, 1, Vector( self.radius, self.radius, self.radius ) )
-	--self:AddParticle(effect_cast,false,false,-1,false,false)
-	EmitSoundOn( "Hero_DarkWillow.WispStrike.Cast", self:GetParent() )
-end
+	local idealNumSpiritsSpawned = elapsedTime / 0.1
+	idealNumSpiritsSpawned = math.min( idealNumSpiritsSpawned, self.numSpiritsMax )
 
-function modifier_npc_dota_hero_keeper_of_the_light_spell1_attack:OnRefresh( kv )
-	local damage = self:GetAbility():GetSpecialValueFor( "attack_damage" )
-	self.interval = self:GetAbility():GetSpecialValueFor( "attack_interval" )
-	self.radius = self:GetAbility():GetSpecialValueFor( "attack_radius" )
+	if self.spirits_numSpirits < idealNumSpiritsSpawned then
 
-	if not IsServer() then return end
-	self.info.ExtraData.damage = damage
-	EmitSoundOn( "Hero_DarkWillow.WispStrike.Cast", self:GetParent() )
-end
+		local newSpirit = CreateUnitByName( "npc_keeper_horse", self.caster_pos, false, self:GetCaster(), self:GetCaster(), self:GetCaster():GetTeamNumber() )
+		newSpirit:AddNewModifier(self:GetCaster(),self,"modifier_dummy",{} )
+		newSpirit:AddNewModifier(self:GetCaster(),self:GetAbility(),"modifier_npc_dota_hero_keeper_of_the_light_spell1_effect",{ duration = self.duration })
 
-function modifier_npc_dota_hero_keeper_of_the_light_spell1_attack:OnIntervalThink()
-	-- find enemies
-	local enemies = FindUnitsInRadius(
-		self:GetCaster():GetTeamNumber(),	-- int, your team number
-		self:GetParent():GetOrigin(),	-- point, center point
-		nil,	-- handle, cacheUnit. (not known)
-		self.radius,	-- float, radius. or use FIND_UNITS_EVERYWHERE
-		DOTA_UNIT_TARGET_TEAM_ENEMY,	-- int, team filter
-		DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC,	-- int, type filter
-		DOTA_UNIT_TARGET_FLAG_NO_INVIS + DOTA_UNIT_TARGET_FLAG_FOW_VISIBLE,	-- int, flag filter
-		0,	-- int, order filter
-		false	-- bool, can grow cache
-	)
+		local spiritIndex = self.spirits_numSpirits + 1
+		newSpirit.spirit_index = spiritIndex
+		self.spirits_numSpirits = spiritIndex
+		self.spirits_spiritsSpawned[spiritIndex] = newSpirit
+		newSpirit:StartGesture(ACT_DOTA_RUN)
+	end
 
-	for _,enemy in pairs(enemies) do
-		-- create projectile effect
-		--local effect = self:PlayEffects1( enemy, self.info.iMoveSpeed )
+	local currentRadius	= self:GetAbility():GetSpecialValueFor("radius")
+	local deltaRadius = self.spirits_movementFactor * 150 * 0.03
+	currentRadius = currentRadius + deltaRadius
+	currentRadius = math.min( math.max( currentRadius, self.spirits_radius ), 650 )
 
-		-- launch attack
-		self.info.Target = enemy
-		self.info.ExtraData.effect = effect
+	local currentRotationAngle	= elapsedTime * 100
+	local rotationAngleOffset	= 360 / self:GetAbility():GetLevel()
 
-		ProjectileManager:CreateTrackingProjectile( self.info )
+	local numSpiritsAlive = 0
 
-		-- play effects
-		local sound_cast = "Hero_DarkWillow.WillOWisp.Damage"
-		EmitSoundOn( sound_cast, self:GetParent() )
+	for k,v in pairs( self.spirits_spiritsSpawned ) do
 
-		-- only on first unit
-		break
+		numSpiritsAlive = numSpiritsAlive + 1
+
+		local rotationAngle = currentRotationAngle - rotationAngleOffset * ( k - 1 ) 
+
+		local relPos = Vector( 0, currentRadius, 0 ) 
+
+		relPos = RotatePosition( Vector(0,0,0), QAngle( 0, rotationAngle, 0 ), -relPos )
+
+		local absPos = GetGroundPosition( relPos + self.caster_pos, v )
+
+		v:SetAbsOrigin( absPos )
+		v:SetAngles(0,rotationAngle,0)
+	end
+
+	if self.spirits_numSpirits == self.numSpiritsMax and numSpiritsAlive == 0 then
+		return
 	end
 end
 
-function modifier_npc_dota_hero_keeper_of_the_light_spell1_attack:PlayEffects1( target, speed )
-	local particle_cast = "particles/units/heroes/hero_dark_willow/dark_willow_willowisp_base_attack.vpcf"
-	local effect_cast = ParticleManager:CreateParticle( particle_cast, PATTACH_ABSORIGIN_FOLLOW, self:GetParent() )
+----------------------------------------------------
 
-    local attach = self:GetParent():ScriptLookupAttachment("head_end")
+modifier_npc_dota_hero_keeper_of_the_light_spell1_effect = class({})
 
-	ParticleManager:SetParticleControlEnt(
-		effect_cast,
-		0,
-		self:GetParent(),
-		attach,
-		"head_end",
-		Vector(0,0,0), -- unknown
-		true -- unknown, true
-	)
-	ParticleManager:SetParticleControlEnt(
-		effect_cast,
-		1,
-		target,
-		attach,
-		"head_end",
-		Vector(0,0,0), -- unknown
-		true -- unknown, true
-	)
-	ParticleManager:SetParticleControl( effect_cast, 2, Vector( speed, 0, 0 ) )
-
-	return effect_cast
-end
-
-modifier_npc_dota_hero_keeper_of_the_light_spell1_animation = class({})
-
---------------------------------------------------------------------------------
--- Classifications
-function modifier_npc_dota_hero_keeper_of_the_light_spell1_animation:IsHidden()
+function modifier_npc_dota_hero_keeper_of_the_light_spell1_effect:IsPurgable()
 	return false
 end
 
-function modifier_npc_dota_hero_keeper_of_the_light_spell1_animation:IsPurgable()
-	return false
+function modifier_npc_dota_hero_keeper_of_the_light_spell1_effect:OnCreated(params)
+	if IsServer() then
+		self.caster = self:GetCaster()
+		self:StartIntervalThink(0.1)
+	end
 end
 
-function modifier_npc_dota_hero_keeper_of_the_light_spell1_animation:OnCreated()
-    self.effect_cast = ParticleManager:CreateParticle( "particles/npc_dota_hero_keeper_of_the_light/npc_dota_hero_keeper_of_the_light_spell1.vpcf", PATTACH_ABSORIGIN_FOLLOW, self:GetParent() )
-	ParticleManager:SetParticleControlEnt(self.effect_cast,0,self:GetParent(),PATTACH_ABSORIGIN_FOLLOW,"follow_origin",Vector(0,0,0),true)
-	ParticleManager:SetParticleControlEnt(self.effect_cast,1,self:GetParent(),PATTACH_ABSORIGIN_FOLLOW,"follow_origin",Vector(0,0,0),true)
-	self:AddParticle(self.effect_cast,false,false,-1,false,false)
+function modifier_npc_dota_hero_keeper_of_the_light_spell1_effect:OnIntervalThink()
+	if IsServer() then 
+		self.creep_damage = self:GetAbility():GetSpecialValueFor("damage")
+		
+		local spirit = self:GetParent()
+		
+		local enemies = FindUnitsInRadius( self.caster:GetTeamNumber(), spirit:GetAbsOrigin(), nil, 100, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_FLAG_NONE, FIND_ANY_ORDER, false)
+		if enemies ~= nil and #enemies > 0 then
+			for _,enemy in pairs(enemies) do
+				if not enemy:HasModifier("modifier_npc_dota_hero_keeper_of_the_light_spell1_effect_hit") then
+					enemy:AddNewModifier(self.caster, nil, "modifier_npc_dota_hero_keeper_of_the_light_spell1_effect_hit", {duration = 0.25})
+					ApplyDamage({ victim = enemy, damage = self.creep_damage, damage_type = DAMAGE_TYPE_PHYSICAL, attacker = self:GetCaster()})	
+				end
+			end	
+		end
+	end
 end
 
-function modifier_npc_dota_hero_keeper_of_the_light_spell1_animation:DeclareFunctions()
-	return {
-		MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE,
-	}
+function modifier_npc_dota_hero_keeper_of_the_light_spell1_effect:OnDestroy()
+	UTIL_Remove( self:GetParent() )
 end
 
-function modifier_npc_dota_hero_keeper_of_the_light_spell1_animation:GetStatusEffectName()
-    return "particles/status_fx/status_effect_abaddon_borrowed_time.vpcf"
+---------------------------------------------------------
+
+modifier_npc_dota_hero_keeper_of_the_light_spell1_effect_hit = class({})
+
+function modifier_npc_dota_hero_keeper_of_the_light_spell1_effect_hit:IsHidden()
+	return true
 end
 
-function modifier_npc_dota_hero_keeper_of_the_light_spell1_animation:GetModifierBaseAttack_BonusDamage()
-	if not IsServer() then return end
-
-	local target = self:GetParent():GetOrigin() + self:GetParent():GetForwardVector()
-	local forward = self:GetParent():GetForwardVector()
-	ParticleManager:SetParticleControl( self.effect_cast, 2, target )
+function modifier_npc_dota_hero_keeper_of_the_light_spell1_effect_hit:OnCreated() 
+	if IsServer() then
+		local target = self:GetParent()
+		EmitSoundOn("Hero_Wisp.Spirits.TargetCreep", target)
+		self.pfx = ParticleManager:CreateParticle("particles/units/heroes/hero_wisp/wisp_guardian_explosion_small.vpcf", PATTACH_ABSORIGIN_FOLLOW, target)
+	end
 end
 
-function modifier_npc_dota_hero_keeper_of_the_light_spell1_animation:CheckState()
-	return {
-		[MODIFIER_STATE_INVULNERABLE] = true,
-		[MODIFIER_STATE_UNSELECTABLE] = true,
-		[MODIFIER_STATE_UNTARGETABLE] = true,
-		[MODIFIER_STATE_OUT_OF_GAME] = true,
-		[MODIFIER_STATE_NO_HEALTH_BAR] = true,
-	}
+function modifier_npc_dota_hero_keeper_of_the_light_spell1_effect_hit:OnRemoved()
+	if IsServer() then
+		ParticleManager:DestroyParticle(self.pfx, false)
+	end
 end
-
-
-
-
-
-

@@ -1,6 +1,6 @@
-npc_dota_hero_lone_druid_spell3 = class({})
-
 LinkLuaModifier( "modifier_npc_dota_hero_lone_druid_spell3", "heroes/npc_dota_hero_lone_druid/npc_dota_hero_lone_druid_spell3", LUA_MODIFIER_MOTION_NONE )
+
+npc_dota_hero_lone_druid_spell3 = class({})
 
 function npc_dota_hero_lone_druid_spell3:GetIntrinsicModifierName()
 	return "modifier_npc_dota_hero_lone_druid_spell3"
@@ -17,6 +17,10 @@ function modifier_npc_dota_hero_lone_druid_spell3:IsPurgable()
 end
 
 function modifier_npc_dota_hero_lone_druid_spell3:OnCreated( kv )
+    self.chance = self:GetAbility():GetSpecialValueFor( "trigger_chance" )
+end
+
+function modifier_npc_dota_hero_lone_druid_spell3:OnRefresh( kv )
     self.chance = self:GetAbility():GetSpecialValueFor( "trigger_chance" )
 end
 

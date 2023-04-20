@@ -1,14 +1,15 @@
-npc_dota_hero_undying_spell2 = class({})
-
 LinkLuaModifier( "modifier_npc_dota_hero_undying_spell2", "heroes/npc_dota_hero_undying/npc_dota_hero_undying_spell2", LUA_MODIFIER_MOTION_NONE)
 
+npc_dota_hero_undying_spell2 = class({})
 
 function npc_dota_hero_undying_spell2:OnSpellStart()
     self:GetCaster():AddNewModifier(self:GetCaster(), self, "modifier_npc_dota_hero_undying_spell2", {duration = self:GetSpecialValueFor("duration")})
 end
 
+---------------------------------------------------------------------------------
+
 modifier_npc_dota_hero_undying_spell2 = class({})
---Classifications template
+
 function modifier_npc_dota_hero_undying_spell2:IsHidden()
     return false
 end

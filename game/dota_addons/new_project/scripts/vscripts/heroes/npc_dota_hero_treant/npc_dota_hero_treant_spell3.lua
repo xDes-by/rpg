@@ -1,14 +1,15 @@
-npc_dota_hero_treant_spell3 = class({})
-
 LinkLuaModifier( "modifier_npc_dota_hero_treant_spell3","heroes/npc_dota_hero_treant/npc_dota_hero_treant_spell3", LUA_MODIFIER_MOTION_NONE )
+
+npc_dota_hero_treant_spell3 = class({})
 
 function npc_dota_hero_treant_spell3:GetIntrinsicModifierName()
     return "modifier_npc_dota_hero_treant_spell3"
 end
 
+-----------------------------------------------------------------------------
+
 modifier_npc_dota_hero_treant_spell3 = class({})
 
---Classifications template
 function modifier_npc_dota_hero_treant_spell3:IsHidden()
     return true
 end

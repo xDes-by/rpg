@@ -1,39 +1,39 @@
 "DOTAAbilities"
 {
-	"npc_dota_hero_undying_spell1"
+"npc_dota_hero_undying_spell1"
 	{
 		"BaseClass"						"ability_lua"
 		"ScriptFile"					"heroes/npc_dota_hero_undying/npc_dota_hero_undying_spell1"
-		"AbilityTextureName"			""
+		"AbilityTextureName"			"undying/1"
 		"FightRecapLevel"				"1"
 		"MaxLevel"						"4"
 
 		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
 
 		"AbilityCastPoint"				"0.4"
 		"AbilityCastAnimation"			"ACT_DOTA_UNDYING_SOUL_RIP"
 
-		"AbilityCooldown"				"7.0"
-		"AbilityManaCost"				"110 120 130 140"
+		"AbilityCooldown"				"13 11 9 7"
+		"AbilityManaCost"				"60 70 80 90"
+		"AbilityCastRange"				"300"
 
 		"AbilityValues"
 		{
-			"knockback" "300"
-			"damage" "40"
-			"slow" "40"
+			"knockback" "100"
+			"damage" "60 120 180 240"
+			"slow" "10 20 30 40"
 			"radius" "300"
-            "slow_duration" "3"
-
-            "agro_duration" "2"
+            "slow_duration" "2"
 		}
 	}
-	"npc_dota_hero_undying_spell2"
+	
+"npc_dota_hero_undying_spell2"
 	{
 		"BaseClass"						"ability_lua"
 		"ScriptFile"					"heroes/npc_dota_hero_undying/npc_dota_hero_undying_spell2"
-		"AbilityTextureName"			""
+		"AbilityTextureName"			"undying/2"
 		"FightRecapLevel"				"1"
 		"MaxLevel"						"4"
 
@@ -43,54 +43,56 @@
 		"AbilityCastPoint"				"0.4"
 		"AbilityCastAnimation"			"ACT_DOTA_UNDYING_SOUL_RIP"
 
-		"AbilityCooldown"				"7.0"
-		"AbilityManaCost"				"110 120 130 140"
+		"AbilityCooldown"				"90 80 70 60"
+		"AbilityManaCost"				"100 120 140 160"
 
 		"AbilityValues"
 		{
-			"str_persent_bonus" "10"
+			"str_persent_bonus" "20 30 40 50"
 			"duration" "30"
 		}
 	}
-	"npc_dota_hero_undying_spell3"
+	
+"npc_dota_hero_undying_spell3"
 	{
 		"BaseClass"						"ability_lua"
 		"ScriptFile"					"heroes/npc_dota_hero_undying/npc_dota_hero_undying_spell3"
-		"AbilityTextureName"			""
+		"AbilityTextureName"			"undying/3"
 		"FightRecapLevel"				"1"
 		"MaxLevel"						"4"
-
 		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityValues"
 		{
-			"income_damage" "200"
-			"armor" "1"
-			"damage" "3"
-			"max_stacks" "3"
-			"duration" "5"
+			"income_damage" "240 220 200 180"
+			"armor" "0.5 0.7 0.9 1.1"
+			"damage" "2 4 6 8"
+			"max_stacks" "10"
+			"duration" "10"
 		}
 	}
-	"npc_dota_hero_undying_spell6"
+	
+"npc_dota_hero_undying_spell6"
 	{
 		"BaseClass"						"ability_lua"
 		"ScriptFile"					"heroes/npc_dota_hero_undying/npc_dota_hero_undying_spell6"
-		"AbilityTextureName"			""
+		"AbilityTextureName"			"undying/4"
 		"FightRecapLevel"				"1"
-		"MaxLevel"						"4"
+		"MaxLevel"						"3"
 
-		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
+		"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
 
-		"AbilityCooldown"				"7.0"
-		"AbilityManaCost"				"110 120 130 140"
+		"AbilityCooldown"				"80 70 60"
+		"AbilityManaCost"				"100 150 200"
 		"AbilityValues"
 		{
-			"damage" "30"
+			"damage" "40 80 120"
+			"damage_per_str" "50 75 100"
 			"damage_range" "200"
 			"duration" "5"
-			"move_range" "300"
+			"move_range" "130"
 		}
 	}
 }

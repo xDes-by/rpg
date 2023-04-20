@@ -9,16 +9,16 @@
         "AbilityUnitTargetType"         "DOTA_UNIT_TARGET_BASIC"
         "AbilityUnitTargetTeam"         "DOTA_UNIT_TARGET_TEAM_ENEMY"
         "AbilityUnitDamageType"         "DAMAGE_TYPE_MAGICAL"
-		"AbilityTextureName" 			"ability_capture_lua"	
+		"AbilityTextureName"			"loned_druid/1"
         "AbilityCooldown"               "15 13 11 9"
         "MaxLevel"                      "4"
-		"AbilityManaCost"				"60"
-		"AbilityCastRange"				"250"
+		"AbilityManaCost"				"60 80 100 120"
+		"AbilityCastRange"				"350"
         "AbilityValues"
         {
             "damage" "80 120 160 200"
             "duration" "2"
-            "radius" "250"
+            "radius" "350"
         } 
     }
    
@@ -31,19 +31,21 @@
         "AbilityUnitTargetType"         "DOTA_UNIT_TARGET_BASIC"
         "AbilityUnitTargetTeam"         "DOTA_UNIT_TARGET_TEAM_ENEMY"
         "AbilityUnitDamageType"         "DAMAGE_TYPE_MAGICAL"
-        
+        "AbilityTextureName"			"loned_druid/2"
         "AbilityCastAnimation"          "ACT_DOTA_CAST_ABILITY_4"
         "AbilityCastPoint"              "0.4"
-
+		"AbilityManaCost"				"60 70 80 90"
         "AbilityCooldown"               "15 13 10 8"
         "MaxLevel"                      "4"
         "AbilityValues"
         {
-            "damage" "100"
+            "damage" "40 60 80 100"
+            "str" "40 60 80 100"
             "slow_duration" "2"
             "slow_persent" "100"
             "buff_duration" "3"
-            "radius" "200"
+			"bash_duration"	"0.1"
+            "radius" "100"
         } 
     }
 
@@ -51,7 +53,7 @@
 	{
 		"BaseClass"						"ability_lua"
 		"ScriptFile"					"heroes/npc_dota_hero_lone_druid/npc_dota_hero_lone_druid_spell3"
-		"AbilityTextureName"			""
+		"AbilityTextureName"			"loned_druid/3"
 		"MaxLevel"						"4"
 		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -70,7 +72,8 @@
         "ScriptFile"                    "heroes/npc_dota_hero_lone_druid/npc_dota_hero_lone_druid_spell6"
         "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
         "AbilityType"                   "DOTA_ABILITY_TYPE_ULTIMATE"
-        "MaxLevel"                      "4"
+        "MaxLevel"                      "3"
+		"AbilityTextureName"			"loned_druid/4s"
         "AbilityValues"
         {
             "armor" "5 10 15"

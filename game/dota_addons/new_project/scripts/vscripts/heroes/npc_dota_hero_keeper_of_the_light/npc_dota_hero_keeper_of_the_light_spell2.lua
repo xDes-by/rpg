@@ -41,7 +41,7 @@ function modifier_npc_dota_hero_keeper_of_the_light_spell2:OnCreated()
 	if not self:GetAbility() then self:Destroy() return end
 	self.damage	= self:GetAbility():GetSpecialValueFor("damage") / 2
 	if not IsServer() then return end
-	self.damage_type	= self:GetAbility():GetAbilityDamageType()
+	self.damage_type = self:GetAbility():GetAbilityDamageType()
 	self:StartIntervalThink(0.5)
 	EmitSoundOn("Hero_Treant.Overgrowth.Target", self:GetParent())
 end

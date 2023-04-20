@@ -2,6 +2,77 @@
 "DOTAUnits"
 {
 
+"npc_underlord_demon"
+	{
+		"vscripts"				"ai/demon.lua"
+	    "BaseClass"             "npc_dota_creature"             
+		"Model"					"models/units/apocalypse/apocalypse.vmdl"
+		"BaseClass"				"npc_dota_creature"
+		"SoundSet"				"Hero_Nevermore"
+		"Level"					"1"
+		"ModelScale" 			"1.5"
+		"CanRespawn"			"0"
+		"IsAncient"				"1"				
+
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		
+		"ArmorPhysical"				"1"			
+		"MagicalResistance"			"5"			
+		
+		"AttackDamageMin"			"21"		
+		"AttackDamageMax"			"24"		
+		"AttackRate"				"0.8"		
+		"AttackAnimationPoint"		"0.2"		
+		"AttackAcquisitionRange"	"1000"		
+		"AttackRange"				"200"		
+		
+		"StatusHealth" 				"300" 
+
+		"RingRadius"				"60"
+		"HealthBarOffset"			"190"	
+
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"300"		
+
+		"VisionDaytimeRange"		"800"		
+		"VisionNighttimeRange"		"800"		
+
+		"TeamName"					"DOTA_TEAM_NEUTRALS"						
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+	}
+
+"npc_keeper_horse"
+	{
+        "BaseClass"             "npc_dota_creature"
+        "Model"                 "models/heroes/keeper_of_the_light/kotl_horsefx.vmdl"
+		"IsAncient"				"1"
+        "ModelScale"            "1"
+        "Level"                 "1"
+        "HealthBarOffset"       "0"
+        "HasInventory"          "0"
+        "ArmorPhysical"         "99"
+        "MagicalResistance"     "99"
+        "BoundsHullName"        "DOTA_HULL_SIZE_SMALL"
+        "RingRadius"            "40"
+        "MovementCapabilities"  "ACT_DOTA_RUN"
+        "MovementSpeed"         "0"
+        "MovementTurnRate"      "10.0"
+        "StatusHealth"          "99999"
+        "StatusHealthRegen"     "999"
+        "VisionDaytimeRange"    "0"
+        "VisionNighttimeRange"  "0"
+        "TeamName"              "DOTA_TEAM_NEUTRALS"
+        "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_BASIC"
+        "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_HERO"
+        "UnitRelationShipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+        "AutoAttacksByDefault"  "0"
+        "IsSummoned"            "1"
+        "CanBeDominated"        "0"
+        "SelectOnSpawn"         "0"
+    }	
+
  "npc_dummy_unit"
 	{
 		"BaseClass" "npc_dota_base_additive"

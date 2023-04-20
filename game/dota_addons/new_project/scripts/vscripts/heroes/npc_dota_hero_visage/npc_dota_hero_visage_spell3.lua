@@ -1,6 +1,6 @@
-npc_dota_hero_visage_spell3 = class({})
-
 LinkLuaModifier( "modifier_npc_dota_hero_visage_spell3", "heroes/npc_dota_hero_visage/npc_dota_hero_visage_spell3", LUA_MODIFIER_MOTION_NONE )
+
+npc_dota_hero_visage_spell3 = class({})
 
 function npc_dota_hero_visage_spell3:OnSpellStart()
     local caster = self:GetCaster()
@@ -9,10 +9,20 @@ function npc_dota_hero_visage_spell3:OnSpellStart()
     for _,unit in ipairs(enemies) do
         unit:AddNewModifier(caster, self, "modifier_npc_dota_hero_visage_spell3", {duration = dur})
     end
+	EmitSoundOn("Hero_Visage.SoulAssumption.Target", self:GetCaster() )
+	self:PlayEffects()
 end
 
+function npc_dota_hero_visage_spell3:PlayEffects()
+	local effect_cast = ParticleManager:CreateParticle( "particles/vis3.vpcf", PATTACH_ABSORIGIN_FOLLOW, self:GetCaster() )
+	ParticleManager:SetParticleControlEnt(effect_cast, 1, self:GetCaster(), PATTACH_POINT_FOLLOW, "attach_mouth", Vector(0,0,0), true )
+	ParticleManager:ReleaseParticleIndex( effect_cast )
+end
+
+-----------------------------------------------------------------------------
+
 modifier_npc_dota_hero_visage_spell3 = class({})
---Classifications template
+
 function modifier_npc_dota_hero_visage_spell3:IsHidden()
     return false
 end

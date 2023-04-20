@@ -1,32 +1,43 @@
-npc_dota_hero_visage_spell6 = class({})
-
 LinkLuaModifier( "modifier_npc_dota_hero_visage_spell6", "heroes/npc_dota_hero_visage/npc_dota_hero_visage_spell6", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier( "modifier_npc_dota_hero_visage_spell6_effect", "heroes/npc_dota_hero_visage/npc_dota_hero_visage_spell6", LUA_MODIFIER_MOTION_NONE )
 
-function npc_dota_hero_visage_spell6:OnSpellStart()
-    CreateModifierThinker(self:GetCaster(), self, "modifier_npc_dota_hero_visage_spell6", {duration = self:GetSpecialValueFor("duration")}, self:GetCursorPosition(), self:GetCaster():GetTeamNumber(), false)
+npc_dota_hero_visage_spell6 = class({})
+
+function npc_dota_hero_visage_spell6:GetAOERadius()
+	return self:GetSpecialValueFor( "radius" )
 end
 
+
+function npc_dota_hero_visage_spell6:OnSpellStart()
+    CreateModifierThinker(self:GetCaster(), self, "modifier_npc_dota_hero_visage_spell6", {duration = self:GetSpecialValueFor("duration")}, self:GetCursorPosition(), self:GetCaster():GetTeamNumber(), false)
+	EmitSoundOn("Hero_Visage.SummonFamiliars.Cast", self:GetCaster() )
+end
+
+----------------------------------------------------------------------------------
+
 modifier_npc_dota_hero_visage_spell6 = class({})
---Classifications template
+
 function modifier_npc_dota_hero_visage_spell6:IsHidden()
     return true
 end
 
 function modifier_npc_dota_hero_visage_spell6:OnCreated()
     self.radius = self:GetAbility():GetSpecialValueFor("radius")
-	local effect_cast = ParticleManager:CreateParticle( "particles/units/heroes/heroes_underlord/underlord_pitofmalice.vpcf", PATTACH_WORLDORIGIN, self:GetParent() )
-	ParticleManager:SetParticleControl( effect_cast, 0, self:GetParent():GetAbsOrigin() )
-	ParticleManager:SetParticleControl( effect_cast, 1, Vector( 500, 1, 1 ) )
-    ParticleManager:SetParticleControl( effect_cast, 2, Vector( self:GetDuration(), 0, 0 ) )
-    self:AddParticle(effect_cast, false, false, -1, false, false)
+	if not IsServer() then return end
+	self.effect_cast = ParticleManager:CreateParticle( "particles/vis4.vpcf", PATTACH_WORLDORIGIN, nil )
+	ParticleManager:SetParticleControl( self.effect_cast, 0, self:GetParent():GetAbsOrigin() )
+	ParticleManager:SetParticleControl( self.effect_cast, 1, Vector( self.radius, 1, 1 ) )
 end
 
 function modifier_npc_dota_hero_visage_spell6:OnDestroy()
+	if not IsServer() then return end
+	if self.effect_cast then
+		ParticleManager:DestroyParticle(self.effect_cast, false)
+		ParticleManager:ReleaseParticleIndex(self.effect_cast)
+	end
     UTIL_Remove(self:GetParent())
 end
 
--- Aura template
 function modifier_npc_dota_hero_visage_spell6:IsAura()
     return true
 end
@@ -55,8 +66,10 @@ function modifier_npc_dota_hero_visage_spell6:GetAuraSearchFlags()
     return DOTA_UNIT_TARGET_FLAG_NONE
 end
 
+----------------------------------------------------------------------------------
+
 modifier_npc_dota_hero_visage_spell6_effect = class({})
---Classifications template
+
 function modifier_npc_dota_hero_visage_spell6_effect:IsHidden()
     return false
 end
@@ -80,9 +93,7 @@ end
 function modifier_npc_dota_hero_visage_spell6_effect:OnCreated()
     self.damage = self:GetAbility():GetSpecialValueFor("bonus_damage")
     self.damage_tick = self:GetAbility():GetSpecialValueFor("damage_tick")
-    if IsClient() then
-        return
-    end
+    if not IsServer() then return end
     self:StartIntervalThink(1)
 end
 

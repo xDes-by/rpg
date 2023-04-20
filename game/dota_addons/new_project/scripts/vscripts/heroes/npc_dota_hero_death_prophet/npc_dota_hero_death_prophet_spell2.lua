@@ -1,26 +1,33 @@
-npc_dota_hero_death_prophet_spell2 = class({})
-
 LinkLuaModifier( "modifier_npc_dota_hero_death_prophet_spell2", "heroes/npc_dota_hero_death_prophet/npc_dota_hero_death_prophet_spell2", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier( "modifier_npc_dota_hero_death_prophet_spell2_effect", "heroes/npc_dota_hero_death_prophet/npc_dota_hero_death_prophet_spell2", LUA_MODIFIER_MOTION_NONE )
 
+npc_dota_hero_death_prophet_spell2 = class({})
+
 function npc_dota_hero_death_prophet_spell2:OnSpellStart()
     CreateModifierThinker(self:GetCaster(), self, "modifier_npc_dota_hero_death_prophet_spell2", {duration = self:GetSpecialValueFor("duration")}, self:GetCursorPosition(), self:GetCaster():GetTeamNumber(), false)
-    self.abi = self:GetCaster():FindAbilityByName("npc_dota_hero_death_prophet_spell3")
 end
+
+function npc_dota_hero_death_prophet_spell2:GetAOERadius()
+	return self:GetSpecialValueFor( "radius" )
+end
+
+--------------------------------------------------------------------------
 
 modifier_npc_dota_hero_death_prophet_spell2 = class({})
 
 function modifier_npc_dota_hero_death_prophet_spell2:OnCreated()
-    self.pfx = ParticleManager:CreateParticle("particles/units/heroes/hero_enigma/enigma_midnight_pulse.vpcf", PATTACH_POINT, self:GetParent())
-    ParticleManager:SetParticleControl(self.pfx, 1, Vector(500, 0, 0))
+	local effect_cast = ParticleManager:CreateParticle( "particles/npc_dota_hero_furion/npc_dota_hero_furion_spell2.vpcf", PATTACH_WORLDORIGIN, self:GetParent() )
+	ParticleManager:SetParticleControl( effect_cast, 0, self:GetParent():GetAbsOrigin() )
+	ParticleManager:SetParticleControl( effect_cast, 1, Vector( 400, 1, 1 ) )
+	self:AddParticle(effect_cast,false,false,-1,false,false)
+	EmitSoundOn( "Hero_Alchemist.AcidSpray", self:GetParent() )
 end
 
 function modifier_npc_dota_hero_death_prophet_spell2:OnDestroy()
-    ParticleManager:DestroyParticle(self.pfx, false)
-    ParticleManager:ReleaseParticleIndex(self.pfx)
+    -- ParticleManager:DestroyParticle(self.pfx, false)
+    -- ParticleManager:ReleaseParticleIndex(self.pfx)
 end
 
--- Aura template
 function modifier_npc_dota_hero_death_prophet_spell2:IsAura()
     return true
 end
@@ -34,7 +41,7 @@ function modifier_npc_dota_hero_death_prophet_spell2:GetAuraRadius()
 end
 
 function modifier_npc_dota_hero_death_prophet_spell2:GetAuraDuration()
-    return 0.5
+    return 0.1
 end
 
 function modifier_npc_dota_hero_death_prophet_spell2:GetAuraSearchTeam()
@@ -49,8 +56,10 @@ function modifier_npc_dota_hero_death_prophet_spell2:GetAuraSearchFlags()
     return DOTA_UNIT_TARGET_FLAG_NONE
 end
 
+-----------------------------------------------------------------------------
+
 modifier_npc_dota_hero_death_prophet_spell2_effect = class({})
---Classifications template
+
 function modifier_npc_dota_hero_death_prophet_spell2_effect:IsHidden()
     return false
 end
@@ -72,28 +81,22 @@ function modifier_npc_dota_hero_death_prophet_spell2_effect:DestroyOnExpire()
 end
 
 function modifier_npc_dota_hero_death_prophet_spell2_effect:OnCreated()
-    if IsClient() then
-        return
-    end
-    self:StartIntervalThink(1)
+	self.abi = self:GetCaster():FindAbilityByName("npc_dota_hero_death_prophet_spell3")
+	self:StartIntervalThink(1)
 end
 
 function modifier_npc_dota_hero_death_prophet_spell2_effect:OnIntervalThink()
-    self:GetAbility().abi:CreateGhost(self:GetParent())
+    if self.abi:GetLevel() > 0 then
+		self.abi:CreateGhost(self:GetParent())
+	end
     ApplyDamage({victim = self:GetParent(),
     damage =  self:GetAbility():GetSpecialValueFor("damage"),
     damage_type = self:GetAbility():GetAbilityDamageType(),
     damage_flags = DOTA_DAMAGE_FLAG_NONE,
     attacker = self:GetCaster(),
     ability = self:GetAbility()})
-end
-
-function modifier_npc_dota_hero_death_prophet_spell2_effect:DeclareFunctions()
-    return {
-        MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE
-    }
-end
-
-function modifier_npc_dota_hero_death_prophet_spell2_effect:GetModifierMoveSpeedBonus_Percentage()
-    return -self:GetAbility():GetSpecialValueFor("slow")
+	
+	self:GetParent():AddNewModifier(self:GetCaster(), self, "modifier_stunned", {duration = self:GetSpecialValueFor("tick_bash_duration")})
+	
+	EmitSoundOn("Hero_Enigma.MaleficeTick", self:GetParent())
 end

@@ -6,9 +6,7 @@ function npc_dota_hero_queenofpain_spell2:OnSpellStart()
 end
 
 function npc_dota_hero_queenofpain_spell2:Scream(unit)
-    if IsClient() then
-        return
-    end
+    if not IsServer() then return end
 	local enemies = FindUnitsInRadius(DOTA_TEAM_GOODGUYS, unit:GetAbsOrigin(), nil, self:GetSpecialValueFor("scream_radius"), DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_BASIC, 0, 0,false)
 
 	for _,enemy in pairs(enemies) do
@@ -25,7 +23,7 @@ function npc_dota_hero_queenofpain_spell2:Scream(unit)
 		bProvidesVision = false,
 	})
 	end
-	local effect_cast = ParticleManager:CreateParticle( "particles/units/heroes/hero_queenofpain/queen_scream_of_pain_owner.vpcf", PATTACH_ABSORIGIN, unit )
+	local effect_cast = ParticleManager:CreateParticle( "particles/qop2.vpcf", PATTACH_ABSORIGIN, unit )
 	ParticleManager:ReleaseParticleIndex( effect_cast )
 end
 

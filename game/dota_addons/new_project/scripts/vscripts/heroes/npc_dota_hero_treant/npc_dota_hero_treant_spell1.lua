@@ -7,6 +7,8 @@ function npc_dota_hero_treant_spell1:OnSpellStart()
     CreateTempTreeWithModel( self:GetCursorPosition(), self:GetSpecialValueFor("duration"), "models/heroes/hoodwink/hoodwink_tree_model.vmdl" )
 end
 
+----------------------------------------------------------------
+
 modifier_npc_dota_hero_treant_spell1 = class({})
 
 function modifier_npc_dota_hero_treant_spell1:IsHidden()
@@ -57,5 +59,7 @@ function modifier_npc_dota_hero_treant_spell1:CreatePulse(thinker)
         ParticleManager:SetParticleControl( effect_cast, 1, Vector( speed, radius, -1 ) )
         ParticleManager:DestroyParticle( effect_cast, false )
         ParticleManager:ReleaseParticleIndex( effect_cast )
+
+		
     end)
 end
