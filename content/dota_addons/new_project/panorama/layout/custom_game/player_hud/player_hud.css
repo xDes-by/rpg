@@ -1,0 +1,388 @@
+.player_hud_main{
+	height: 100%;
+	width: 100%;
+}
+
+#player_hud_main_container{
+	horizontal-align: center;
+	vertical-align: bottom;
+	/* background-color: red; */
+	width: 100%;
+}
+
+#portraitHUD{
+	height: 200px;
+	width: 200px;
+	opacity-mask: url("file://{images}/HUD/mask_1.png");
+}
+
+#PortraitGroup{
+	vertical-align: bottom;
+	height: 200px;
+	width: 300px;
+	/* background-color: green; */
+}
+
+#unitname{
+	vertical-align: bottom;
+	width: 190px;
+	margin:5px;
+}
+
+
+
+//////////////////////////////////////////////
+//////////////////////////////////////////////
+//////////////////////////////////////////////
+
+#StatContainer
+{
+    horizontal-align: left;
+	vertical-align:bottom;
+	margin-left: 200px;
+    flow-children: down;
+	/* width: 120px; */
+	/* background-color: blue; */
+	/* height: 100%; */
+}
+
+.StatPanels{
+    flow-children: right;
+    horizontal-align: left;
+}
+
+.StatPanelsLabel{
+	font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 0px;
+    color: #ccc;
+    text-align: left;
+    horizontal-align: right;
+    margin-top: 3px;
+    text-shadow: 0px 0px 4px 4 #00000088;
+    font-family: monospaceNumbersFont;
+    transition-property: transform, opacity, width, pre-transform-scale2d;
+    transition-duration: 0.12s;
+    transition-timing-function: ease-in-out;
+    color: #ccc;
+}
+
+.StatIcon
+{
+    background-repeat: no-repeat;
+    background-size: cover;
+    horizontal-align: left;
+}
+
+#DamageIcon
+{
+    width: 14px;
+    height: 14px;
+    background-image: url("s2r://panorama/images/hud/reborn/icon_damage_psd.vtex");
+    vertical-align: top;
+    margin-top: 4px;
+}
+
+#AttackSpeedIcon
+{
+    width: 14px;
+    height: 14px;
+    background-image: url("s2r://panorama/images/hud/reborn/icon_attack_speed_psd.vtex");
+    vertical-align: top;
+    margin-top: 4px;
+}
+
+#ArmorIcon
+{
+    width: 14px;
+    height: 14px;
+    background-image: url("s2r://panorama/images/hud/reborn/icon_armor_psd.vtex");
+    margin-top: 4px;
+}
+
+#MoveSpeedIcon
+{
+    width: 14px;
+    height: 14px;
+    background-image: url("s2r://panorama/images/hud/reborn/icon_speed_psd.vtex");
+    margin-top: 4px;
+}
+
+
+/* ////////////////////////////////////////////////////////////////////////// */
+
+#AbilityGroup{
+	horizontal-align: center;
+	flow-children: right;
+	vertical-align:bottom;
+}
+
+#HpBar{
+	height: 152px;
+	width: 152px;
+	border-radius: 50%;
+	transform: rotateZ(-90deg);
+	vertical-align: bottom;
+	margin-left: 10px;
+	margin-bottom: 12px;
+	box-shadow: inset 0px 0px 40px 0px #300101;
+}
+
+#MpBar{
+	height: 152px;
+	width: 152px;
+	border-radius: 50%;
+	transform: rotateZ(-90deg);
+	vertical-align: bottom;
+	horizontal-align: right;
+	margin-right: 10px;
+	margin-bottom: 12px;
+	
+	box-shadow: inset 0px 0px 40px 0px #011833;
+}
+
+#HpBar_Left{
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #1d200d ), color-stop( 0.2, #2e2d13 ), color-stop( .5, #272911), to( #1d200d) );
+}
+
+#HpBar_Right{
+	/* background-color: gradient( linear, 0% 0%, 0% 100%, from( #1d200d ), color-stop( 0.2, #2e2d13 ), color-stop( .5, #272911), to( #1d200d) ); */
+}
+
+#HpLabelBar{
+	height: 152px;
+	width: 152px;
+	border-radius: 50%;
+	vertical-align: bottom;
+	margin-left: 10px;
+	margin-bottom: 12px;	
+}
+
+#MpLabelBar{
+	height: 152px;
+	width: 152px;
+	vertical-align: bottom;
+	horizontal-align: right;
+	margin-right: 10px;
+	margin-bottom: 12px;	
+}
+
+#HpLabel, #MpLabel{
+    text-align: center;
+	vertical-align: center;
+	horizontal-align: center;
+	color: gradient(linear, 0% 65%, 0% 100%, from(#FFFFFF), color-stop(0.2, #cfd7db), to(#e1e8eb));
+	font-weight:bold;
+	font-family:titleFont;
+	font-size: 18px;
+	text-shadow:0px 2px 16px 5.0 #000a;
+	text-overflow: shrink;
+	opacity:0.6;
+}
+
+/* ///////////////////////////////////////////////////////////////////////////////// */
+
+#ButtonStatsEffect{
+	height: 43px;
+	width: 43px;
+	horizontal-align:left;
+	vertical-align: bottom;
+	margin-bottom:6px;
+	/* background-color: red; */
+}
+
+.full{
+	height: 100%;
+	width: 100%;	
+}
+
+#ButtonStats{
+	height: 35px;
+	width: 35px;
+	horizontal-align:left;
+	vertical-align: bottom;
+	background-image: url("file://{images}/HUD/button_stats.png");
+	background-repeat: no-repeat;
+	background-size: 100%;	
+	margin-bottom:10px;
+	margin-left: 5px;
+}
+
+#ButtonInventory{
+	height: 35px;
+	width: 35px;
+	horizontal-align:left;
+	vertical-align: bottom;
+	background-image: url("file://{images}/HUD/inventory.png");
+	background-repeat: no-repeat;
+	background-size: 100%;	
+	margin-bottom:10px;
+	margin-left: 45px;	
+}
+
+#ButtonStats:hover, #ButtonInventory:hover{
+	brightness: 1.6;
+	sound: "ui_select_arrow";
+}
+
+
+
+/* ///////////////////////////////////////////////////////////////////////////////// */
+
+#panel_bg{
+	height: 150px;
+	width: 150px;
+	background-color: rgb(39, 39, 88);
+	
+}
+
+#AbilitiesAndStatBranch{
+	height: 101px;
+	background-image: url("file://{images}/HUD/center.png");
+	background-repeat: no-repeat;
+	background-size: 100%;	
+	vertical-align:bottom;
+}
+
+.liftside, .rightside{
+	vertical-align: bottom;
+}
+
+.BarBackLeft{
+	vertical-align: bottom;
+	height: 174px;
+	width: 269px;
+	background-image: url("file://{images}/HUD/left.png");
+	background-repeat: no-repeat;
+	background-size: 100%;	
+}
+
+.BarBackRight{
+	vertical-align: bottom;
+	height: 174px;
+	width: 269px;
+	background-image: url("file://{images}/HUD/right.png");
+	background-repeat: no-repeat;
+	background-size: 100%;	
+}
+
+#MapGroup{
+	height: 200px;
+	width: 200px;
+	margin:5px;
+	horizontal-align:right;
+	vertical-align: bottom;
+	box-shadow: inset 0px 0px 20px 0px black;
+}
+
+#overlaymap{
+	height: 100%;
+	width: 100%;
+
+}
+
+#MapGroupBack{
+	height: 200px;
+	width: 200px;
+	margin:5px;
+	horizontal-align:right;
+	vertical-align: bottom;
+	background-image: url("file://{images}/HUD/map.png");
+	background-repeat: no-repeat;
+	background-size: 100%;			
+}
+
+/* ............................................................................. */
+
+
+#open_stats_menu_button{
+	height: 30px;
+	width: 30px;
+	align: center center;
+	margin-top: 500px;
+	background-color: red;
+
+}
+
+#open_stats_menu_button_level_up{
+	height: 30px;
+	width: 30px;
+	align: center center;
+	margin-left: 100px;
+	margin-top: 500px;
+	background-color: blue;
+}
+
+.player_stats_menu_main{
+	height: 600px;
+	width: 400px;
+	align: right center;
+	
+	background-image: url("file://{images}/elements/StatsMenu/MainWindowInternalFrame.png");
+	background-repeat: no-repeat;
+	background-size: 100%;
+	border-radius: 8px;
+
+	opacity: 0.5;
+	pre-transform-scale2d: 0.8;
+	transition-property: opacity, pre-transform-scale2d,position;
+	transition-duration: 0.37s;
+	transition-timing-function: ease-in-out;
+	position: 20% 0px 0px;
+	
+}
+
+#player_stats_menu_main_border{
+	height: 600px;
+	width: 400px;
+	align: center center;
+	background-image: url("file://{images}/elements/StatsMenu/MainWindowFrame.png");
+	background-repeat: no-repeat;
+	background-size: 100%;
+	z-index: 10;
+}
+
+#player_stats_menu_main_content{
+	height: 600px;
+	width: 400px;
+	align: center center;
+	background-image: url("file://{images}/elements/StatsMenu/Parchment.png");
+	background-repeat: no-repeat;
+	background-size: 100%;
+	flow-children: down;
+	margin: 10px;
+}
+
+	
+
+.open_stats_menu{
+	opacity: 1;
+	pre-transform-scale2d: 1;
+	position: 0% 0px 0px;
+}
+
+.player_stats_menu_label{
+	color: black;
+	font-size: 25px;
+	font-weight: bold;
+	font-family: titleFont;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+}
+
+.stats_panels{
+	flow-children: right;
+	background-color: rgba(0,0,0,.55);
+	horizontal-align: center;
+	width: 250px;
+	
+}
+
+#player_stats_menu_button{
+	background-color: white;
+	height: 50px;
+	width: 50px;
+}
+
+
+/* ............................................................................. */

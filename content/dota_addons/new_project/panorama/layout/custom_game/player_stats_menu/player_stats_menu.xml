@@ -1,0 +1,46 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/layout/custom_game/player_stats_menu/player_stats_menu.css" />
+	</styles>
+	<scripts>
+		<include src="s2r://panorama/layout/custom_game/player_stats_menu/player_stats_menu.js" />
+	</scripts>
+	
+	<snippets>
+	</snippets>
+	
+	<Panel class="player_stats_menu_root" hittest="false">
+		<Panel id="open_stats_menu_button" onmouseactivate="OpenStatsMenu()" hittest="true" />
+		<Panel id="open_stats_menu_button_level_up" onmouseactivate="OpenStatsMenuOneTime()" hittest="true" />
+		<Panel id="player_stats_menu_main" class="player_stats_menu_main">
+			<Panel id="player_stats_menu_main_border"/>
+			<Panel id="player_stats_menu_main_content">
+			
+				<Panel class="stats_panels">
+					<Label class="player_stats_menu_label" html="true" text="#Strength" />
+					<Label id="player_stats_menu_str" class="player_stats_menu_label" html="true" text="#str" />
+					<Panel id="player_stats_menu_button" onmouseactivate="AddPoints('str')" />
+				</Panel>
+				
+				<Panel class="stats_panels">
+					<Label class="player_stats_menu_label" html="true" text="#agi" />
+					<Label id="player_stats_menu_agi" class="player_stats_menu_label" html="true" text="#str" />
+					<Panel id="player_stats_menu_button" onmouseactivate="AddPoints('agi')" />
+				</Panel>
+				
+				<Panel class="stats_panels">
+					<Label class="player_stats_menu_label" html="true" text="#vit" />
+					<Label id="player_stats_menu_vit" class="player_stats_menu_label" html="true" text="#str" />
+					<Panel id="player_stats_menu_button" onmouseactivate="AddPoints('vit')" />
+				</Panel>
+				
+				<Panel class="stats_panels">
+					<Label class="player_stats_menu_label" html="true" text="#eng" />
+					<Label id="player_stats_menu_eng" class="player_stats_menu_label" html="true" text="#str" />
+					<Panel id="player_stats_menu_button" onmouseactivate="AddPoints('eng')" />
+				</Panel>
+				
+			</Panel>
+		</Panel>
+	</Panel>
+</root>

@@ -1,8 +1,0 @@
-map_gaveyard_1
-{
-	material materials/overviews/map_gaveyard_1.vmat
-	pos_x -4096
-	pos_y -8000
-	scale 8.000
-}
-

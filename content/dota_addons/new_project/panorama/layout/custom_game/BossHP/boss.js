@@ -1,1 +1,0 @@
-$("#MainPanel").visible = false 

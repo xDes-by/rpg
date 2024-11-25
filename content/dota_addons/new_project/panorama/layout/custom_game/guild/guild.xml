@@ -1,0 +1,191 @@
+<root> 
+	<styles>
+		<include src="file://{resources}/layout/custom_game/guild/guild.css" />
+		<include src="s2r://panorama/styles/dotastyles.vcss_c" />
+	</styles>
+
+	<scripts>
+		<include src="file://{resources}/layout/custom_game/guild/guild.js" />
+	</scripts>
+	
+	<snippets>
+		<snippet name="guild_list">
+			<Panel class="Guild_menu_container_list_card">
+				<Panel id="Guild_menu_container_list_icon" />
+				<Panel id="Guild_menu_container_list_icon_back" />
+				<Label id="Guild_menu_container_list_name" text="" />
+				<Label id="Guild_menu_container_list_level" text="Уровень: 8" />
+				<Label id="Guild_menu_container_list_count" text="5/10" html='true' />
+				<Panel id="Guild_menu_container_list_card_button">
+					<Label id='Guild_menu_container_list_card_button_label' text="Вступить" />
+				</Panel>						
+			</Panel>	
+		</snippet>
+		
+		<snippet name="member_list">
+			<Panel class="member_card">
+				<DOTAAvatarImage id="member_card_icon" steamid="" />
+				<DOTAUserName id="member_card_name" steamid="" />
+				<Panel id="member_data">
+					<Label id="member_card_date"  text="date" />
+					<Label id="member_card_op" text="OP" />					
+				</Panel>	
+				<Panel id="member_card_remove"/>	
+			</Panel>	
+		</snippet>
+		
+		<snippet name="request_list">
+			<Panel class="request_card">
+				<DOTAAvatarImage id="request_card_icon" steamid="" />
+				<DOTAUserName id="request_card_name" steamid="" />
+				<Label id="request_card_date" class="label_16" text="date" />
+				<Panel id="request_card_buttons">	
+					<Panel id="request_card_yes"/>	
+					<Panel id="request_card_no"/>	
+				</Panel>	
+			</Panel>	
+		</snippet>
+	</snippets>
+
+	<Panel class="Guild_menu_root" hittest="false">
+		<Panel id="Guild_menu_open_button" onmouseactivate="open()" onmouseover="TipsOver('Guild_menu_open_button','Guild_menu_open_button')" onmouseout="TipsOut()"/>
+		
+			<Panel id="Guild_container" hittest="false">
+				<Panel class="Guild_close" onmouseactivate="open()" />
+				<Panel id="Guild_loading"/>
+				
+				<Panel id="Guild_list_container">
+					<Panel id="Guild_list"/>
+					<Panel id="Guild_list_back" hittest="false"/>
+					
+					<Panel id="Guild_create" hittest="false">
+						<Label id="Guild_create_panel_main_label" text="#create_guild" />
+		
+						<Panel id="Guild_image_container">
+							<Panel id="PrevImage" onactivate="PrevImage()" />
+							<Panel id="Guild_image_contant" />
+							<Panel id="Guild_image_contant_back" />
+							<Panel id="NextImage" onactivate="NextImage()" />
+						</Panel>
+					
+						<Label class="Guild_labels" text="#input_guild_name" />
+						<Panel id="Guild_name">
+							<TextEntry id="guild_name_input" class="" maxchars="20" placeholder=""/>
+						</Panel>
+						
+						<Label class="Guild_labels" text="#input_guild_name" />
+						<Panel id="Guild_description">
+							<TextEntry id="guild_description_input" class="" maxchars="200" placeholder=""/>
+						</Panel>
+						
+						<Panel id="toggle_panel">
+							<ToggleButton id="toggle" class="CheckBox" text="" />
+							<Label id="toggle_lable" text="#toggle_guild" />
+						</Panel>
+						<Panel id="Guild_create_button">
+							<Panel id="Guild_loading_button" hittest = "false"/>
+							<Panel id="Guild_create_button_container" >
+								<Label id="Guild_create_panel_label" text="#create_guild" />
+								<Panel id="Guild_create_button_content">
+									<Panel id="Guild_create_button_image"/>
+									<Label id="Guild_create_panel_label_cost" text="#200" />
+								</Panel>
+							</Panel>
+						</Panel>
+					</Panel>
+				</Panel>
+				
+				<Panel id="guild_guild_container">
+				
+					<Panel id="guild_left_side">
+						<Panel id="guild_left_top">
+							<Panel id="Guild_menu_icon" />
+							<Panel id="Guild_menu_icon_back" />
+							<Label id="Guild_menu_name" text="#namccccccce"/>
+
+							<Panel id='exp_panel'>
+								<Panel id="Guild_menu_icon_pr_bar"/>
+								<Panel id="Guild_menu_icon_lvl">
+									<Label id="Guild_menu_icon_lvl_text" text="2" />
+								</Panel>
+								<Panel id='Guild_menu_exp_icon'/>
+							</Panel>
+						</Panel>	
+						<Label id="Guild_menu_members_count" text="2" />						
+						<Panel id="Guild_menu_member_list" />
+						<Panel id="Guild_menu_member_list_back" hittest="false"/>
+					</Panel>
+					
+					<Label id="SourceValueLineV" />
+					<!-- //////////////////////////// RIGHT SIDE ////////////////////////////// -->
+				
+					<Panel id="guild_right_side">
+						<Panel id="guild_right_side_boss">
+							<Panel id="guild_right_side_boss_conteiner">
+								<Panel id="guild_right_side_image"/>
+								<Label id="guild_right_side_label" text="#fight_with_boss" />
+								<Panel id="guild_right_side_progress"/>
+							</Panel>
+							
+							<Panel id="guild_members_boss_list">
+								<Panel id="guild_members_boss_image" />
+								<Panel id="guild_members_boss_start_container">
+									<DOTAParticleScenePanel id="DiscountModeActivateFX" hittest="false" particleName="particles/ui/events/discountmode_button.vpcf" squarePixels="true" particleonly="true" startActive="true" cameraOrigin="0 0 310" lookAt="0 0 0" fov="40" />
+									<Panel id="guild_members_boss_start" onactivate="start_boss()">
+										<Label class="label_16" text="#start_boss" />
+									</Panel>
+								</Panel>
+							</Panel>
+						</Panel>				
+						<Label class="SourceValueLineH" />
+						<Panel id="Guild_description_label">
+							<Label id="Guild_description_label_text" class="label_16" text="sdddddddd ddddddd ddddddddddddd dxzcsd"/>
+						</Panel>
+						<Label class="SourceValueLineH" />
+						<Panel id="guild_rewards_list"/>
+						<Label class="SourceValueLineH" />
+						
+						<Panel id="guild_right_side_bottom">
+							<Panel id="guild_leave" onactivate="leave_guild()">
+								<Label class="label_16" text="#leave" />
+							</Panel>
+							<Panel id="guild_membersbuy_slot" onmouseover="TipsOver('guild_membersbuy_slot','guild_membersbuy_slot')" onmouseout="TipsOut()"/>
+							<Panel id="guild_members_request" onmouseover="TipsOver('guild_members_request','guild_members_request')" onmouseout="TipsOut()"/>
+						</Panel>
+					</Panel>
+					
+					<Panel id="guild_members_request_list">
+						<Panel class="Guild_close" onmouseactivate="close_requests()" />
+						<Panel id="guild_members_request_content" />
+						<Panel id="guild_members_request_content_back" hittest="false"/>
+						
+						<Panel id="reject_all">
+							<Label class="label_16" text="#reject_all" />
+						</Panel>
+					</Panel>
+
+				</Panel>
+			</Panel>
+			
+			<Panel id="Guild_menu_member_leave_accept">
+				<Label id='leave_menu' class="label_16 leave_menu" text="#leave" />
+				<Panel id="Guild_menu_member_leave_yes" onactivate="leave_event('yes')">
+					<Label class="label_16" text="#yes" />
+				</Panel>
+				<Panel id="Guild_menu_member_leave_no" onmouseactivate="leave_event('no')">
+					<Label class="label_16" text="#no" />
+				</Panel>
+			</Panel>
+			
+			
+			<Panel id="Guild_menu_member_buy_accept">
+				<Label id='buy_menu' class="label_16" text="#buy_slot" />
+				<Panel id="Guild_menu_member_buy_yes" onactivate="buy_event('yes')">
+					<Label class="label_16" text="#yes" />
+				</Panel>
+				<Panel id="Guild_menu_member_buy_no" onmouseactivate="buy_event('no')">
+					<Label class="label_16" text="#no" />
+				</Panel>
+			</Panel>
+	</Panel>
+</root>

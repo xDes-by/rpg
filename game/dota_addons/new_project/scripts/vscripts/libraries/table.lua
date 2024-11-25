@@ -1,4 +1,3 @@
-
 function bitand(a, b)
     local result = 0
     local bitval = 1

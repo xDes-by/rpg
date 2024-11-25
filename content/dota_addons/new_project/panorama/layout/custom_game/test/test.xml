@@ -1,0 +1,17 @@
+<root>
+
+	<styles>
+		<include src="s2r://panorama/layout/custom_game/test/test.css" />
+	</styles>
+	
+	<scripts>
+		<include src="s2r://panorama/layout/custom_game/test/test.js" />
+	</scripts>
+	
+	<snippets>
+	</snippets>
+	
+	<Panel class="main" hittest="false">
+		<Panel class="aim"/>
+	</Panel>
+</root>

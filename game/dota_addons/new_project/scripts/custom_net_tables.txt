@@ -2,13 +2,7 @@
 {
 	custom_net_tables =
 	[
-		"hero_selection",
-        "rating",
-        "talent",
-        "achieve",
-        "shop",
-        "battlepass",
-        "hero_achieve",
-		"info"
+		"hero_hud_stats",
+		"heroes_base_stats",
 	]
 }

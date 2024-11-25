@@ -1,14 +1,21 @@
-
-
 <root>
-  <scripts></scripts>
-  <Panel>
-    
-    <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/main.xml" />
-    <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/tutorial/tutorial.xml" />
-    <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/bosshp/boss.xml" />
-    <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/QuestSystem/init.xml" />
-	<!-- <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/QuestSystem/quest.xml" /> -->
-    <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/HeroSelection/HeroSelection.xml" />
-  </Panel>
+	<scripts>
+	</scripts>
+	<Panel>
+		<CustomUIElement type="Hud" layoutfile="s2r://panorama/layout/custom_game/player_hud/player_hud.xml" />
+		<CustomUIElement type="Hud" layoutfile="s2r://panorama/layout/custom_game/pick_menu/pick_menu.xml" />
+		
+		
+		
+		
+		<!-- <CustomUIElement type="Hud" layoutfile="s2r://panorama/layout/custom_game/player_stats_menu/player_stats_menu.xml" /> -->
+		
+		
+		
+		
+		
+		<!-- <CustomUIElement type="Hud" layoutfile="s2r://panorama/layout/custom_game/test/test.xml"/> -->
+		<!-- <CustomUIElement type="Hud" layoutfile="s2r://panorama/layout/custom_game/pick/pick.xml"/> -->
+		<!-- <CustomUIElement type="Hud" layoutfile="s2r://panorama/layout/custom_game/guild/guild.xml"/> -->
+	</Panel>
 </root>

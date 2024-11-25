@@ -1,11 +1,4 @@
 return function(context)
-	PrecacheResource( "soundfile", "soundevents/voscripts/game_sounds_vo_broodmother.vsndevts", context )
-	PrecacheResource( "soundfile", "soundevents/music/game_sounds_music_tutorial.vsndevts", context )
-	PrecacheResource( "soundfile", "soundevents/soundevents_conquest.vsndevts", context )
-	PrecacheResource( "soundfile", "soundevents/game_sounds_dungeon.vsndevts", context )
-	
-	PrecacheResource( "soundfile", "soundevents/voscripts/game_sounds_vo_nevermore.vsndevts", context )
-	
 	PrecacheResource( "soundfile", "soundevents/game_sounds_heroes/game_sounds_primal_beast.vsndevts", context )
 	PrecacheResource( "soundfile", "soundevents/game_sounds_heroes/game_sounds_crystalmaiden.vsndevts", context )
 	PrecacheResource( "soundfile", "soundevents/game_sounds_heroes/game_sounds_bristleback.vsndevts", context )
@@ -128,12 +121,9 @@ return function(context)
 	PrecacheResource( "soundfile", "soundevents/game_sounds_heroes/game_sounds_snapfire.vsndevts", context )
 	PrecacheResource( "soundfile", "soundevents/game_sounds_heroes/game_sounds_magnataur.vsndevts", context )
 	PrecacheResource( "soundfile", "soundevents/game_sounds_heroes/game_sounds_marci.vsndevts", context )
+	
+	PrecacheResource( "particle", "particles/units/heroes/hero_juggernaut/juggernaut_blade_fury.vpcf", context )
+    PrecacheResource( "particle", "particles/units/heroes/hero_juggernaut/juggernaut_blade_fury_null.vpcf", context )
+    PrecacheResource( "particle", "particles/units/heroes/hero_juggernaut/juggernaut_blade_fury_tgt.vpcf", context )
     
-	PrecacheResource( "model", "models/heroes/pangolier/pangolier_gyroshell2_rubick.vmdl", context )
-	PrecacheResource( "model", "models/items/tiny/scarlet_quarry/scarlet_quarry01.vmdl", context )
-	PrecacheResource( "model", "models/items/tiny/scarlet_quarry/scarlet_quarry_02.vmdl", context )
-	PrecacheResource( "model", "models/items/tiny/scarlet_quarry/scarlet_quarry_03.vmdl", context )
-	PrecacheResource( "model", "models/items/tiny/scarlet_quarry/scarlet_quarry_04.vmdl", context )
-    PrecacheResource( "model", "models/heroes/undying/undying_flesh_golem.vmdl", context )
-	PrecacheResource( "model", "models/heroes/hoodwink/hoodwink_tree_model.vmdl", context )
 end

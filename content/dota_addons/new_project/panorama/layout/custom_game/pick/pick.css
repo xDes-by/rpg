@@ -1,0 +1,62 @@
+.main{
+	height: 100%;
+	width: 100%;
+	/* background-color: black; */
+}
+
+#fraction_container{
+	vertical-align: center;
+	horizontal-align: center;
+}
+
+.cart{
+	/* height: 20px; */
+	/* width: 20px; */
+	/* background-color: red; */
+	border-radius: 50%;
+	/* background-image: url("file://{images}/fire.png"); */
+	/* background-repeat: no-repeat; */
+	/* background-size: 100%; */
+	padding:10px;
+	
+}
+
+.hero{
+	height: 90px;
+	width: 90px;
+	border-radius: 50%;
+}
+
+.hero:hover{
+	brightness: 1.8;
+	sound: "ui_select_arrow";
+}
+
+.fraction_effect
+{
+    width: 100%;
+    height: 100%;
+}
+
+.hero_back{
+	height: 90px;
+	width: 90px;
+	border-radius: 50%;
+	background-image: url("file://{images}/ring.png");
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+
+#pick_panel{
+	vertical-align: center;
+	horizontal-align: center;
+	height: 400px;
+	width: 300px;
+}
+
+.pick_scene{
+	height: 400px;
+	width: 300px;	
+	vertical-align: center;
+	horizontal-align: center;
+}

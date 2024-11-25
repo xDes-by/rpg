@@ -1,8 +1,0 @@
-all_map
-{
-	material materials/overviews/all_map.vmat
-	pos_x -16399
-	pos_y 16349
-	scale 32.000
-}
-
