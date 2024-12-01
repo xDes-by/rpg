@@ -10,7 +10,7 @@ require("quests")
 require("spawner")
 require("web") -- удалить на релизе
 require("guilds") -- удалить на релизе
-require("procdure_generator") -- процедурка!!!!!!!!
+require("inventory") -- удалить на релизе!
 
 Precache = require("precache")
 

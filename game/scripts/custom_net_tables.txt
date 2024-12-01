@@ -4,5 +4,7 @@
 	[
 		"hero_hud_stats",
 		"heroes_base_stats",
+		"boost_attributes",
+		"set_attributes",
 	]
 }

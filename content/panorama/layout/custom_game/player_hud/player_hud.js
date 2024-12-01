@@ -137,10 +137,9 @@ function hero_level_up(){
 
 
 
-
-
-
-
+function OpenInventory(){
+	GameUI.CustomUIConfig.OpenInventory();
+}
 
 
 (function() {

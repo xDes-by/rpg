@@ -20,10 +20,13 @@ var heroes = {
 };
 
 function init_pick(){
-	scene = $.CreatePanel(`DOTAScenePanel`, $("#PickHeroScene"), "hero_screen", {camera: `camera_1`, light:"light_1",  particleonly: `false`, map: `maps/background.vmap`, hittest: `false`});
+
+	
+	scene = $.CreatePanel(`DOTAScenePanel`, $("#PickHeroScene"), "hero_screen", {camera: `camera_1`, light:"light_1", particleonly: `false`, map: `maps/background.vmap`, hittest: `false`});
 	scene.style.width = "100%";
 	scene.style.height = "100%";
 	
+	$.Msg(scene)
 	
 	exp_bar = $.CreatePanel(`DOTAScenePanel`, $("#HeroLevelBar"), "RegenBurner", {class: `RegenBurner`, camera: `camera_1`, particleonly: `false`, map: `maps/scenes/hud/healthbarburner.vmap`, hittest: `false`});
 	exp_bar.style.hueRotation = "300deg"

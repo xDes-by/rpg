@@ -1,0 +1,255 @@
+#InventoryPanelContent{
+	flow-children:right;
+	horizontal-align: center;
+	vertical-align:center;
+}
+
+#InventoryPanel
+{
+    width: 550px;
+	height: 700px;
+	background-image:url("file://{images}/inventory/panel.png");
+	background-repeat: no-repeat;
+	background-size: 100%;
+    align: center center;
+    flow-children: down;
+    transition-property: opacity;
+    transition-duration: 0.1s;
+	padding: 10px;
+}
+
+.CloseInventory{
+	opacity: 0;
+}
+
+#CloseButton{
+	vertical-align:top;
+	horizontal-align: right;
+	background-image:url("file://{images}/inventory/close.png");
+	background-repeat: no-repeat;
+	background-size: 100%;
+	margin:9px 0px;
+	width:53px;
+	height:45px;
+}
+
+#CloseButton:hover{
+	sound: "ui_select_arrow";
+	brightness: 1.8;
+}
+
+#CloseButton:active
+{
+    pre-transform-scale2d: 0.8;
+}
+
+/* ////////////////////////// */
+
+#EquipContainer{
+	width: 530px;
+	height: 640px;
+	margin-top: 5px;
+	margin-bottom: 10px;
+}
+
+.EquipBack{
+	horizontal-align: center;
+	vertical-align:center;
+	background-image:url("file://{images}/inventory/body_shadow.png");
+	background-repeat: no-repeat;
+	background-size: 100%;
+	width: 539px;
+	height: 600px;
+}
+
+.EquipBack_2{
+	horizontal-align: center;
+	vertical-align:top;
+	background-image:url("file://{images}/inventory/body.png");
+	background-repeat: no-repeat;
+	background-size: 100%;
+	width: 240px;
+	height: 500px;
+}
+
+#EquipMain{
+	width: 530px;
+	height: 640px;
+	horizontal-align: center;
+	vertical-align:center;
+}
+
+/* ////////////////////////////// */
+
+.equip_slot_main{
+	background-image:url("file://{images}/inventory/item_slot.png");
+	background-repeat: no-repeat;
+	background-size: 100%;
+	width: 80px;
+	height: 80px;
+}
+
+.equip_slot{
+	width: 60px;
+    height: 60px;
+    horizontal-align: center;
+	margin-top: 8px;
+	/* background-image:url("file://{images}/inventory/weapon.png"); */
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+
+.equip_slot:hover{
+	sound: "ui_select_arrow";
+	brightness: 1.8;
+}
+
+#head{
+	horizontal-align: left;
+	vertical-align: top;
+	margin-left:90px;
+	margin-top: 20px;
+}
+
+#pendant{
+	horizontal-align: left;
+	vertical-align: top;
+	margin-left:70px;
+	margin-top: 120px;
+}
+
+#armor{
+	horizontal-align: left;
+	vertical-align: top;
+	margin-left:50px;
+	margin-top: 220px;
+}
+
+#legs{
+	horizontal-align: left;
+	vertical-align: top;
+	margin-left:70px;
+	margin-top: 320px;	
+}
+
+#boots{
+	horizontal-align: left;
+	vertical-align: top;
+	margin-left:70px;
+	margin-top: 420px;	
+}
+
+#gloves{
+	horizontal-align: right;
+	vertical-align: top;
+	margin-right:90px;
+	margin-top: 20px;
+}
+
+#shield{
+	horizontal-align: right;
+	vertical-align: top;
+	margin-right:70px;
+	margin-top: 120px;	
+}
+
+#weapon{
+	horizontal-align: right;
+	vertical-align: top;
+	margin-right: 50px;
+	margin-top: 220px;
+}
+
+#ring{
+	horizontal-align: right;
+	vertical-align: top;
+	margin-right:70px;
+	margin-top: 320px;	
+}
+
+#ring_2{
+	horizontal-align: right;
+	vertical-align: top;
+	margin-right:70px;
+	margin-top: 420px;		
+}
+
+#ZenContainer{
+	background-image:url("file://{images}/inventory/zen_bar.png");
+	background-repeat: no-repeat;
+	background-size: 100%;
+	width: 216px;
+	height: 40px;
+	horizontal-align: left;
+	vertical-align: bottom;
+	margin: 10px;
+	flow-children: right;
+}
+
+#ZenIcon{
+	background-image:url("file://{images}/inventory/zen_icon.png");
+	background-repeat: no-repeat;
+	background-size: 100%;
+	width: 25px;
+	height: 25px;
+	vertical-align: center;
+	margin-left:10px;	
+}
+
+#ZenCount{
+	vertical-align: center;
+	color:white;
+	font-size: 16px;
+	margin-left: 10px;
+	margin-top: 1px;
+	
+}
+
+#InventorySlots{
+	max-width: 550px;
+	max-height: 600px;
+	background-image:url("file://{images}/inventory/panel_2.png");
+	background-repeat: no-repeat;
+	background-size: 100%;
+    flow-children: down;
+	padding: 20px 15px 20px;
+	vertical-align: center;
+	flow-children: right-wrap;
+}
+
+.inventory_slot
+{
+	background-image:url("file://{images}/inventory/item_slot.png");
+	background-repeat: no-repeat;
+	background-size: 100%;
+    width: 60px;
+    height: 60px;
+    background-color: black;
+    margin: 1px;
+	tooltip-position: bottom; 
+}
+
+.inventory_slot:hover{
+	sound: "ui_select_arrow";
+	brightness: 1.8;
+}
+
+#InventoryDescriptions{
+	width: 400px;
+	height: 600px;
+	background-image:url("file://{images}/inventory/panel_2.png");
+	background-repeat: no-repeat;
+	background-size: 100%;
+    flow-children: down;
+	padding: 10px;
+	vertical-align: center;	
+}
+
+.item_panel{
+	width: 40px;
+    height: 40px;
+    horizontal-align: center;
+	margin-top: 8px;
+	background-repeat: no-repeat;
+	background-size: 100%;
+}

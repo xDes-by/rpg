@@ -1,0 +1,54 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/dotastyles.vcss_c" />
+        <include src="file://{resources}/layout/custom_game/inventory/inventory.css" /> 
+	</styles>
+
+	<scripts>
+		<include src="file://{resources}/layout/custom_game/inventory/inventory.js" />
+	</scripts>
+	
+	<snippets>
+		<snippet name="reward">
+			<Panel id="p">
+				<Panel id="MainInfo">
+					<Label id="TooltipName" html="true" />
+					<Image id="TooltipImage" src="file://{resources}/images/pet_shop/feed_4.png" />
+				</Panel>
+				<Label id="BaseAttribute" text="" html="true" />
+				<Label id="SourceValueLine" />
+				<Panel id="BonusAttribute"/>
+				<Label id="Descr" text="" html="true" />
+			</Panel>
+		</snippet>
+	</snippets>
+
+	<Panel style="width:100%;height:100%;" hittest="false">
+		<Panel id="InventoryPanelContent">
+			
+			<Panel id="InventorySlots"/>
+		
+			<Panel id="InventoryPanel">
+				<Panel id="CloseButton" onmouseactivate="Open()"/>	
+					
+				<Panel id="EquipContainer">
+					<Panel class="EquipBack"/>
+					<Panel class="EquipBack_2" />
+					<Panel class="EquipMain" id="EquipMain"/>
+					<Panel id="ZenContainer">
+						<Panel id="ZenIcon"/>
+						<Label id="ZenCount" text="598441515" html="true" />
+					</Panel>
+				</Panel>
+
+				<!-- <Panel class="InventoryMain" id="InventoryMain" > -->
+				
+					<!-- <Panel class="InventoryDust" id="InventoryDust" onmouseover="TipsOver('InventoryDust','InventoryDust')" onmouseout="TipsOut()"/> -->
+				<!-- </Panel> -->
+			</Panel>
+			
+			<Panel id="InventoryDescriptions"/>
+			
+		</Panel>
+    </Panel>
+</root>
