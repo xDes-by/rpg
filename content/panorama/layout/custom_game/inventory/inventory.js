@@ -2,11 +2,9 @@ var InventoryPanel = $("#InventoryPanel")
 $("#InventoryPanelContent").SetHasClass('CloseInventory', true)
 InventoryPanel.visible = true 
 
-var percent = ['lifesteal', 'magic_lifesteal', 'reflect', 'spell_amplify', 'magic_desolator', 'hp_regen', 'legs', 'shield', 'manacost', 'hp_regen_amp', 'crit', 'multicast'];
-var int_num = ['head', 'legs', 'weapon'];
+var percent = ['lifesteal', 'magic_lifesteal', 'reflect', 'spell_amplify', 'magic_desolator', 'hp_regen', 'pants', 'shield', 'manacost', 'hp_regen_amp', 'crit', 'multicast'];
+var int_num = ['helm', 'pants', 'weapon'];
 
-
---------------------------------ПОМЕНЯТЬ ВЕЗДЕ НА PANTS HELM
 
 var current_selected_player = null // Выбранный текущий герой
 var default_inventory_slots = 72 // Дефолтное количество слотов
@@ -30,7 +28,7 @@ function Open()
 
 function UpdateInventoryMain(data)
 {
-	$.Msg(data)
+	// $.Msg(data)
 	TABLE_HERO = data
 	
 	current_selected_player = Players.GetLocalPlayerPortraitUnit()
@@ -124,7 +122,7 @@ function UpdateInventoryItems(inventory_list) // Апдейт всех пред�
                 let item_name = item_info.name
                 let item_type = item_info.type
                 let item_attributes = item_info.attributes
-                let item_icon = item_info.set_type + "/" + item_info.item_type
+                let item_icon = item_info.set_name + " " + item_info.item_type
                 
                 let find_slot = $("#InventorySlots").FindChildTraverse("inventory_slot_"+inventory_key_slot)
     
@@ -134,9 +132,7 @@ function UpdateInventoryItems(inventory_list) // Апдейт всех пред�
 				if (item_info.set_type == 'jewell'){
 					item_panel.style.backgroundImage = "url('file://{resources}/images/sets/"+item_info.item_type+".png')";
 				}else{
-					$.Msg(item_info.item_type)
-					// item_panel.style.backgroundImage = "url('file://{resources}/images/sets/" + item_info.set_type + "/" + item_info.item_type +".png')";
-					item_panel.style.backgroundImage = "url('file://{resources}/images/inventory/boots.png')";
+					item_panel.style.backgroundImage = "url('file://{resources}/images/items/"+ item_info.set_name + " " + item_info.item_type + ".png')";
 				}
 
                 item_panel.style.backgroundSize = "100%"
@@ -162,12 +158,11 @@ function UpdateEquipItems(equip_list) // Обновить экипированн
                 let item_name = item_info.name
                 let item_type = item_info.type
                 let item_attributes = item_info.attributes
-                let item_icon = item_info.set_type + "/" + item_info.item_type
+                let item_icon = item_info.set_name + " " + item_info.item_type
                 
-               
                 let item_panel = $.CreatePanel("Panel", find_slot, "")
                 item_panel.AddClass("item_panel")
-                item_panel.style.backgroundImage = "url('file://{resources}/images/sets/" + item_info.set_type + "/" + item_info.item_type +".png')";
+				item_panel.style.backgroundImage = "url('file://{resources}/images/items/"+ item_info.set_name + " " + item_info.item_type + ".png')";
                 item_panel.style.backgroundSize = "100%"
                 item_panel.item_icon = item_icon
                 item_panel.hittest = false
@@ -274,7 +269,7 @@ function update_description(){
 		}
 	}
 	
-	var simple_color = ['head', 'legs', 'armor', 'boots', 'weapon', 'shield'];
+	var simple_color = ['helm', 'pants', 'armor', 'boots', 'weapon', 'shield'];
 	
 	for (const attrKey in attributeSum) {
 		let label = $.CreatePanel("Label", description_panel, "")
@@ -324,10 +319,12 @@ function OnDragStart( panelId, dragCallbacks )
     {
         return
     }
+	
+	$.Msg(panelId.item_in_slot.item_icon)
+	
 	var displayPanel = $.CreatePanel( "Panel", $.GetContextPanel(), "dragImage" );
     displayPanel.AddClass("dragImage")
-    displayPanel.style.backgroundImage = "url('file://{resources}/images/sets/" + panelId.item_in_slot.item_icon +".png')";
-    // displayPanel.style.backgroundImage = 'url("' + panelId.item_in_slot.item_icon + '")';
+	displayPanel.style.backgroundImage = "url('file://{resources}/images/items/" + panelId.item_in_slot.item_icon + ".png')";
     displayPanel.style.backgroundSize = "100%"
     displayPanel.original_slot = panelId;
 	dragCallbacks.displayPanel = displayPanel;
@@ -356,20 +353,13 @@ function OnDragDrop( panelId, draggedPanel )
 {
     let new_panel = panelId // Куда перенес
     let old_panel = draggedPanel.original_slot // Откуда перенес
-    // Если инвентарь не локального игрока
 	
-	if (new_panel.id == 'InventoryDust')
-    {
-		let old_panel_item = old_panel.GetChild(0) // Переносимый итем
-		dust_item(old_panel, new_panel, old_panel_item)
-		return
-    }
-	
+	// Если инвентарь не локального игрока
     if (!is_local_inventory)
     {
         return
     }
-
+	
     // Если перенос не в слот для предмета
     if (new_panel.is_slot == null)
     {

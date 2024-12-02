@@ -33,10 +33,10 @@ function inventory:init()
 		crit = 5, --180
 		multicast = 1, --72---------------------
 		
-		head = 50,
+		helm = 50,
 		armor = 1,
 		weapon = 10,
-		legs = 3,
+		pants = 3,
 		boots = 1,
 		shield = 0.5,
 	})
@@ -215,6 +215,21 @@ function inventory:get_attribute_data(pid)
 	return inventory:selectUniqueRandomAttributes(count, attributes)
 end
 
+
+-- {
+    -- "level": 6,
+    -- "quality": 93,
+    -- "set_name": "Bronze",
+    -- "item_type": "pants",
+    -- "item_rarity": "base",
+    -- "luck_option": 1,
+    -- "additional_level": 0,
+    -- "excellent_bonuses": {
+      -- "magic_desolator": 1
+    -- }
+ -- }
+
+
 function inventory:roll_random_item(pid, unitname)
 	if GameRules:IsCheatMode() and not IsInToolsMode() then return end
 	
@@ -222,8 +237,8 @@ function inventory:roll_random_item(pid, unitname)
         GoldenMiner = 'boots',
         GoldenQueen = 'armor',
         GoldenWyvern = 'shield',
-        GoldenSea = 'head',
-        GoldenDragon = 'legs',
+        GoldenSea = 'helm',
+        GoldenDragon = 'pants',
         GoldenForest = 'weapon'
     }
 	
@@ -286,7 +301,7 @@ end
 function inventory:roll_discount(pid)
     if GameRules:IsCheatMode() and not IsInToolsMode() then return end
 
-    local discount_drop = {'boots', 'armor', 'shield', 'legs', 'head', 'weapon'}
+    local discount_drop = {'boots', 'armor', 'shield', 'pants', 'helm', 'weapon'}
     
     local attributes = {'desolator', 'magic_desolator', 'reflect', 'lifesteal', 'magic_lifesteal', 'mjolnir', 'mjolnir_armor', 'mkb', 'hp_regen', 'hp_regen_amp', 'damage_block', 'manacost', 'crit', 'multicast'}
     

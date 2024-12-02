@@ -104,7 +104,12 @@
 	brightness: 1.8;
 }
 
-#head{
+.dragImage{
+    width: 45px;
+    height: 45px;	
+}
+
+#helm{
 	horizontal-align: left;
 	vertical-align: top;
 	margin-left:90px;
@@ -125,7 +130,7 @@
 	margin-top: 220px;
 }
 
-#legs{
+#pants{
 	horizontal-align: left;
 	vertical-align: top;
 	margin-left:70px;
