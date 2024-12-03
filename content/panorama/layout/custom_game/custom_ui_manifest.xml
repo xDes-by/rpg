@@ -5,7 +5,7 @@
 		<CustomUIElement type="Hud" layoutfile="s2r://panorama/layout/custom_game/player_hud/player_hud.xml" />
 		<CustomUIElement type="Hud" layoutfile="s2r://panorama/layout/custom_game/pick_menu/pick_menu.xml" />
 		<CustomUIElement type="Hud" layoutfile="s2r://panorama/layout/custom_game/inventory/inventory.xml" />
-		<CustomUIElement type="Hud" layoutfile="s2r://panorama/layout/custom_game/custom_tooltip/custom_tooltip.xml" />
+		<!-- <CustomUIElement type="Hud" layoutfile="s2r://panorama/layout/custom_game/uploadimg.xml" /> -->
 		
 		
 		

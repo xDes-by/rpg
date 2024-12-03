@@ -5,16 +5,23 @@
 	</styles>
 	<scripts>
 		<include src="s2r://panorama/layout/custom_game/custom_tooltip/custom_tooltip.js" />
+		<include src="s2r://panorama/layout/custom_game/custom_tooltip/items.js" />
 	</scripts>
 	
-	<Panel class="CreepTooltipRoot" hittest="false" hittestchildren="false" ontooltiploaded="setTooltip()">
+	<Panel class="CustomTooltipRoot" hittest="false" hittestchildren="false" ontooltiploaded="setTooltip()">
 		<Panel id="MainInfo">
 			<Label id="TooltipName" html="true" />
 			<Image class='TooltipImage' id='TooltipImage' src="" />
 		</Panel>
-		<Label id="BaseAttribute" text="" html="true" />
-		<Label id="SourceValueLine" />
-		<Panel id="BonusAttribute"/>
-		<Label id="Descr" text="" html="true" />
+		<Panel id="BaseAttributes">
+			<Label id="armor" class="ba_class" text="1"/>
+			<Label id="quality" class="ba_class" text="1"/>
+			<Label id="required_str" class="ba_class" text="1"/>
+			<Label id="required_agi" class="ba_class" text="1"/>
+			<Label id="can_use" class="ba_class" text="1"/>
+		</Panel>
+		<Label id="Luck" text="#Luck" html="true"/>
+		<Label id="Additional" ext="#Luck" html="true"/>
+		<Panel id="ExcellentBonus"/>
 	</Panel>
 </root>

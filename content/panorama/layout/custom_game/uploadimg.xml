@@ -1,0 +1,248 @@
+<root>
+	<Panel class="Images">
+		<Image src="file://{resources}/images/items/Adamantine Armor.png"/>
+		<Image src="file://{resources}/images/items/Adamantine Helm.png"/>
+		<Image src="file://{resources}/images/items/Adamantine Pants.png"/>
+		<Image src="file://{resources}/images/items/Adamantine Gloves.png"/>
+		<Image src="file://{resources}/images/items/Adamantine Shield.png"/>
+		<Image src="file://{resources}/images/items/Adamantine Boots.png"/>
+		
+		<Image src="file://{resources}/images/items/Ashcrow Armor.png"/>
+		<Image src="file://{resources}/images/items/Ashcrow Helm.png"/>
+		<Image src="file://{resources}/images/items/Ashcrow Pants.png"/>
+		<Image src="file://{resources}/images/items/Ashcrow Gloves.png"/>
+		<Image src="file://{resources}/images/items/Ashcrow Shield.png"/>
+		<Image src="file://{resources}/images/items/Ashcrow Boots.png"/>
+	
+		<Image src="file://{resources}/images/items/Black Dragon Armor.png"/>
+		<Image src="file://{resources}/images/items/Black Dragon Helm.png"/>
+		<Image src="file://{resources}/images/items/Black Dragon Pants.png"/>
+		<Image src="file://{resources}/images/items/Black Dragon Gloves.png"/>
+		<Image src="file://{resources}/images/items/Black Dragon Shield.png"/>
+		<Image src="file://{resources}/images/items/Black Dragon Boots.png"/>
+		
+		<Image src="file://{resources}/images/items/Bloody Dragon Armor.png"/>
+		<Image src="file://{resources}/images/items/Bloody Dragon Helm.png"/>
+		<Image src="file://{resources}/images/items/Bloody Dragon Pants.png"/>
+		<Image src="file://{resources}/images/items/Bloody Dragon Gloves.png"/>
+		<Image src="file://{resources}/images/items/Bloody Dragon Shield.png"/>
+		<Image src="file://{resources}/images/items/Bloody Dragon Boots.png"/>
+		
+		<Image src="file://{resources}/images/items/Bone Armor.png"/>
+		<Image src="file://{resources}/images/items/Bone Helm.png"/>
+		<Image src="file://{resources}/images/items/Bone Pants.png"/>
+		<Image src="file://{resources}/images/items/Bone Gloves.png"/>
+		<Image src="file://{resources}/images/items/Bone Shield.png"/>
+		<Image src="file://{resources}/images/items/Bone Boots.png"/>
+		
+		<Image src="file://{resources}/images/items/Brass Armor.png"/>
+		<Image src="file://{resources}/images/items/Brass Helm.png"/>
+		<Image src="file://{resources}/images/items/Brass Pants.png"/>
+		<Image src="file://{resources}/images/items/Brass Gloves.png"/>
+		<Image src="file://{resources}/images/items/Brass Shield.png"/>
+		<Image src="file://{resources}/images/items/Brass Boots.png"/>
+		
+		<Image src="file://{resources}/images/items/Bronze Armor.png"/>
+		<Image src="file://{resources}/images/items/Bronze Helm.png"/>
+		<Image src="file://{resources}/images/items/Bronze Pants.png"/>
+		<Image src="file://{resources}/images/items/Bronze Gloves.png"/>
+		<Image src="file://{resources}/images/items/Bronze Shield.png"/>
+		<Image src="file://{resources}/images/items/Bronze Boots.png"/>
+		
+		<Image src="file://{resources}/images/items/Dark Master Armor.png"/>
+		<Image src="file://{resources}/images/items/Dark Master Helm.png"/>
+		<Image src="file://{resources}/images/items/Dark Master Pants.png"/>
+		<Image src="file://{resources}/images/items/Dark Master Gloves.png"/>
+		<Image src="file://{resources}/images/items/Dark Master Shield.png"/>
+		<Image src="file://{resources}/images/items/Dark Master Boots.png"/>
+		
+		<Image src="file://{resources}/images/items/Dark Phoenix Armor.png"/>
+		<Image src="file://{resources}/images/items/Dark Phoenix Helm.png"/>
+		<Image src="file://{resources}/images/items/Dark Phoenix Pants.png"/>
+		<Image src="file://{resources}/images/items/Dark Phoenix Gloves.png"/>
+		<Image src="file://{resources}/images/items/Dark Phoenix Shield.png"/>
+		<Image src="file://{resources}/images/items/Dark Phoenix Boots.png"/>
+		
+		<Image src="file://{resources}/images/items/Dark Soul Armor.png"/>
+		<Image src="file://{resources}/images/items/Dark Soul Helm.png"/>
+		<Image src="file://{resources}/images/items/Dark Soul Pants.png"/>
+		<Image src="file://{resources}/images/items/Dark Soul Gloves.png"/>
+		<Image src="file://{resources}/images/items/Dark Soul Shield.png"/>
+		<Image src="file://{resources}/images/items/Dark Soul Boots.png"/>
+		
+		<Image src="file://{resources}/images/items/Dark Steel Armor.png"/>
+		<Image src="file://{resources}/images/items/Dark Steel Helm.png"/>
+		<Image src="file://{resources}/images/items/Dark Steel Pants.png"/>
+		<Image src="file://{resources}/images/items/Dark Steel Gloves.png"/>
+		<Image src="file://{resources}/images/items/Dark Steel Shield.png"/>
+		<Image src="file://{resources}/images/items/Dark Steel Boots.png"/>
+		
+		<Image src="file://{resources}/images/items/Divine Armor.png"/>
+		<Image src="file://{resources}/images/items/Divine Helm.png"/>
+		<Image src="file://{resources}/images/items/Divine Pants.png"/>
+		<Image src="file://{resources}/images/items/Divine Gloves.png"/>
+		<Image src="file://{resources}/images/items/Divine Shield.png"/>
+		<Image src="file://{resources}/images/items/Divine Boots.png"/>
+		
+		<Image src="file://{resources}/images/items/Dragon Armor.png"/>
+		<Image src="file://{resources}/images/items/Dragon Helm.png"/>
+		<Image src="file://{resources}/images/items/Dragon Pants.png"/>
+		<Image src="file://{resources}/images/items/Dragon Gloves.png"/>
+		<Image src="file://{resources}/images/items/Dragon Shield.png"/>
+		<Image src="file://{resources}/images/items/Dragon Boots.png"/>
+		
+		<Image src="file://{resources}/images/items/Dragon Knight Armor.png"/>
+		<Image src="file://{resources}/images/items/Dragon Knight Helm.png"/>
+		<Image src="file://{resources}/images/items/Dragon Knight Pants.png"/>
+		<Image src="file://{resources}/images/items/Dragon Knight Gloves.png"/>
+		<Image src="file://{resources}/images/items/Dragon Knight Shield.png"/>
+		<Image src="file://{resources}/images/items/Dragon Knight Boots.png"/>
+		
+		<Image src="file://{resources}/images/items/Glorious Armor.png"/>
+		<Image src="file://{resources}/images/items/Glorious Helm.png"/>
+		<Image src="file://{resources}/images/items/Glorious Pants.png"/>
+		<Image src="file://{resources}/images/items/Glorious Gloves.png"/>
+		<Image src="file://{resources}/images/items/Glorious Shield.png"/>
+		<Image src="file://{resources}/images/items/Glorious Boots.png"/>
+		
+		<Image src="file://{resources}/images/items/Grand Soul Armor.png"/>
+		<Image src="file://{resources}/images/items/Grand Soul Helm.png"/>
+		<Image src="file://{resources}/images/items/Grand Soul Pants.png"/>
+		<Image src="file://{resources}/images/items/Grand Soul Gloves.png"/>
+		<Image src="file://{resources}/images/items/Grand Soul Shield.png"/>
+		<Image src="file://{resources}/images/items/Grand Soul Boots.png"/>
+		
+		<Image src="file://{resources}/images/items/Great Dragon Armor.png"/>
+		<Image src="file://{resources}/images/items/Great Dragon Helm.png"/>
+		<Image src="file://{resources}/images/items/Great Dragon Pants.png"/>
+		<Image src="file://{resources}/images/items/Great Dragon Gloves.png"/>
+		<Image src="file://{resources}/images/items/Great Dragon Shield.png"/>
+		<Image src="file://{resources}/images/items/Great Dragon Boots.png"/>
+		
+		<Image src="file://{resources}/images/items/Guardian Armor.png"/>
+		<Image src="file://{resources}/images/items/Guardian Helm.png"/>
+		<Image src="file://{resources}/images/items/Guardian Pants.png"/>
+		<Image src="file://{resources}/images/items/Guardian Gloves.png"/>
+		<Image src="file://{resources}/images/items/Guardian Shield.png"/>
+		<Image src="file://{resources}/images/items/Guardian Boots.png"/>
+		
+		<Image src="file://{resources}/images/items/Iris Armor.png"/>
+		<Image src="file://{resources}/images/items/Iris Helm.png"/>
+		<Image src="file://{resources}/images/items/Iris Pants.png"/>
+		<Image src="file://{resources}/images/items/Iris Gloves.png"/>
+		<Image src="file://{resources}/images/items/Iris Shield.png"/>
+		<Image src="file://{resources}/images/items/Iris Boots.png"/>
+		
+		<Image src="file://{resources}/images/items/Lazy Wind Armor.png"/>
+		<Image src="file://{resources}/images/items/Lazy Wind Helm.png"/>
+		<Image src="file://{resources}/images/items/Lazy Wind Pants.png"/>
+		<Image src="file://{resources}/images/items/Lazy Wind Gloves.png"/>
+		<Image src="file://{resources}/images/items/Lazy Wind Shield.png"/>
+		<Image src="file://{resources}/images/items/Lazy Wind Boots.png"/>
+		
+		<Image src="file://{resources}/images/items/Leather Armor.png"/>
+		<Image src="file://{resources}/images/items/Leather Helm.png"/>
+		<Image src="file://{resources}/images/items/Leather Pants.png"/>
+		<Image src="file://{resources}/images/items/Leather Gloves.png"/>
+		<Image src="file://{resources}/images/items/Leather Shield.png"/>
+		<Image src="file://{resources}/images/items/Leather Boots.png"/>
+		
+		<Image src="file://{resources}/images/items/Legendary Armor.png"/>
+		<Image src="file://{resources}/images/items/Legendary Helm.png"/>
+		<Image src="file://{resources}/images/items/Legendary Pants.png"/>
+		<Image src="file://{resources}/images/items/Legendary Gloves.png"/>
+		<Image src="file://{resources}/images/items/Legendary Shield.png"/>
+		<Image src="file://{resources}/images/items/Legendary Boots.png"/>
+		
+		<Image src="file://{resources}/images/items/Light Plate Armor.png"/>
+		<Image src="file://{resources}/images/items/Light Plate Helm.png"/>
+		<Image src="file://{resources}/images/items/Light Plate Pants.png"/>
+		<Image src="file://{resources}/images/items/Light Plate Gloves.png"/>
+		<Image src="file://{resources}/images/items/Light Plate Shield.png"/>
+		<Image src="file://{resources}/images/items/Light Plate Boots.png"/>
+		
+		<Image src="file://{resources}/images/items/Pad Armor.png"/>
+		<Image src="file://{resources}/images/items/Pad Helm.png"/>
+		<Image src="file://{resources}/images/items/Pad Pants.png"/>
+		<Image src="file://{resources}/images/items/Pad Gloves.png"/>
+		<Image src="file://{resources}/images/items/Pad Shield.png"/>
+		<Image src="file://{resources}/images/items/Pad Boots.png"/>
+		
+		<Image src="file://{resources}/images/items/Plate Armor.png"/>
+		<Image src="file://{resources}/images/items/Plate Helm.png"/>
+		<Image src="file://{resources}/images/items/Plate Pants.png"/>
+		<Image src="file://{resources}/images/items/Plate Gloves.png"/>
+		<Image src="file://{resources}/images/items/Plate Shield.png"/>
+		<Image src="file://{resources}/images/items/Plate Boots.png"/>
+		
+		<Image src="file://{resources}/images/items/Red Spirit Armor.png"/>
+		<Image src="file://{resources}/images/items/Red Spirit Helm.png"/>
+		<Image src="file://{resources}/images/items/Red Spirit Pants.png"/>
+		<Image src="file://{resources}/images/items/Red Spirit Gloves.png"/>
+		<Image src="file://{resources}/images/items/Red Spirit Shield.png"/>
+		<Image src="file://{resources}/images/items/Red Spirit Boots.png"/>
+		
+		<Image src="file://{resources}/images/items/Scale Armor.png"/>
+		<Image src="file://{resources}/images/items/Scale Helm.png"/>
+		<Image src="file://{resources}/images/items/Scale Pants.png"/>
+		<Image src="file://{resources}/images/items/Scale Gloves.png"/>
+		<Image src="file://{resources}/images/items/Scale Shield.png"/>
+		<Image src="file://{resources}/images/items/Scale Boots.png"/>
+		
+		<Image src="file://{resources}/images/items/Silk Armor.png"/>
+		<Image src="file://{resources}/images/items/Silk Helm.png"/>
+		<Image src="file://{resources}/images/items/Silk Pants.png"/>
+		<Image src="file://{resources}/images/items/Silk Gloves.png"/>
+		<Image src="file://{resources}/images/items/Silk Shield.png"/>
+		<Image src="file://{resources}/images/items/Silk Boots.png"/>
+		
+		<Image src="file://{resources}/images/items/Sphinx Armor.png"/>
+		<Image src="file://{resources}/images/items/Sphinx Helm.png"/>
+		<Image src="file://{resources}/images/items/Sphinx Pants.png"/>
+		<Image src="file://{resources}/images/items/Sphinx Gloves.png"/>
+		<Image src="file://{resources}/images/items/Sphinx Shield.png"/>
+		<Image src="file://{resources}/images/items/Sphinx Boots.png"/>
+		
+		<Image src="file://{resources}/images/items/Spirit Armor.png"/>
+		<Image src="file://{resources}/images/items/Spirit Helm.png"/>
+		<Image src="file://{resources}/images/items/Spirit Pants.png"/>
+		<Image src="file://{resources}/images/items/Spirit Gloves.png"/>
+		<Image src="file://{resources}/images/items/Spirit Shield.png"/>
+		<Image src="file://{resources}/images/items/Spirit Boots.png"/>
+		
+		<Image src="file://{resources}/images/items/Sunlight Armor.png"/>
+		<Image src="file://{resources}/images/items/Sunlight Helm.png"/>
+		<Image src="file://{resources}/images/items/Sunlight Pants.png"/>
+		<Image src="file://{resources}/images/items/Sunlight Gloves.png"/>
+		<Image src="file://{resources}/images/items/Sunlight Shield.png"/>
+		<Image src="file://{resources}/images/items/Sunlight Boots.png"/>
+		
+		<Image src="file://{resources}/images/items/Sylphid Ray Armor.png"/>
+		<Image src="file://{resources}/images/items/Sylphid Ray Helm.png"/>
+		<Image src="file://{resources}/images/items/Sylphid Ray Pants.png"/>
+		<Image src="file://{resources}/images/items/Sylphid Ray Gloves.png"/>
+		<Image src="file://{resources}/images/items/Sylphid Ray Shield.png"/>
+		<Image src="file://{resources}/images/items/Sylphid Ray Boots.png"/>
+		
+		<Image src="file://{resources}/images/items/Venom Mist Armor.png"/>
+		<Image src="file://{resources}/images/items/Venom Mist Helm.png"/>
+		<Image src="file://{resources}/images/items/Venom Mist Pants.png"/>
+		<Image src="file://{resources}/images/items/Venom Mist Gloves.png"/>
+		<Image src="file://{resources}/images/items/Venom Mist Shield.png"/>
+		<Image src="file://{resources}/images/items/Venom Mist Boots.png"/>
+		
+		<Image src="file://{resources}/images/items/Vine Armor.png"/>
+		<Image src="file://{resources}/images/items/Vine Helm.png"/>
+		<Image src="file://{resources}/images/items/Vine Pants.png"/>
+		<Image src="file://{resources}/images/items/Vine Gloves.png"/>
+		<Image src="file://{resources}/images/items/Vine Shield.png"/>
+		<Image src="file://{resources}/images/items/Vine Boots.png"/>
+		
+		<Image src="file://{resources}/images/items/Wind Armor.png"/>
+		<Image src="file://{resources}/images/items/Wind Helm.png"/>
+		<Image src="file://{resources}/images/items/Wind Pants.png"/>
+		<Image src="file://{resources}/images/items/Wind Gloves.png"/>
+		<Image src="file://{resources}/images/items/Wind Shield.png"/>
+		<Image src="file://{resources}/images/items/Wind Boots.png"/>
+	</Panel>
+</root>

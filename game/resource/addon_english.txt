@@ -1,0 +1,17 @@
+"lang"
+{
+	"Language"	"English"
+	"Tokens"
+	{
+		"addon_game_name" 	 "Dota Mu"
+		
+		"Defense" 			"Defense"
+		"quality" 			"Quality"
+		"required_str" 			"Strenght Requirement"
+		"required_agi" 			"Agility Requirement"
+		"can_use" 			"Can be equipped by"
+		"Luck" 				"Luck - success rate of Jewel of Soul +25% <br>Luck - critical damage rate +5%"
+		"additional_armor"	"Additional defense"
+		"additional_damage"	"Additional damage"
+	}	
+}

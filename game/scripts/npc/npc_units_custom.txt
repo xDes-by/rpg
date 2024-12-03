@@ -29,7 +29,7 @@
 
 //////////////////////////////////////////////////
 
-"npc_custom_creep_1"
+"bull_fighter"
     {
 		"vscripts" "ai/ai_spots.lua"
         "BaseClass" "npc_dota_creature"

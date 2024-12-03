@@ -1,10 +1,11 @@
-if DotaOnline == nil then
-	DotaOnline = class({})
+if DotaMu == nil then
+	DotaMu = class({})
 end
 
 require("libraries/utils")
 require("libraries/timers")
 require("libraries/table")
+require("libraries/data")
 require("libraries/hero_class_extend")
 require("game_events")
 require("quests")
@@ -12,6 +13,8 @@ require("spawner")
 require("web") -- удалить на релизе
 require("guilds") -- удалить на релизе
 require("inventory") -- удалить на релизе!
+require("drop") -- удалить на релизе!
+
 
 Precache = require("precache")
 
@@ -19,11 +22,11 @@ Precache = require("precache")
 _G.key = 'test'
 
 function Activate()
-	GameRules.DotaOnline = DotaOnline()
-	GameRules.DotaOnline:InitGameMode()
+	GameRules.DotaMu = DotaMu()
+	GameRules.DotaMu:InitGameMode()
 end
 
-function DotaOnline:InitGameMode()
+function DotaMu:InitGameMode()
 	local GameMode = GameRules:GetGameModeEntity()
 	GameMode:SetBuybackEnabled(false)
 	GameMode:SetFogOfWarDisabled(true) --false?
@@ -82,7 +85,7 @@ end
 
 -- maximum exp = 1 919 987 999
 
-function DotaOnline:OnChat(event)
+function DotaMu:OnChat(event)
     local text = event.text 
 	local pid = event.playerid
 	local hero = PlayerResource:GetSelectedHeroEntity( pid )	
@@ -96,7 +99,7 @@ function DotaOnline:OnChat(event)
 	end
 end
 
-function DotaOnline:OnGameStateChanged()	
+function DotaMu:OnGameStateChanged()	
     local state = GameRules:State_Get()
 	if state == DOTA_GAMERULES_STATE_CUSTOM_GAME_SETUP then
 		print("Load server")
@@ -115,7 +118,7 @@ function DotaOnline:OnGameStateChanged()
 	end
 end	
 
-function DotaOnline:OnNPCSpawned(data)	
+function DotaMu:OnNPCSpawned(data)	
 	npc = EntIndexToHScript(data.entindex)
 	if npc:IsRealHero() and npc.bFirstSpawned == nil and not npc:IsIllusion() and not npc:IsTempestDouble() and not npc:IsClone() then
 		game_events:hero_init(npc)
