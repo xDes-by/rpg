@@ -5,6 +5,7 @@ end
 require("libraries/utils")
 require("libraries/timers")
 require("libraries/table")
+require("libraries/hero_class_extend")
 require("game_events")
 require("quests")
 require("spawner")

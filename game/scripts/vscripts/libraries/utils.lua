@@ -39,3 +39,7 @@ function CDOTA_BaseNPC:CustomApplyDamage(target, caster, ability, damage_type)
 		ApplyDamage({victim = target, attacker = caster, damage = final_damage, damage_type = DAMAGE_TYPE_PURE, ability = ability})
 	end
 end
+
+function GetRandomPositionSquare(v1, v2)
+	return Vector(RandomFloat(v1.x, v2.x), RandomFloat(v1.y, v2.y), RandomFloat(v1.z, v2.z))
+end
