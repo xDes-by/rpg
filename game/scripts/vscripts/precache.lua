@@ -122,6 +122,8 @@ return function(context)
 	PrecacheResource( "soundfile", "soundevents/game_sounds_heroes/game_sounds_magnataur.vsndevts", context )
 	PrecacheResource( "soundfile", "soundevents/game_sounds_heroes/game_sounds_marci.vsndevts", context )
 	
+	PrecacheResource( "soundfile", "soundevents/soundevents_conquest.vsndevts", context )
+	
 	PrecacheResource( "particle", "particles/units/heroes/hero_juggernaut/juggernaut_blade_fury.vpcf", context )
     PrecacheResource( "particle", "particles/units/heroes/hero_juggernaut/juggernaut_blade_fury_null.vpcf", context )
     PrecacheResource( "particle", "particles/units/heroes/hero_juggernaut/juggernaut_blade_fury_tgt.vpcf", context )

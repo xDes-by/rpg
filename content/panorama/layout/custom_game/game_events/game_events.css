@@ -1,0 +1,56 @@
+#ShowZoneEvent{
+	horizontal-align: center;
+	vertical-align: top;
+}
+
+#ZoneEventContainer{
+	flow-children: right;
+}
+
+.ZoneEventLineRight{
+	width: 150px;
+	height: 6px;
+	background-color: gradient( linear, 100% 0%, 0% 100%, from( transparent ), color-stop( 0.5, #E7C57B ), to( #9D8145 ) );
+	vertical-align: center;
+}
+
+.ZoneEventLineLeft{
+	width: 150px;
+	height: 6px;
+	background-color: gradient( linear, 0% 0%, 100% 100%, from( transparent ), color-stop( 0.5, #E7C57B ), to( #9D8145 ) );
+	vertical-align: center;
+}
+
+#ZoneEventName{
+	horizontal-align: center;
+	color: gradient( linear, 0% 10%, 0% 100%, from( #E1CC9A ), color-stop( 0.5, #E7C57B ), to( #9D8145 ) );
+	letter-spacing:1px;
+	font-weight:bold;
+	font-family:titleFont;
+	font-size: 60px;
+	text-shadow:0px 2px 16px 5.0 #000a;
+	text-overflow: shrink;
+	text-align:center;
+	margin: 10px;
+}
+
+.show{
+	margin-top: 15px;
+	flow-children: right;
+	horizontal-align: center;
+	vertical-align: middle;
+	animation-name: scalein;
+	animation-duration: 1s;
+	animation-timing-function: linear;
+}
+
+@keyframes 'scalein'{
+	from{
+		opacity:0;
+		transform: scaleX(0) scaleY(0);
+	}
+	to{
+		opacity:1;
+		transform: scaleX(1) scaleY(1);
+	}
+}

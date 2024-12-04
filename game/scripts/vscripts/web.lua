@@ -2,12 +2,13 @@ if web == nil then
 	web = class({})
 end
 
+EXP_TIMER_UPDATE = 60
+
 function web:init()
-	CustomGameEventManager:RegisterListener("hero_get_stats", Dynamic_Wrap( self, 'hero_get_stats' ))
 	CustomGameEventManager:RegisterListener("hero_add_stats", Dynamic_Wrap( self, 'hero_add_stats' ))
 
 
-	GameRules:GetGameModeEntity():SetThink("Think_Players_Exp", self, "web", 60)
+	GameRules:GetGameModeEntity():SetThink("Think_Players_Exp", self, "web", EXP_TIMER_UPDATE)
 	web:start_game()
 end
 
@@ -42,11 +43,13 @@ function web:update_hero_data(hero_name, pid, hero)
 	local sid = tostring(PlayerResource:GetSteamID(pid))
 	local exp = _G.players_data[sid].heroes[hero_name].exp
 	local level = _G.players_data[sid].heroes[hero_name].level
+	local points = _G.players_data[sid].heroes[hero_name].points
 	arr = {
 		sid = sid,
 		hero_name = hero_name,
 		exp = exp,
-		level = level
+		level = level,
+		points = points
 	}
 	arr = json.encode(arr)
 	local req = CreateHTTPRequestScriptVM( "POST", "https://custom-dota.ru/dotamu/api_update_hero_data/?key=".._G.key )
@@ -56,7 +59,7 @@ function web:update_hero_data(hero_name, pid, hero)
 		if res.StatusCode == 200 and res.Body ~= nil then
 			local data = json.decode(res.Body)
 			_G.players_data[sid].heroes[hero_name] = data
-			return game_events:init_hero(hero, pid, _G.players_data[sid].heroes[hero_name]) 																			
+			game_events:init_hero(hero, pid, _G.players_data[sid].heroes[hero_name]) 																			
 		else
 			print(res.StatusCode)
 		end
@@ -64,41 +67,58 @@ function web:update_hero_data(hero_name, pid, hero)
 end
 
 function web:Think_Players_Exp()
-	if GameRules:State_Get() == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
-		print("send")
-	end
-	return 60
+    if GameRules:State_Get() == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
+        local arr = {}
+        for i = 0 , PlayerResource:GetPlayerCount() do
+            if PlayerResource:IsValidPlayer(i) then
+                local pl_sid = tostring(PlayerResource:GetSteamID(i))
+                local hero = PlayerResource:GetSelectedHeroEntity(i)    
+                local hero_name = hero:GetUnitName()
+                if hero_name == 'npc_dota_hero_wisp' then
+                    goto continue_send
+                end
+                arr[tostring(i)] = {
+                    sid = pl_sid,
+                    hero_name = hero_name,
+                    exp = _G.players_data[pl_sid].heroes[hero_name].exp,
+                    level = _G.players_data[pl_sid].heroes[hero_name].level,
+                    points = _G.players_data[pl_sid].heroes[hero_name].points
+                }
+                ::continue_send::
+            end
+        end
+
+        if arr['0'] == nil then
+            return EXP_TIMER_UPDATE
+        end
+
+        arr = json.encode(arr)
+        local req = CreateHTTPRequestScriptVM( "POST", "https://custom-dota.ru/dotamu/api_send_players_exp/?key=".._G.key )
+        req:SetHTTPRequestGetOrPostParameter('arr',arr)
+        req:SetHTTPRequestAbsoluteTimeoutMS(100000)
+        req:Send(function(res)
+            if res.StatusCode == 200 and res.Body ~= nil then
+                local data = json.decode(res.Body)			
+				for i = 0 , PlayerResource:GetPlayerCount() do
+					if PlayerResource:IsValidPlayer(i) then
+						local sid = tostring(PlayerResource:GetSteamID(i))
+                		local hero = PlayerResource:GetSelectedHeroEntity(i)    
+                		local hero_name = hero:GetUnitName()
+						_G.players_data[sid].heroes[hero_name].exp = data[sid].exp
+						_G.players_data[sid].heroes[hero_name].level = data[sid].level
+						_G.players_data[sid].heroes[hero_name].points = data[sid].points
+						CustomNetTables:SetTableValue("hero_hud_stats", tostring(hero:GetEntityIndex()), _G.players_data[sid].heroes[hero_name])
+					end
+				end
+                print("EXP OK")
+            else
+                print("EXP ERROR")
+                print(res.StatusCode)
+            end
+        end)
+    end
+    return EXP_TIMER_UPDATE
 end
-
-
-
-
-
-function web:hero_get_stats(t)
-	local hero = PlayerResource:GetSelectedHeroEntity(t.PlayerID)	
-	-- arr = {
-		-- sid = tostring(PlayerResource:GetSteamID(t.PlayerID)),
-	-- }
-	-- arr = json.encode(arr)
-	-- local req = CreateHTTPRequestScriptVM( "POST", "https://custom-dota.ru/api_close_order/?key=".._G.key )
-	-- req:SetHTTPRequestGetOrPostParameter('arr',arr)
-	-- req:SetHTTPRequestAbsoluteTimeoutMS(100000)
-	-- req:Send(function(res)
-		-- if res.StatusCode == 200 and res.Body ~= nil then
-		
-			-- local data = json.decode(res.Body)  -- ответ о кол-ве поинтов
-			CustomGameEventManager:Send_ServerToPlayer( PlayerResource:GetPlayer(t.PlayerID), "hero_show_stats", {	points = 5, --data.points,
-																													str = 6,
-																													agi = 5,
-																													vit = 32,
-																													eng = 213}
-																													)																									
-		-- else
-			-- print(res.StatusCode)
-		-- end
-	-- end)
-end
-
 
 
 

@@ -13,5 +13,29 @@
 		"Luck" 				"Luck - success rate of Jewel of Soul +25% <br>Luck - critical damage rate +5%"
 		"additional_armor"	"Additional defense"
 		"additional_damage"	"Additional damage"
+		
+		"statistic"				"Statistics"
+		"warrior"				"Warrior"
+		"level"					"Level"
+		"Strength"				"Strength"
+		"Agility"				"Agility"
+		"Vitality"				"Vitality"
+		"Energy"				"Energy"
+		
+		"lorencia"				"Lorencia"
+		"devias"				"Devias"
+		"dungeon"				"Dungeon"
+		"atlans"				"Atlans"
+		"tarkan"				"Tarkan"
+		"ferea"					"Ferea"
+		"aida"					"Aida"
+		"icarus"				"Icarus"
+		"kanturu"				"Kanturu"
+		"karutan"				"Karutan"
+		"raklion"				"Raklion"
+		"vulcanus"				"Vulcanus"
+		"swamp"					"Swamp"
+		"kethotum"				"Kethotum"
+
 	}	
 }

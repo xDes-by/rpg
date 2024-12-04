@@ -31,7 +31,10 @@
         "AttributeIntelligenceGain"	"0"
         "AttributeBaseAgility"      "0"
         "AttributeAgilityGain"      "0"
-        "StatusHealthRegen"			"0"
+        "StatusHealth"                    "1"
+        "StatusMana"                    "0"
+        "StatusManaRegen"                "0"
+        "StatusHealthRegen"                "0"
         "MovementSpeed"    			"300"
     }
 }

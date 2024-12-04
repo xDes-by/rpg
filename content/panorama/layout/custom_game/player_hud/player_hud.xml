@@ -45,28 +45,28 @@
 						<Panel id="MoveSpeedIcon" class="StatIcon" />
 					</Panel>
 					
-					<Panel class="StatPanels">
+					<Panel id="str_stats" class="StatPanels">
 						<Panel class="LeftRightFlow">
 							<Label id="StrLabel" class="StatPanelsLabel" text="50"/>
 							<Panel class="Str" />
 						</Panel>
 					</Panel>
 					
-					<Panel class="StatPanels">
+					<Panel id="agi_stats" class="StatPanels">
 						<Panel class="LeftRightFlow">
 							<Label id="AgiLabel" class="StatPanelsLabel" text="20"/>
 							<Panel class="Agi" />
 						</Panel>
 					</Panel>
 					
-					<Panel class="StatPanels">
+					<Panel id="vit_stats" class="StatPanels">
 						<Panel class="LeftRightFlow">
 							<Label id="VitLabel" class="StatPanelsLabel" text="20"/>
 							<Panel class="Vit" />
 						</Panel>
 					</Panel>
 					
-					<Panel class="StatPanels">
+					<Panel id="eng_stats" class="StatPanels">
 						<Panel class="LeftRightFlow">
 							<Label id="EngLabel" class="StatPanelsLabel" text="20"/>
 							<Panel class="Eng" />
@@ -103,8 +103,9 @@
 							<Label id="MpLabel" text="100 / 100"/>
 						</Panel>
 						
+						<Panel id="ButtonStatsEffect" hittest="false"/>
 						<Panel id="ButtonStats" onmouseactivate="OpenStatsMenu()"/>
-						<Panel id="ButtonStatsEffect"/>
+						
 						
 						<Panel id="ButtonInventory" onmouseactivate="OpenInventory()"/>
 					</Panel>
@@ -126,31 +127,55 @@
 		
 
 		<Panel id="player_stats_menu_main" class="player_stats_menu_main">
+			<Label id="statistic_label" html="true" text="#statistic" />
+
+			<Panel id="player_stats_description">
+				<Label id="HeroName" html="true" text="Juggernaut"/>
+				<Label id="HeroClass" html="true" text="warrior"/>
+				<Label id="HeroLevel" html="true" text="Level: 378 (5)"/>
+			</Panel>
 
 			<Panel id="player_stats_menu_main_content">
 			
-				<Panel class="stats_panels">
-					<Label class="player_stats_menu_label" html="true" text="#Strength" />
-					<Label id="player_stats_menu_str" class="player_stats_menu_label" html="true" text="#str" />
-					<Panel id="player_stats_menu_button" onmouseactivate="AddPoints('str')" />
+				<Panel class="stats_container">
+					<Panel class="stats_panels">
+						<Label class="player_stats_menu_label" html="true" text="#Strength" />
+						<Panel class="stats_panels_label_container">
+							<Label id="stats_panels_label_str" class="current_stats" text="50" />
+						</Panel>
+						<Panel id="player_stats_menu_button_effect"/>
+						<Panel id="player_stats_menu_button" onmouseactivate="AddPoints('str')" />
+					</Panel>
 				</Panel>
 				
-				<Panel class="stats_panels">
-					<Label class="player_stats_menu_label" html="true" text="#agi" />
-					<Label id="player_stats_menu_agi" class="player_stats_menu_label" html="true" text="#str" />
-					<Panel id="player_stats_menu_button" onmouseactivate="AddPoints('agi')" />
+				<Panel class="stats_container">
+					<Panel class="stats_panels">
+						<Label class="player_stats_menu_label" html="true" text="#Agility" />
+						<Panel class="stats_panels_label_container">
+							<Label id="stats_panels_label_agi" class="current_stats" text="50" />
+						</Panel>
+						<Panel id="player_stats_menu_button" onmouseactivate="AddPoints('agi')" />
+					</Panel>
 				</Panel>
 				
-				<Panel class="stats_panels">
-					<Label class="player_stats_menu_label" html="true" text="#vit" />
-					<Label id="player_stats_menu_vit" class="player_stats_menu_label" html="true" text="#str" />
-					<Panel id="player_stats_menu_button" onmouseactivate="AddPoints('vit')" />
+				<Panel class="stats_container">
+					<Panel class="stats_panels">
+						<Label class="player_stats_menu_label" html="true" text="#Vitality" />
+						<Panel class="stats_panels_label_container">
+							<Label id="stats_panels_label_vit" class="current_stats" text="50" />
+						</Panel>
+						<Panel id="player_stats_menu_button" onmouseactivate="AddPoints('vit')" />
+					</Panel>
 				</Panel>
 				
-				<Panel class="stats_panels">
-					<Label class="player_stats_menu_label" html="true" text="#eng" />
-					<Label id="player_stats_menu_eng" class="player_stats_menu_label" html="true" text="#str" />
-					<Panel id="player_stats_menu_button" onmouseactivate="AddPoints('eng')" />
+				<Panel class="stats_container">
+					<Panel class="stats_panels">
+						<Label class="player_stats_menu_label" html="true" text="#Energy" />
+						<Panel class="stats_panels_label_container">
+							<Label id="stats_panels_label_eng" class="current_stats" text="50" />
+						</Panel>
+						<Panel id="player_stats_menu_button" onmouseactivate="AddPoints('eng')" />
+					</Panel>
 				</Panel>
 				
 			</Panel>

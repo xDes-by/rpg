@@ -6,6 +6,8 @@ require("libraries/utils")
 require("libraries/timers")
 require("libraries/table")
 require("libraries/data")
+require("libraries/hero_class_extend")
+require("libraries/npc_class_extended")
 require("game_events")
 require("quests")
 require("spawner")
@@ -89,9 +91,6 @@ function DotaMu:OnChat(event)
 	local sid = PlayerResource:GetSteamAccountID(pid)
 	
 	if text == "1" then
-		local newLevel, remainderXP = game_events:GetLevelAndRemainderXP(621)
-		print(newLevel, "- new level")
-		print(remainderXP, "- new remainderXP")
 	end
 	if text == "2" then
 	end

@@ -27,92 +27,104 @@ var ExpBarContainer = $("#ExpBarContainer")
 var very_rare_item_effect = $.CreatePanel("DOTAParticleScenePanel", ButtonStatsEffect, "", {particleName:"particles/ui/hud/autocasting_square.vpcf", renderdeferred:"true", particleonly:"false", startActive:"true", cameraOrigin:"0 0 90", lookAt:"0 0 0", fov:"60"});
 very_rare_item_effect.AddClass("full");
 
+function updateBar(bar, container, width, color, map) {
+    if (!bar) {
+        bar = $.CreatePanel('DOTAScenePanel', container, '', {
+            class: 'RegenBurner',
+            camera: 'camera_1',
+            particleonly: 'false',
+            map: map,
+            hittest: 'false',
+        });
+        bar.style.width = width;
+        bar.style.height = '100%';
+        bar.style.backgroundColor = color;
+    }
+    return bar;
+}
+
+function updateStatLabel(id, value, suffix = '') {
+    const label = $(id);
+    if (label) {
+        label.text = value.toFixed(0) + suffix;
+    }
+}
+
+//поменять все на просто локального игрока, а не привязка к юниту
+
 function main() {
+    current_selected_player = Players.GetLocalPlayerPortraitUnit();
+    const playerId = Entities.GetPlayerOwnerID(current_selected_player);
+    const isRealHero = Entities.IsRealHero(current_selected_player);
+    const isLocalPlayer = playerId === Players.GetLocalPlayer();
 
-    // if (current_selected_player != Players.GetLocalPlayerPortraitUnit()) {
-        current_selected_player = Players.GetLocalPlayerPortraitUnit();
-        
-		let player_id = Entities.GetPlayerOwnerID(current_selected_player)
-		
-		// $.Msg(Entities.IsRealHero(current_selected_player), "---", player_id , "------", Players.GetLocalPlayer())
-		
-        if (Entities.IsRealHero(current_selected_player) && player_id == Players.GetLocalPlayer()) {
-			
-            var data = CustomNetTables.GetTableValue("hero_hud_stats", current_selected_player);
-			
-			// $.Msg(data)
+    if (isRealHero && isLocalPlayer) {
+        const data = CustomNetTables.GetTableValue('hero_hud_stats', current_selected_player);
 
-            if (data) {
-				
-				ButtonStatsEffect.visible = data.points > 0 ? true : false
-				
-				level_data = getLevelAndRemainderXP(data.exp)
-				
-				
-				$.Msg(level_data)
-				// $.Msg(data.exp, "---", data.level)
-				
-                $("#DamageLabel").text = data.min_damage.toFixed(0) + " - " + data.max_damage.toFixed(0);
-                $("#AttackSpeedLabel").text = data.speed.toFixed(1);
-                $("#ArmorLabel").text = data.armor.toFixed(0);
-                $("#MoveSpeedLabel").text = data.movespeed.toFixed(0);
-				
-                $("#StrLabel").text = data.str.toFixed(0);
-                $("#AgiLabel").text = data.agi.toFixed(0);
-                $("#VitLabel").text = data.vit.toFixed(0);
-                $("#EngLabel").text = data.eng.toFixed(0);
-								
+        if (data) {
+            ButtonStatsEffect.visible = data.points > 0;
 
-                if (!HpBar) {
-                    HpBar = $.CreatePanel(`DOTAScenePanel`, $("#HpBar"), "RegenBurnerHP", {class: `RegenBurner`, camera: `camera_1`, particleonly: `false`, map: `maps/hp_bar.vmap`, hittest: `false`});
-                    HpBar.style.width = "70%";
-                    HpBar.style.height = "100%";
-                    HpBar.style.backgroundColor = "#fc1919";
-                }
+            const levelData = getLevelAndRemainderXP(data.exp);
 
-                if (!MpBar) {
-                    MpBar = $.CreatePanel(`DOTAScenePanel`, $("#MpBar"), "RegenBurnerHP", {class: `RegenBurner`, camera: `camera_1`, particleonly: `false`, map: `maps/mp_bar.vmap`, hittest: `false`});
-                    MpBar.style.width = "70%";
-                    MpBar.style.height = "100%";
-                    MpBar.style.backgroundColor = "#006eeb";
-                }
-				
-				if (!ExpBar) {
-                    ExpBar = $.CreatePanel(`DOTAScenePanel`, $("#ExpBar"), "RegenBurnerHP", {class: `RegenBurner`, camera: `camera_1`, particleonly: `false`, map: `maps/scenes/hud/healthbarburner.vmap`, hittest: `false`});
-                    ExpBar.style.width = "7%";
-                    ExpBar.style.height = "100%";
-                    ExpBar.style.backgroundColor = "gold";
-                }
-            }
-			ButtonStats.visible = true
-			ButtonInventory.visible = true
-			ExpBarContainer.visible = true
-        } else {
-            // $.Msg("Selected unit is not a hero.");
-			ButtonStats.visible = false
-			ButtonInventory.visible = false
-			ExpBarContainer.visible = false
+            updateStatLabel('#DamageLabel', data.min_damage, ' - ' + data.max_damage);
+            updateStatLabel('#AttackSpeedLabel', data.speed, '.1');
+            updateStatLabel('#ArmorLabel', data.armor);
+            updateStatLabel('#MoveSpeedLabel', data.movespeed);
+            updateStatLabel('#StrLabel', data.str);
+            updateStatLabel('#AgiLabel', data.agi);
+            updateStatLabel('#VitLabel', data.vit);
+            updateStatLabel('#EngLabel', data.eng);
+
+            HpBar = updateBar(HpBar, $('#HpBar'), '70%', '#fc1919', 'maps/hp_bar.vmap');
+            MpBar = updateBar(MpBar, $('#MpBar'), '70%', '#006eeb', 'maps/mp_bar.vmap');
+            ExpBar = updateBar(ExpBar, $('#ExpBar'), '7%', 'gold', 'maps/scenes/hud/healthbarburner.vmap');
         }
-    // }
+
+        ButtonStats.visible = true;
+        ButtonInventory.visible = true;
+        ExpBarContainer.visible = true;
+
+        ['#str_stats', '#agi_stats', '#vit_stats', '#eng_stats'].forEach((id) => {
+            $(id).visible = true;
+        });
+    } else {
+        ButtonStats.visible = false;
+        ButtonInventory.visible = false;
+        ExpBarContainer.visible = false;
+        ButtonStatsEffect.visible = false;
+
+        updateStatLabel('#DamageLabel', Entities.GetDamageMin(current_selected_player), ' - ' + Entities.GetDamageMax(current_selected_player));
+        updateStatLabel('#AttackSpeedLabel', Entities.GetAttackSpeed(current_selected_player));
+        updateStatLabel('#ArmorLabel', Entities.GetBonusPhysicalArmor(current_selected_player));
+        updateStatLabel('#MoveSpeedLabel', Entities.GetBaseMoveSpeed(current_selected_player));
+
+        ['#str_stats', '#agi_stats', '#vit_stats', '#eng_stats'].forEach((id) => {
+            $(id).visible = false;
+        });
+    }
 
     if (HpBar) {
-        HpBar.style.width = Entities.GetHealthPercent(current_selected_player) + "%";
-		$("#HpLabel").text = Entities.GetHealth(current_selected_player) + " / " + Entities.GetMaxHealth(current_selected_player)	
+        HpBar.style.width = Entities.GetHealthPercent(current_selected_player) + '%';
+        updateStatLabel('#HpLabel', Entities.GetHealth(current_selected_player), ' / ' + Entities.GetMaxHealth(current_selected_player));
     }
 
     if (MpBar) {
-        var manaPercent =
-            (Entities.GetMana(current_selected_player) / Entities.GetMaxMana(current_selected_player)) * 100;
-        MpBar.style.width = manaPercent + "%";
-		$("#MpLabel").text = Entities.GetMana(current_selected_player) + " / " + Entities.GetMaxMana(current_selected_player)
+        const maxMana = Math.max(Entities.GetMaxMana(current_selected_player), 1);
+        const currentMana = Math.max(Entities.GetMana(current_selected_player), 0);
+        const manaPercent = (currentMana / maxMana) * 100;
+
+        MpBar.style.width = manaPercent + '%';
+        updateStatLabel('#MpLabel', Entities.GetMana(current_selected_player), ' / ' + Entities.GetMaxMana(current_selected_player));
     }
 
-	if (ExpBar) {
-        ExpBar.style.width = level_data.percent + "%";
+    if (ExpBar) {
+        const levelData = getLevelAndRemainderXP(CustomNetTables.GetTableValue('hero_hud_stats', current_selected_player)?.exp || 0);
+        ExpBar.style.width = levelData.percent + '%';
     }
-	
+
     $.Schedule(1.0 / 30.0, main);
 }
+
 
 function getLevelAndRemainderXP(xp) {
     let currentXP = 0;
@@ -127,8 +139,6 @@ function getLevelAndRemainderXP(xp) {
         currentXP = nextLevelXP;
         level += 1;
     }
-
-    // Если опыт больше максимального, возвращаем максимальный уровень и 0% прогресса
     return { level: 400, percent: 0 };
 }
 
@@ -142,28 +152,33 @@ var player_stats_menu_main = $("#player_stats_menu_main")
 function OpenStatsMenu() {
 	invopened = !invopened
 	player_stats_menu_main.SetHasClass("open_stats_menu", invopened)
-	GameEvents.SendCustomGameEventToServer("hero_get_stats", {});
-}
-
-function OpenStatsMenuOneTime() {
-	invopened = true
-	player_stats_menu_main.SetHasClass("open_stats_menu", true)
-	GameEvents.SendCustomGameEventToServer("hero_get_stats", {});
-	open_stats_menu_button_level_up.visible = false
+    const data = CustomNetTables.GetTableValue('hero_hud_stats', current_selected_player);
+    $.Msg(data)
+    if (data) {
+        hero_show_stats(data)
+    }
 }
 
 function hero_show_stats(data){
-	$.Msg("S")
-	$.Msg(data)
-	player_stats_menu_main.FindChildTraverse("player_stats_menu_str").text = data.str
-	player_stats_menu_main.FindChildTraverse("player_stats_menu_agi").text = data.agi
-	player_stats_menu_main.FindChildTraverse("player_stats_menu_vit").text = data.vit
-	player_stats_menu_main.FindChildTraverse("player_stats_menu_eng").text = data.eng
-	
-	if(data.points > 0){
-		$.Msg("!")
-	}
-	
+    $.Msg(data)
+    $.Msg("1")
+
+    var HeroClass = GameUI.CustomUIConfig().HeroClass
+    var hero_class = HeroClass[data.hero];
+
+    $.Msg(hero_class)
+
+    // ButtonStatsEffect.visible = data.points > 0 ? true : false
+
+    player_stats_menu_main.FindChildTraverse("HeroName").text = $.Localize('#'+ data.hero)
+    player_stats_menu_main.FindChildTraverse("HeroClass").text = $.Localize('#'+ hero_class)
+    player_stats_menu_main.FindChildTraverse("HeroLevel").text = $.Localize('#level') + ": " + data.level + " (" + data.resets + ")" 
+    player_stats_menu_main.FindChildTraverse("stats_panels_label_str").text = data.str
+
+    player_stats_menu_main.FindChildTraverse("stats_panels_label_str").text = data.str
+	player_stats_menu_main.FindChildTraverse("stats_panels_label_agi").text = data.agi
+	player_stats_menu_main.FindChildTraverse("stats_panels_label_vit").text = data.vit
+	player_stats_menu_main.FindChildTraverse("stats_panels_label_eng").text = data.eng
 }
 
 function AddPoints(data){
@@ -171,25 +186,12 @@ function AddPoints(data){
 	GameEvents.SendCustomGameEventToServer("hero_add_stats", {type:data});
 }
 
-
-function hero_level_up(){
-	$.Msg("show bg")
-	ButtonStatsEffect.visible = true
-	// ButtonStats.style.boxShadow = "gold 0px 0px 3px 0px";
-	
-	       
-	
-}
-
 function OpenInventory(){
 	GameUI.CustomUIConfig.OpenInventory();
 }
 
-
 (function() {
 	main();
-	GameEvents.Subscribe("hero_level_up", hero_level_up)
-	GameEvents.Subscribe("hero_show_stats", hero_show_stats)
 })();
 
 

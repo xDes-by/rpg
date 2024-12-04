@@ -22,8 +22,8 @@ function game_events:Init()
 	})
 end
 
-BASE_HERO_HEALTH = 120
-BASE_HERO_MANA = 75
+BASE_HERO_HEALTH = 0--120
+BASE_HERO_MANA = 0--75
 
 function game_events:ExpFilter(data)
 	local pid = data.player_id_const
@@ -35,14 +35,15 @@ function game_events:ExpFilter(data)
 	
 	local level, percent = game_events:GetLevelAndRemainderXP(_G.players_data[sid].heroes[hero_name].exp)
 
-	print(level, percent)
-
 	if _G.players_data[sid].heroes[hero_name].level < level then
 		_G.players_data[sid].heroes[hero_name].level = _G.players_data[sid].heroes[hero_name].level + 1
+		_G.players_data[sid].heroes[hero_name].points = _G.players_data[sid].heroes[hero_name].points + 5
+
+		-- TODO: ДОБАВИТЬ ЭФФЕКТ LVLUP
+
 		web:update_hero_data(hero_name, pid, hero)
-		print('send')
 	end
-	
+
 	CustomNetTables:SetTableValue("hero_hud_stats", tostring(hero:GetEntityIndex()), _G.players_data[sid].heroes[hero_name])
 	return false
 end
@@ -99,6 +100,7 @@ end
 
 function game_events:init_hero(hero, pid, data)
 	local panorama_data = {}
+	local hero_name = hero:GetUnitName()
 
 	hero.init = true
 	
@@ -131,8 +133,6 @@ function game_events:init_hero(hero, pid, data)
 	
 	local heroes_base_stats = CustomNetTables:GetTableValue("heroes_base_stats", "heroes_base_stats")
 
-	local hero_name = hero:GetUnitName()
-	
 	data.str = data.str + heroes_base_stats[hero_name].str
 	data.agi = data.agi + heroes_base_stats[hero_name].agi
 	data.vit = data.vit + heroes_base_stats[hero_name].vit
@@ -145,8 +145,11 @@ function game_events:init_hero(hero, pid, data)
 	data.excellent_damage = 5 -- брать показатели из сета
 	data.movespeed = heroes_base_stats[hero_name].movespeed + 5 -- плюс брать показатели из сета
 	
-	
-    data.min_damage, data.max_damage = damage(hero_name)
+    local min_damage, max_damage = damage(hero_name)
+	print(min_damage, max_damage)
+	data.min_damage = math.floor(min_damage)
+	data.max_damage = math.floor(max_damage)
+
     data.speed = speed(hero_name)
     data.armor = armor(hero_name)
 	data.hp = heroes_base_stats[hero_name].hp + hero:GetLevel() * heroes_base_stats[hero_name].hp_per_level + data.vit * heroes_base_stats[hero_name].hp_per_vit
@@ -168,22 +171,3 @@ function game_events:init_hero(hero, pid, data)
 	
 	CustomNetTables:SetTableValue("hero_hud_stats", tostring(hero:GetEntityIndex()), data)
 end
-
-
-
--- function game_events:OnHeroLevelUp(event)
-    -- local npc = EntIndexToHScript(event.player)
-	-- local pid = npc:GetPlayerID()
-	-- local hero = PlayerResource:GetSelectedHeroEntity(pid)	
-	
-	-- if hero.init == false then
-		-- print("skip") -- пропуск отображения кнопки при инициализации героя
-	-- else
-		-- -- отправка на сервер, после ответа просто отображение кнопки
-	
-		-- CustomGameEventManager:Send_ServerToPlayer(PlayerResource:GetPlayer(pid), "hero_level_up", {})
-		-- print("!")
-	-- end
--- end
-
-

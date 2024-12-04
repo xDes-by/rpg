@@ -370,12 +370,57 @@
 	transition-duration: 0.37s;
 	transition-timing-function: ease-in-out;
 	position: 20% 0px 0px;
+	flow-children: down;
+	padding: 18px;
+
+}
+
+#statistic_label{
+	horizontal-align: center;
+	text-align: center;
+	color: gradient(linear, 0% 65%, 0% 100%, from(#FFFFFF), color-stop(0.2, #cfd7db), to(#e1e8eb));
+	font-weight:bold;
+	font-family:titleFont;
+	font-size: 30px;
+	text-shadow:0px 2px 16px 5.0 #000a;
+	text-overflow: shrink;
+	opacity:0.6;
+}
+
+#player_stats_description{
+	horizontal-align: center;
+	width: 100%;
+	margin-top: 30px;
+	flow-children: down;
+}
+
+#HeroName{
+	horizontal-align: center;
+	color: #edb96e; //gradient(linear, 0% 65%, 0% 100%, from(#FFFFFF), color-stop(0.2, #cfd7db), to(#e1e8eb));
+	letter-spacing:1px;
+	font-weight:bold;
+	font-family:titleFont;
+	font-size: 24px;
+	text-shadow:0px 2px 16px 5.0 #000a;
+	text-overflow: shrink;
+	text-align:center;
+}
+
+#HeroClass, #HeroLevel{
+	horizontal-align: center;
+	color: #edb96e; //gradient(linear, 0% 65%, 0% 100%, from(#FFFFFF), color-stop(0.2, #cfd7db), to(#e1e8eb));
+	letter-spacing:1px;
+	font-weight:bold;
+	font-family:titleFont;
+	font-size: 16px;
+	text-shadow:0px 2px 16px 5.0 #000a;
+	text-overflow: shrink;
+	text-align:center;
+	margin: 2px;
 }
 
 #player_stats_menu_main_content{
-	height: 600px;
-	width: 400px;
-	align: center center;
+	width: 100%;
 	background-image: url("file://{images}/elements/StatsMenu/Parchment.png");
 	background-repeat: no-repeat;
 	background-size: 100%;
@@ -388,28 +433,67 @@
 	position: 0% 0px 0px;
 }
 
-.player_stats_menu_label{
-	color: black;
-	font-size: 25px;
-	font-weight: bold;
-	font-family: titleFont;
-	text-transform: uppercase;
-	letter-spacing: 1px;
+/////////////////
+
+.stats_container{
+	width: 100%;
 }
 
 .stats_panels{
-	flow-children: right;
-	background-color: rgba(0,0,0,.55);
+	width: 100%;
 	horizontal-align: center;
-	width: 250px;
-	
+	background-image: url("file://{images}/HUD/stat_panel.png");
+	background-repeat: no-repeat;
+	background-size: 100%;		
+	margin: 10px;
+}
+
+.player_stats_menu_label{
+	horizontal-align: left;
+	vertical-align: center;
+	color: gradient(linear, 0% 65%, 0% 100%, from(#FFFFFF), color-stop(0.2, #cfd7db), to(#e1e8eb));
+	letter-spacing:1px;
+	font-weight:bold;
+	font-family:titleFont;
+	font-size: 18px;
+	text-shadow:0px 2px 16px 5.0 #000a;
+	text-overflow: shrink;
+	text-align:center;
+	margin-left: 20px;
+}
+
+.stats_panels_label_container{
+	horizontal-align:right;
+	vertical-align: center;
+	margin-right: 50px;
+	height: 30px;
+	background-image: url("file://{images}/HUD/stat_current.png");
+	background-repeat: no-repeat;
+	background-size: 100%;
+	min-width: 100px;
+}
+
+.current_stats{
+	horizontal-align: center;
+	vertical-align: center;
+	color: gradient(linear, 0% 65%, 0% 100%, from(#FFFFFF), color-stop(0.2, #cfd7db), to(#e1e8eb));
+	letter-spacing:1px;
+	font-weight:bold;
+	font-family:titleFont;
+	font-size: 18px;
+	text-shadow:0px 2px 16px 5.0 #000a;
+	text-overflow: shrink;
+	text-align:center;
 }
 
 #player_stats_menu_button{
 	background-color: white;
-	height: 50px;
-	width: 50px;
+	height: 40px;
+	width: 40px;
+	margin: 5px;
+	horizontal-align:right;
+	vertical-align: center;
+	background-image: url("file://{images}/HUD/button_stats.png");
+	background-repeat: no-repeat;
+	background-size: 100%;	
 }
-
-
-/* ............................................................................. */
