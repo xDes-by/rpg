@@ -79,10 +79,8 @@ _G.XP_PER_LEVEL_TABLE = {}
 XP_PER_LEVEL_TABLE[0] = 0
 
 for i=1, 399 do
-	XP_PER_LEVEL_TABLE[i] = XP_PER_LEVEL_TABLE[i-1] + i * 180  
+	XP_PER_LEVEL_TABLE[i] = XP_PER_LEVEL_TABLE[i-1] + i * 80  
 end
-
--- maximum exp = 1 919 987 999
 
 function DotaMu:OnChat(event)
     local text = event.text 
@@ -91,8 +89,9 @@ function DotaMu:OnChat(event)
 	local sid = PlayerResource:GetSteamAccountID(pid)
 	
 	if text == "1" then
-		-- game_events:HeroStatsCalculate(hero, pid, {agi=2, str=11, vit=20, eng=0})
-		web:start_game()
+		local newLevel, remainderXP = game_events:GetLevelAndRemainderXP(621)
+		print(newLevel, "- new level")
+		print(remainderXP, "- new remainderXP")
 	end
 	if text == "2" then
 	end

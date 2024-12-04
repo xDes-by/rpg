@@ -36,7 +36,7 @@ function setTooltip(){
 	var required_agi = item_stats.required_agi
 	var can_use = all_items_data[data.set_name]['class']
 	
-	$.Msg(data)
+	// $.Msg(data)
 	
 	
 	var pre_text = ''
@@ -93,6 +93,17 @@ function setTooltip(){
 			}
 		}
 		
+		$("#required_str").style.color = 'white'
+		$("#required_agi").style.color = 'white'
+		
+		var hero_data = CustomNetTables.GetTableValue("hero_hud_stats", Players.GetLocalPlayerPortraitUnit());
+		if (hero_data.str < item_stats.required_str){
+			$("#required_str").style.color = 'red'
+		}
+		if (hero_data.agi < item_stats.required_agi){
+			$("#required_agi").style.color = 'red'
+		}
+			
 		
 			// let label = $.CreatePanel("Label", panel, "")
 			// label.AddClass('bonus_label')

@@ -40,78 +40,93 @@
 						<Panel id="ArmorIcon" class="StatIcon" />
 					</Panel>
 					
-					<!-- <Panel id="MagicResist" class="StatIconLabel"> -->
-						<!-- <Panel class="LabelColumn"> -->
-							<!-- <Panel class="MagicResistLabelContainer"> -->
-								<!-- <Label id="MagicResistLabelBase" class="MonoNumbersFont StatRegionLabel BaseLabel" text="{s:magic_resistance}%" /> -->
-							<!-- </Panel> -->
-						<!-- </Panel> -->
-						<!-- <Panel id="MagicResistanceIcon" class="StatIcon" /> -->
-					<!-- </Panel> -->
-					
 					<Panel id="MoveSpeed" class="StatPanels">
 						<Label id="MoveSpeedLabel" class="StatPanelsLabel" text="65" />
 						<Panel id="MoveSpeedIcon" class="StatIcon" />
 					</Panel>
 					
-					<!-- <Panel id="Bounty" class="StatIconLabel"> -->
-						<!-- <Label id="Bounty" class="MonoNumbersFont StatRegionLabel BaseLabel" text="{d:bounty_min}-{d:bounty_max}" /> -->
-						<!-- <Label id="BountyModifierLabel" class="MonoNumbersFont StatRegionLabel StatModifier" text="{s:bonus_bounty}" /> -->
-						<!-- <Panel id="BountyIcon" class="StatIcon" /> -->
-					<!-- </Panel> -->
+					<Panel class="StatPanels">
+						<Panel class="LeftRightFlow">
+							<Label id="StrLabel" class="StatPanelsLabel" text="50"/>
+							<Panel class="Str" />
+						</Panel>
+					</Panel>
+					
+					<Panel class="StatPanels">
+						<Panel class="LeftRightFlow">
+							<Label id="AgiLabel" class="StatPanelsLabel" text="20"/>
+							<Panel class="Agi" />
+						</Panel>
+					</Panel>
+					
+					<Panel class="StatPanels">
+						<Panel class="LeftRightFlow">
+							<Label id="VitLabel" class="StatPanelsLabel" text="20"/>
+							<Panel class="Vit" />
+						</Panel>
+					</Panel>
+					
+					<Panel class="StatPanels">
+						<Panel class="LeftRightFlow">
+							<Label id="EngLabel" class="StatPanelsLabel" text="20"/>
+							<Panel class="Eng" />
+						</Panel>
+					</Panel>
 				</Panel>
             </Panel>
 			
 			<!-- <DOTAHealthMana id="health_mana" /> -->
 	
 			
-			<Panel id ="AbilityGroup">
-			
-				<Panel class="liftside">
-					<ProgressBar id="HpBar"/>
-					<Panel class="BarBackLeft"/>
-					<Panel id="HpLabelBar">
-						<Label id="HpLabel" text="100 / 100"/>
-					</Panel>
-				</Panel>
-				
-				<Panel id="AbilitiesAndStatBranch" hittest="false">
-					<Panel class="LeftRightFlow" hittest="false">
-						<DOTAInnateDisplay class="FacetInnateDisplay" />
-						<DOTAAbilityList id="abilities" hittest="false" />
-					</Panel>
-				</Panel>
-				
-				<Panel class="rightside">
-					<ProgressBar id="MpBar"/>
-					<Panel class="BarBackRight"/>
-					
-					<Panel id="MpLabelBar">
-						<Label id="MpLabel" text="100 / 100"/>
+			<Panel id ="AbilityGroupContainer">
+				<Panel id ="AbilityGroup">
+					<Panel class="liftside">
+						<ProgressBar id="HpBar"/>
+						<Panel class="BarBackLeft"/>
+						<Panel id="HpLabelBar">
+							<Label id="HpLabel" text="100 / 100"/>
+						</Panel>
 					</Panel>
 					
-					<Panel id="ButtonStats" onmouseactivate="OpenStatsMenu()"/>
-					<Panel id="ButtonStatsEffect"/>
+					<Panel id="AbilitiesAndStatBranch" hittest="false">
+						<Panel class="LeftRightFlow" hittest="false">
+							<DOTAInnateDisplay class="FacetInnateDisplay" />
+							<DOTAAbilityList id="abilities" hittest="false" />
+						</Panel>
+					</Panel>
 					
-					<Panel id="ButtonInventory" onmouseactivate="OpenInventory()"/>
+					<Panel class="rightside">
+						<ProgressBar id="MpBar"/>
+						<Panel class="BarBackRight"/>
+						
+						<Panel id="MpLabelBar">
+							<Label id="MpLabel" text="100 / 100"/>
+						</Panel>
+						
+						<Panel id="ButtonStats" onmouseactivate="OpenStatsMenu()"/>
+						<Panel id="ButtonStatsEffect"/>
+						
+						<Panel id="ButtonInventory" onmouseactivate="OpenInventory()"/>
+					</Panel>
+					
 				</Panel>
-				
+				<Panel id ="ExpBarContainer">
+					<ProgressBar id="ExpBar"/>
+				</Panel>
 			</Panel>
+			
+			
 			
 			<Panel id ="MapGroup">
 				<DOTAMinimap id="overlaymap" require-composition-layer="true" acceptsinput="false" asoverlay="true" />
 			</Panel>
 			<Panel id ="MapGroupBack"/>
-			
-		
-			
-			
 		</Panel>
 		
 		
 
 		<Panel id="player_stats_menu_main" class="player_stats_menu_main">
-			<Panel id="player_stats_menu_main_border"/>
+
 			<Panel id="player_stats_menu_main_content">
 			
 				<Panel class="stats_panels">

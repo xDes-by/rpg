@@ -3,9 +3,17 @@ if game_events == nil then
 end
 
 function game_events:Init()
-	ListenToGameEvent("dota_player_gained_level", Dynamic_Wrap(self, 'OnHeroLevelUp' ), self)
+	GameRules:GetGameModeEntity():SetModifyExperienceFilter(Dynamic_Wrap(self, "ExpFilter"), self)
+	
+	
+	
+	-- ListenToGameEvent("dota_player_gained_level", Dynamic_Wrap(self, 'OnHeroLevelUp' ), self)
 	CustomGameEventManager:RegisterListener("pick_show_hero", Dynamic_Wrap( self, 'pick_show_hero'))
 	CustomGameEventManager:RegisterListener("pick_hero", Dynamic_Wrap( self, 'pick_hero'))
+	
+	
+	
+	
 	
 	CustomNetTables:SetTableValue("heroes_base_stats", "heroes_base_stats", {
 		["npc_dota_hero_drow_ranger"] = {str = 28, agi = 20, vit = 25, eng = 10, hp = 110, mp = 20, hp_per_level = 2, mp_per_level = 0.5, hp_per_vit = 3, mp_per_eng = 1, damage = 0, speed = 0, armor = 0, movespeed = 300, poison = 100, fire = 100, ice = 100},
@@ -16,6 +24,51 @@ end
 
 BASE_HERO_HEALTH = 120
 BASE_HERO_MANA = 75
+
+function game_events:ExpFilter(data)
+	local pid = data.player_id_const
+	local experience = data.experience
+	local hero = PlayerResource:GetSelectedHeroEntity(pid)	
+	local hero_name = hero:GetUnitName()
+	local sid = tostring(PlayerResource:GetSteamID(pid))
+	_G.players_data[sid].heroes[hero_name].exp =_G.players_data[sid].heroes[hero_name].exp + experience
+	
+	local level, percent = game_events:GetLevelAndRemainderXP(_G.players_data[sid].heroes[hero_name].exp)
+
+	print(level, percent)
+
+	if _G.players_data[sid].heroes[hero_name].level < level then
+		_G.players_data[sid].heroes[hero_name].level = _G.players_data[sid].heroes[hero_name].level + 1
+		web:update_hero_data(hero_name, pid, hero)
+		print('send')
+	end
+	
+	CustomNetTables:SetTableValue("hero_hud_stats", tostring(hero:GetEntityIndex()), _G.players_data[sid].heroes[hero_name])
+	return false
+end
+
+-- maximum exp = 1 919 987 999S
+
+function game_events:GetLevelAndRemainderXP(xp)
+    local currentXP = 0
+    local level = 0
+
+    while level < 400 do
+        local nextLevelXP = currentXP + level * 80
+        if xp < nextLevelXP then
+            local progress = ((xp - currentXP) / (nextLevelXP - currentXP)) * 100
+            return level, progress
+        end
+        currentXP = nextLevelXP
+        level = level + 1
+    end
+
+    return 400, 0 -- Если опыт больше максимального, возвращаем максимальный уровень и 0% прогресса
+end
+
+
+
+-------------------------------------------------------------------------
 
 function game_events:pick_show_hero(tab)
 	local sid = tostring(PlayerResource:GetSteamID(tab.PlayerID))
@@ -35,26 +88,18 @@ function game_events:pick_hero(tab)
 	PlayerResource:SetCameraTarget(pid, hero)
 	hero.init = false
 	
+	
+	
 	---------------
 	--start effect teleport
 	---------------
 	
-	web:get_hero_data(hero_name, pid, hero)
+	web:update_hero_data(hero_name, pid, hero)
 end
 
 function game_events:init_hero(hero, pid, data)
-	
-	---------------
-	--end effect teleport
-	---------------
-	
 	local panorama_data = {}
-	local newLevel, remainderXP = game_events:GetLevelAndRemainderXP(data.exp) -- данные о опыте с сервера
-	while hero:GetLevel() < newLevel do
-		hero:HeroLevelUp(false)
-	end
-	hero:AddExperience(remainderXP, DOTA_ModifyXP_Unspecified, false, false)
-	
+
 	hero.init = true
 	
 	local function damage(name)
@@ -124,34 +169,21 @@ function game_events:init_hero(hero, pid, data)
 	CustomNetTables:SetTableValue("hero_hud_stats", tostring(hero:GetEntityIndex()), data)
 end
 
-function game_events:GetLevelAndRemainderXP(currentXP)
-    local level = 0
-    local remainderXP = currentXP
 
-    for i = 1, HERO_MAX_LEVEL do
-        if remainderXP >= XP_PER_LEVEL_TABLE[i] then
-            level = i
-            remainderXP = remainderXP - XP_PER_LEVEL_TABLE[i]
-        else
-            break
-        end
-    end
-    return level, remainderXP
-end
 
-function game_events:OnHeroLevelUp(event)
-    local npc = EntIndexToHScript(event.player)
-	local pid = npc:GetPlayerID()
-	local hero = PlayerResource:GetSelectedHeroEntity(pid)	
+-- function game_events:OnHeroLevelUp(event)
+    -- local npc = EntIndexToHScript(event.player)
+	-- local pid = npc:GetPlayerID()
+	-- local hero = PlayerResource:GetSelectedHeroEntity(pid)	
 	
-	if hero.init == false then
-		print("skip") -- пропуск отображения кнопки при инициализации героя
-	else
-		-- отправка на сервер, после ответа просто отображение кнопки
+	-- if hero.init == false then
+		-- print("skip") -- пропуск отображения кнопки при инициализации героя
+	-- else
+		-- -- отправка на сервер, после ответа просто отображение кнопки
 	
-		CustomGameEventManager:Send_ServerToPlayer(PlayerResource:GetPlayer(pid), "hero_level_up", {})
-		print("!")
-	end
-end
+		-- CustomGameEventManager:Send_ServerToPlayer(PlayerResource:GetPlayer(pid), "hero_level_up", {})
+		-- print("!")
+	-- end
+-- end
 
 

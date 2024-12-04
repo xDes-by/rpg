@@ -15,8 +15,6 @@ var decription_attributes = CustomNetTables.GetTableValue( "set_attributes", 'se
 var boost_attributes = CustomNetTables.GetTableValue( "boost_attributes", 'boost_attributes');
 
 
-$.Msg(decription_attributes)
-
 function Open()
 {	
     $("#InventoryPanelContent").ToggleClass("CloseInventory")
@@ -28,11 +26,8 @@ function Open()
 
 function UpdateInventoryMain(data)
 {
-	// $.Msg(data)
 	TABLE_HERO = data
-	
 	current_selected_player = Players.GetLocalPlayerPortraitUnit()
-	
     $("#InventorySlots").RemoveAndDeleteChildren()
 	UpdateInventorySlots()
 	UpdateInventoryItems(TABLE_HERO.user_inventory)
@@ -221,14 +216,7 @@ function CheckFullSet() {
     return filledItems === 6;
 }
 
-const can_use_sets = {
-	1: {min: 1},
-	2: {min: 4},
-	3: {min: 8},
-	4: {min: 12},
-	5: {min: 16},
-};
-	
+
 function update_description(){
 	var data = TABLE_HERO.hero_enquip
 	description_panel =	$("#QuipDescription")
@@ -247,10 +235,6 @@ function update_description(){
 			for (const attrKey in attributes) {
 				const value = decription_attributes[attrKey]
 				
-				// if (GAME_DIFF < can_use_sets[itemData.set_number].min + 1) {
-                    // continue;
-                // }
-				
 				if (attributesKey == "base_attribute"){
 					if (!attributeSum[attrKey]) {
 						attributeSum[attrKey] = itemData.level * itemData.set_number * value
@@ -258,12 +242,9 @@ function update_description(){
 				}else{
 					if (!attributeSum[attrKey]) {
 						attributeSum[attrKey] = value * itemData.set_number +  boost_attributes[attrKey][itemData.set_number] * (itemData.level - 1)
-						// attributeSum[attrKey] = value + (itemData.set_number * 0.1 * itemData.level) - itemData.set_number * 0.1
 					}else{
 						attributeSum[attrKey] = attributeSum[attrKey] + value * itemData.set_number +  boost_attributes[attrKey][itemData.set_number] * (itemData.level - 1)
-						// attributeSum[attrKey] = attributeSum[attrKey] + value + (itemData.set_number * 0.1 * itemData.level) - itemData.set_number * 0.1
 					}
-				// $.Msg(attributeSum[attrKey], attrKey)
 				}
 			}
 		}
@@ -319,8 +300,6 @@ function OnDragStart( panelId, dragCallbacks )
     {
         return
     }
-	
-	$.Msg(panelId.item_in_slot.item_icon)
 	
 	var displayPanel = $.CreatePanel( "Panel", $.GetContextPanel(), "dragImage" );
     displayPanel.AddClass("dragImage")
@@ -398,7 +377,6 @@ function dust_item(old_panel, new_panel, old_panel_item)
 {
     let old_slot_num = old_panel.slot_count
     let old_item_info = TABLE_HERO['user_inventory'][old_slot_num]
-	// $.Msg(old_item_info)  {"bonus_attribute":{},"base_attribute":{"armor":1},"item_type":"armor","set_type":"set_1","level":2,"set_number":1}
 	old_panel_item.GetParent().RemoveAndDeleteChildren()
     old_panel.item_in_slot = null
 
@@ -457,6 +435,7 @@ function SwapItemsFromEquipToInventory(old_panel, new_panel, old_panel_item, new
     old_panel.item_in_slot = null
 
     let old_item_info = TABLE_HERO['hero_enquip'][old_slot_type]
+	
     TABLE_HERO['user_inventory'][new_slot_num] = old_item_info
     TABLE_HERO['hero_enquip'][old_slot_type] = null
 	send_update_hero()
@@ -464,7 +443,6 @@ function SwapItemsFromEquipToInventory(old_panel, new_panel, old_panel_item, new
 
 function SwapItemsFromInventoryToEquip(old_panel, new_panel, old_panel_item, new_panel_item)
 {
-	
     let old_slot_num = old_panel.slot_count
     let new_slot_type = new_panel.type_slot
     let old_item_info = TABLE_HERO['user_inventory'][old_slot_num]
@@ -473,10 +451,19 @@ function SwapItemsFromInventoryToEquip(old_panel, new_panel, old_panel_item, new
     {
         return
     }
+	
     if (TABLE_HERO['hero_enquip'][new_slot_type] != null) // Если слот занят
     {
         return
     }
+	
+
+	if (!can_enquip(old_item_info)){
+		GameEvents.SendEventClientSide("dota_hud_error_message", {"splitscreenplayer": 0, "reason": 80, "message": "#cant_enquip"})
+		return false
+	}
+	
+	
     old_panel_item.SetParent(new_panel)
     new_panel.item_in_slot = old_panel_item
     old_panel.item_in_slot = null
@@ -486,6 +473,26 @@ function SwapItemsFromInventoryToEquip(old_panel, new_panel, old_panel_item, new
 	send_update_hero()
 }
 
+
+function can_enquip(item){
+	var all_items_data = GameUI.CustomUIConfig().Items
+	var HeroClass = GameUI.CustomUIConfig().HeroClass
+	var pid = Entities.GetPlayerOwnerID(current_selected_player)
+	var hero = Players.GetPlayerSelectedHero(pid)
+	var hero_class = HeroClass[hero];
+	var can_use = all_items_data[item.set_name]['class'];
+	var item_stats = all_items_data[item.set_name]['items'][item.item_type]['stats'][item.level]
+	var data = CustomNetTables.GetTableValue("hero_hud_stats", current_selected_player);
+	
+	if (data.str < item_stats.required_str && data.agi < item_stats.required_agi){
+		return false
+	}
+	
+	if (!can_use.includes(hero_class)) {
+		return false
+	}
+	return true
+}
 
 
 function showTooltip(panel, data) {

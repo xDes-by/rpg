@@ -41,9 +41,9 @@
 	vertical-align:bottom;
 	margin-left: 200px;
     flow-children: down;
-	/* width: 120px; */
-	/* background-color: blue; */
-	/* height: 100%; */
+	min-width: 130px;
+	background-color: gradient(linear, -30% 0%, 100% 0%, from(#0d0c0c), to(transparent));
+	padding: 5px;
 }
 
 .StatPanels{
@@ -61,9 +61,6 @@
     margin-top: 3px;
     text-shadow: 0px 0px 4px 4 #00000088;
     font-family: monospaceNumbersFont;
-    transition-property: transform, opacity, width, pre-transform-scale2d;
-    transition-duration: 0.12s;
-    transition-timing-function: ease-in-out;
     color: #ccc;
 }
 
@@ -108,8 +105,53 @@
     margin-top: 4px;
 }
 
+.Str{
+	height: 15px;
+	width: 15px;
+	horizontal-align: left;
+	vertical-align:center;	
+	background-image: url("file://{images}/pick_menu/str.png");
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+
+.Agi{
+	height: 15px;
+	width: 15px;
+	horizontal-align: left;
+	vertical-align:center;	
+	background-image: url("file://{images}/pick_menu/agi.png");
+	background-repeat: no-repeat;
+	background-size: 100%;	
+}
+
+.Vit{
+	height: 15px;
+	width: 15px;
+	horizontal-align: left;
+	vertical-align:center;	
+	background-image: url("file://{images}/pick_menu/vit.png");
+	background-repeat: no-repeat;
+	background-size: 100%;	
+}
+
+.Eng{
+	height: 15px;
+	width: 15px;
+	horizontal-align: left;
+	vertical-align:center;	
+	background-image: url("file://{images}/pick_menu/eng.png");
+	background-repeat: no-repeat;
+	background-size: 100%;	
+}
 
 /* ////////////////////////////////////////////////////////////////////////// */
+
+#AbilityGroupContainer{
+	horizontal-align: center;
+	flow-children: down;
+	vertical-align:bottom;
+}
 
 #AbilityGroup{
 	horizontal-align: center;
@@ -178,6 +220,28 @@
 	text-shadow:0px 2px 16px 5.0 #000a;
 	text-overflow: shrink;
 	opacity:0.6;
+}
+
+/* ///////////////////////////////////////////////////////////////////////////////// */
+
+#ExpBarContainer{
+	height: 20px;
+	width: 800px;
+	horizontal-align: left;
+	vertical-align:center;	
+	background-image: url("file://{images}/HUD/xp_bar.png");
+	background-repeat: no-repeat;
+	background-size: 100%;	
+	
+	horizontal-align: center;
+	vertical-align:bottom;
+}
+
+#ExpBar{
+	horizontal-align:center;
+	vertical-align: center;
+	height: 8px;
+	width: 750px;
 }
 
 /* ///////////////////////////////////////////////////////////////////////////////// */
@@ -294,52 +358,18 @@
 
 /* ............................................................................. */
 
-
-#open_stats_menu_button{
-	height: 30px;
-	width: 30px;
-	align: center center;
-	margin-top: 500px;
-	background-color: red;
-
-}
-
-#open_stats_menu_button_level_up{
-	height: 30px;
-	width: 30px;
-	align: center center;
-	margin-left: 100px;
-	margin-top: 500px;
-	background-color: blue;
-}
-
 .player_stats_menu_main{
 	height: 600px;
 	width: 400px;
 	align: right center;
-	
-	background-image: url("file://{images}/elements/StatsMenu/MainWindowInternalFrame.png");
+	background-image: url("file://{images}/HUD/panel.png");
 	background-repeat: no-repeat;
 	background-size: 100%;
-	border-radius: 8px;
-
-	opacity: 0.5;
 	pre-transform-scale2d: 0.8;
 	transition-property: opacity, pre-transform-scale2d,position;
 	transition-duration: 0.37s;
 	transition-timing-function: ease-in-out;
 	position: 20% 0px 0px;
-	
-}
-
-#player_stats_menu_main_border{
-	height: 600px;
-	width: 400px;
-	align: center center;
-	background-image: url("file://{images}/elements/StatsMenu/MainWindowFrame.png");
-	background-repeat: no-repeat;
-	background-size: 100%;
-	z-index: 10;
 }
 
 #player_stats_menu_main_content{
@@ -350,10 +380,7 @@
 	background-repeat: no-repeat;
 	background-size: 100%;
 	flow-children: down;
-	margin: 10px;
 }
-
-	
 
 .open_stats_menu{
 	opacity: 1;
