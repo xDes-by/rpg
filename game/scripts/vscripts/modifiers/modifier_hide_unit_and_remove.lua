@@ -13,11 +13,13 @@ function modifier_hide_unit_and_remove:OnCreated(data)
     if data.zone_name then
         self.zone_name = data.zone_name
     end
-    self:AddNoDraw()
+    self:GetParent():AddNoDraw()
 end
 
 function modifier_hide_unit_and_remove:OnDestroy()
-    if self:GetElapsedTime() == (self:GetDuration() - 0.1) then
+    if not IsServer() then return end
+
+    if self:GetElapsedTime() >= (self:GetDuration() - 0.1) then
         local parent = self:GetParent()
         for index,unit in pairs(Spawner.creep_pool[self.zone_name]) do
             if parent == unit then
