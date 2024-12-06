@@ -1,0 +1,150 @@
+#TeleportPanel{
+	horizontal-align: center;
+	vertical-align:center;
+	width: 400px;
+	height: 700px;
+	background-image:url("file://{images}/HUD/teleport_panel.png");
+	background-repeat: no-repeat;
+	background-size: 100%;
+    transition-property: opacity;
+    transition-duration: 0.1s;
+}
+
+.CloseTeleport{
+	opacity: 0;
+}
+
+#TeleportPanelLabel{
+	horizontal-align: center;
+	text-align: center;
+	color: gradient(linear, 0% 65%, 0% 100%, from(#FFFFFF), color-stop(0.2, #cfd7db), to(#e1e8eb));
+	font-weight:bold;
+	font-family:titleFont;
+	font-size: 24px;
+	text-shadow:0px 2px 16px 5.0 #000a;
+	text-overflow: shrink;
+	opacity:0.6;
+	margin-top: 10px;
+}
+
+#CloseButton{
+	vertical-align:top;
+	horizontal-align: right;
+	background-image:url("file://{images}/inventory/close.png");
+	background-repeat: no-repeat;
+	background-size: 100%;
+	margin:5px 3px;
+	width:53px;
+	height:45px;
+}
+
+#CloseButton:hover{
+	sound: "ui_select_arrow";
+	brightness: 1.8;
+}
+
+#CloseButton:active
+{
+    pre-transform-scale2d: 0.8;
+}
+
+#TeleportPanelContent{
+	horizontal-align: center;
+	width: 450px;
+	height: 630px;
+	margin-top: 55px;
+	flow-children: down;
+	padding:10px;
+	overflow: clip scroll;
+}
+
+.content{
+	height: 50px;
+	width: 100%;
+	horizontal-align: center;
+	background-image: url("file://{images}/HUD/stat_panel.png");
+	background-repeat: no-repeat;
+	background-size: 100%;		
+	margin: 5px;
+
+
+
+
+
+}
+
+#TeleportPanelContent VerticalScrollBar{
+	height: 300px;
+	vertical-align: center;
+}
+
+#ScrollThumb{
+	background-image: url("file://{images}/HUD/scroll_handler.png");
+	background-repeat: no-repeat;
+	background-size: 100%;		
+	max-height: 200px;
+
+}
+
+.content:hover{
+	brightness: 1.6;
+	sound: "ui_select_arrow";
+}
+
+#zone_name{
+	vertical-align: center;
+	horizontal-align: left;
+	margin-left: 10px;
+	text-align: center;
+	color: gradient(linear, 0% 65%, 0% 100%, from(#FFFFFF), color-stop(0.2, #cfd7db), to(#e1e8eb));
+	font-weight:bold;
+	font-family:titleFont;
+	font-size: 18px;
+	text-shadow:0px 2px 16px 5.0 #000a;
+	text-overflow: shrink;
+	opacity: 0.6;
+}
+
+#Panelrecommended{
+	flow-children: down;
+	vertical-align: center;
+	horizontal-align: center;
+}
+
+#zone_recommended, #zone_recommended_count, #zone_tp_cost{
+	horizontal-align: center;
+	text-align: center;
+	color: gradient(linear, 0% 65%, 0% 100%, from(#FFFFFF), color-stop(0.2, #cfd7db), to(#e1e8eb));
+	font-weight:bold;
+	font-family:titleFont;
+	font-size: 14px;
+	text-shadow:0px 2px 16px 5.0 #000a;
+	text-overflow: shrink;
+	opacity: 0.6;	
+}
+
+#PanelCost{
+	flow-children: right;
+	vertical-align: center;
+	horizontal-align: right;	
+	margin-right: 10px;
+}
+
+#PanelCostImage{
+	height: 20px;
+	width: 20px;
+	vertical-align: center;
+	background-image: url("file://{images}/inventory/zen_icon.png");
+	background-repeat: no-repeat;
+	background-size: 100%;			
+}
+
+
+
+
+
+
+
+
+
+

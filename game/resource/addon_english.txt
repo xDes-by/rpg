@@ -36,6 +36,10 @@
 		"vulcanus"				"Vulcanus"
 		"swamp"					"Swamp"
 		"kethotum"				"Kethotum"
+		
+		"pick"					"Select Hero"
+		"teleport"				"Teleport"
+		"zone_recommended"			"Recommended Level"
 
 	}	
 }

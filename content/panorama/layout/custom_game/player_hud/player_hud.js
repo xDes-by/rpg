@@ -59,7 +59,9 @@ function main() {
     const isLocalPlayer = playerId === Players.GetLocalPlayer();
 
     if (isRealHero && isLocalPlayer) {
-        const data = CustomNetTables.GetTableValue('hero_hud_stats', current_selected_player);
+        const data = CustomNetTables.GetTableValue('hero_hud_stats', playerId);
+
+        // $.Msg(data)
 
         if (data) {
             ButtonStatsEffect.visible = data.points > 0;
@@ -118,7 +120,7 @@ function main() {
     }
 
     if (ExpBar) {
-        const levelData = getLevelAndRemainderXP(CustomNetTables.GetTableValue('hero_hud_stats', current_selected_player)?.exp || 0);
+        const levelData = getLevelAndRemainderXP(CustomNetTables.GetTableValue('hero_hud_stats', playerId)?.exp || 0);
         ExpBar.style.width = levelData.percent + '%';
     }
 
@@ -139,9 +141,13 @@ function getLevelAndRemainderXP(xp) {
         currentXP = nextLevelXP;
         level += 1;
     }
-    return { level: 400, percent: 0 };
-}
 
+    if (level == 400){
+		return { level: 400, percent: 0 };
+	}
+
+    return { level: 0, percent: 0 };
+}
 
 // -------------------------------------------------------------------------------
 
@@ -152,21 +158,15 @@ var player_stats_menu_main = $("#player_stats_menu_main")
 function OpenStatsMenu() {
 	invopened = !invopened
 	player_stats_menu_main.SetHasClass("open_stats_menu", invopened)
-    const data = CustomNetTables.GetTableValue('hero_hud_stats', current_selected_player);
-    $.Msg(data)
+    const data = CustomNetTables.GetTableValue('hero_hud_stats', Players.GetLocalPlayer());
     if (data) {
         hero_show_stats(data)
     }
 }
 
 function hero_show_stats(data){
-    $.Msg(data)
-    $.Msg("1")
-
     var HeroClass = GameUI.CustomUIConfig().HeroClass
-    var hero_class = HeroClass[data.hero];
-
-    $.Msg(hero_class)
+    var hero_class = HeroClass[data.hero]['class'];
 
     // ButtonStatsEffect.visible = data.points > 0 ? true : false
 
@@ -188,6 +188,10 @@ function AddPoints(data){
 
 function OpenInventory(){
 	GameUI.CustomUIConfig.OpenInventory();
+}
+
+function OpenTeleport(){
+	GameUI.CustomUIConfig.OpenTeleport();
 }
 
 (function() {

@@ -272,6 +272,18 @@
 	margin-left: 5px;
 }
 
+#ButtonTeleport{
+	height: 35px;
+	width: 35px;
+	horizontal-align:left;
+	vertical-align: bottom;
+	background-image: url("file://{images}/HUD/teleport.png");
+	background-repeat: no-repeat;
+	background-size: 100%;	
+	margin-bottom:49px;
+	margin-left: 5px;
+}
+
 #ButtonInventory{
 	height: 35px;
 	width: 35px;
@@ -284,7 +296,7 @@
 	margin-left: 45px;	
 }
 
-#ButtonStats:hover, #ButtonInventory:hover{
+#ButtonStats:hover, #ButtonInventory:hover, #ButtonTeleport:hover{
 	brightness: 1.6;
 	sound: "ui_select_arrow";
 }
