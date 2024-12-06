@@ -479,7 +479,7 @@ function can_enquip(item){
 	var HeroClass = GameUI.CustomUIConfig().HeroClass
 	var pid = Entities.GetPlayerOwnerID(current_selected_player)
 	var hero = Players.GetPlayerSelectedHero(pid)
-	var hero_class = HeroClass[hero];
+	var hero_class = HeroClass[hero]['class'];
 	var can_use = all_items_data[item.set_name]['class'];
 	var item_stats = all_items_data[item.set_name]['items'][item.item_type]['stats'][item.level]
 	var data = CustomNetTables.GetTableValue("hero_hud_stats", current_selected_player);

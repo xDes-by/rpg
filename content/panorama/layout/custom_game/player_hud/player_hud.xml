@@ -105,7 +105,8 @@
 						
 						<Panel id="ButtonStatsEffect" hittest="false"/>
 						<Panel id="ButtonStats" onmouseactivate="OpenStatsMenu()"/>
-						
+
+						<Panel id="ButtonTeleport" onmouseactivate="OpenTeleport()"/>
 						
 						<Panel id="ButtonInventory" onmouseactivate="OpenInventory()"/>
 					</Panel>

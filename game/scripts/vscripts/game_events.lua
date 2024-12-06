@@ -7,9 +7,9 @@ function game_events:Init()
 	
 	
 	
-	-- ListenToGameEvent("dota_player_gained_level", Dynamic_Wrap(self, 'OnHeroLevelUp' ), self)
 	CustomGameEventManager:RegisterListener("pick_show_hero", Dynamic_Wrap( self, 'pick_show_hero'))
 	CustomGameEventManager:RegisterListener("pick_hero", Dynamic_Wrap( self, 'pick_hero'))
+	
 	
 	
 	
@@ -43,8 +43,9 @@ function game_events:ExpFilter(data)
 
 		web:update_hero_data(hero_name, pid, hero)
 	end
-
-	CustomNetTables:SetTableValue("hero_hud_stats", tostring(hero:GetEntityIndex()), _G.players_data[sid].heroes[hero_name])
+	
+	local data = game_events:calculate_hero_stats(hero_name, sid)
+	CustomNetTables:SetTableValue("hero_hud_stats", tostring(pid), data)
 	return false
 end
 
@@ -67,43 +68,37 @@ function game_events:GetLevelAndRemainderXP(xp)
     return 400, 0 -- Если опыт больше максимального, возвращаем максимальный уровень и 0% прогресса
 end
 
+-------------------------------------------------------------------------
 
+function game_events:teleport(pid, zone)
+	local hero = PlayerResource:GetSelectedHeroEntity(pid)	
+	print("tp")
+	------------------------------
+	--TODO: телепорт в зону
+	------------------------------
+	CustomGameEventManager:Send_ServerToPlayer(PlayerResource:GetPlayer(pid), "hide_teleport", {})
+end
 
 -------------------------------------------------------------------------
 
 function game_events:pick_show_hero(tab)
 	local sid = tostring(PlayerResource:GetSteamID(tab.PlayerID))
-	hero_data = {}
-	if _G.players_data[sid].heroes and _G.players_data[sid].heroes[tab.name] then
-		hero_data['hero'] = _G.players_data[sid].heroes[tab.name]
+	local hero_name = tab.name
+	local data = game_events:calculate_hero_stats(hero_name, sid)
+	CustomGameEventManager:Send_ServerToPlayer(PlayerResource:GetPlayer(tab.PlayerID), "hero_show_pick", data)
+end
+
+function game_events:calculate_hero_stats(hero_name, sid)
+	local heroes_base_stats = CustomNetTables:GetTableValue("heroes_base_stats", "heroes_base_stats")
+
+	data = {}
+	
+	if _G.players_data[sid].heroes[hero_name] then
+		data = table.deepcopy(_G.players_data[sid].heroes[hero_name])
 	end
-	hero_data['key'] = tab.key
-	hero_data['name'] = tab.name
-	CustomGameEventManager:Send_ServerToPlayer( PlayerResource:GetPlayer(tab.PlayerID), "hero_show_pick", hero_data)
-end
+	
+	data['hero_name'] = hero_name
 
-function game_events:pick_hero(tab)
-	local pid = tab.PlayerID
-	local hero_name = tab.hero_name
-	hero = PlayerResource:ReplaceHeroWith(pid, hero_name, 0, 0)
-	PlayerResource:SetCameraTarget(pid, hero)
-	hero.init = false
-	
-	
-	
-	---------------
-	--start effect teleport
-	---------------
-	
-	web:update_hero_data(hero_name, pid, hero)
-end
-
-function game_events:init_hero(hero, pid, data)
-	local panorama_data = {}
-	local hero_name = hero:GetUnitName()
-
-	hero.init = true
-	
 	local function damage(name)
 		local formulas = {
 			["npc_dota_hero_drow_ranger"] = {min = data.str / 5, max =  data.str / 3},
@@ -119,7 +114,7 @@ function game_events:init_hero(hero, pid, data)
 			["npc_dota_hero_juggernaut"] = {speed = data.agi / 15},
 			["npc_dota_hero_death_prophet"] = {speed = data.agi / 10},
 		}
-		return formulas[name].speed
+		return math.floor(formulas[name].speed)
 	end
 
 	local function armor(name)
@@ -128,46 +123,58 @@ function game_events:init_hero(hero, pid, data)
 			["npc_dota_hero_juggernaut"] = {armor = data.agi / 3},
 			["npc_dota_hero_death_prophet"] = {armor = data.agi / 4},
 		}
-		return formulas[name].armor
+		return math.floor(formulas[name].armor)
 	end
-	
-	local heroes_base_stats = CustomNetTables:GetTableValue("heroes_base_stats", "heroes_base_stats")
 
-	data.str = data.str + heroes_base_stats[hero_name].str
-	data.agi = data.agi + heroes_base_stats[hero_name].agi
-	data.vit = data.vit + heroes_base_stats[hero_name].vit
-	data.eng = data.eng + heroes_base_stats[hero_name].eng
-	data.poison = data.poison -- + стаки модификатора резиста хз где они, в сете наверное или талантах
-	data.fire = data.fire -- + стаки модификатора резиста
-	data.ice = data.ice -- + стаки модификатора резиста
+	data.str = (data.str or 0) + heroes_base_stats[hero_name].str
+	data.agi = (data.agi or 0) + heroes_base_stats[hero_name].agi
+	data.vit = (data.vit or 0)  + heroes_base_stats[hero_name].vit
+	data.eng = (data.eng or 0)  + heroes_base_stats[hero_name].eng
+	data.poison = data.poison or 0-- + стаки модификатора резиста хз где они, в сете наверное или талантах
+	data.fire = data.fire or 0-- + стаки модификатора резиста
+	data.ice = data.ice or 0-- + стаки модификатора резиста
 	data.critical_damage = 5 -- брать показатели из сета
 	data.reflected_damage = 5 -- брать показатели из сета
 	data.excellent_damage = 5 -- брать показатели из сета
 	data.movespeed = heroes_base_stats[hero_name].movespeed + 5 -- плюс брать показатели из сета
 	
     local min_damage, max_damage = damage(hero_name)
-	print(min_damage, max_damage)
+
 	data.min_damage = math.floor(min_damage)
 	data.max_damage = math.floor(max_damage)
 
     data.speed = speed(hero_name)
     data.armor = armor(hero_name)
-	data.hp = heroes_base_stats[hero_name].hp + hero:GetLevel() * heroes_base_stats[hero_name].hp_per_level + data.vit * heroes_base_stats[hero_name].hp_per_vit
-	data.mp = heroes_base_stats[hero_name].mp + hero:GetLevel() * heroes_base_stats[hero_name].mp_per_level + data.eng * heroes_base_stats[hero_name].mp_per_eng
+	data.hp = math.floor(heroes_base_stats[hero_name].hp + (data.level or 1) * heroes_base_stats[hero_name].hp_per_level + data.vit * heroes_base_stats[hero_name].hp_per_vit)
+	data.mp = math.floor(heroes_base_stats[hero_name].mp + (data.level or 1) * heroes_base_stats[hero_name].mp_per_level + data.eng * heroes_base_stats[hero_name].mp_per_eng)
 	
-	print('min_damage -', data.min_damage)
-	print('max_damage -', data.max_damage)
-	print('speed -', data.speed)
-	print('armor -', data.armor)
-	print('str -', data.str)
-	print('agi -', data.agi)
-	print('vit -', data.vit)
-	print('eng -', data.eng)
-	print('hp -', data.hp)
-	print('mp -', data.mp)
+	return data
+end
+
+function game_events:pick_hero(tab)
+	local pid = tab.PlayerID
+	local hero_name = tab.hero_name
+	hero = PlayerResource:ReplaceHeroWith(pid, hero_name, 0, 0)
+	PlayerResource:SetCameraTarget(pid, hero)
 	
-	hero:AddNewModifier(hero, nil, "modifier_hero_health", {}):SetStackCount(data.hp - BASE_HERO_HEALTH)
-	hero:AddNewModifier(hero, nil, "modifier_hero_mana", {}):SetStackCount(data.mp - BASE_HERO_MANA)
+	------------------------------
+	--TODO: start effect teleport
+	------------------------------
 	
-	CustomNetTables:SetTableValue("hero_hud_stats", tostring(hero:GetEntityIndex()), data)
+	web:update_hero_data(hero_name, pid, hero)
+end
+
+
+function game_events:init_hero(hero_name, pid)
+	local sid = tostring(PlayerResource:GetSteamID(pid))
+	local data = game_events:calculate_hero_stats(hero_name, sid)
+
+	------------------------------
+	--TODO: stop effect teleport
+	------------------------------
+
+	hero:AddNewModifier(hero, nil, "modifier_hero_health", {}):SetStackCount(data.hp)
+	hero:AddNewModifier(hero, nil, "modifier_hero_mana", {}):SetStackCount(data.mp)
+
+	CustomNetTables:SetTableValue("hero_hud_stats", tostring(pid), data)
 end
