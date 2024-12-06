@@ -57,15 +57,18 @@ function OnHeroInZone(data)
     hHero.CurrentZoneName = zone_name--записываем в какой зоне находится герой, чтобы возродить его в ней
     hHero.LastRespawnChanged = hHero:GetRespawnMultiplier()
     Spawner.zone_data[zone_name].RespawnTime = Spawner.zone_data[zone_name].RespawnTime * hHero.LastRespawnChanged
+
+    Timers:CreateTimer(FrameTime(),function()
+        if not thisEntity:IsTouching(hHero) then
+            OnOutOfZone(data)
+            return
+        end
+        return FrameTime()
+    end)
 end
 
 --герой вышел из зоны
 function OnOutOfZone(data)
-    if not thisEntity then return end
-    if not data.activator then return end
-    if not data.activator:IsHero() then return end
-    if data.activator:GetUnitName() == "npc_dota_hero_wisp" then return end
-
     local hHero = data.activator
     local zone_name = thisEntity:GetName()
 
