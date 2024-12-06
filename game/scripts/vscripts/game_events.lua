@@ -45,7 +45,9 @@ function game_events:ExpFilter(data)
 		_G.players_data[sid].heroes[hero_name].points = _G.players_data[sid].heroes[hero_name].points + 5
 
 		-- TODO: ДОБАВИТЬ ЭФФЕКТ LVLUP
-
+		local pcf = ParticleManager:CreateParticle("particles/generic_hero_status/hero_levelup.vpcf", PATTACH_ABSORIGIN_FOLLOW, hero)
+		ParticleManager:ReleaseParticleIndex(pcf)
+		
 		web:update_hero_data(hero_name, pid, hero)
 	end
 

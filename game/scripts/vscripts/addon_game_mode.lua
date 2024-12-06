@@ -10,7 +10,7 @@ require("libraries/hero_class_extend")
 require("libraries/npc_class_extended")
 require("game_events")
 require("quests")
-require("spawner")
+require("new_spawner_test")
 require("web") -- удалить на релизе
 require("guilds") -- удалить на релизе
 require("inventory") -- удалить на релизе!
@@ -71,8 +71,9 @@ function DotaMu:InitGameMode()
     GameMode: SetCustomAttributeDerivedStatValue(DOTA_ATTRIBUTE_INTELLIGENCE_MANA_REGEN, 0.00001)
 
 	ListenToGameEvent("player_chat", Dynamic_Wrap( self, "OnChat" ), self )
-	-- ListenToGameEvent("npc_spawned", Dynamic_Wrap( self, "OnNPCSpawned"), self)
+	ListenToGameEvent("npc_spawned", Dynamic_Wrap( self, "OnNPCSpawned"), self)
 	ListenToGameEvent("game_rules_state_change", Dynamic_Wrap(self, "OnGameStateChanged"), self )
+	ListenToGameEvent("entity_killed", Dynamic_Wrap(self, 'OnEntityKilled'), self)
 end
 
 _G.HERO_MAX_LEVEL = 400
@@ -118,9 +119,31 @@ end
 function DotaMu:OnNPCSpawned(data)	
 	npc = EntIndexToHScript(data.entindex)
 	if npc:IsRealHero() and npc.bFirstSpawned == nil and not npc:IsIllusion() and not npc:IsTempestDouble() and not npc:IsClone() then
-		game_events:hero_init(npc)
+		-- game_events:hero_init(npc)
 		npc.bFirstSpawned = true
+		if npc:GetUnitName() == "npc_dota_hero_wisp" then
+			npc:AddNewModifier(npc, nil, "modifier_invulnerable", {})
+		end
 	end
 end		
 
+function DotaMu:OnEntityKilled(data)	
+    local killed_unit = EntIndexToHScript(data.entindex_killed)
 
+	if killed_unit:IsRealHero() then
+		local zone_name = killed_unit:GetCurrentZoneName()
+		local respawn_pos = GetRespawnPosition(zone_name)
+
+		killed_unit:SetRespawnPosition(respawn_pos)
+		Timers:CreateTimer(FrameTime(),function()
+			killed_unit:RespawnHero(false, false)
+		end)
+	end
+end
+
+function GetRespawnPosition(zone_name)
+	local t = {--заполнить таблицу точками респавна для каждой зоны
+		lorencia = Vector(5440, -5312, 256),
+	}
+	return t[zone_name] or Vector(5440, -5312, 256)
+end
