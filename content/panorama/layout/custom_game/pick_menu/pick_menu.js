@@ -10,19 +10,19 @@ var heroes = {
 	[1]:{name:'npc_dota_hero_drow_ranger', coord:{x:0,y:0}}, 
     [2]:{name:'npc_dota_hero_juggernaut', coord:{x:120,y:0}}, 
 	[3]:{name:'npc_dota_hero_death_prophet', coord:{x:60,y:120}}, 
-    [4]:{name:'npc_dota_hero_crystal_maiden', coord:{x:180,y:120}}, 
-	[5]:{name:'npc_dota_hero_tusk', coord:{x:120,y:240}}, 
-    [6]:{name:'npc_dota_hero_sven', coord:{x:240,y:240}},
-    [7]:{name:'npc_dota_hero_lich', coord:{x:60,y:360}},
-    [8]:{name:'npc_dota_hero_axe', coord:{x:180,y:360}},
-    [9]:{name:'npc_dota_hero_bane', coord:{x:0,y:480}},
-    [10]:{name:'npc_dota_hero_marci', coord:{x:120,y:480}},
-};
+    [4]:{name:'npc_dota_hero_beastmaster', coord:{x:180,y:120}}, 
+	[5]:{name:'npc_dota_hero_phantom_assassin', coord:{x:120,y:240}}, 
+    [6]:{name:'npc_dota_hero_enchantress', coord:{x:240,y:240}},
+    [7]:{name:'npc_dota_hero_invoker', coord:{x:60,y:360}},
+    [8]:{name:'npc_dota_hero_dragon_knight', coord:{x:180,y:360}},
+    [9]:{name:'npc_dota_hero_windrunner', coord:{x:0,y:480}},
+    [10]:{name:'npc_dota_hero_dawnbreaker', coord:{x:120,y:480}},
+}
 
 var exp_bar;
 
 function init_pick(){
-	scene = $.CreatePanel(`DOTAScenePanel`, $("#PickHeroScene"), "hero_screen", {camera: `camera_1`, light:"light_1", particleonly: `false`, map: `maps/background.vmap`, hittest: `false`});
+	scene = $.CreatePanel(`DOTAScenePanel`, $("#PickHeroScene"), "hero_screen", {camera: `camera_1`, light:"light_3", particleonly: `false`, map: `maps/background.vmap`, hittest: `false`});
 	scene.style.width = "100%";
 	scene.style.height = "100%";
 	
@@ -65,14 +65,6 @@ function hero_show_pick(data){
 	Game.EmitSound('ui.crafting_slotslide')
 	Game.EmitSound('announcer_dlc_bastion_announcer_pick_drow')
 	const key = findKeyByName(heroes, data.hero_name);
-
-	//{"level":14,"can_reset":0,"speed":2.133333444595337,
-	// "armor":10.666666984558105,"movespeed":305,
-	// "min_damage":9,"hero_enquip":{},"critical_damage":5,
-	// "excellent_damage":5,"reflected_damage":5,
-	// "hero_name":"npc_dota_hero_drow_ranger",
-	// "str":49,"fructs":0,"points":0,"max_damage":16,"exp":2123,
-	// "hp":13851,"agi":32,"vit":4571,"eng":444,"resets":7,"mp":471}
 	
     scene.LerpToCameraEntity('camera_' + key, 1.5)
 
@@ -98,8 +90,11 @@ function hero_show_pick(data){
 	createBar("#HeroHpBar", "hp_bar", "#30bf30", data.hp, 0);
 	createBar("#HeroMpBar", "mp_bar", "#30bf30", data.mp, 90);
 
+	exp_bar.style.width = "0%"
+
 	if (data.exp){
 		levelData = getLevelAndRemainderXP(data.exp);
+		$.Msg(levelData)
 		exp_bar.style.width = levelData.percent + '%';
 		$("#HeroLevelLabel").text = $.Localize('#level') + ": " + data.level + " (" + data.resets + ")" 
 	}
@@ -112,6 +107,16 @@ function hero_show_pick(data){
 	PickButton.SetPanelEvent("onmouseactivate", function () {
 		pick_hero(data.hero_name);
 	});
+
+
+	var HeroClass = GameUI.CustomUIConfig().HeroClass
+    var hero_class = HeroClass[data.hero_name]['class'];
+
+	$("#LoreHeroName").text = $.Localize('#'+ data.hero_name)
+	$("#LoreHeroClass").text = $.Localize('#'+ hero_class)
+	
+
+
 }
 
 function createBar(containerId, barId, color, value, deg) {

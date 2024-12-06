@@ -178,7 +178,7 @@ function hero_show_stats(data){
     player_stats_menu_main.FindChildTraverse("stats_panels_label_str").text = data.str
 	player_stats_menu_main.FindChildTraverse("stats_panels_label_agi").text = data.agi
 	player_stats_menu_main.FindChildTraverse("stats_panels_label_vit").text = data.vit
-	player_stats_menu_main.FindChildTraverse("stats_panels_label_eng").text = data.eng
+	player_stats_menu_main.FindChildTraverse("stats_panels_label_eng").text = data.eng    
 }
 
 function AddPoints(data){

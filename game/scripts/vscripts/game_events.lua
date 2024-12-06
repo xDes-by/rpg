@@ -12,13 +12,18 @@ function game_events:Init()
 	
 	
 	
-	
-	
+
 	
 	CustomNetTables:SetTableValue("heroes_base_stats", "heroes_base_stats", {
-		["npc_dota_hero_drow_ranger"] = {str = 28, agi = 20, vit = 25, eng = 10, hp = 110, mp = 20, hp_per_level = 2, mp_per_level = 0.5, hp_per_vit = 3, mp_per_eng = 1, damage = 0, speed = 0, armor = 0, movespeed = 300, poison = 100, fire = 100, ice = 100},
+		["npc_dota_hero_dragon_knight"] = {
+			str = 28, agi = 20, vit = 25, eng = 10, hp = 110, mp = 20, hp_per_level = 2, mp_per_level = 0.5, hp_per_vit = 3, mp_per_eng = 0.5, damage = 0, speed = 0, armor = 0, movespeed = 300, poison = 100, fire = 100, ice = 100},
+		["npc_dota_hero_drow_ranger"] = {
+			str = 20, agi = 30, vit = 20, eng = 10, hp = 80, mp = 30, hp_per_level = 1, mp_per_level = 1, hp_per_vit = 2, mp_per_eng = 1, damage = 0, speed = 0, armor = 0, movespeed = 300, poison = 100, fire = 100, ice = 100},
+		["npc_dota_hero_death_prophet"] = {
+			str = 18, agi = 18, vit = 15, eng = 30, hp = 60, mp = 60, hp_per_level = 1, mp_per_level = 2, hp_per_vit = 1, mp_per_eng = 2, damage = 0, speed = 0, armor = 0, movespeed = 300, poison = 100, fire = 100, ice = 100},
+		
 		["npc_dota_hero_juggernaut"] = {str = 28, agi = 20, vit = 25, eng = 10, hp = 110, mp = 20, hp_per_level = 2, mp_per_level = 0.5, hp_per_vit = 3, mp_per_eng = 1, damage = 0, speed = 0, armor = 0, movespeed = 300, poison = 100, fire = 100, ice = 100},
-		["npc_dota_hero_death_prophet"] = {str = 18, agi = 18, vit = 15, eng = 30, hp = 60, mp = 60, hp_per_level = 1, mp_per_level = 2, hp_per_vit = 1, mp_per_eng = 2, damage = 0, speed = 0, armor = 0, movespeed = 300, poison = 100, fire = 100, ice = 100},
+		
 	})
 end
 
@@ -43,7 +48,7 @@ function game_events:ExpFilter(data)
 
 		web:update_hero_data(hero_name, pid, hero)
 	end
-	
+
 	local data = game_events:calculate_hero_stats(hero_name, sid)
 	CustomNetTables:SetTableValue("hero_hud_stats", tostring(pid), data)
 	return false
@@ -101,27 +106,36 @@ function game_events:calculate_hero_stats(hero_name, sid)
 
 	local function damage(name)
 		local formulas = {
-			["npc_dota_hero_drow_ranger"] = {min = data.str / 5, max =  data.str / 3},
+			["npc_dota_hero_dragon_knight"] = {min = data.str / 6, max =  data.str / 4},
+			["npc_dota_hero_drow_ranger"] = {min = data.agi / 7, max =  data.agi / 4},
+			["npc_dota_hero_death_prophet"] = {min = data.eng / 9, max = data.eng / 2},
+
 			["npc_dota_hero_juggernaut"] = {min = data.str / 5, max =  data.str / 3},
-			["npc_dota_hero_death_prophet"] = {min = data.eng / 5, max = data.eng / 2},
+			
 		}
 		return formulas[name].min, formulas[name].max
 	end
 
-	local function speed(name)
+	local function attack_speed(name)
 		local formulas = {
-			["npc_dota_hero_drow_ranger"] = {speed = data.agi / 15},
-			["npc_dota_hero_juggernaut"] = {speed = data.agi / 15},
+			["npc_dota_hero_dragon_knight"] = {speed = data.agi / 15},
+			["npc_dota_hero_drow_ranger"] = {speed = data.agi / 50},
 			["npc_dota_hero_death_prophet"] = {speed = data.agi / 10},
+
+			["npc_dota_hero_juggernaut"] = {speed = data.agi / 15},
+			
 		}
 		return math.floor(formulas[name].speed)
 	end
 
 	local function armor(name)
 		local formulas = {
-			["npc_dota_hero_drow_ranger"] = {armor = data.agi / 3},
-			["npc_dota_hero_juggernaut"] = {armor = data.agi / 3},
+			["npc_dota_hero_dragon_knight"] = {armor = data.agi / 3},
+			["npc_dota_hero_drow_ranger"] = {armor = data.agi / 10},
 			["npc_dota_hero_death_prophet"] = {armor = data.agi / 4},
+
+			["npc_dota_hero_juggernaut"] = {armor = data.agi / 3},
+			
 		}
 		return math.floor(formulas[name].armor)
 	end
@@ -143,7 +157,7 @@ function game_events:calculate_hero_stats(hero_name, sid)
 	data.min_damage = math.floor(min_damage)
 	data.max_damage = math.floor(max_damage)
 
-    data.speed = speed(hero_name)
+    data.speed = attack_speed(hero_name)
     data.armor = armor(hero_name)
 	data.hp = math.floor(heroes_base_stats[hero_name].hp + (data.level or 1) * heroes_base_stats[hero_name].hp_per_level + data.vit * heroes_base_stats[hero_name].hp_per_vit)
 	data.mp = math.floor(heroes_base_stats[hero_name].mp + (data.level or 1) * heroes_base_stats[hero_name].mp_per_level + data.eng * heroes_base_stats[hero_name].mp_per_eng)

@@ -102,6 +102,10 @@
 			</Panel>
 
 			<Panel id="PickHeroLore" hittest="false">
+				<Panel id="player_stats_description">
+					<Label id="LoreHeroName" html="true" text="Juggernaut"/>
+					<Label id="LoreHeroClass" html="true" text="warrior"/>
+				</Panel>
 
 			</Panel>
 		</Panel>

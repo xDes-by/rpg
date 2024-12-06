@@ -16,6 +16,9 @@
 		
 		"statistic"				"Statistics"
 		"warrior"				"Warrior"
+		"mage"					"Warrior"
+		"summoner"				"Summoner"
+		"assassin"				"Assassin"
 		"level"					"Level"
 		"Strength"				"Strength"
 		"Agility"				"Agility"

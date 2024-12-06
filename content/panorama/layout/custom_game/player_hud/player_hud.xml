@@ -147,6 +147,7 @@
 						<Panel id="player_stats_menu_button_effect"/>
 						<Panel id="player_stats_menu_button" onmouseactivate="AddPoints('str')" />
 					</Panel>
+					
 				</Panel>
 				
 				<Panel class="stats_container">
@@ -178,6 +179,8 @@
 						<Panel id="player_stats_menu_button" onmouseactivate="AddPoints('eng')" />
 					</Panel>
 				</Panel>
+
+				<Label id="stats_formula_str" class="player_stats_formula" html="true" text="#Strength" />
 				
 			</Panel>
 		</Panel>
