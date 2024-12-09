@@ -6,15 +6,6 @@ EXP_TIMER_UPDATE = 60
 
 function web:init()
 	CustomGameEventManager:RegisterListener("try_teleport", Dynamic_Wrap( self, 'try_teleport'))
-
-
-
-
-
-
-
-
-
 	CustomGameEventManager:RegisterListener("hero_add_stats", Dynamic_Wrap( self, 'hero_add_stats' ))
 	
 
@@ -187,40 +178,32 @@ end
 ---------------------------------------------------------------------------------------------------------------------------------
 
 
-
 function web:hero_add_stats(t)
+	local sid = tostring(PlayerResource:GetSteamID(t.PlayerID))
 	local hero = PlayerResource:GetSelectedHeroEntity(t.PlayerID)	
-	-- arr = {
-		-- sid = tostring(PlayerResource:GetSteamID(t.PlayerID)),
-		-- type = t.type,
-	-- }
-	-- arr = json.encode(arr)
-	-- local req = CreateHTTPRequestScriptVM( "POST", "https://custom-dota.ru/api_close_order/?key=".._G.key )
-	-- req:SetHTTPRequestGetOrPostParameter('arr',arr)
-	-- req:SetHTTPRequestAbsoluteTimeoutMS(100000)
-	-- req:Send(function(res)
-		-- if res.StatusCode == 200 and res.Body ~= nil then
-		
-			-- local data = json.decode(res.Body)  -- ответ о кол-ве поинтов
-			
-			local vit_mod = hero:FindModifierByName('modifier_hero_stats')
-			hero:SetBaseIntellect(hero:GetBaseIntellect() + 1)
-			hero:SetBaseStrength(hero:GetBaseStrength() + 1)
-			hero:SetBaseAgility(hero:GetBaseAgility() + 1)
-			vit_mod:IncrementStackCount()
-			
-			hero:AddNewModifier(hero, nil, "modifier_hero_stats", {agi=1, str=1, vit=1, eng=0}) -- данные о поинтах с сервера
-			
-			
-			CustomGameEventManager:Send_ServerToPlayer( PlayerResource:GetPlayer(t.PlayerID), "hero_show_stats", {	points = 5, --data.points,
-																													str = hero:GetStrength(),
-																													agi = hero:GetAgility(),
-																													vit = hero:FindModifierByName('modifier_hero_stats'):GetStackCount(),
-																													eng = hero:GetIntellect(true)}
-																													)																									
-		-- else
-			-- print(res.StatusCode)
-		-- end
-	-- end)
+	local hero_name = hero:GetUnitName()
+	if _G.players_data[sid].heroes[hero_name].points > 0 then
+		_G.players_data[sid].heroes[hero_name].points = _G.players_data[sid].heroes[hero_name].points - 1
+		arr = {
+			sid = sid,
+			hero_name = hero_name,
+			type = t.type,
+		}
+		arr = json.encode(arr)
+		local req = CreateHTTPRequestScriptVM( "POST", "https://custom-dota.ru/dotamu/api_add_hero_stats/?key=".._G.key )
+		req:SetHTTPRequestGetOrPostParameter('arr',arr)
+		req:SetHTTPRequestAbsoluteTimeoutMS(100000)
+		req:Send(function(res)
+			if res.StatusCode == 200 and res.Body ~= nil then
+				print("ok")
+				local web_data = json.decode(res.Body)
+				_G.players_data[sid].heroes[hero_name] = web_data
+				local data = game_events:calculate_hero_stats(hero_name, sid)
+				CustomNetTables:SetTableValue("hero_hud_stats", tostring(t.PlayerID), data)
+			else
+				print(res.StatusCode)
+			end
+		end)
+	end
 end
 

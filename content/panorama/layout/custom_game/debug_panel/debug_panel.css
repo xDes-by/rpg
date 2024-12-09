@@ -1,0 +1,86 @@
+#DebugPanelButton{
+	horizontal-align: left;
+	vertical-align:top;	
+	width: 50px;
+	height: 50px;
+	background-color: red;
+	margin-left: 200px;
+}
+
+#DebugPanel{
+	horizontal-align: left;
+	vertical-align:center;
+    width: 550px;
+	height: 700px;
+	background-color: #525764;
+	padding: 10px;
+}
+
+#CreepPool{
+	horizontal-align: center;
+	vertical-align:center;
+	height: 800px;
+	flow-children: down-wrap;
+	padding: 10px;
+	background-color: #525764;
+}
+
+.creep_label{
+	vertical-align: center;
+	color: #8f98ad;
+	margin: 3px;
+	font-size: 16px;
+	border: 1px solid transparent;
+	padding: 2px;
+
+}
+
+.creep_label:hover{
+	border: 1px solid black;
+}
+
+#CreateUnitPanel{
+	flow-children: down;
+}
+
+#CreateUnit
+{
+	align: left top;
+	width: 180px;
+	height: 34px;
+	background-size: 27px 27px;
+	background-position: right 33px 35%;
+	padding: 0px 0px;
+	background-color: rgba(0, 0, 0, 0.3);
+	border-color: #525764;
+}
+
+#CreateUnit Label
+{
+	vertical-align: center;
+	color: #8f98ad;
+}
+
+#CreateUnitName{
+	align: center center;
+}
+
+#CreateUnitButton{
+	align: left top;
+	width: 80px;
+	height: 34px;
+	background-color: rgba(0, 0, 0, 0.3);
+	margin-top: 5px;
+}
+
+#CreateUnitButton:hover{
+	sound: "ui_select_arrow";
+	brightness: 1.8;
+	background-color: rgba(44, 105, 26, 0.3);
+}
+
+#CreateUnitButtonLabel{
+	align: center center;
+}
+
+

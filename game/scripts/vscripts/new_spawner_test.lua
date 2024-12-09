@@ -154,8 +154,9 @@ end
 -----------------------------------------------------------------------------
 
 function Spawner:CreateUnit(creep_name, random_position, zone_name)
+
     local stats = self.zone_data[zone_name].creep_data[creep_name]
-    local unit = CreateUnitByName("bull_fighter", random_position, true, nil, nil, DOTA_TEAM_NEUTRALS)
+    local unit = CreateUnitByName(creep_name, random_position, true, nil, nil, DOTA_TEAM_NEUTRALS)
 
     unit:SetBaseDamageMin(stats.damage_min)
 	unit:SetBaseDamageMax(stats.damage_max)

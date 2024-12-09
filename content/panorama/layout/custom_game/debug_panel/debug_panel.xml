@@ -1,0 +1,26 @@
+<root>
+	<styles>
+        <include src="file://{resources}/layout/custom_game/debug_panel/debug_panel.css" /> 
+	</styles>
+
+	<scripts>
+		<include src="file://{resources}/layout/custom_game/debug_panel/debug_panel.js" />
+	</scripts>
+
+	<Panel style="width:100%;height:100%;" hittest="false">
+		<Panel id="DebugPanelButton" onactivate="Open()"/>
+		<Panel id="DebugPanel">
+			
+			<Panel id="CreateUnitPanel">
+				<Panel id="CreateUnit" onactivate="ShowCreepPool()">
+					<Label id="CreateUnitName" text="Нажми для выбора" hittest="false"/>
+				</Panel>
+				<Panel id="CreateUnitButton" onactivate="CreateUnitButton()">
+					<Label id="CreateUnitButtonLabel" text="Создать"/>
+				</Panel>
+			</Panel>
+		</Panel>
+
+		<Panel id="CreepPool" hittest="false"/>
+    </Panel>
+</root>

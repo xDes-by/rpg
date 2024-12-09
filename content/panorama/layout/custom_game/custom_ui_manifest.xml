@@ -3,6 +3,7 @@
 		<include src="s2r://panorama/layout/custom_game/data/items.js" />
 		<include src="s2r://panorama/layout/custom_game/data/heroes.js" />
 		<include src="s2r://panorama/layout/custom_game/data/zones.js" />
+		<include src="s2r://panorama/layout/custom_game/data/creeps.js" />
 	</scripts>
 	<Panel>
 		<CustomUIElement type="Hud" layoutfile="s2r://panorama/layout/custom_game/player_hud/player_hud.xml" />
@@ -10,6 +11,8 @@
 		<CustomUIElement type="Hud" layoutfile="s2r://panorama/layout/custom_game/inventory/inventory.xml" />
 		<CustomUIElement type="Hud" layoutfile="s2r://panorama/layout/custom_game/game_events/game_events.xml" />
 		<CustomUIElement type="Hud" layoutfile="s2r://panorama/layout/custom_game/teleport/teleport.xml" />
+		<CustomUIElement type="Hud" layoutfile="s2r://panorama/layout/custom_game/debug_panel/debug_panel.xml" />
+		
 		<!-- <CustomUIElement type="Hud" layoutfile="s2r://panorama/layout/custom_game/uploadimg.xml" /> -->
 		
 		

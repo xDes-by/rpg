@@ -522,3 +522,10 @@
 	background-repeat: no-repeat;
 	background-size: 100%;	
 }
+
+#player_stats_menu_button_effect{
+	height: 50px;
+	width: 50px;
+	horizontal-align:right;
+	vertical-align: center;
+}

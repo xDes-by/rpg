@@ -103,7 +103,7 @@
 							<Label id="MpLabel" text="100 / 100"/>
 						</Panel>
 						
-						<Panel id="ButtonStatsEffect" hittest="false"/>
+						<DOTAParticleScenePanel class="full" id="ButtonStatsEffect" particleName="particles/ui/hud/autocasting_square.vpcf" renderdeferred="true" particleonly="false" startActive="true" cameraOrigin="0 0 90" lookAt="0 0 0" fov="60"/>
 						<Panel id="ButtonStats" onmouseactivate="OpenStatsMenu()"/>
 
 						<Panel id="ButtonTeleport" onmouseactivate="OpenTeleport()"/>
@@ -144,7 +144,7 @@
 						<Panel class="stats_panels_label_container">
 							<Label id="stats_panels_label_str" class="current_stats" text="50" />
 						</Panel>
-						<Panel id="player_stats_menu_button_effect"/>
+						<DOTAParticleScenePanel class="full" id="player_stats_menu_button_effect" particleName="particles/ui/hud/autocasting_square.vpcf" renderdeferred="true" particleonly="false" startActive="true" cameraOrigin="0 0 90" lookAt="0 0 0" fov="60"/>
 						<Panel id="player_stats_menu_button" onmouseactivate="AddPoints('str')" />
 					</Panel>
 					
@@ -156,6 +156,7 @@
 						<Panel class="stats_panels_label_container">
 							<Label id="stats_panels_label_agi" class="current_stats" text="50" />
 						</Panel>
+						<DOTAParticleScenePanel class="full" id="player_stats_menu_button_effect" particleName="particles/ui/hud/autocasting_square.vpcf" renderdeferred="true" particleonly="false" startActive="true" cameraOrigin="0 0 90" lookAt="0 0 0" fov="60"/>
 						<Panel id="player_stats_menu_button" onmouseactivate="AddPoints('agi')" />
 					</Panel>
 				</Panel>
@@ -166,6 +167,7 @@
 						<Panel class="stats_panels_label_container">
 							<Label id="stats_panels_label_vit" class="current_stats" text="50" />
 						</Panel>
+						<DOTAParticleScenePanel class="full" id="player_stats_menu_button_effect" particleName="particles/ui/hud/autocasting_square.vpcf" renderdeferred="true" particleonly="false" startActive="true" cameraOrigin="0 0 90" lookAt="0 0 0" fov="60"/>
 						<Panel id="player_stats_menu_button" onmouseactivate="AddPoints('vit')" />
 					</Panel>
 				</Panel>
@@ -176,6 +178,7 @@
 						<Panel class="stats_panels_label_container">
 							<Label id="stats_panels_label_eng" class="current_stats" text="50" />
 						</Panel>
+						<DOTAParticleScenePanel class="full" id="player_stats_menu_button_effect" particleName="particles/ui/hud/autocasting_square.vpcf" renderdeferred="true" particleonly="false" startActive="true" cameraOrigin="0 0 90" lookAt="0 0 0" fov="60"/>
 						<Panel id="player_stats_menu_button" onmouseactivate="AddPoints('eng')" />
 					</Panel>
 				</Panel>

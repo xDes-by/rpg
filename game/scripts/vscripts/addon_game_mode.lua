@@ -15,6 +15,7 @@ require("web") -- удалить на релизе
 require("guilds") -- удалить на релизе
 require("inventory") -- удалить на релизе!
 require("drop") -- удалить на релизе!
+require("debug_panel") -- удалить на релизе!
 
 
 Precache = require("precache")

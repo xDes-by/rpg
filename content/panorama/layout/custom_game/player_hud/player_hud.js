@@ -24,9 +24,6 @@ var ButtonStatsEffect = $("#ButtonStatsEffect")
 var ButtonInventory = $("#ButtonInventory")
 var ExpBarContainer = $("#ExpBarContainer")
 
-var very_rare_item_effect = $.CreatePanel("DOTAParticleScenePanel", ButtonStatsEffect, "", {particleName:"particles/ui/hud/autocasting_square.vpcf", renderdeferred:"true", particleonly:"false", startActive:"true", cameraOrigin:"0 0 90", lookAt:"0 0 0", fov:"60"});
-very_rare_item_effect.AddClass("full");
-
 function updateBar(bar, container, width, color, map) {
     if (!bar) {
         bar = $.CreatePanel('DOTAScenePanel', container, '', {
@@ -61,10 +58,10 @@ function main() {
     if (isRealHero && isLocalPlayer) {
         const data = CustomNetTables.GetTableValue('hero_hud_stats', playerId);
 
-        // $.Msg(data)
-
         if (data) {
             ButtonStatsEffect.visible = data.points > 0;
+
+            hero_show_stats(data)
 
             const levelData = getLevelAndRemainderXP(data.exp);
 
@@ -158,17 +155,11 @@ var player_stats_menu_main = $("#player_stats_menu_main")
 function OpenStatsMenu() {
 	invopened = !invopened
 	player_stats_menu_main.SetHasClass("open_stats_menu", invopened)
-    const data = CustomNetTables.GetTableValue('hero_hud_stats', Players.GetLocalPlayer());
-    if (data) {
-        hero_show_stats(data)
-    }
 }
 
 function hero_show_stats(data){
     var HeroClass = GameUI.CustomUIConfig().HeroClass
     var hero_class = HeroClass[data.hero]['class'];
-
-    // ButtonStatsEffect.visible = data.points > 0 ? true : false
 
     player_stats_menu_main.FindChildTraverse("HeroName").text = $.Localize('#'+ data.hero)
     player_stats_menu_main.FindChildTraverse("HeroClass").text = $.Localize('#'+ hero_class)
@@ -179,10 +170,14 @@ function hero_show_stats(data){
 	player_stats_menu_main.FindChildTraverse("stats_panels_label_agi").text = data.agi
 	player_stats_menu_main.FindChildTraverse("stats_panels_label_vit").text = data.vit
 	player_stats_menu_main.FindChildTraverse("stats_panels_label_eng").text = data.eng    
+
+    var effects = player_stats_menu_main.FindChildrenWithClassTraverse("full")
+    effects.forEach((id) => {
+        id.visible = data.points > 0 ? true : false
+    });
 }
 
 function AddPoints(data){
-	$.Msg(data)
 	GameEvents.SendCustomGameEventToServer("hero_add_stats", {type:data});
 }
 
