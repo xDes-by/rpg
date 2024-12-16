@@ -4,6 +4,7 @@
 		<include src="s2r://panorama/layout/custom_game/data/heroes.js" />
 		<include src="s2r://panorama/layout/custom_game/data/zones.js" />
 		<include src="s2r://panorama/layout/custom_game/data/creeps.js" />
+		<include src="s2r://panorama/layout/custom_game/custom_tooltip/custom_tooltip.js" />
 	</scripts>
 	<Panel>
 		<CustomUIElement type="Hud" layoutfile="s2r://panorama/layout/custom_game/player_hud/player_hud.xml" />

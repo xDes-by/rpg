@@ -1,0 +1,72 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:modeldoc37:version{9e04b9aa-f073-4e59-8923-ff57489eb2c7} -->
+{
+	rootNode = 
+	{
+		_class = "RootNode"
+		children = 
+		[
+			{
+				_class = "BoneMarkupList"
+				bone_cull_type = "None"
+				primary_root_bone = ""
+			},
+			{
+				_class = "RenderMeshList"
+				children = 
+				[
+					{
+						_class = "RenderMeshFile"
+						name = "diggers_divining_rod_gem_pink_model"
+						filename = "models/diggers_divining_rod_gem_pink_diggers_divining_rod_gem_pink_model.dmx"
+						import_scale = 2.0
+						import_filter = 
+						{
+							exclude_by_default = false
+							exception_list = [  ]
+						}
+					},
+				]
+			},
+			{
+				_class = "HitboxSetList"
+				children = 
+				[
+					{
+						_class = "HitboxSet"
+						name = "default"
+						children = 
+						[
+							{
+								_class = "Hitbox"
+								name = "0"
+								parent_bone = "gem_04"
+								surface_property = "default"
+								translation_only = false
+								group_id = 0
+								hitbox_mins = [ -6.271863, -8.394333, -8.469561 ]
+								hitbox_maxs = [ 6.271863, 8.394348, 8.469561 ]
+							},
+						]
+					},
+				]
+			},
+			{
+				_class = "Skeleton"
+				children = 
+				[
+					{
+						_class = "Bone"
+						name = "gem_04"
+						origin = [ -0.119653, 0.039771, -0.149284 ]
+						angles = [ 0.0, 90.0, 90.0 ]
+						do_not_discard = true
+					},
+				]
+			},
+		]
+		model_archetype = ""
+		primary_associated_entity = ""
+		anim_graph_name = ""
+		document_sub_type = "ModelDocSubType_None"
+	}
+}

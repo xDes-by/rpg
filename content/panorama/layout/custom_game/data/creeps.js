@@ -8,11 +8,13 @@ GameUI.CustomUIConfig().Creeps = {
             level : 6,
             model : "models/creeps/neutral_creeps/n_creep_furbolg/n_creep_furbolg_disrupter.vmdl",
 			drop : {
-				[1] : {set_name : 'Pad', item_type : 'gloves', level : 1, item_rarity : 'base'},
-				[2] : {set_name : 'Leather', item_type : 'gloves', level : 0, item_rarity : 'base'},
-				[3] : {set_name : 'Vine', item_type : 'gloves', level : 0, item_rarity : 'base'},
+				[1] : {item_class: 'item', drop_chance: 20, luck_chance: 20, set_name : 'Pad', item_type : 'gloves', level : 1, item_rarity : 'base'},
+				[2] : {item_class: 'item', drop_chance: 20, luck_chance: 20, set_name : 'Leather', item_type : 'gloves', level : 0, item_rarity : 'base'},
+				[3] : {item_class: 'item', drop_chance: 20, luck_chance: 20, set_name : 'Vine', item_type : 'gloves', level : 0, item_rarity : 'base'},
+				[4] : {item_class: 'zen', drop_chance: 20, zen_min: 100, zen_max: 300},
+				[5] : {item_class: 'jewel', drop_chance: 3, set_name : '', item_type : 'bless', level : 0, item_rarity : ''},
+				[6] : {item_class: 'jewel', drop_chance: 1, set_name : '', item_type : 'soul', level : 0, item_rarity : ''},
 				},
-			chance : 20,
 			duration : 20,
         },
         hound : {

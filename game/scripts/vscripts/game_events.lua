@@ -2,17 +2,16 @@ if game_events == nil then
 	game_events = class({})
 end
 
+EXP_TIMER_UPDATE = 60
+
 function game_events:Init()
 	GameRules:GetGameModeEntity():SetModifyExperienceFilter(Dynamic_Wrap(self, "ExpFilter"), self)
-	
-	
+	GameRules:GetGameModeEntity():SetThink("Think_Players_Exp", self, "game_events", EXP_TIMER_UPDATE)
+
 	
 	CustomGameEventManager:RegisterListener("pick_show_hero", Dynamic_Wrap( self, 'pick_show_hero'))
 	CustomGameEventManager:RegisterListener("pick_hero", Dynamic_Wrap( self, 'pick_hero'))
 	
-	
-	
-
 	
 	CustomNetTables:SetTableValue("heroes_base_stats", "heroes_base_stats", {
 		["npc_dota_hero_dragon_knight"] = {
@@ -27,8 +26,63 @@ function game_events:Init()
 	})
 end
 
-BASE_HERO_HEALTH = 0--120
-BASE_HERO_MANA = 0--75
+-------------------------------------------------------------------------------
+
+function game_events:Think_Players_Exp()
+    if GameRules:State_Get() == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
+        local arr = {}
+        for i = 0 , PlayerResource:GetPlayerCount() do
+            if PlayerResource:IsValidPlayer(i) then
+                local pl_sid = tostring(PlayerResource:GetSteamID(i))
+                local hero = PlayerResource:GetSelectedHeroEntity(i)    
+                local hero_name = hero:GetUnitName()
+                if hero_name == 'npc_dota_hero_wisp' then
+                    goto continue_send
+                end
+                arr[tostring(i)] = {
+                    sid = pl_sid,
+                    hero_name = hero_name,
+                    exp = _G.players_data[pl_sid].heroes[hero_name].exp,
+                    level = _G.players_data[pl_sid].heroes[hero_name].level,
+                    points = _G.players_data[pl_sid].heroes[hero_name].points
+                }
+                ::continue_send::
+            end
+        end
+
+        if arr['0'] == nil then
+            return EXP_TIMER_UPDATE
+        end
+
+        arr = json.encode(arr)
+        local req = CreateHTTPRequestScriptVM( "POST", "https://custom-dota.ru/dotamu/api_send_players_exp/?key=".._G.key )
+        req:SetHTTPRequestGetOrPostParameter('arr',arr)
+        req:SetHTTPRequestAbsoluteTimeoutMS(100000)
+        req:Send(function(res)
+            if res.StatusCode == 200 and res.Body ~= nil then
+                local web_data = json.decode(res.Body)			
+				for i = 0 , PlayerResource:GetPlayerCount() do
+					if PlayerResource:IsValidPlayer(i) then
+						local sid = tostring(PlayerResource:GetSteamID(i))
+                		local hero = PlayerResource:GetSelectedHeroEntity(i)    
+                		local hero_name = hero:GetUnitName()
+						_G.players_data[sid].heroes[hero_name].exp = web_data[sid].exp
+						_G.players_data[sid].heroes[hero_name].level = web_data[sid].level
+						_G.players_data[sid].heroes[hero_name].points = web_data[sid].points
+						
+						local data = game_events:calculate_hero_stats(hero_name, sid)
+						CustomNetTables:SetTableValue("hero_hud_stats", tostring(pid), data)
+					end
+				end
+                print("EXP OK")
+            else
+                print("EXP ERROR")
+                print(res.StatusCode)
+            end
+        end)
+    end
+    return EXP_TIMER_UPDATE
+end
 
 function game_events:ExpFilter(data)
 	local pid = data.player_id_const
@@ -41,20 +95,34 @@ function game_events:ExpFilter(data)
 	local level, percent = game_events:GetLevelAndRemainderXP(_G.players_data[sid].heroes[hero_name].exp)
 
 	if _G.players_data[sid].heroes[hero_name].level < level then
-		_G.players_data[sid].heroes[hero_name].level = _G.players_data[sid].heroes[hero_name].level + 1
-		_G.players_data[sid].heroes[hero_name].points = _G.players_data[sid].heroes[hero_name].points + 5
+		local count = level - _G.players_data[sid].heroes[hero_name].level
 
-		-- TODO: ДОБАВИТЬ ЭФФЕКТ LVLUP
+		_G.players_data[sid].heroes[hero_name].level = _G.players_data[sid].heroes[hero_name].level + count
+		_G.players_data[sid].heroes[hero_name].points = _G.players_data[sid].heroes[hero_name].points + (count * 5)
+
 		local pcf = ParticleManager:CreateParticle("particles/generic_hero_status/hero_levelup.vpcf", PATTACH_ABSORIGIN_FOLLOW, hero)
 		ParticleManager:ReleaseParticleIndex(pcf)
-		
-		web:update_hero_data(hero_name, pid, hero)
+
+		local data = {
+			pid = pid,
+			sid = sid,
+			hero_name = hero_name,
+			data = _G.players_data[sid]
+		}
+
+		web:enqueue_request(data, function(response)
+			if response then
+				_G.players_data[sid] = response
+			end
+		end, true)
 	end
 
 	local data = game_events:calculate_hero_stats(hero_name, sid)
 	CustomNetTables:SetTableValue("hero_hud_stats", tostring(pid), data)
 	return false
 end
+
+-------------------------------------------------------------------------------
 
 -- maximum exp = 1 919 987 999S
 
@@ -103,7 +171,11 @@ function game_events:calculate_hero_stats(hero_name, sid)
 	if _G.players_data[sid].heroes[hero_name] then
 		data = table.deepcopy(_G.players_data[sid].heroes[hero_name])
 	end
-	
+
+	table.print(data)
+
+	set_data = game_events:calculate_hero_set(data.hero_enquip)
+
 	data['hero_name'] = hero_name
 
 	local function damage(name)
@@ -156,15 +228,35 @@ function game_events:calculate_hero_stats(hero_name, sid)
 	
     local min_damage, max_damage = damage(hero_name)
 
-	data.min_damage = math.floor(min_damage)
-	data.max_damage = math.floor(max_damage)
+	data.min_damage = math.floor(min_damage) + set_data.min_damage
+	data.max_damage = math.floor(max_damage) + set_data.max_damage
 
-    data.speed = attack_speed(hero_name)
-    data.armor = armor(hero_name)
+    data.speed = attack_speed(hero_name) 
+    data.armor = armor(hero_name) + set_data.armor
 	data.hp = math.floor(heroes_base_stats[hero_name].hp + (data.level or 1) * heroes_base_stats[hero_name].hp_per_level + data.vit * heroes_base_stats[hero_name].hp_per_vit)
 	data.mp = math.floor(heroes_base_stats[hero_name].mp + (data.level or 1) * heroes_base_stats[hero_name].mp_per_level + data.eng * heroes_base_stats[hero_name].mp_per_eng)
-	
+
 	return data
+end
+
+function game_events:calculate_hero_set(data)	
+	local attributeSum = {}
+	attributeSum['armor'] = 0
+	attributeSum['min_damage'] = 0
+	attributeSum['max_damage'] = 0
+	if data then
+		for item, item_data in pairs(data) do
+			local item_stats = _G.all_items[item_data.item_class][item_data.set_name]['items'][item_data.item_type]['stats'][tostring(item_data.level)]
+
+			if item_data.item_class == 'weapon' then
+				attributeSum['min_damage'] = attributeSum['min_damage'] + math.ceil(item_stats.min_damage / 100 * item_data.quality)
+				attributeSum['max_damage'] = attributeSum['max_damage'] + math.ceil(item_stats.max_damage / 100 * item_data.quality)
+			else
+				attributeSum['armor'] = attributeSum['armor'] + math.ceil(item_stats.armor / 100 * item_data.quality)
+			end
+		end
+	end
+	return attributeSum
 end
 
 function game_events:pick_hero(tab)

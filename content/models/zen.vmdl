@@ -1,0 +1,103 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:modeldoc37:version{9e04b9aa-f073-4e59-8923-ff57489eb2c7} -->
+{
+	rootNode = 
+	{
+		_class = "RootNode"
+		children = 
+		[
+			{
+				_class = "BoneMarkupList"
+				bone_cull_type = "None"
+				primary_root_bone = ""
+			},
+			{
+				_class = "RenderMeshList"
+				children = 
+				[
+					{
+						_class = "RenderMeshFile"
+						name = "goldcoins_01"
+						note = "Type note..."
+						filename = "models/goldcoins_01_goldcoins_01.dmx"
+						import_scale = 1.0
+						import_filter = 
+						{
+							exclude_by_default = true
+							exception_list = 
+							[
+								"goldcoins_01_goldcoins_01",
+							]
+						}
+					},
+				]
+			},
+			{
+				_class = "HitboxSetList"
+				children = 
+				[
+					{
+						_class = "HitboxSet"
+						name = "hitbox_new"
+						children = 
+						[
+							{
+								_class = "HitboxSphere"
+								parent_bone = "main"
+								surface_property = ""
+								translation_only = false
+								group_id = 0
+								center = [ -5.490271, 5.660798, -0.212784 ]
+								radius = 30.0
+							},
+						]
+					},
+				]
+			},
+			{
+				_class = "Skeleton"
+				children = 
+				[
+					{
+						_class = "Bone"
+						name = "root"
+						children = 
+						[
+							{
+								_class = "Bone"
+								name = "main"
+								origin = [ 0.0, 0.0, 0.0 ]
+								angles = [ 0.0, 0.0, 0.0 ]
+								do_not_discard = false
+							},
+						]
+						origin = [ 0.0, 0.0, 0.0 ]
+						angles = [ 0.0, 0.0, 0.0 ]
+						do_not_discard = false
+					},
+				]
+			},
+			{
+				_class = "PhysicsShapeList"
+				children = 
+				[
+					{
+						_class = "PhysicsShapeCapsule"
+						parent_bone = "root"
+						surface_prop = "default"
+						collision_prop = "default"
+						tool_material = ""
+						hitgroup = "HITGROUP_INVALID"
+						radius = 30.0
+						point0 = [ 0.0, 0.0, 0.0 ]
+						point1 = [ 1.0, 0.0, 0.0 ]
+					},
+				]
+				leave_body_collision_unmodified = false
+			},
+		]
+		model_archetype = ""
+		primary_associated_entity = ""
+		anim_graph_name = ""
+		document_sub_type = "ModelDocSubType_None"
+	}
+}

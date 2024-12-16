@@ -512,7 +512,6 @@
 }
 
 #player_stats_menu_button{
-	background-color: white;
 	height: 40px;
 	width: 40px;
 	margin: 5px;
@@ -528,4 +527,23 @@
 	width: 50px;
 	horizontal-align:right;
 	vertical-align: center;
+}
+
+/* ///////////////////////////// */
+
+.free_points_count{
+	horizontal-align: right;
+	flow-children: right;
+	margin-right: 5px;
+}
+
+#free_points_count_image{
+	height: 40px;
+	width: 40px;
+	margin: 5px;
+	horizontal-align:right;
+	vertical-align: center;
+	background-image: url("file://{images}/HUD/button_stats.png");
+	background-repeat: no-repeat;
+	background-size: 100%;	
 }

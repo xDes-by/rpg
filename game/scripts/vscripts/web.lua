@@ -2,15 +2,11 @@ if web == nil then
 	web = class({})
 end
 
-EXP_TIMER_UPDATE = 60
+web.request_queue = {}
 
 function web:init()
 	CustomGameEventManager:RegisterListener("try_teleport", Dynamic_Wrap( self, 'try_teleport'))
 	CustomGameEventManager:RegisterListener("hero_add_stats", Dynamic_Wrap( self, 'hero_add_stats' ))
-	
-
-
-	GameRules:GetGameModeEntity():SetThink("Think_Players_Exp", self, "web", EXP_TIMER_UPDATE)
 	web:start_game()
 end
 
@@ -36,10 +32,61 @@ function web:start_game()
 		else
 			print("ERROR START GAME")
 			print(res.StatusCode)
-			print("ERROR START GAME")
 		end
 	end)
 end
+
+
+function web:enqueue_request(data, callback, update_inventory)
+    table.insert(self.request_queue, {
+        data = data,
+        callback = callback,
+        update_inventory = update_inventory
+    })
+    if not self.processing then
+        self:process_next_request()
+    end
+end
+
+function web:process_next_request()
+	print("SEND REQUEST")
+    if #self.request_queue == 0 then
+        self.processing = false
+        return
+    end
+
+    self.processing = true
+    local request = table.remove(self.request_queue, 1)
+
+    local req = CreateHTTPRequestScriptVM("POST", "https://custom-dota.ru/dotamu/api_update_player_data/?key=" .. _G.key)
+    req:SetHTTPRequestGetOrPostParameter('arr', json.encode(request.data))
+    req:SetHTTPRequestAbsoluteTimeoutMS(100000)
+
+    req:Send(function(res)
+        if res.StatusCode == 200 and res.Body ~= nil then
+            local response = json.decode(res.Body)
+            if request.callback then
+                request.callback(response)
+            end
+
+            if request.update_inventory then
+                local pid = request.data.pid
+				local sid = request.data.sid
+                CustomGameEventManager:Send_ServerToPlayer(
+                    PlayerResource:GetPlayer(pid),
+                    "UpdateInventoryMain",
+                    _G.players_data[sid]
+                )
+				inventory:update_sets(pid)
+            end
+        else
+            print("Error:", res.StatusCode)
+        end
+        self:process_next_request()
+    end)
+end
+
+--------------------------------------------------------------------------------------
 
 function web:update_hero_data(hero_name, pid, hero)
 	local sid = tostring(PlayerResource:GetSteamID(pid))
@@ -75,62 +122,6 @@ function web:update_hero_data(hero_name, pid, hero)
 			print(res.StatusCode)
 		end
 	end)
-end
-
-function web:Think_Players_Exp()
-    if GameRules:State_Get() == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
-        local arr = {}
-        for i = 0 , PlayerResource:GetPlayerCount() do
-            if PlayerResource:IsValidPlayer(i) then
-                local pl_sid = tostring(PlayerResource:GetSteamID(i))
-                local hero = PlayerResource:GetSelectedHeroEntity(i)    
-                local hero_name = hero:GetUnitName()
-                if hero_name == 'npc_dota_hero_wisp' then
-                    goto continue_send
-                end
-                arr[tostring(i)] = {
-                    sid = pl_sid,
-                    hero_name = hero_name,
-                    exp = _G.players_data[pl_sid].heroes[hero_name].exp,
-                    level = _G.players_data[pl_sid].heroes[hero_name].level,
-                    points = _G.players_data[pl_sid].heroes[hero_name].points
-                }
-                ::continue_send::
-            end
-        end
-
-        if arr['0'] == nil then
-            return EXP_TIMER_UPDATE
-        end
-
-        arr = json.encode(arr)
-        local req = CreateHTTPRequestScriptVM( "POST", "https://custom-dota.ru/dotamu/api_send_players_exp/?key=".._G.key )
-        req:SetHTTPRequestGetOrPostParameter('arr',arr)
-        req:SetHTTPRequestAbsoluteTimeoutMS(100000)
-        req:Send(function(res)
-            if res.StatusCode == 200 and res.Body ~= nil then
-                local web_data = json.decode(res.Body)			
-				for i = 0 , PlayerResource:GetPlayerCount() do
-					if PlayerResource:IsValidPlayer(i) then
-						local sid = tostring(PlayerResource:GetSteamID(i))
-                		local hero = PlayerResource:GetSelectedHeroEntity(i)    
-                		local hero_name = hero:GetUnitName()
-						_G.players_data[sid].heroes[hero_name].exp = web_data[sid].exp
-						_G.players_data[sid].heroes[hero_name].level = web_data[sid].level
-						_G.players_data[sid].heroes[hero_name].points = web_data[sid].points
-						
-						local data = game_events:calculate_hero_stats(hero_name, sid)
-						CustomNetTables:SetTableValue("hero_hud_stats", tostring(pid), data)
-					end
-				end
-                print("EXP OK")
-            else
-                print("EXP ERROR")
-                print(res.StatusCode)
-            end
-        end)
-    end
-    return EXP_TIMER_UPDATE
 end
 
 
@@ -195,7 +186,6 @@ function web:hero_add_stats(t)
 		req:SetHTTPRequestAbsoluteTimeoutMS(100000)
 		req:Send(function(res)
 			if res.StatusCode == 200 and res.Body ~= nil then
-				print("ok")
 				local web_data = json.decode(res.Body)
 				_G.players_data[sid].heroes[hero_name] = web_data
 				local data = game_events:calculate_hero_stats(hero_name, sid)

@@ -14,3 +14,4 @@ GameUI.CustomUIConfig().Zones = {
     "vulcanus": {"zen":"5000", "recommended": "240-260"},
     "kethotum": {"zen":"5000", "recommended": "260-280"},
 }
+

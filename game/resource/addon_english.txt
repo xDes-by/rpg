@@ -42,7 +42,14 @@
 		
 		"pick"					"Select Hero"
 		"teleport"				"Teleport"
-		"zone_recommended"			"Recommended Level"
+		"zone_recommended"		"Recommended Level"
+		"free_points"			"Undistributed Points"
+		"cant_enquip"			"Can not equip"
+		"item_soul"				"Jewel of Soul"
+		"item_soul_desc"		"Jewel of Soul is used to upgrade from levels 9-15"
+		"item_bless"			"Jewel of Bless"
+		"item_bless_desc"		"Jewel of Bless is used to upgrade from levels 1-9"
+		"quantity"				"Quantity"
 
 	}	
 }

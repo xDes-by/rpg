@@ -7,7 +7,7 @@
 		<include src="s2r://panorama/layout/custom_game/custom_tooltip/custom_tooltip.js" />
 	</scripts>
 	
-	<Panel class="CustomTooltipRoot" hittest="false" hittestchildren="false" ontooltiploaded="setTooltip()">
+	<Panel id="CustomTooltipRoot" class="CustomTooltipRoot" hittest="false" hittestchildren="false" ontooltiploaded="setTooltip()">
 		<Panel id="MainInfo">
 			<Label id="TooltipName" html="true" />
 			<Image class='TooltipImage' id='TooltipImage' src="" />

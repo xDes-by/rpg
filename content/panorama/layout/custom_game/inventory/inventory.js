@@ -5,15 +5,14 @@ InventoryPanel.visible = true
 var percent = ['lifesteal', 'magic_lifesteal', 'reflect', 'spell_amplify', 'magic_desolator', 'hp_regen', 'pants', 'shield', 'manacost', 'hp_regen_amp', 'crit', 'multicast'];
 var int_num = ['helm', 'pants', 'weapon'];
 
-
 var current_selected_player = null // Выбранный текущий герой
 var default_inventory_slots = 72 // Дефолтное количество слотов
 var is_local_inventory = true // локальный ли инвентарь
 var EQUIP_ITEMS_TYPES = ["helm", "armor", "gloves", "pants", "boots", "weapon", "shield", "ring", "ring_2", "pendant"] // Первая колонка слотов, в которые можно надевать предметы
 var TABLE_HERO = null
+var NAME;
 var decription_attributes = CustomNetTables.GetTableValue( "set_attributes", 'set_attributes');
 var boost_attributes = CustomNetTables.GetTableValue( "boost_attributes", 'boost_attributes');
-
 
 function Open()
 {	
@@ -26,14 +25,18 @@ function Open()
 
 function UpdateInventoryMain(data)
 {
+    NAME = Entities.GetUnitName(Players.GetPlayerHeroEntityIndex(Players.GetLocalPlayer()))
+    $("#ZenCount").text = data.stats.zen
+
 	TABLE_HERO = data
+
 	current_selected_player = Players.GetLocalPlayerPortraitUnit()
     $("#InventorySlots").RemoveAndDeleteChildren()
 	UpdateInventorySlots()
-	UpdateInventoryItems(TABLE_HERO.user_inventory)
+	UpdateInventoryItems()
 
     EquipCreateSlots()
-    UpdateEquipItems(TABLE_HERO.hero_enquip)
+    UpdateEquipItems()
 	// update_description()
 }
 
@@ -104,8 +107,9 @@ function CreateSlot(i) // Создание слота для инвентаря
 }
 
 
-function UpdateInventoryItems(inventory_list) // Апдейт всех предметов инвентаря
+function UpdateInventoryItems() // Апдейт всех предметов инвентаря
 {
+    var inventory_list = TABLE_HERO.stats.user_inventory
     for (let i = 0; i <= Object.keys(inventory_list).length; i++)
     {
         if (Object.keys(inventory_list)[i] != null)
@@ -123,9 +127,12 @@ function UpdateInventoryItems(inventory_list) // Апдейт всех пред�
     
                 let item_panel = $.CreatePanel("Panel", find_slot, "")
                 item_panel.AddClass("item_panel")
+                
+                // $.Msg(item_info)
 
-				if (item_info.set_type == 'jewell'){
-					item_panel.style.backgroundImage = "url('file://{resources}/images/sets/"+item_info.item_type+".png')";
+				if (item_info.item_class == 'jewel'){
+                    
+					item_panel.style.backgroundImage = "url('file://{resources}/images/inventory/item_"+item_info.item_type+".png')";
 				}else{
 					item_panel.style.backgroundImage = "url('file://{resources}/images/items/"+ item_info.set_name + " " + item_info.item_type + ".png')";
 				}
@@ -139,8 +146,9 @@ function UpdateInventoryItems(inventory_list) // Апдейт всех пред�
     }
 }
 
-function UpdateEquipItems(equip_list) // Обновить экипированные предметы
+function UpdateEquipItems() // Обновить экипированные предметы
 {
+    var equip_list = PLAYER_HERO_ENQUIP = TABLE_HERO.heroes[NAME].hero_enquip
     for (let i = 0; i <= Object.keys(equip_list).length; i++)
     {
         if (Object.keys(equip_list)[i] != null)
@@ -170,122 +178,9 @@ function UpdateEquipItems(equip_list) // Обновить экипированн
 function send_update_hero(){
 	let player_id = Entities.GetPlayerOwnerID(current_selected_player)
     if (player_id == Players.GetLocalPlayer()){
-		// update_description()
 		GameEvents.SendCustomGameEventToServer("update_hero_inventory", {data:TABLE_HERO})
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function CheckFullSet() {
-    var data = TABLE_HERO.hero_enquip;
-    var filledItems = 0;
-    var setType = null;
-
-    for (const itemKey in data) {
-        const itemData = data[itemKey];
-        if (itemData != null) {
-            filledItems++;
-            if (setType == null) {
-                setType = itemData.set_type;
-            } else if (setType !== itemData.set_type) {
-                return false;
-            }
-        }
-    }
-    return filledItems === 6;
-}
-
-
-function update_description(){
-	var data = TABLE_HERO.hero_enquip
-	description_panel =	$("#QuipDescription")
-	description_panel.RemoveAndDeleteChildren()
-
-	const attributeSum = {};
-	
-	for (const itemKey in data) {
-		const itemData = data[itemKey];
-		if (itemData == null){
-			continue
-		}
-		for (const attributesKey of ["bonus_attribute", "base_attribute"]) {
-			const attributes = itemData[attributesKey];
-			
-			for (const attrKey in attributes) {
-				const value = decription_attributes[attrKey]
-				
-				if (attributesKey == "base_attribute"){
-					if (!attributeSum[attrKey]) {
-						attributeSum[attrKey] = itemData.level * itemData.set_number * value
-					}
-				}else{
-					if (!attributeSum[attrKey]) {
-						attributeSum[attrKey] = value * itemData.set_number +  boost_attributes[attrKey][itemData.set_number] * (itemData.level - 1)
-					}else{
-						attributeSum[attrKey] = attributeSum[attrKey] + value * itemData.set_number +  boost_attributes[attrKey][itemData.set_number] * (itemData.level - 1)
-					}
-				}
-			}
-		}
-	}
-	
-	var simple_color = ['helm', 'pants', 'armor', 'boots', 'weapon', 'shield'];
-	
-	for (const attrKey in attributeSum) {
-		let label = $.CreatePanel("Label", description_panel, "")
-		label.AddClass('font_desr')
-		
-		if (simple_color.includes(attrKey)){
-			color = "gold"
-		}else{
-			color = '#00f704'
-		}
-		
-		if (percent.includes(attrKey)){
-			perc = '%'
-		}else{
-			perc = ''
-		}
-		if (int_num.includes(attrKey)){
-			num = 0
-		}else{
-			num = 1
-		}
-		if (CheckFullSet()){
-			mult = 2
-		}else{
-			mult = 1
-		}
-		
-		label.text = $.Localize("#"+attrKey+"_description") + " " + (attributeSum[attrKey].toFixed(num) * mult) + perc
-		label.style.color = color
-		let hr = $.CreatePanel("Panel", description_panel, "hr") 
-	}
-}
-
-
-
 
 function OnDragStart( panelId, dragCallbacks )
 {
@@ -351,6 +246,10 @@ function OnDragDrop( panelId, draggedPanel )
         return
     }
 
+    if (!old_panel.GetChild(0)){
+        return
+    }
+    
     let old_panel_item = old_panel.GetChild(0) // Переносимый итем
     let new_panel_item = panelId.GetChild(0) // Есть ли уже предмет в переносимом слоте
 
@@ -373,21 +272,6 @@ function OnDragDrop( panelId, draggedPanel )
 	return true;
 }
 
-function dust_item(old_panel, new_panel, old_panel_item)
-{
-    let old_slot_num = old_panel.slot_count
-    let old_item_info = TABLE_HERO['user_inventory'][old_slot_num]
-	old_panel_item.GetParent().RemoveAndDeleteChildren()
-    old_panel.item_in_slot = null
-
-    TABLE_HERO['user_inventory'][old_slot_num] = null
-	
-	Game.EmitSound("Hero_ObsidianDestroyer.projectileImpact")
-	
-	update_description()
-	GameEvents.SendCustomGameEventToServer("update_hero_inventory", {data:TABLE_HERO, target:old_item_info}) //---------------------------------------DUST ITEM 
-}
-
 function SwapItemsInventoryOnly(old_panel, new_panel, old_panel_item, new_panel_item) // Если перенос из инвентаря в инвентарь
 {
     // Номера слотов
@@ -395,8 +279,8 @@ function SwapItemsInventoryOnly(old_panel, new_panel, old_panel_item, new_panel_
     let new_slot_num = new_panel.slot_count
 
     // Информация слотов
-    let old_item_info = TABLE_HERO['user_inventory'][old_slot_num]
-    let new_item_info = TABLE_HERO['user_inventory'][new_slot_num]
+    let old_item_info = TABLE_HERO.stats.user_inventory[old_slot_num]
+    let new_item_info = TABLE_HERO.stats.user_inventory[new_slot_num]
 
     // Перенос предмета
     old_panel_item.SetParent(new_panel)
@@ -414,8 +298,8 @@ function SwapItemsInventoryOnly(old_panel, new_panel, old_panel_item, new_panel_
     }
 
     // Апдейт массива
-    TABLE_HERO['user_inventory'][old_slot_num] = new_item_info
-    TABLE_HERO['user_inventory'][new_slot_num] = old_item_info
+    TABLE_HERO.stats.user_inventory[old_slot_num] = new_item_info
+    TABLE_HERO.stats.user_inventory[new_slot_num] = old_item_info
 	send_update_hero()
 }
 
@@ -424,7 +308,7 @@ function SwapItemsFromEquipToInventory(old_panel, new_panel, old_panel_item, new
     let new_slot_num = new_panel.slot_count
     let old_slot_type = old_panel.type_slot
     
-    if (TABLE_HERO['user_inventory'][new_slot_num] != null) // Если слот занят
+    if (TABLE_HERO.stats.user_inventory[new_slot_num] != null) // Если слот занят
     {
         return
     }
@@ -434,10 +318,10 @@ function SwapItemsFromEquipToInventory(old_panel, new_panel, old_panel_item, new
     new_panel.item_in_slot = old_panel_item
     old_panel.item_in_slot = null
 
-    let old_item_info = TABLE_HERO['hero_enquip'][old_slot_type]
+    let old_item_info = TABLE_HERO.heroes[NAME].hero_enquip[old_slot_type]
 	
-    TABLE_HERO['user_inventory'][new_slot_num] = old_item_info
-    TABLE_HERO['hero_enquip'][old_slot_type] = null
+    TABLE_HERO.stats.user_inventory[new_slot_num] = old_item_info
+    TABLE_HERO.heroes[NAME].hero_enquip[old_slot_type] = null
 	send_update_hero()
 }
 
@@ -445,14 +329,14 @@ function SwapItemsFromInventoryToEquip(old_panel, new_panel, old_panel_item, new
 {
     let old_slot_num = old_panel.slot_count
     let new_slot_type = new_panel.type_slot
-    let old_item_info = TABLE_HERO['user_inventory'][old_slot_num]
+    let old_item_info = TABLE_HERO.stats.user_inventory[old_slot_num]
 	
     if (old_item_info.item_type != new_slot_type) // Если не тот тип экипировки
     {
         return
     }
 	
-    if (TABLE_HERO['hero_enquip'][new_slot_type] != null) // Если слот занят
+    if (TABLE_HERO.heroes[NAME].hero_enquip[new_slot_type] != null) // Если слот занят
     {
         return
     }
@@ -468,8 +352,8 @@ function SwapItemsFromInventoryToEquip(old_panel, new_panel, old_panel_item, new
     new_panel.item_in_slot = old_panel_item
     old_panel.item_in_slot = null
 
-    TABLE_HERO['hero_enquip'][new_slot_type] = old_item_info
-    TABLE_HERO['user_inventory'][old_slot_num] = null
+    TABLE_HERO.heroes[NAME].hero_enquip[new_slot_type] = old_item_info
+    TABLE_HERO.stats.user_inventory[old_slot_num] = null
 	send_update_hero()
 }
 
@@ -477,14 +361,13 @@ function SwapItemsFromInventoryToEquip(old_panel, new_panel, old_panel_item, new
 function can_enquip(item){
 	var all_items_data = GameUI.CustomUIConfig().Items
 	var HeroClass = GameUI.CustomUIConfig().HeroClass
-	var pid = Entities.GetPlayerOwnerID(current_selected_player)
-	var hero = Players.GetPlayerSelectedHero(pid)
+	var hero = Players.GetPlayerSelectedHero(Players.GetLocalPlayer())
 	var hero_class = HeroClass[hero]['class'];
-	var can_use = all_items_data[item.set_name]['class'];
-	var item_stats = all_items_data[item.set_name]['items'][item.item_type]['stats'][item.level]
-	var data = CustomNetTables.GetTableValue("hero_hud_stats", current_selected_player);
+	var can_use = all_items_data[item.item_class][item.set_name]['class'];
+	var item_stats = all_items_data[item.item_class][item.set_name]['items'][item.item_type]['stats'][item.level]
+	var data = CustomNetTables.GetTableValue("hero_hud_stats", Players.GetLocalPlayer());
 	
-	if (data.str < item_stats.required_str && data.agi < item_stats.required_agi){
+	if (data.str < item_stats.required_str || data.agi < item_stats.required_agi){
 		return false
 	}
 	
@@ -497,20 +380,19 @@ function can_enquip(item){
 
 function showTooltip(panel, data) {
     if (data) {
-        let params = `&item_data=` + JSON.stringify(data) + 
-					`&all_data=` + JSON.stringify(TABLE_HERO);
+        let params = `&item_data=` + JSON.stringify(data);
         $.DispatchEvent("UIShowCustomLayoutParametersTooltip", panel, "SetCreepTooltip", "file://{resources}/layout/custom_game/custom_tooltip/custom_tooltip.xml", params);
     }
 }
 
 function onAbilityMouseOver(panel) {
     if (panel.type_slot) {
-        let data = TABLE_HERO.hero_enquip[panel.type_slot];
+        let data = TABLE_HERO.heroes[NAME].hero_enquip[panel.type_slot];
         showTooltip(panel, data);
     }
     
     if (panel.slot_count) {
-        let data = TABLE_HERO.user_inventory[panel.slot_count];
+        let data = TABLE_HERO.stats.user_inventory[panel.slot_count];
         showTooltip(panel, data);
     }
 }
@@ -519,125 +401,10 @@ function onAbilityMouseOut(panel) {
 	$.DispatchEvent("UIHideCustomLayoutTooltip", panel, "SetCreepTooltip");
 }
 
-// function AddButtonUpgradeInventory()
-// {
-    // let upgrade_inventory = $.CreatePanel("Panel", $("#InventorySlots"), "upgrade_inventory")
-    // upgrade_inventory.AddClass("upgrade_inventory")
-    // upgrade_inventory.SetPanelEvent('onactivate', function()
-    // {
-        // $.Schedule( 0.5, function()
-        // {
-            // UpdateInventoryMain()
-        // })
-    // })
-// }
 
 
-
-
-function show_item_reward(data){
-	
-	InventoryPanel.visible = true
-	
-	Game.EmitSound("Item.PickUpGemWorld")
-	
-	
-	let panel = $.CreatePanel("Panel", InventoryPanel, "dynamicItemPanel");
-	panel.BLoadLayoutSnippet("reward")
-	panel.AddClass("content")
-	
-	
-	
-	if (data.level < 3){
-		color = "#b0c3d9"
-	}else if(data.level == 3 || data.level == 4){
-		color = "#5e98d9"
-	}else if(data.level == 5 || data.level == 6){
-		color = "#4b69ff"
-	}else if(data.level == 7 || data.level == 8){
-		color = "#8847ff"
-	}else if(data.level == 9 ){
-		color = "#d32ce6"
-	}else if(data.level == 10 ){
-		color = "#e4ae39"
-	}else if(data.level == 11 ){
-		color = "#ed0c2e"
-	}
-	
-	if (percent.includes(data.item_type)){
-		perc = '%'
-	}else{
-		perc = ''
-	}
-	if (int_num.includes(data.item_type)){
-		num = 0
-	}else{
-		num = 1
-	}
-	
-	// panel.FindChildTraverse("TooltipImage").style.height = "90px"
-	
-	if (data.set_type == 'jewell'){
-		panel.FindChildTraverse("TooltipImage").SetImage('file://{resources}/images/sets/'+data.item_type+'.png');
-		panel.FindChildTraverse("TooltipName").text = $.Localize("#"+data.set_type+"_"+data.item_type)
-		panel.FindChildTraverse("TooltipName").style.color = 'violet'
-		panel.FindChildTraverse("MainInfo").style.backgroundColor = "gradient(linear, 50% 0%, 50% 100%, from(" + "#8847ff" + "), to(transparent))";
-		panel.FindChildTraverse("BaseAttribute").text = $.Localize("#"+data.item_type+"_description") + ": " + data.level
-		panel.FindChildTraverse("Descr").visible = false
-	}else{
-		panel.FindChildTraverse("TooltipImage").SetImage('file://{resources}/images/sets/' + data.set_type + '/' + data.item_type + '.png');
-		panel.FindChildTraverse("TooltipName").text = $.Localize("#"+data.set_type+"_"+data.item_type) + " " + data.level
-		panel.FindChildTraverse("TooltipName").style.color = 'white'
-		panel.FindChildTraverse("MainInfo").style.backgroundColor = "gradient(linear, 50% 0%, 50% 100%, from(" + color + "), to(transparent))";
-		panel.FindChildTraverse("BaseAttribute").text = $.Localize("#"+data.item_type+"_description") + (decription_attributes[[data.item_type]] * data.level * data.set_number) + perc
-		panel.FindChildTraverse("Descr").visible = true
-		panel.FindChildTraverse("Descr").text = $.Localize("#min_level_use") + can_use_sets[data.set_number].min
-	}
-	
-	bonus_attr = panel.FindChildTraverse("BonusAttribute")
-	bonus_attr.RemoveAndDeleteChildren()
-	
-	for (const attrKey in data.bonus_attribute) {
-		let label = $.CreatePanel("Label", bonus_attr, "")
-		label.AddClass('bonus_label')
-	
-		if (percent.includes(attrKey)){
-			perc = '%'
-		}else{
-			perc = ''
-		}
-		if (int_num.includes(attrKey)){
-			num = 0
-		}else{
-			num = 1
-		}
-
-		label.text = $.Localize("#"+attrKey+"_description") + " " + (decription_attributes[attrKey] + (data.set_number * 0.1 * data.level) - data.set_number * 0.1).toFixed(num) + perc;
-		let hr = $.CreatePanel("Panel", bonus_attr, "hr") 
-
-	}
-	panel.DeleteAsync(5)
-	// $.Schedule(2, function(){
-		// InventoryPanel.visible = false
-    // });
-}
-
-function TipsOver(message, pos)
-{
-    if ($("#"+pos) != undefined)
-    {
-       $.DispatchEvent( "DOTAShowTextTooltip", $("#"+pos), $.Localize("#"+message));
-    }
-}
-
-function TipsOut()
-{
-    $.DispatchEvent( "DOTAHideTitleTextTooltip");
-    $.DispatchEvent( "DOTAHideTextTooltip");
-}
 
 (function() {
 	GameUI.CustomUIConfig.OpenInventory = Open;
-   	GameEvents.Subscribe("show_item_reward", show_item_reward)
    	GameEvents.Subscribe("UpdateInventoryMain", UpdateInventoryMain)
 })();

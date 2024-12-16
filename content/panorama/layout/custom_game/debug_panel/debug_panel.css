@@ -73,7 +73,7 @@
 	margin-top: 5px;
 }
 
-#CreateUnitButton:hover{
+#CreateUnitButton:hover, #LevelMax:hover{
 	sound: "ui_select_arrow";
 	brightness: 1.8;
 	background-color: rgba(44, 105, 26, 0.3);
@@ -83,4 +83,16 @@
 	align: center center;
 }
 
+/* //////////////////////////////////// */
 
+#LevelMax{
+	align: left top;
+	width: 80px;
+	height: 34px;
+	background-color: rgba(0, 0, 0, 0.3);
+	margin-top: 85px;	
+}
+
+#LevelMaxLabel{
+	align: center center;
+}

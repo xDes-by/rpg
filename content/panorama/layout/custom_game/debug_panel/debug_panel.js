@@ -6,8 +6,9 @@ CreepPool.visible = false
 DebugPanel.visible = false
 
 function Open(){
-    DebugPanel.visible = debug_vision
+    
     debug_vision = !debug_vision
+    DebugPanel.visible = debug_vision
     if (debug_vision == true){
         creep_pool_vision = false
         CreepPool.visible = false
@@ -15,8 +16,9 @@ function Open(){
 }
 
 function ShowCreepPool() {
-    CreepPool.visible = creep_pool_vision
+    
     creep_pool_vision = !creep_pool_vision
+    CreepPool.visible = creep_pool_vision
     var Creeps = GameUI.CustomUIConfig().Creeps
     CreepPool.RemoveAndDeleteChildren()
 
@@ -43,9 +45,11 @@ function choise_creep(creep, zone){
 function CreateUnitButton(){
     var text = $("#CreateUnitName").text
     var zone = $("#CreateUnitName").zone
-    $.Msg(text, zone)
     if (text != 'Нажми для выбора'){
-        $.Msg("S")
         GameEvents.SendCustomGameEventToServer("spawn_creep", {creep_name:text, zone:zone})
     }
+}
+
+function up_hero(){
+    GameEvents.SendCustomGameEventToServer("up_hero", {})
 }

@@ -136,6 +136,11 @@
 				<Label id="HeroLevel" html="true" text="Level: 378 (5)"/>
 			</Panel>
 
+			<Panel class="free_points_count">
+				<Label id="free_points_count_label" class="current_stats" text="50" />
+				<Panel id="free_points_count_image"/>
+			</Panel>
+
 			<Panel id="player_stats_menu_main_content">
 			
 				<Panel class="stats_container">

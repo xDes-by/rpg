@@ -6,5 +6,7 @@
 		"heroes_base_stats",
 		"boost_attributes",
 		"set_attributes",
+		"drop",
+		"drop_take"
 	]
 }

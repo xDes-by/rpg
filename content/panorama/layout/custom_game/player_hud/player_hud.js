@@ -61,6 +61,8 @@ function main() {
         if (data) {
             ButtonStatsEffect.visible = data.points > 0;
 
+            // $.Msg(data)
+
             hero_show_stats(data)
 
             const levelData = getLevelAndRemainderXP(data.exp);
@@ -159,9 +161,11 @@ function OpenStatsMenu() {
 
 function hero_show_stats(data){
     var HeroClass = GameUI.CustomUIConfig().HeroClass
-    var hero_class = HeroClass[data.hero]['class'];
+    var hero_class = HeroClass[data.hero_name]['class'];
 
-    player_stats_menu_main.FindChildTraverse("HeroName").text = $.Localize('#'+ data.hero)
+    player_stats_menu_main.FindChildTraverse("free_points_count_label").text = $.Localize('#free_points')+ ": "+ data.points
+
+    player_stats_menu_main.FindChildTraverse("HeroName").text = $.Localize('#'+ data.hero_name)
     player_stats_menu_main.FindChildTraverse("HeroClass").text = $.Localize('#'+ hero_class)
     player_stats_menu_main.FindChildTraverse("HeroLevel").text = $.Localize('#level') + ": " + data.level + " (" + data.resets + ")" 
     player_stats_menu_main.FindChildTraverse("stats_panels_label_str").text = data.str

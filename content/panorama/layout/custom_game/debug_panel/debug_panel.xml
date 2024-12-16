@@ -19,6 +19,10 @@
 					<Label id="CreateUnitButtonLabel" text="Создать"/>
 				</Panel>
 			</Panel>
+
+			<Panel id="LevelMax" onactivate="up_hero()">
+				<Label id="LevelMaxLabel" text="UP hero"/>
+			</Panel>
 		</Panel>
 
 		<Panel id="CreepPool" hittest="false"/>
