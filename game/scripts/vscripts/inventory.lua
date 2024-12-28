@@ -53,7 +53,6 @@ function inventory:update_sets(pid)
 	local data = game_events:calculate_hero_stats(hero_name, sid)
 	CustomNetTables:SetTableValue("hero_hud_stats", tostring(pid), data)
 
-
 	-- new_data['full_set'] = inventory:CheckFullSet(data)
 	
 	-- if hero:HasModifier('modifier_sets') then			--- проблема с OnRefresh() поэтому так

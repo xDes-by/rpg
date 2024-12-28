@@ -9,9 +9,9 @@ _G.units_data = {
             model = "models/creeps/neutral_creeps/n_creep_furbolg/n_creep_furbolg_disrupter.vmdl",
 			drop = {
                 item = {
-                    [1] = {item_class= 'item', luck_chance= 20, set_name = 'Pad', item_type = 'gloves', level = 1, item_rarity = 'base'},
-                    [2] = {item_class= 'item', luck_chance= 20, set_name = 'Leather', item_type = 'gloves', level = 0, item_rarity = 'base'},
-                    [3] = {item_class= 'item', luck_chance= 20, set_name = 'Vine', item_type = 'gloves', level = 0, item_rarity = 'base'},
+                    [1] = {item_class= 'item', luck_chance= 20, set_name = 'Pad', item_type = 'gloves', level = 1, item_rarity = 'excellent'},
+                    [2] = {item_class= 'item', luck_chance= 20, set_name = 'Leather', item_type = 'gloves', level = 0, item_rarity = 'excellent'},
+                    [3] = {item_class= 'item', luck_chance= 20, set_name = 'Vine', item_type = 'gloves', level = 0, item_rarity = 'excellent'},
                 },
 				zen = {
                     [1] = {item_class= 'zen', zen_min= 100, zen_max= 300}

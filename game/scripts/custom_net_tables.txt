@@ -4,7 +4,7 @@
 	[
 		"hero_hud_stats",
 		"heroes_base_stats",
-		"boost_attributes",
+		"excellent_bonus",
 		"set_attributes",
 		"drop",
 		"drop_take"

@@ -132,7 +132,7 @@ function getLevelAndRemainderXP(xp) {
     let level = 0;
 
     while (level < 400) {
-        let nextLevelXP = currentXP + level * 80;
+        let nextLevelXP = currentXP + level * 180;
         if (xp < nextLevelXP) {
             let percent = ((xp - currentXP) / (nextLevelXP - currentXP)) * 100;
             return { level, percent };

@@ -27,16 +27,14 @@ function drop:drop_item(target, killer)
 			end
 
 			local creep_drop_table = unit[unit_name].drop[drop_type]
-
             local random_index = RandomInt(1, #creep_drop_table)
-			-- print(random_index)
 			local drop = creep_drop_table[random_index]
-
-			-- table.print(drop)
 
 			if unit[unit_name].duration then
 				
 				data, item_name = create_drop_data(drop)
+
+				table.print(data)
 	
 				local spawnPoint = target:GetAbsOrigin()	
 				local newItem = CreateItem(item_name, nil, nil)
@@ -47,10 +45,8 @@ function drop:drop_item(target, killer)
 					killer:EmitSound("Item.DropGemWorld")
 				end
 
-				local index = itemDrop:entindex()
-				local index2 = newItem:entindex()
-
-				print("--------------TEST------------")				
+				local index = itemDrop:entindex()	-- Индекс дропа
+				local index2 = newItem:entindex()	-- Индекс предмета
 				
 				_G.drop_table[index] = data -- альтернатива, пишем в таблицу а ее в неттейблах все время меняем, подняли предмет, вышло время и т.д.
 
@@ -60,8 +56,7 @@ function drop:drop_item(target, killer)
 				print("--------------TEST------------")	
 
 				newItem:LaunchLootInitialHeight(false, 0, 150, 0.5, spawnPoint + RandomVector(dropRadius))
-
-			
+				
 				newItem:SetContextThink("kill_loot", function() return kill_loot(newItem, itemDrop) end, unit[unit_name].duration)
 			end
 		end
@@ -69,7 +64,7 @@ function drop:drop_item(target, killer)
 end
 
 function get_drop_type(chances, roll)
-	roll = 99
+	-- roll = 25
 	local cumulativeChance = 0
     for _, chanceData in ipairs(chances) do
         cumulativeChance = cumulativeChance + chanceData.chance
@@ -111,7 +106,7 @@ function create_drop_data(drop)
 		data.item_class = 'item'
 		data.set_name = drop.set_name
 		data.item_type = drop.item_type
-		data.item_rarity = data.item_rarity
+		data.item_rarity = drop.item_rarity
 		data.luck_option = drop.luck_chance < RandomInt(1, 100) and 1 or 0
 		data.additional_level = 0
 		data.excellent_bonuses = drop.item_rarity == 'excellent' and get_excellent_data() or {}
@@ -121,9 +116,59 @@ function create_drop_data(drop)
 end
 
 function get_excellent_data()
-	data = {}
-	-- TODO: наполнить логикой excellennt
-	return data
+	local max_bonuses = roll_random_attributes_count()
+	local attributes = {
+		'increase_max_hp',
+		'increase_max_mp',
+		'damage_decrease',
+		'damage_increase',
+		'reflected_damage',
+		'excellent_damage',
+		'attack_speed',
+		'lifesteal',
+		'mp_lifesteal',
+		'manacost',
+		'movespeed',
+		'zen',
+		'quality',
+		'poison_resist',
+		'ice_resist',
+		'fire_resist',
+		'ignore_defence',
+	}
+	return selectUniqueRandomAttributes(max_bonuses, attributes)
+end
+
+function selectUniqueRandomAttributes(count, attributes)
+    local result = {}
+    local tempAttributes = table.shuffle(table.shallowcopy(attributes))
+    for i = 1, count do
+		result[tempAttributes[i]] = 1
+    end
+    return result
+end
+
+function roll_random_attributes_count()
+	-- max count 6, min count = 1
+	local chances = {
+		{min = 0, max = 1, reward = 6},		-- 1%
+		{min = 1, max = 3, reward = 5},		-- 2%
+		{min = 4, max = 8, reward = 4},		-- 4%
+		{min = 9, max = 20, reward = 3},	-- 12%
+		{min = 21, max = 51, reward = 2},	-- 30%
+		{min = 52, max = 101, reward = 1}	-- 49%
+	}
+	
+	local end_roll = 100
+	local random_number = RandomInt(0, end_roll)
+	local result = 1
+	for _, range in ipairs(chances) do
+		if random_number >= range.min and random_number < range.max then
+			result = range.reward
+			break
+		end
+	end
+	return result
 end
 
 drop:init()

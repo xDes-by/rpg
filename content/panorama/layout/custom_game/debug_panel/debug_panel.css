@@ -96,3 +96,73 @@
 #LevelMaxLabel{
 	align: center center;
 }
+
+/* ///////////////////////////////////////// */
+/* ///////////////////////////////////////// */
+/* ///////////////////////////////////////// */
+
+#test_main_panel{
+	height: 100%;
+	width: 100%;
+	/* background-color: green; */
+	align:center center;
+}
+		
+.OverworldZoom{
+	overflow: clip;
+	height: 100%;
+	width: 100%;
+	/* background-color: red; */
+}
+
+#DragZoomContentPanel{
+	vertical-align: center;
+	horizontal-align: center;
+	overflow: noclip;
+	z-index: 1;
+	transition-property: transform, position;
+	transition-delay: 0s;
+	transition-timing-function:ease-in-out;
+
+}
+
+#test{
+	height: 800px;
+	width: 800px;
+	vertical-align: center;
+	horizontal-align: center;
+		overflow: noclip;
+}
+
+
+#test2{
+	vertical-align: center;
+	horizontal-align: center;
+	width:4000px;
+	height:4000px;
+	background-image: url("file://{images}/test.png");
+	background-repeat: no-repeat;
+	background-size: 100%;
+	/* background-color: #525764; */
+	overflow: noclip;
+
+}
+
+#test_item{
+	align: center center;
+	width:100px;
+	height:100px;
+	background-image: url("file://{images}/pick_menu/agi.png");
+	background-repeat: no-repeat;
+	background-size: 100%;		
+}
+
+#test_item2{
+	align: center center;
+	width:50px;
+	height:50px;
+	background-image: url("file://{images}/pick_menu/str.png");
+	background-repeat: no-repeat;
+	background-size: 100%;		
+	margin-bottom: 3500px;	
+}

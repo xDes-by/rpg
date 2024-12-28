@@ -31,7 +31,7 @@ end
 function DotaMu:InitGameMode()
 	local GameMode = GameRules:GetGameModeEntity()
 	GameMode:SetBuybackEnabled(false)
-	GameMode:SetFogOfWarDisabled(true) --false?
+	GameMode:SetFogOfWarDisabled(true) --false
     GameMode:SetCustomBackpackSwapCooldown(0)
     GameMode:SetCustomBuybackCooldownEnabled(false)
 	GameMode:SetLoseGoldOnDeath(false) 

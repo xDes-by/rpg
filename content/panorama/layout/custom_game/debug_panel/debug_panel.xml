@@ -8,6 +8,19 @@
 	</scripts>
 
 	<Panel style="width:100%;height:100%;" hittest="false">
+
+		<Panel id="test_main_panel">
+			<!-- <DragZoom id='DragZoom' class='OverworldZoom'> -->
+				<Panel id="test" class='t1' hittest="false">
+					<Panel id="test2">
+						<Panel id="test_item"/>
+						<Panel id="test_item2"/>
+					</Panel>
+				</Panel>
+			<!-- </DragZoom> -->
+		</Panel>
+
+
 		<Panel id="DebugPanelButton" onactivate="Open()"/>
 		<Panel id="DebugPanel">
 			

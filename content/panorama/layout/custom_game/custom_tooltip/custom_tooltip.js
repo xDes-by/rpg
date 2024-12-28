@@ -56,14 +56,10 @@ function set_description(data, panel){
 	panel_additional.visible = false;
 	panel_excellent.visible = false;
 
-	$.Msg(data)
+	// $.Msg(data)
 	if (data){
 	
 		if (data.item_class == 'jewel'){
-			$.Msg("S")
-			$.Msg(data.item_type)
-			$.Msg(data.level)
-			$.Msg("S")
 			panel_image.SetImage('file://{resources}/images/inventory/item_'+ data.item_type +'.png');
 			panel_name.text = $.Localize('#item_'+data.item_type)
 			panel_name.style.color = color
@@ -87,15 +83,15 @@ function set_description(data, panel){
 			panel_can_use.visible = false
 
 		}else{
-			// $.Msg(data)
+			var multiply = data.item_rarity == 'excellent' ? 1.5 : 1
 
 			var item_stats = all_items_data[data.item_class][data.set_name]['items'][data.item_type]['stats'][data.level]
-			var armor = Math.ceil(item_stats.armor / 100 * data.quality)
+			var armor = Math.ceil((item_stats.armor * multiply) / 100 * data.quality)
 			var required_str = item_stats.required_str
 			var required_agi = item_stats.required_agi
 			var can_use = all_items_data[data.item_class][data.set_name]['class']
 
-			if (data.item_rarity == 'Excellent'){
+			if (data.item_rarity == 'excellent'){
 				panel_excellent.visible = true
 				pre_text = 'Excellent'
 				color = '#00f704'
@@ -103,8 +99,7 @@ function set_description(data, panel){
 				for (const attrKey in data.excellent_bonuses) {
 					var label = $.CreatePanel("Label", panel_excellent, "")
 					label.AddClass('bonus_label')
-					label.text = attrKey
-					
+					label.text = attrKey	
 				}
 			}
 

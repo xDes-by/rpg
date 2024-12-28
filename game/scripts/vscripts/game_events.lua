@@ -24,6 +24,26 @@ function game_events:Init()
 		["npc_dota_hero_juggernaut"] = {str = 28, agi = 20, vit = 25, eng = 10, hp = 110, mp = 20, hp_per_level = 2, mp_per_level = 0.5, hp_per_vit = 3, mp_per_eng = 1, damage = 0, speed = 0, armor = 0, movespeed = 300, poison = 100, fire = 100, ice = 100},
 		
 	})
+
+	CustomNetTables:SetTableValue("excellent_bonus", "excellent_bonus", {
+		increase_max_hp = 4,	-- %
+		increase_max_mp = 4,	-- %
+		damage_decrease = 4,	-- %
+		damage_increase = 2,	-- %	
+		reflected_damage = 5,	-- %
+		excellent_damage = 3,	-- % chance
+		attack_speed = 7,		-- const
+		lifesteal = 8, 			-- const
+		mp_lifesteal = 6,		-- const
+		manacost = 2,			-- %
+		movespeed = 5,			-- const
+		zen = 30,				-- %
+		quality = 3,			-- %
+		poison_resist = 2,		-- %
+		ice_resist = 2,			-- %
+		fire_resist = 2,		-- %
+		ignore_defence = 1		-- % chance
+	})
 end
 
 -------------------------------------------------------------------------------
@@ -102,6 +122,7 @@ function game_events:ExpFilter(data)
 
 		local pcf = ParticleManager:CreateParticle("particles/generic_hero_status/hero_levelup.vpcf", PATTACH_ABSORIGIN_FOLLOW, hero)
 		ParticleManager:ReleaseParticleIndex(pcf)
+		--TODO: ЗВУК!!!!!!! должно быть все идеально!
 
 		local data = {
 			pid = pid,
@@ -131,7 +152,7 @@ function game_events:GetLevelAndRemainderXP(xp)
     local level = 0
 
     while level < 400 do
-        local nextLevelXP = currentXP + level * 80
+        local nextLevelXP = currentXP + level * 180
         if xp < nextLevelXP then
             local progress = ((xp - currentXP) / (nextLevelXP - currentXP)) * 100
             return level, progress
@@ -171,8 +192,6 @@ function game_events:calculate_hero_stats(hero_name, sid)
 	if _G.players_data[sid].heroes[hero_name] then
 		data = table.deepcopy(_G.players_data[sid].heroes[hero_name])
 	end
-
-	table.print(data)
 
 	set_data = game_events:calculate_hero_set(data.hero_enquip)
 
@@ -214,6 +233,7 @@ function game_events:calculate_hero_stats(hero_name, sid)
 		return math.floor(formulas[name].armor)
 	end
 
+
 	data.str = (data.str or 0) + heroes_base_stats[hero_name].str
 	data.agi = (data.agi or 0) + heroes_base_stats[hero_name].agi
 	data.vit = (data.vit or 0)  + heroes_base_stats[hero_name].vit
@@ -221,7 +241,7 @@ function game_events:calculate_hero_stats(hero_name, sid)
 	data.poison = data.poison or 0-- + стаки модификатора резиста хз где они, в сете наверное или талантах
 	data.fire = data.fire or 0-- + стаки модификатора резиста
 	data.ice = data.ice or 0-- + стаки модификатора резиста
-	data.critical_damage = 5 -- брать показатели из сета
+	data.critical_damage = set_data.critical_damage * 5 -- Каждый Luck дает шанс 5% крита
 	data.reflected_damage = 5 -- брать показатели из сета
 	data.excellent_damage = 5 -- брать показатели из сета
 	data.movespeed = heroes_base_stats[hero_name].movespeed + 5 -- плюс брать показатели из сета
@@ -244,15 +264,18 @@ function game_events:calculate_hero_set(data)
 	attributeSum['armor'] = 0
 	attributeSum['min_damage'] = 0
 	attributeSum['max_damage'] = 0
+	attributeSum['critical_damage'] = 0
 	if data then
 		for item, item_data in pairs(data) do
+			local multiply = item_data.item_rarity == 'excellent' and 1.5 or 1
 			local item_stats = _G.all_items[item_data.item_class][item_data.set_name]['items'][item_data.item_type]['stats'][tostring(item_data.level)]
 
 			if item_data.item_class == 'weapon' then
-				attributeSum['min_damage'] = attributeSum['min_damage'] + math.ceil(item_stats.min_damage / 100 * item_data.quality)
-				attributeSum['max_damage'] = attributeSum['max_damage'] + math.ceil(item_stats.max_damage / 100 * item_data.quality)
+				attributeSum['min_damage'] = attributeSum['min_damage'] + math.ceil((item_stats.min_damage * multiply) / 100 * item_data.quality)
+				attributeSum['max_damage'] = attributeSum['max_damage'] + math.ceil((item_stats.max_damage * multiply) / 100 * item_data.quality)
 			else
-				attributeSum['armor'] = attributeSum['armor'] + math.ceil(item_stats.armor / 100 * item_data.quality)
+				attributeSum['armor'] = attributeSum['armor'] + math.ceil((item_stats.armor * multiply) / 100 * item_data.quality)
+				attributeSum['critical_damage'] = attributeSum['critical_damage'] + item_data.luck_option
 			end
 		end
 	end
@@ -263,7 +286,7 @@ function game_events:pick_hero(tab)
 	local pid = tab.PlayerID
 	local hero_name = tab.hero_name
 	hero = PlayerResource:ReplaceHeroWith(pid, hero_name, 0, 0)
-	PlayerResource:SetCameraTarget(pid, hero)
+	-- PlayerResource:SetCameraTarget(pid, hero)
 	
 	------------------------------
 	--TODO: start effect teleport
